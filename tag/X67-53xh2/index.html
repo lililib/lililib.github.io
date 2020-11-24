@@ -8,7 +8,7 @@
 <meta name="keywords" content="java">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>战恋雪网站的爬取实战 | 煨酒小童</title>
+<title>煨酒小童</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1606205852033">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -29,8 +29,6 @@
 
 
 
-  <meta name="description" content="战恋雪网站的爬取实战" />
-  <meta name="keywords" content="爬虫" />
 </head>
 
 <body>
@@ -146,26 +144,10 @@
   <div class="main-continer">
     
     <div
-      class="section-layout gemini ">
+      class="section-layout  gemini">
       <div class="section-layout-wrapper">
-        
-
-<div class="sidebar">
-  
-    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
-      
-        <div class="post-list-sidebar">
-          <div class="sidebar-title">
-            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
-            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
-          </div>
-        </div>
-      
-      <div class="sidebar-body gemini" id="sidebar_body">
-        
-          
-            <div class="post-side-meta" id="post_side_meta">
-              
+        <div id="sidebarMeta" class="sidebar">
+    
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -236,620 +218,76 @@
 
 
 </div>
-            </div>
-            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
-              <div class="toc-box right-motion">
-  <div class="toc-wrapper auto-number auto"
-    id="toc_wrapper">
-    <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E8%B5%B7">起</a></li>
-<li><a href="#%E6%89%BF">承</a>
-<ul>
-<li><a href="#%E6%8A%93%E5%8F%96%E6%89%80%E6%9C%89%E4%B9%A6%E7%B1%8D%E9%93%BE%E6%8E%A5">抓取所有书籍链接</a></li>
-<li><a href="#%E6%8A%93%E5%8F%96%E4%B9%A6%E7%B1%8D%E7%AB%A0%E8%8A%82">抓取书籍章节</a></li>
-<li><a href="#%E6%8A%93%E5%8F%96%E4%B9%A6%E7%B1%8D%E5%86%85%E5%AE%B9">抓取书籍内容</a></li>
-<li><a href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8B%E8%BD%BD%E4%B9%A6%E7%B1%8D">多进程下载书籍</a></li>
-</ul>
-</li>
-<li><a href="#%E6%89%80%E6%9C%89%E4%BB%A3%E7%A0%81">所有代码</a></li>
-<li><a href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C">运行结果</a></li>
-<li><a href="#%E5%8F%8D%E6%80%9D">反思</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
 </div>
-
 <script>
-
-  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
-  let active = 'active-show', activeClass = 'active-current';
-  let tocWrapper = document.querySelector('#toc_wrapper');
-  let tocContent = tocWrapper.children[0];
-  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
-
-  function addTocNumber(elem, deep) {
-    if (!elem) {
-      return;
-    }
-    let prop = elem.__proto__;
-
-    if (prop === HTMLUListElement.prototype) {
-      for (let i = 0; i < elem.children.length; i++) {
-        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'gemini';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
       }
-    } else if (prop === HTMLLIElement.prototype) {
-      // 保存li元素
-      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
-        lList.push(elem);
-      }
-      for (let i = 0; i < elem.children.length; i++) {
-        let cur = elem.children[i];
-        if (cur.__proto__ === HTMLAnchorElement.prototype) {
-          if (autoNumber) {
-            cur.text = deep + ' ' + cur.text;
-          }
-        } else if (cur.__proto__ === HTMLUListElement.prototype) {
-          addTocNumber(cur, deep);
-        }
-      }
-    }
-  }
-
-  function removeParentActiveClass() {
-    let parents = tocContent.querySelectorAll('.' + active)
-    parents.forEach(function (elem) {
-      elem.classList.remove(active);
     });
   }
-
-  function addActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.add(activeClass);
-    }
-  }
-
-  function removeActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.remove(activeClass);
-    }
-  }
-
-  function addActiveLiElemment(elem, parent) {
-    if (!elem || elem === parent) {
-      return;
-    } else {
-      if (elem.__proto__ === HTMLLIElement.prototype) {
-        elem.classList.add(active);
-      }
-      addActiveLiElemment(elem.parentElement, parent);
-    }
-  }
-
-  function showToc() {
-    if (tocWrapper) {
-      postBody = document.querySelector('#post_body');
-      for (let i = 0; i < postBody.children.length; i++) {
-        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
-          hList.push(postBody.children[i]);
-        }
-      }
-      if (tocWrapper.classList.contains('compress')) {
-        tocContent.classList.add('closed');
-      } else if (tocWrapper.classList.contains('no_compress')) {
-        tocContent.classList.add('expanded');
-      } else {
-        if (hList.length > 10) {
-          active = 'active-hidden'
-          tocContent.classList.add('closed');
-        } else {
-          tocContent.classList.add('expanded');
-        }
-      }
-    }
-  }
-
-  (function () {
-    // 处理不是从#一级标题开始目录
-    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
-      let con = tocContent.children[0].children[0];
-      tocContent.innerHTML = con.innerHTML;
-    }
-    let markdownItTOC = document.querySelector('.markdownIt-TOC');
-    let innerHeight = window.innerHeight;
-    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
-    addTocNumber(tocContent, '');
-  })();
-
-  document.addEventListener('scroll', function (e) {
-    if (lList.length <= 0) {
-      return;
-    }
-    let scrollTop = document.scrollingElement.scrollTop + 10;
-    let dir;
-
-    if (lastTop - scrollTop > 0) {
-      dir = 'up';
-    } else {
-      dir = 'down';
-    }
-
-    lastTop = scrollTop;
-    if (scrollTop <= 0) {
-      if (lastIndex >= 0 && lastIndex < hList.length) {
-        lList[lastIndex].classList.remove(activeClass);
-      }
-      return;
-    }
-
-    let current = 0, hasFind = false;
-    for (let i = 0; i < hList.length; i++) {
-      if (hList[i].offsetTop > scrollTop) {
-        current = i;
-        hasFind = true;
-        break;
-      }
-    }
-    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
-      current = hList.length - 1;
-    } else {
-      current--;
-    }
-    if (dir === 'down') {
-      if (current > lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex)
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    } else {
-      if (current < lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex);
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    }
-  });
-
-
-  window.addEventListener('load', function () {
-    showToc();
-    document.querySelector('#sidebar').style = 'display: block;';
-    tocWrapper.classList.add('toc-active');
-    setTimeout(function () {
-      if ("createEvent" in document) {
-        let evt = document.createEvent("HTMLEvents");
-        evt.initEvent("scroll", false, true);
-        document.dispatchEvent(evt);
-      }
-      else {
-        document.fireEvent("scroll");
-      }
-    }, 500)
-  })
-
-</script>
-            </div>
-          
-        
+  </script>
+        <div class="section-box tag-line box-shadow-wrapper">
+          <section class="section tags-section posts-expand bg-color">
+            <div class="padding-wrapper">
+  <div class="tag-timeline-box">
+    <div class="tag-timeline-wrapper">
+      <div class="tag-timeline-title">
+        <h2>
+          读书
+          <small>标签</small>
+        </h2>
       </div>
-    </div>
-  
-</div>
-<script>
-  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
-  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
-  const SLIDE_UP_IN = 'slide-up-in';
-
-  let sidebar = document.querySelector('#sidebar'),
-  tocSideBar = document.querySelector('#tocSideBar'),
-  metaSideBar = document.querySelector('#metaSideBar'),
-  postToc = document.querySelector('#post_toc'),
-  postSiteMeta = document.querySelector('#post_side_meta'),
-  sidebarTitle = document.querySelector('.sidebar-title'),
-  sidebarBody = document.querySelector('#sidebar_body');
-
-  tocSideBar && tocSideBar.addEventListener('click', (e) => {
-    toggleSidebar(e);
-  });
-
-  metaSideBar && metaSideBar.addEventListener('click', (e) => {
-    toggleSidebar(e);
-  });
-
-  function toggleSidebar(e) {
-    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
-    if (currentTitle == e.srcElement) {
-      return ;
-    }
-    let current, showElement, hideElement;
-    if (e.srcElement == metaSideBar) {
-      showElement = postSiteMeta;
-      hideElement = postToc;
-    } else if (e.srcElement == tocSideBar){
-      showElement = postToc;
-      hideElement = postSiteMeta;
-    }
-    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
-    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
-
-    window.Velocity(hideElement, 'stop');
-    window.Velocity(hideElement, 'transition.slideUpOut', {
-      display: 'none',
-      duration: 200,
-      complete: function () {
-        window.Velocity(showElement, 'transition.slideDownIn', {
-          duration: 200
-        });
-      }
-    })
-    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
-    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
-  }
-
-  postToc && postToc.addEventListener('transitionend', function() {
-    this.classList.remove(SLIDE_UP_IN);
-  });
-
-  if (sidebarBody) {
-    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
-      let hasFix = false;
-      let scrollEl = document.querySelector('.main-continer');
-      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
-      window.addEventListener('scroll', function(e) {
-        if (document.scrollingElement.scrollTop >= limitTop) {
-          if (!hasFix) {
-            sidebar.classList.add('sidebar-fixed');
-            hasFix = true;
-          }
-        } else {
-          if (hasFix) {
-            sidebar.classList.remove('sidebar-fixed');
-            hasFix = false;
-          }
-        }
-      });
-    }
-  }
-  
-</script>
-        <div class="section-box box-shadow-wrapper">
-          <div class="section bg-color post post-page">
-            <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/战恋雪/">
-      战恋雪网站的爬取实战
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2019-06-07</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
       
       
-      <a href="https://lililib.github.io/tag/JQfR2ELDR/">
-        <span>爬虫</span>
+      
+      <a href="https://lililib.github.io/post/xi-guan-de-li-liang/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              11-24
+              <small>习惯的力量</small>
+            </h1>
+          </div>
+        </div>
       </a>
       
       
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>7分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1547<span class="pc-show">字数</span></span>
-    </span>
-    
-    
-    
-    <span id="/post/战恋雪/" data-flag-title="战恋雪网站的爬取实战" class="meta-item pc-show leancloud_visitors">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-eye"></i>
-      <span>浏览量：<span class="leancloud-visitors-count"></span></span>
-    </span>
-    
-  </div>
-</header>
-            <div class="post-body next-md-body" id="post_body">
-              <p>因为要释放掉那些干扰我理智思考的东西，所以一直在苦苦找寻刘备(皇叔)(づ￣ 3￣)づ网站，直到一次我搜索《战恋雪》时我发现了这个网站<a href="https://www.zhanlianxue.net/">战恋雪</a>。</p>
-<!-- more -->
-<h2 id="起">起</h2>
-<p>因为要释放掉那些干扰我理智思考的东西，所以一直在苦苦找寻刘备(皇叔)(づ￣ 3￣)づ网站，直到一次我搜索《战恋雪》时我发现了这个网站<a href="https://www.zhanlianxue.net/">战恋雪</a>。</p>
-<figure data-type="image" tabindex="1"><img src="https://s1.ax1x.com/2020/06/07/tgUv5D.jpg" alt="tgUv5D.jpg" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://s1.ax1x.com/2020/06/07/tgtcGj.png" alt="tgtcGj.png" loading="lazy"></figure>
-<p>它网罗了网络上很优秀的xhs，以我多年习书所养成的挑剔眼光来看，我也该大大赞叹此站主深得老夫脾胃。看小说我更喜欢用手机进行阅读，不仅屏幕小不易被人发现，而且可以躺在床上看，更是体位可以保证最大舒适度进行原地起飞。结果恰恰是这个移动端超多广告，adblock插件完全对付不了，换页时频繁的强制跳转广告让我性致乏乏，一而再再而三的这样，怎么办？忍？鸡儿他可首先不同意，这谁忍得了！办他！<br>
-那就把网站内容全部爬取下来吧</p>
-<h2 id="承">承</h2>
-<h3 id="抓取所有书籍链接">抓取所有书籍链接</h3>
-<p>先是用chrome控制台分析首页，很容易发现首页上就有网站所有书籍的链接地址，而且全部保存到了一个html页面上了，只要提取这个html页面的书籍信息既可以了。分析页面可以看到书籍地址保存在 menu标签的li标签的a标签中，用bs4可以提取</p>
-<figure data-type="image" tabindex="3"><img src="https://s1.ax1x.com/2020/06/07/tgtgRs.png" alt="tgtgRs.png" loading="lazy"></figure>
-<pre><code>def get_book():     #战恋雪网站所有书籍链接
-    try:
-        re=requests.get('https://www.zhanlianxue.net/')
-        html=re.text
-        soup=BeautifulSoup(html,'html.parser')
-        haha=soup('ul',attrs={'class':'menu'})
-
-        for book in haha[0]('a'):
-            title=book.text
-            url=book.attrs['href']
-            if title=='首页':    #有一个首页，不是一本书，需去掉
-                continue
-            yield{
-                'title':title,
-                'url':url
-            }
-    except:
-        print('获得所有书本信息错误')
-</code></pre>
-<h3 id="抓取书籍章节">抓取书籍章节</h3>
-<p>再我们打开一个书籍地址，可以看到有很多章节，控制台分析，章节地址保存在ul标签的li标签的a标签中，用bs4可以提取</p>
-<figure data-type="image" tabindex="4"><img src="https://s1.ax1x.com/2020/06/07/tgtrdS.png" alt="tgtrdS.png" loading="lazy"></figure>
-<pre><code>def get_bookcapital(url):    #获得一本书的所有章节名称与章节链接
-
-    try:
-        re=requests.get(url,timeout=60)
-        html=re.text
-        soup=BeautifulSoup(html,'html.parser')
-        haha=soup('ul')[1]
-        
-        for chapter in haha('li'):
-            
-            title=chapter('a')[0].text
-            
-            url=chapter('a')[0].attrs['href']
-            yield{
-                'ctitle':title,
-                'curl':url
-            }
-    except:
-        print('获取书的章节链接错误')
-</code></pre>
-<h3 id="抓取书籍内容">抓取书籍内容</h3>
-<p>然后我们打开一个章节定位到内容中，经过多个页面的比对可以发现所有内容都存储在最上面箭头的那个标签中，直接获取标签范围所有内容就可（要是范围太大，可能内容会提取到代码，可以用正则表达式清除）。最后就是把内容保存到文档中</p>
-<figure data-type="image" tabindex="5"><img src="https://s1.ax1x.com/2020/06/07/tgtsIg.png" alt="tgtsIg.png" loading="lazy"></figure>
-<pre><code>def savechapter(bookname,url):   #根据章节连接，保存章节里面的文本
-
-    try:
-        re1=requests.get(url,timeout=60)
-        html=re1.text
-        html=re.sub('&lt;br.*?&gt;','\n',html)
-        soup=BeautifulSoup(html,'html.parser')
-        content=soup('div',attrs={'class':'single-box clearfix entry-content'})[0]
-        a=content('script')   #清除文本中的干扰代码（美观）
-        for i in a:
-            i.clear()
-        makebook(bookname,content.text)
-    except:
-         print('存入文本错误')
-
-
-def makebook(bookname,text):    #保存文本
-    path='F:\战恋雪\{}.txt'.format(bookname)      #这里F盘需要先创建战恋雪这个文件夹
-    with open(path,'a',encoding='utf-8')as haha:
-        haha.write('\n'+text)
-</code></pre>
-<h3 id="多进程下载书籍">多进程下载书籍</h3>
-<p>因为书籍太多，再加上章节一章一章获取实在是太慢，开启多进程同时下载多本书会快很多</p>
-<pre><code>if __name__=='__main__':
-    pool=Pool(processes=20)   #20个进程调用获得所有书
-    group=a  #a列表是网站所有书的链接地址
-    print(group)
-    pool.map(main,group)
-</code></pre>
-<h2 id="所有代码">所有代码</h2>
-<pre><code>from bs4 import BeautifulSoup
-import re
-import requests
-from multiprocessing import Pool
-def get_book():     #战恋雪网站所有书籍链接
-    try:
-        re=requests.get('https://www.zhanlianxue.net/')
-        html=re.text
-        soup=BeautifulSoup(html,'html.parser')
-        haha=soup('ul',attrs={'class':'menu'})    #ul标签可能很多，直接搜索标签会返回列表，自己找到所需内容的ul标签下标，其他的都是同理
-
-        for book in haha[0]('a'):  
-            title=book.text
-            url=book.attrs['href']
-            if title=='首页':    #有一个首页，不是一本书，需去掉
-                continue
-            yield{
-                'title':title,
-                'url':url
-            }
-    except:
-        print('获得所有书本信息错误')
-
-
-
-def get_bookcapital(url):    #获得一本书的所有章节名称与章节链接
-
-    try:
-        re=requests.get(url,timeout=60)
-        html=re.text
-        soup=BeautifulSoup(html,'html.parser')
-        haha=soup('ul')[1]  
-        
-        for chapter in haha('li'):
-            
-            title=chapter('a')[0].text
-            
-            url=chapter('a')[0].attrs['href']
-            yield{
-                'ctitle':title,
-                'curl':url
-            }
-    except:
-        print('获取书的章节链接错误')
-
-
-
-def savechapter(bookname,url):   #根据章节连接，保存章节里面的文本
-
-    try:
-        re1=requests.get(url,timeout=60)
-        html=re1.text
-        html=re.sub('&lt;br.*?&gt;','\n',html)
-        soup=BeautifulSoup(html,'html.parser')
-        content=soup('div',attrs={'class':'single-box clearfix entry-content'})[0]
-        a=content('script')   #清除文本中的干扰代码（美观）
-        for i in a:
-            i.clear()
-        makebook(bookname,content.text)
-    except:
-         print('存入文本错误')
-
-
-def makebook(bookname,text):    #保存文本
-    path='F:\战恋雪\{}.txt'.format(bookname)     #这里F盘需要先创建战恋雪这个文件夹
-    with open(path,'a',encoding='utf-8')as haha:
-        haha.write('\n'+text)
-
-def makebook_chapter(bookname,cname):   #在文本中还要保存章节名称
-    path='F:\战恋雪\{}.txt'.format(bookname)     #这里F盘需要先创建战恋雪这个文件夹
-    with open(path,'a',encoding='utf-8')as haha:
-        haha.write(cname+'\n')
-
-def main(haha):   #获得一本书的所有步骤
-    book=haha
-    print(book)
-    print('正在获取  {}  {}'.format(book.get('title'),book.get('url')))
-    for chapter in get_bookcapital(book.get('url')):
-            print('当前《{}》--获取章节 {}  {}  '.format(book.get('title'),chapter.get('ctitle'),chapter.get('curl')))
-            makebook_chapter(book.get('title'),chapter.get('ctitle'))
-            savechapter(book.get('title'),chapter.get('curl'))
-
-#把所有书籍连接放入一个列表中，方便多进程取值
-a=[]
-for i in get_book():
-    a.append(i)
-print(a)
-
-if __name__=='__main__':
-    pool=Pool(processes=20)   #20个进程调用获得所有书
-    group=a  #a列表是网站所有书的链接地址
-    print(group)
-    pool.map(main,group)
-
-</code></pre>
-<h2 id="运行结果">运行结果</h2>
-<figure data-type="image" tabindex="6"><img src="https://s1.ax1x.com/2020/06/07/tgBqA0.png" alt="tgBqA0.png" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="https://s1.ax1x.com/2020/06/07/tgBLNV.png" alt="tgBLNV.png" loading="lazy"></figure>
-<h2 id="反思">反思</h2>
-<ol>
-<li>自己是不是太猥琐了，学这个鬼东西专门干这些事？</li>
-<li>下次要写写读书笔记了</li>
-<li>这些都还是皮毛，很纠结自己到底主Java呢，还是python呢？python是用来玩的，但是我投入的时间对他太多了。</li>
-</ol>
-
-            </div>
-            <div class="post-footer">
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong>本文作者：</strong>
-      小童
-    </li>
-    <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://lililib.github.io/post/战恋雪/" title="战恋雪网站的爬取实战">https://lililib.github.io/post/战恋雪/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-  <div class="tags">
-    
-      <a href="https://lililib.github.io/tag/JQfR2ELDR/"># 爬虫</a>
-    
-  </div>
-  <div class="nav">
-    <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="uu加速器抓包领取ow" href="https://lililib.github.io/post/如何挤进uu加速器白嫖ow/">uu加速器抓包领取ow</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="uu加速器抓包领取ow" href="https://lililib.github.io/post/如何挤进uu加速器白嫖ow/">上一篇</a>
       
-    </div>
-    <div class="nav-next">
       
-        <a class="nav-pc-next" title="500px美图爬取" href="https://lililib.github.io/post/500px/">500px美图爬取</a>
-        <a class="nav-mobile-next" title="500px美图爬取" href="https://lililib.github.io/post/500px/">下一篇</a>
-        <i class="fa fa-chevron-right"></i>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
     </div>
   </div>
 </div>
-            
-  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js"></script>
-<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
-
-<style>
-  .v .veditor {
-    min-height: 10rem;
-    background-image: url('https://upimage.alexhchu.com/2020/04/21/47eda59424daa.gif');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-color: rgba(255, 255, 255, 0);
-    resize: none;
-  }
-
-  .v .vwrap {
-    border: 1px solid #000 !important;
-  }
-
-  .v .vbtn {
-    padding: .4rem 1.2rem !important;
-    border-color: #fff !important;
-    background-color: #49b1f5 !important;
-    color: #fff !important;
-    font-size: .7rem !important;
-  }
-
-  .v .vcards .vcard .vh .vmeta .vat {
-    padding: 0 .8rem !important;
-    border: 1px solid #00c4b6 !important;
-    border-radius: 5px !important;
-    color: #00c4b6 !important;
-  }
-</style>
-<script>
-  new Valine({
-    el: '#vcomments',
-    appId: '2Iso0fmRUb7wjPjbJqUN2BTk-MdYXbMMI',
-    appKey: 'cDa9sWisyiYRTp6FnM0ardpP',
-    avatar: 'monsterid',
-    placeholder: '(～￣▽￣)～',
-    pageSize: '',
-    lang: 'zh-cn',
-    visitor: 'true' === 'true',
-    highlight: 'true' === 'true',
-    avatarForce: 'true' === 'true',
-  });
-</script>
-
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -1023,36 +461,6 @@ if __name__=='__main__':
   // 代码高亮
   hljs.initHighlightingOnLoad();
 
-</script>
-    <div class="light-box" id="light_box"></div>
-<script>
-  let imgs = document.querySelectorAll('.post-body img');
-  let lightBox = document.querySelector('#light_box');
-  lightBox.addEventListener('mousedown', (e) => {
-    e.preventDefault()
-  })
-  lightBox.addEventListener('mousewheel', (e) => {
-    e.preventDefault()
-  })
-  let width = window.innerWidth * 0.8;
-  lightBox.onclick = () => {
-    let img = lightBox.querySelector('img');
-    lightBox.style = '';
-    img && img.remove();
-  }
-  imgs.forEach(item => {
-    item.onclick = function (e) {
-      let lightImg = document.createElement('img');
-      lightImg.src = this.src;
-      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
-      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
-      lightImg.onclick = function () {
-        lightBox.style = '';
-        this.remove();
-      }
-      lightBox.append(lightImg);
-    }
-  })
 </script>
   </div>
 </body>
@@ -2023,6 +1431,7 @@ if __name__==&#39;__main__&#39;:
   escapeMap.set('&quot;', '"');
   escapeMap.set('&amp;', '&');
 </script> -->
+
 
 
 </html>
