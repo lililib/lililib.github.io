@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-02T14:52:23.671Z</updated>
+    <updated>2020-12-03T08:48:11.141Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,36 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[《钢之炼金术师》]]></title>
+        <id>https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/</id>
+        <link href="https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/">
+        </link>
+        <updated>2020-12-03T08:43:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>人没有什么牺牲的话就什么都得不到，</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>人没有什么牺牲的话就什么都得不到，</p>
+<!-- more -->
+<p>为了得到什么东西，就需要付出同等的代价，</p>
+<p>这就是炼金术的等价交换原则.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[疑邻盗斧]]></title>
+        <id>https://lililib.github.io/post/yi-lin-dao-fu/</id>
+        <link href="https://lililib.github.io/post/yi-lin-dao-fu/">
+        </link>
+        <updated>2020-12-02T15:02:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>人有亡斧者，意其邻之子。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>人有亡斧者，意其邻之子。</p>
+<!-- more -->
+<p>视其行步，窃斧也；</p>
+<p>颜色，窃斧也；</p>
+<p>言语，窃斧也；</p>
+<p>动作态度，无为而不窃斧也。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[什么是值传递，什么是引用传递。为什么说Java中只有值传递。]]></title>
         <id>https://lililib.github.io/post/shi-me-shi-zhi-chuan-di-shi-me-shi-yin-yong-chuan-di-wei-shi-me-shuo-java-zhong-zhi-you-zhi-chuan-di/</id>
