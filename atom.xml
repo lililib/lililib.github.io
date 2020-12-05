@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-03T08:48:11.141Z</updated>
+    <updated>2020-12-05T14:24:53.812Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,213 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[Chrome中请求头转为字典类型]]></title>
+        <id>https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/</id>
+        <link href="https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/">
+        </link>
+        <updated>2020-12-05T14:18:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>请求头一个一个加引号太麻烦了，python处理为字典型数据</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>请求头一个一个加引号太麻烦了，python处理为字典型数据</p>
+<!-- more -->
+<h2 id="源码">源码</h2>
+<pre><code>import json
+# 使用三引号将浏览器复制出来的requests headers参数赋值给一个变量
+headers = &quot;&quot;&quot;
+accept: image/avif,image/webp,image/apng,image/*,*/*;q=0.8
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+dnt: 1
+referer: https://www.manhuagui.com/
+sec-fetch-dest: image
+sec-fetch-mode: no-cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36
+
+&quot;&quot;&quot;
+ 
+# 去除参数头尾的空格并按换行符分割
+headers = headers.strip().split('\n')
+ 
+# 使用字典生成式将参数切片重组，并去掉空格，处理带协议头中的://
+headers = {x.split(':')[0].strip(): (&quot;&quot;.join(x.split(':')[1:])).strip().replace('//', &quot;://&quot;) for x in headers}
+ 
+# 使用json模块将字典转化成json格式打印出来
+print(json.dumps(headers,indent=1))
+</code></pre>
+<h2 id="处理结果">处理结果</h2>
+<pre><code>{
+ &quot;accept&quot;: &quot;image/avif,image/webp,image/apng,image/*,*/*;q=0.8&quot;,
+ &quot;accept-encoding&quot;: &quot;gzip, deflate, br&quot;,
+ &quot;accept-language&quot;: &quot;zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7&quot;,
+ &quot;dnt&quot;: &quot;1&quot;,
+ &quot;referer&quot;: &quot;https://www.manhuagui.com/&quot;,
+ &quot;sec-fetch-dest&quot;: &quot;image&quot;,
+ &quot;sec-fetch-mode&quot;: &quot;no-cors&quot;,
+ &quot;sec-fetch-site&quot;: &quot;cross-site&quot;,
+ &quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[漫画柜《鬼灭之刃》爬取]]></title>
+        <id>https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/</id>
+        <link href="https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/">
+        </link>
+        <updated>2020-12-05T13:12:45.000Z</updated>
+        <summary type="html"><![CDATA[<p>漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了</p>
+<!-- more -->
+<ul>
+<li>设置chrome浏览器无界面模式，更节省内存资源</li>
+<li>os库判断路径是否存在，不存在则创建</li>
+<li>多线程下载</li>
+</ul>
+<h2 id="分析思路">分析思路</h2>
+<ol>
+<li>
+<p>判断是否全为静态内容<br>
+a. 根据network中那个最大的html文件是否包含所需网页内容（直接美丽汤解析）</p>
+</li>
+<li>
+<p>那就是动态内容（优先selenium爬取）<br>
+a. 所需内容文字，图片，视频地址是否在XHR 中（可能需要解密）<br>
+b. 以上都不是一定在触发某个js在加载内容在html中，（需要解密）</p>
+</li>
+</ol>
+<h2 id="网站结构">网站结构</h2>
+<p>每篇漫画详情页可以得到所有章节地址，根据章节地址进入浏览漫画界面，分析html中不能得到图片src，xhr也没有，所以为js加载，获取图片这一部分通过浏览器爬取真实地址（是否也可以直接得到二进制内容灌进文件？）</p>
+<h2 id="源码">源码</h2>
+<pre><code>
+from bs4 import BeautifulSoup           #美丽汤
+import requests
+import re as reg                #正则
+from selenium import webdriver          #无头浏览器
+import os                               #文件路径的操作
+from multiprocessing import Pool            #多线程
+
+from selenium.webdriver.chrome.options import Options     #隐藏浏览器界面
+
+#获取回的所有地址与题目
+def get_chapter():
+    try:
+        src='https://www.manhuagui.com/comic/19430/'
+        header={&quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;}
+        re=requests.get(url=src,headers=header)
+        html=re.text
+        #判断是否联通
+        print(re.status_code)                   
+        soup=BeautifulSoup(html,'lxml')
+        haha=soup.find_all(class_=&quot;chapter-list cf mt10&quot;)[0]
+        for i in haha.find_all(name='li'):
+            chapter=i.a['href']
+            chapterTitle=i.a['title']
+            #只能用在for中调用是作为迭代器
+            yield{                          
+                'chapter':chapter,
+                'title':chapterTitle
+            }
+    except:
+        print('获取章节地址出错')
+
+#获取某回中共有多少张图片，并得到每张的图片页面（不是真实地址）地址去获取他
+def get_detail(url,title):
+    src='https://www.manhuagui.com/'+url
+    header={&quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;}
+    try:
+        re=requests.get(url=src,headers=header)
+        html=re.text
+        soup=BeautifulSoup(html,'lxml')
+        headerTitle=soup.find_all(class_=&quot;w980 title&quot;)[0]
+        page=headerTitle.find_all(name='span')[1]
+        #正则的查找
+        dd=reg.findall(r&quot;\d+&quot;,page.text)[0]                     
+        num=int(dd)
+        for i in range(1,num+1):
+            print()
+            url=src+'#p='+str(i)    #图片页面地址
+            get_img(url,title)
+    except:
+        print(&quot;获取图片失败&quot;)
+    
+#通过无头浏览器加载动态元素取得真实地址
+def get_img(url,title):
+    try:
+        print(url)
+        #设置chrome浏览器无界面模式
+        chrome_options=Options()
+        chrome_options.add_argument('--headless')
+        bro = webdriver.Chrome(chrome_options=chrome_options)
+        bro.get(url)
+        html=bro.page_source    #页面所有元素加载完成后获取源码，这里写的美中不足，改进当图片地址得到后就自动获取源码，不用等全部加载完
+        bro.close()
+        soup=BeautifulSoup(html,'lxml')
+        #获得属性
+        src=soup.find(id=&quot;mangaFile&quot;)['src']        #获取到真实图片地址
+        save_img(src,title)
+    except:
+        print(&quot;获取真实地址失败&quot;)
+
+bigbig=0
+# 保存到文件
+def save_img(src,title):
+    try:
+        #这里需要使用global下面才能自加一
+        global bigbig
+        path='D:\download\鬼灭之刃\{}'.format(title)
+        #os库判断路径是否存在，不存在则创建
+        if not os.path.exists(path):
+            os.makedirs('D:\download\鬼灭之刃\{}'.format(title))  
+        path='{}\{}.jpeg'.format(path,bigbig) 
+        bigbig=bigbig+1
+        header={
+        &quot;accept&quot;: &quot;image/avif,image/webp,image/apng,image/*,*/*;q=0.8&quot;,
+        &quot;accept-encoding&quot;: &quot;gzip, deflate, br&quot;,
+        &quot;accept-language&quot;: &quot;zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7&quot;,
+        &quot;dnt&quot;: &quot;1&quot;,
+        &quot;referer&quot;: &quot;https://www.manhuagui.com/&quot;,
+        &quot;sec-fetch-dest&quot;: &quot;image&quot;,
+        &quot;sec-fetch-mode&quot;: &quot;no-cors&quot;,
+        &quot;sec-fetch-site&quot;: &quot;cross-site&quot;,
+        &quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot; 
+        }
+        print(src)
+        re=requests.get(url=src,headers=header)
+        content=re.content
+        #文件写入二进制
+        with open(path,'wb') as haha:
+            haha.write(content)
+        print('ok!!!!')
+    except:
+        print(&quot;保存到文件时出错&quot;)
+
+booksrc=[]
+for i in get_chapter():
+    booksrc.append(i)
+
+#丢入某回的地址
+def main(i):
+    src=i.get('chapter')
+    title=i.get('title')
+    print('正在获取{}     {}'.format(title,src))
+    get_detail(src,title)
+
+if __name__=='__main__':
+    #多线程
+    pool=Pool(processes=4)   #20个进程调用获得所有书
+    group=booksrc  #a列表是网站所有书的链接地址
+    print(group)
+    pool.map(main,group)
+    
+</code></pre>
+<p>爬取巨慢，完成图像</p>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1607177847912.png" alt="" loading="lazy"></figure>
+<p>有待优化：当浏览器加载到某个元素后就可以结束得到源码，或者渲染出图片后就以二进制保存</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[《钢之炼金术师》]]></title>
         <id>https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/</id>

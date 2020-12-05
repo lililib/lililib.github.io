@@ -8,7 +8,7 @@
 <meta name="keywords" content="java">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>煨酒小童</title>
+<title>漫画柜《鬼灭之刃》爬取 | 煨酒小童</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1607178283995">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -29,6 +29,8 @@
 
 
 
+  <meta name="description" content="漫画柜《鬼灭之刃》爬取" />
+  <meta name="keywords" content="Python,爬虫" />
 </head>
 
 <body>
@@ -62,7 +64,7 @@
           
             
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 
@@ -146,8 +148,24 @@
     <div
       class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -218,88 +236,283 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%88%86%E6%9E%90%E6%80%9D%E8%B7%AF">分析思路</a></li>
+<li><a href="#%E7%BD%91%E7%AB%99%E7%BB%93%E6%9E%84">网站结构</a></li>
+<li><a href="#%E6%BA%90%E7%A0%81">源码</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box gemini">
-          <section class="section  posts-expand slide-down-in">
-            
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/">
-      Chrome中请求头转为字典类型
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-12-05</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/YV1SfbaLb/">
-        <span>Python</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>347<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>请求头一个一个加引号太麻烦了，python处理为字典型数据</p>
 
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
         
       </div>
-      
     </div>
-  </article>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
   <h1 class="post-title">
     <a class="post-title-link" href="https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/">
       漫画柜《鬼灭之刃》爬取
@@ -343,539 +556,255 @@
       <span>1107<span class="pc-show">字数</span></span>
     </span>
     
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了</p>
-
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/">
-      《钢之炼金术师》
-    </a>
-  </h1>
-  <div class="post-meta">
     
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-12-03</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
     
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/yDStS5zRJ/">
-        <span>小记</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
-    </span>
-    <span class="meta-item">
+    <span id="/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/" data-flag-title="漫画柜《鬼灭之刃》爬取" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>47<span class="pc-show">字数</span></span>
+      <i class="fa fa-eye"></i>
+      <span>浏览量：<span class="leancloud-visitors-count"></span></span>
     </span>
     
   </div>
 </header>
-      <div class="post-body">
-        
-        
-          
-          <p>人没有什么牺牲的话就什么都得不到，</p>
+            <div class="post-body next-md-body" id="post_body">
+              <p>漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了</p>
+<!-- more -->
+<ul>
+<li>设置chrome浏览器无界面模式，更节省内存资源</li>
+<li>os库判断路径是否存在，不存在则创建</li>
+<li>多线程下载</li>
+</ul>
+<h2 id="分析思路">分析思路</h2>
+<ol>
+<li>
+<p>判断是否全为静态内容<br>
+a. 根据network中那个最大的html文件是否包含所需网页内容（直接美丽汤解析）</p>
+</li>
+<li>
+<p>那就是动态内容（优先selenium爬取）<br>
+a. 所需内容文字，图片，视频地址是否在XHR 中（可能需要解密）<br>
+b. 以上都不是一定在触发某个js在加载内容在html中，（需要解密）</p>
+</li>
+</ol>
+<h2 id="网站结构">网站结构</h2>
+<p>每篇漫画详情页可以得到所有章节地址，根据章节地址进入浏览漫画界面，分析html中不能得到图片src，xhr也没有，所以为js加载，获取图片这一部分通过浏览器爬取真实地址（是否也可以直接得到二进制内容灌进文件？）</p>
+<h2 id="源码">源码</h2>
+<pre><code>
+from bs4 import BeautifulSoup           #美丽汤
+import requests
+import re as reg                #正则
+from selenium import webdriver          #无头浏览器
+import os                               #文件路径的操作
+from multiprocessing import Pool            #多线程
 
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+from selenium.webdriver.chrome.options import Options     #隐藏浏览器界面
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/yi-lin-dao-fu/">
-      疑邻盗斧
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-12-02</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/yDStS5zRJ/">
-        <span>小记</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>38<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>人有亡斧者，意其邻之子。</p>
+#获取回的所有地址与题目
+def get_chapter():
+    try:
+        src='https://www.manhuagui.com/comic/19430/'
+        header={&quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;}
+        re=requests.get(url=src,headers=header)
+        html=re.text
+        #判断是否联通
+        print(re.status_code)                   
+        soup=BeautifulSoup(html,'lxml')
+        haha=soup.find_all(class_=&quot;chapter-list cf mt10&quot;)[0]
+        for i in haha.find_all(name='li'):
+            chapter=i.a['href']
+            chapterTitle=i.a['title']
+            #只能用在for中调用是作为迭代器
+            yield{                          
+                'chapter':chapter,
+                'title':chapterTitle
+            }
+    except:
+        print('获取章节地址出错')
 
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/yi-lin-dao-fu/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+#获取某回中共有多少张图片，并得到每张的图片页面（不是真实地址）地址去获取他
+def get_detail(url,title):
+    src='https://www.manhuagui.com/'+url
+    header={&quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;}
+    try:
+        re=requests.get(url=src,headers=header)
+        html=re.text
+        soup=BeautifulSoup(html,'lxml')
+        headerTitle=soup.find_all(class_=&quot;w980 title&quot;)[0]
+        page=headerTitle.find_all(name='span')[1]
+        #正则的查找
+        dd=reg.findall(r&quot;\d+&quot;,page.text)[0]                     
+        num=int(dd)
+        for i in range(1,num+1):
+            print()
+            url=src+'#p='+str(i)    #图片页面地址
+            get_img(url,title)
+    except:
+        print(&quot;获取图片失败&quot;)
+    
+#通过无头浏览器加载动态元素取得真实地址
+def get_img(url,title):
+    try:
+        print(url)
+        #设置chrome浏览器无界面模式
+        chrome_options=Options()
+        chrome_options.add_argument('--headless')
+        bro = webdriver.Chrome(chrome_options=chrome_options)
+        bro.get(url)
+        html=bro.page_source    #页面所有元素加载完成后获取源码，这里写的美中不足，改进当图片地址得到后就自动获取源码，不用等全部加载完
+        bro.close()
+        soup=BeautifulSoup(html,'lxml')
+        #获得属性
+        src=soup.find(id=&quot;mangaFile&quot;)['src']        #获取到真实图片地址
+        save_img(src,title)
+    except:
+        print(&quot;获取真实地址失败&quot;)
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/shi-me-shi-zhi-chuan-di-shi-me-shi-yin-yong-chuan-di-wei-shi-me-shuo-java-zhong-zhi-you-zhi-chuan-di/">
-      什么是值传递，什么是引用传递。为什么说Java中只有值传递。
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-12-01</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/CdKsg5n2m/">
-        <span>java</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>12分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>3108<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>关于这个问题，在StackOverflow上也引发过广泛的讨论，看来很多程序员对于这个问题的理解都不尽相同，甚至很多人理解的是错误的。还有的人可能知道Java中的参数传递是值传递，但是说不出来为什么。</p>
-<p>在开始深入讲解之前，有必要纠正一下大家以前的那些错误看法了。如果你有以下想法，那么你有必要好好阅读本文。</p>
-<p>错误理解一：值传递和引用传递，区分的条件是传递的内容，如果是个值，就是值传递。如果是个引用，就是引用传递。</p>
-<p>错误理解二：Java是引用传递。</p>
-<p>错误理解三：传递的参数如果是普通类型，那就是值传递，如果是对象，那就是引用传递</p>
+bigbig=0
+# 保存到文件
+def save_img(src,title):
+    try:
+        #这里需要使用global下面才能自加一
+        global bigbig
+        path='D:\download\鬼灭之刃\{}'.format(title)
+        #os库判断路径是否存在，不存在则创建
+        if not os.path.exists(path):
+            os.makedirs('D:\download\鬼灭之刃\{}'.format(title))  
+        path='{}\{}.jpeg'.format(path,bigbig) 
+        bigbig=bigbig+1
+        header={
+        &quot;accept&quot;: &quot;image/avif,image/webp,image/apng,image/*,*/*;q=0.8&quot;,
+        &quot;accept-encoding&quot;: &quot;gzip, deflate, br&quot;,
+        &quot;accept-language&quot;: &quot;zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7&quot;,
+        &quot;dnt&quot;: &quot;1&quot;,
+        &quot;referer&quot;: &quot;https://www.manhuagui.com/&quot;,
+        &quot;sec-fetch-dest&quot;: &quot;image&quot;,
+        &quot;sec-fetch-mode&quot;: &quot;no-cors&quot;,
+        &quot;sec-fetch-site&quot;: &quot;cross-site&quot;,
+        &quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot; 
+        }
+        print(src)
+        re=requests.get(url=src,headers=header)
+        content=re.content
+        #文件写入二进制
+        with open(path,'wb') as haha:
+            haha.write(content)
+        print('ok!!!!')
+    except:
+        print(&quot;保存到文件时出错&quot;)
 
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/shi-me-shi-zhi-chuan-di-shi-me-shi-yin-yong-chuan-di-wei-shi-me-shuo-java-zhong-zhi-you-zhi-chuan-di/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+booksrc=[]
+for i in get_chapter():
+    booksrc.append(i)
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/xi-guan-de-li-liang/">
-      习惯的力量
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-11-24</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/X67-53xh2/">
-        <span>读书</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>15分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>4246<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>两条小鱼在游泳，恰好看到一条大鱼在往另一个方向游，这条大鱼对这群小鱼点头致意说，‘早上好，孩子们，今天的水怎样？’两条小鱼继续往前游了一点儿，最后其中一条看着另一条说，‘水是什么东西啊？’”</p>
-<p>水就是习惯，我们每天都被不假思索的选择和无形的决定包围着，而你只要看看它们，你就会发现它们....</p>
+#丢入某回的地址
+def main(i):
+    src=i.get('chapter')
+    title=i.get('title')
+    print('正在获取{}     {}'.format(title,src))
+    get_detail(src,title)
 
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/xi-guan-de-li-liang/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
+if __name__=='__main__':
+    #多线程
+    pool=Pool(processes=4)   #20个进程调用获得所有书
+    group=booksrc  #a列表是网站所有书的链接地址
+    print(group)
+    pool.map(main,group)
+    
+</code></pre>
+<p>爬取巨慢，完成图像</p>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1607177847912.png" alt="" loading="lazy"></figure>
+<p>有待优化：当浏览器加载到某个元素后就可以结束得到源码，或者渲染出图片后就以二进制保存</p>
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/《算法（第四版）》/">
-      算法(第四版)-1.3.14答案
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-11-22</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/zCbIxhdsR/">
-        <span>《算法(第四版)》</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>3分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>457<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>算法(第四版)-1.3.14 编写一个类ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象，然后扩展实现，使用调整数组的方法突破大小的限制。</p>
-
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/《算法（第四版）》/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/如何挤进uu加速器白嫖ow/">
-      uu加速器抓包领取ow
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2019-07-18</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/YV1SfbaLb/">
-        <span>Python</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>6分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1271<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>最近uu加速器可白嫖《守望先锋》，啥子1个月内，用uu加速累计24h就可以白嫖了，奈何太多白嫖怪，每日11：00放送资源时，服务器就爆炸了，好不容易进去后，又显示请你明天再来，…(⊙_⊙;)…这就很让人炸裂了....</p>
-
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/如何挤进uu加速器白嫖ow/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/战恋雪/">
-      战恋雪网站的爬取实战
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2019-06-07</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/JQfR2ELDR/">
-        <span>爬虫</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>7分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1547<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>因为要释放掉那些干扰我理智思考的东西，所以一直在苦苦找寻刘备(皇叔)(づ￣ 3￣)づ网站，直到一次我搜索《战恋雪》时我发现了这个网站<a href="https://www.zhanlianxue.net/">战恋雪</a>。</p>
-
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/战恋雪/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/500px/">
-      500px美图爬取
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2019-04-12</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/JQfR2ELDR/">
-        <span>爬虫</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>8分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1905<span class="pc-show">字数</span></span>
-    </span>
-    
-  </div>
-</header>
-      <div class="post-body">
-        
-        
-          
-          <p>前天在逛9gag时看到了一个血脉膨胀的图，在评论区溯源于是找到了<a href="https://500px.com/david-foto">500px</a>这个网站，根据链接进去一看，乖乖~！发现一个宝藏了，这个作者拍摄的完全是我喜欢的类型，文文艺艺，热情奔放，含而不漏，张弛有度(๐॔˃̶ᗜ˂̶๐॓)。<br>
-就是下图这样子！</p>
-
-        
-        
-        <div class="post-button text-center">
-          <a class="btn" href="https://lililib.github.io/post/500px/" rel="contents">
-            阅读全文 »
-          </a>
-        </div>
-        
-      </div>
-      
-    </div>
-  </article>
-  
-            
-            
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
+            </div>
+            <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      小童
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/" title="漫画柜《鬼灭之刃》爬取">https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
   </ul>
+  <div class="tags">
+    
+      <a href="https://lililib.github.io/tag/YV1SfbaLb/"># Python</a>
+    
+      <a href="https://lililib.github.io/tag/JQfR2ELDR/"># 爬虫</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Chrome中请求头转为字典类型" href="https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/">Chrome中请求头转为字典类型</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Chrome中请求头转为字典类型" href="https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="《钢之炼金术师》" href="https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/">《钢之炼金术师》</a>
+        <a class="nav-mobile-next" title="《钢之炼金术师》" href="https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
 </div>
-          </section>
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('https://upimage.alexhchu.com/2020/04/21/47eda59424daa.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: '2Iso0fmRUb7wjPjbJqUN2BTk-MdYXbMMI',
+    appKey: 'cDa9sWisyiYRTp6FnM0ardpP',
+    avatar: 'monsterid',
+    placeholder: '(～￣▽￣)～',
+    pageSize: '',
+    lang: 'zh-cn',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'true',
+  });
+</script>
+
+          </div>
         </div>
       </div>
     </div>
@@ -2392,7 +2321,6 @@ if __name__==&#39;__main__&#39;:
   escapeMap.set('&quot;', '"');
   escapeMap.set('&amp;', '&');
 </script> -->
-
 
 
 </html>
