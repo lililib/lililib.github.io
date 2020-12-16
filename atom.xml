@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-16T06:33:13.503Z</updated>
+    <updated>2020-12-16T23:34:15.888Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,83 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[最长公共子序列]]></title>
+        <id>https://lililib.github.io/post/zui-chang-gong-gong-zi-xu-lie/</id>
+        <link href="https://lililib.github.io/post/zui-chang-gong-gong-zi-xu-lie/">
+        </link>
+        <updated>2020-12-17T14:23:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。</p>
+<p>一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。<br>
+例如，&quot;ace&quot; 是 &quot;abcde&quot; 的子序列，但 &quot;aec&quot; 不是 &quot;abcde&quot; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。求解使用费曼算法（Feynman algorithm）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。</p>
+<p>一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。<br>
+例如，&quot;ace&quot; 是 &quot;abcde&quot; 的子序列，但 &quot;aec&quot; 不是 &quot;abcde&quot; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。求解使用费曼算法（Feynman algorithm）</p>
+<!-- more -->
+<h2 id="费曼算法">费曼算法</h2>
+<p>步骤：</p>
+<ol>
+<li>将问题写下来</li>
+<li>好好思考</li>
+<li>将答案写下来<br>
+佩服呀，真是万能算法 。。。org</li>
+</ol>
+<h2 id="最长公共子串">最长公共子串</h2>
+<p>先了解一下最长公共子串，例子str1=“abcdefg”  ，str2=“bcdgh” 最长公共子串为bcd。</p>
+<h3 id="填充网格">填充网格</h3>
+<p>求fish 与 hish 的最长子串长度为3</p>
+<p>用网格描述如下：</p>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608129258011.png" alt="" loading="lazy"></figure>
+<h3 id="算法解释">算法解释</h3>
+<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608129297040.png" alt="" loading="lazy"></figure>
+<h3 id="核心代码">核心代码</h3>
+<figure data-type="image" tabindex="3"><img src="https://lililib.github.io//post-images/1608129419821.png" alt="" loading="lazy"></figure>
+<h3 id="注意">注意</h3>
+<p>最长公共子串长度为二维数组中最大的那个值</p>
+<h2 id="最长公共子序列">最长公共子序列</h2>
+<p>fort 与 fosh最长公共子序列长度为2，fish 与 fosh 最长公共子序列长度为 3</p>
+<p>网格描述如下：</p>
+<figure data-type="image" tabindex="4"><img src="https://lililib.github.io//post-images/1608129681573.png" alt="" loading="lazy"></figure>
+<h3 id="算法解释-2">算法解释</h3>
+<figure data-type="image" tabindex="5"><img src="https://lililib.github.io//post-images/1608129705624.png" alt="" loading="lazy"></figure>
+<h3 id="核心代码-2">核心代码</h3>
+<figure data-type="image" tabindex="6"><img src="https://lililib.github.io//post-images/1608129737970.png" alt="" loading="lazy"></figure>
+<h3 id="源码">源码</h3>
+<pre><code>
+public class LCS2 {
+
+	public static void main(String[] args) {
+		String a=&quot;123456&quot;;
+		String b=&quot;2468&quot;;
+		char c[]=new char[a.length()+1];
+		char d[]=new char[b.length()+1];
+		for(int i=1;i&lt;=a.length();i++)
+			c[i]=a.charAt(i-1);
+		for(int i=1;i&lt;=b.length();i++)
+			d[i]=b.charAt(i-1);
+		int map[][]=new int[a.length()+1][b.length()+1];//横竖都空一行
+		for(int i=1;i&lt;=a.length();i++) {
+			for(int j=1;j&lt;=b.length();j++) {
+				if(c[i]==d[j]) {
+					map[i][j]=map[i-1][j-1]+1;
+				}
+				else {
+					map[i][j]=Math.max(map[i-1][j], map[i][j-1]);
+				}
+			}
+		}
+		System.out.println(map[a.length()][b.length()]);
+
+	}
+
+}
+
+</code></pre>
+<h2 id="参考书籍">参考书籍</h2>
+<p><a href="https://book.douban.com/subject/26979890/">《算法图解》</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Karatsuba大数乘法]]></title>
         <id>https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/</id>
@@ -752,134 +829,6 @@ public void pass(User user) {
 <li><a href="https://wws.lanzous.com/iYbFViq2syd">《习惯的力量》</a></li>
 </ul>
 <hr>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[算法(第四版)-1.3.14答案]]></title>
-        <id>https://lililib.github.io/post/《算法（第四版）》/</id>
-        <link href="https://lililib.github.io/post/《算法（第四版）》/">
-        </link>
-        <updated>2020-11-22T06:10:26.000Z</updated>
-        <summary type="html"><![CDATA[<p>算法(第四版)-1.3.14 编写一个类ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象，然后扩展实现，使用调整数组的方法突破大小的限制。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>算法(第四版)-1.3.14 编写一个类ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象，然后扩展实现，使用调整数组的方法突破大小的限制。</p>
-<!-- more -->
-<h2 id="问题">问题</h2>
-<p>编写一个类ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象，然后扩展实现，使用调整数组的方法突破大小的限制。</p>
-<h2 id="答案">答案</h2>
-<pre><code class="language-java">package _1_3;
-
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-/**
- * 非静态内部类因为是了属于对象的，所以初始化时需要先初始化一个外部类实例对象， 然后使用此对象调用内部类的构造方法。
- * 静态内部类属于类本身，初始化时直接使用外部类调用静态内部类的构造方法即可。
- * 
- * @author 煨酒小童
- *
- */
-public class _1_3_14 {
-	public static void main(String[] args) {
-		_1_3_14.Resizingarrayqueueofstrings&lt;Integer&gt; haha = new _1_3_14().new Resizingarrayqueueofstrings&lt;Integer&gt;();
-		for (int i = 1; i &lt;= 10; i++) {
-			haha.enqueue(i);
-		}
-		for (int i : haha) {
-			System.out.println(i);
-
-		}
-
-	}
-
-	class Resizingarrayqueueofstrings&lt;Item&gt; implements Iterable&lt;Item&gt; {
-		private int head;
-		private int tail, N;
-		private Item a[];
-
-		public Resizingarrayqueueofstrings() {
-			a = (Item[]) new Object[2];
-			head = 0;
-			tail = 0; // 放置下一个物品
-			N = 0; // 队列大小
-		}
-
-		public int size() {
-			return N;
-		}
-
-		public boolean isEmpty() {
-			return N == 0;
-		}
-
-		public void enqueue(Item temp) {
-			if (tail == a.length - 1) {
-				resize(2 * a.length);
-			}
-			a[tail++] = temp;
-			N++;
-		}
-
-		private void resize(int num) {
-			Item[] temp = (Item[]) new Object[num];
-			int haha = 0;
-			for (int i = head; i &lt;= tail - 1; i++) {
-				temp[haha++] = a[i];
-				a[i] = null;
-			}
-			head = 0;
-			tail = N;
-			a = temp;
-		}
-
-		public Item dequeue() {
-			if (N == 0)
-				throw new NoSuchElementException();
-			Item temp = a[head];
-			a[head] = null;
-			head++;
-			if (head &gt; a.length / 2 + 1) {
-				resize(a.length / 2);
-			}
-			N--;
-			return temp;
-		}
-
-		public Item peek() {
-			int temp = head;
-			while (temp &lt; tail)
-				return a[temp++];
-			return null;
-		}
-
-		@Override
-		public Iterator&lt;Item&gt; iterator() {
-
-			return new ReverseArrayIterator();
-		}
-
-		private class ReverseArrayIterator implements Iterator&lt;Item&gt; {
-			private int i = 0;
-			private int start = head; // 这里迭代时不能改变队头，要一个临时变量指向对头
-
-			@Override
-			public boolean hasNext() {
-
-				return i &lt; N;
-			}
-
-			@Override
-			public Item next() {
-				i++;
-				return a[start++];
-
-			}
-
-		}
-
-	}
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
