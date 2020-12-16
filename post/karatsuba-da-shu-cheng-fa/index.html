@@ -8,7 +8,7 @@
 <meta name="keywords" content="java">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>煨酒小童</title>
+<title>Karatsuba大数乘法 | 煨酒小童</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1608100373509">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -29,7 +29,8 @@
 
 
 
-  <meta name="description" content="温故而知新">
+  <meta name="description" content="Karatsuba大数乘法" />
+  <meta name="keywords" content="算法,java" />
 </head>
 
 <body>
@@ -76,7 +77,7 @@
           
             
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 
@@ -145,10 +146,26 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -219,232 +236,509 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%AD%A5%E9%AA%A4">步骤</a></li>
+<li><a href="#%E5%AE%9E%E4%BE%8B">实例</a></li>
+<li><a href="#%E6%BA%90%E7%A0%81">源码</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0">参考文章</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section archives-section bg-color posts-expand">
-            
 
-<div class="bg-color">
-  <div class="archive-timeline-box">
-    <div class="archive-timeline-title">
-      
-        <h2>非常好！目前共计13篇日志，继续努力！</h2>
-      
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
     </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/">
+      Karatsuba大数乘法
+    </a>
+  </h1>
+  <div class="post-meta">
     
-      
-      
-        <div class="node-title">
-          <h2 class="tag-year">2020</h2>
-        </div>    
-        
-      
-      <a href="https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-16
-              <small>Karatsuba大数乘法</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2020-12-16</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
     
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show">分类于</span>
       
       
-      <a href="https://lililib.github.io/post/da-shu-jia-jian-fa/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-15
-              <small>大数加减法</small>
-            </h1>
-          </div>  
-      </div>
+      <a href="https://lililib.github.io/tag/hae_F4xlz/">
+        <span>算法</span>
+      </a>、
+      
+      
+      
+      <a href="https://lililib.github.io/tag/CdKsg5n2m/">
+        <span>java</span>
       </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
     
-      
-      
-      <a href="https://lililib.github.io/post/da-shu-cheng-fa/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-15
-              <small>大数乘法</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>3分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>606<span class="pc-show">字数</span></span>
+    </span>
     
-      
-      
-      <a href="https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-05
-              <small>Chrome中请求头转为字典类型</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
     
-      
-      
-      <a href="https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-05
-              <small>漫画柜《鬼灭之刃》爬取</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
     
-      
-      
-      <a href="https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-03
-              <small>《钢之炼金术师》</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://lililib.github.io/post/yi-lin-dao-fu/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-02
-              <small>疑邻盗斧</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://lililib.github.io/post/shi-me-shi-zhi-chuan-di-shi-me-shi-yin-yong-chuan-di-wei-shi-me-shuo-java-zhong-zhi-you-zhi-chuan-di/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              12-01
-              <small>什么是值传递，什么是引用传递。为什么说Java中只有值传递。</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://lililib.github.io/post/xi-guan-de-li-liang/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              11-24
-              <small>习惯的力量</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://lililib.github.io/post/《算法（第四版）》/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              11-22
-              <small>算法(第四版)-1.3.14答案</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-        <div class="node-title">
-          <h2 class="tag-year">2019</h2>
-        </div>    
-        
-      
-      <a href="https://lililib.github.io/post/如何挤进uu加速器白嫖ow/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              07-18
-              <small>uu加速器抓包领取ow</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://lililib.github.io/post/战恋雪/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              06-07
-              <small>战恋雪网站的爬取实战</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
-    
-      
-      
-      <a href="https://lililib.github.io/post/500px/">
-        <div class="motion-warpper tag-archive-node">
-          <div class="tag-node">
-            <h1>
-              04-12
-              <small>500px美图爬取</small>
-            </h1>
-          </div>  
-      </div>
-      </a>
+    <span id="/post/karatsuba-da-shu-cheng-fa/" data-flag-title="Karatsuba大数乘法" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span>浏览量：<span class="leancloud-visitors-count"></span></span>
+    </span>
     
   </div>
-  
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/archives/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
-  </ul>
-</div>
-</div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <p>Karatsuba算法是一种快速相乘算法，它由俄罗斯数学家Anatolii Alexeevitch Karatsuba于1960年提出并于1962年发表。普通乘法的复杂度是n2，而Karatsuba算法的复杂度仅为3n<sup>log3≈3n</sup>1.585.</p>
+<!-- more -->
+<h2 id="步骤">步骤</h2>
+<p>现有两个大数，x，y。<br>
+首先将x，y分别拆开成为两部分，可得x1，x0，y1，y0。他们的关系如下：<br>
+x = x1 *  10^m+ x0；<br>
+y = y1 * 10^m + y0。其中m为正整数，m &lt; n，且x0，y0 小于 10^m。<br>
+那么 xy = (x1 * 10^m + x0)(y1 * 10^m + y0)<br>
+= <strong>z2 * 10^2m + z1 * 10^m + z0</strong> ，其中：<br>
+z2 = x1 * y1；<br>
+z1 = x1 * y0 + x0 * y1；<br>
+z0 = x0 * y0。<br>
+此步骤共需4次乘法，但是由Karatsuba改进以后仅需要3次乘法。因为：<br>
+z1 = x1 * y0+ x0 * y1<br>
+z1 = (x1 + x0) * (y1 + y0) - x1 * y1 - x0 * y0，<br>
+=(x1 + x0) * (y1 + y0)-z2-z0<br>
+故z1 便可以由一次乘法及加减法得到。</p>
+<h2 id="实例">实例</h2>
+<p>设x = 12345，y=6789，令m=3。那么有：<br>
+12345 = 12 * 1000 + 345；<br>
+6789 = 6 * 1000 + 789。<br>
+下面计算：<br>
+z2 = 12 * 6 = 72；<br>
+z0 = 345 * 789 = 272205；<br>
+z1 = (12 + 345) * (6 + 789) - z2 - z0 = 11538。<br>
+然后我们按照移位公式（xy = z2 * 10^(2m) + z1 * 10^(m) + z0）可得：<br>
+xy = 72 * 10002 + 11538 * 1000 + 272205 = 83810205。</p>
+<h2 id="源码">源码</h2>
+<p>这里加减法需要用到BigInteger,因为数字位数足够长的话，用long型最终还是会越界，（不过过瘾的是在jdk8中BigInteger类里面就包含了Karatsuba算法。。。。算了算了，重在了解算法━━(￣ー￣*|||━━）</p>
+<pre><code>import java.math.BigInteger;
+import java.util.Scanner;
 
-          </section>
+public class Karatsuba {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String x = in.next();
+		String y = in.next();
+		in.close();
+		BigInteger num1 = new BigInteger(x);
+		BigInteger num2 = new BigInteger(y);
+		String answer = Karatsuba(num1, num2).toString();
+		System.out.println(answer);
+
+	}
+
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 * @return 返回a*b的结果
+	 */
+	public static BigInteger Karatsuba(BigInteger x, BigInteger y) {
+		BigInteger num1 = x;
+		BigInteger num2 = y;
+		if (x.toString().length() &lt; 9 || y.toString().length() &lt; 9) {
+
+			return num1.multiply(num2);
+		}
+
+		else {
+			int halfN = Math.max(x.toString().length(), x.toString().length()) / 2;
+			// 这里不能用字符串的分割，如123456789789456123*12, 12被分割肯定报错
+			BigInteger[] a_b = num1.divideAndRemainder(BigInteger.valueOf(10).pow(halfN));
+			BigInteger a = a_b[0]; // 商
+			BigInteger b = a_b[1]; // 余数
+			BigInteger[] c_d = num2.divideAndRemainder(BigInteger.valueOf(10).pow(halfN));
+			BigInteger c = c_d[0];
+			BigInteger d = c_d[1];
+			BigInteger z2 = Karatsuba(a, c);// a*c              ，运用了分治
+			BigInteger z1 = Karatsuba(b, d);// b*d
+			BigInteger step1 = Karatsuba(a.add(b), c.add(d));
+			BigInteger z3 = step1.subtract(z1.add(z2)); // (a + b) * (c + d) - z2 - z1
+			return z2.multiply(BigInteger.valueOf(10).pow(2 * halfN)).add(z1)
+					.add(z3.multiply(BigInteger.valueOf(10).pow(halfN)));
+		}
+	}
+}
+</code></pre>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="https://blog.csdn.net/u010983881/article/details/77503519">大数乘法问题及其高效算法</a></p>
+<p><a href="http://litexy.com/2018/08/23/%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8AJava%E5%AE%9E%E7%8E%B0/">大整数相乘问题总结以及Java实现</a></p>
+<p><a href="https://baike.baidu.com/item/karatsuba%E4%B9%98%E6%B3%95">百科：karatsuba乘法</a></p>
+<p><a href="https://oi-wiki.org/math/bignum/#_11">OI Wiki:高精度计算</a></p>
+
+            </div>
+            <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      小童
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/" title="Karatsuba大数乘法">https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://lililib.github.io/tag/hae_F4xlz/"># 算法</a>
+    
+      <a href="https://lililib.github.io/tag/CdKsg5n2m/"># java</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="大数加减法" href="https://lililib.github.io/post/da-shu-jia-jian-fa/">大数加减法</a>
+        <a class="nav-mobile-next" title="大数加减法" href="https://lililib.github.io/post/da-shu-jia-jian-fa/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('https://upimage.alexhchu.com/2020/04/21/47eda59424daa.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: '2Iso0fmRUb7wjPjbJqUN2BTk-MdYXbMMI',
+    appKey: 'cDa9sWisyiYRTp6FnM0ardpP',
+    avatar: 'monsterid',
+    placeholder: '(～￣▽￣)～',
+    pageSize: '',
+    lang: 'zh-cn',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'true',
+  });
+</script>
+
+          </div>
         </div>
       </div>
     </div>
@@ -618,6 +912,36 @@
   // 代码高亮
   hljs.initHighlightingOnLoad();
 
+</script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
 </script>
   </div>
 </body>
@@ -2232,7 +2556,6 @@ if __name__==&#39;__main__&#39;:
   escapeMap.set('&quot;', '"');
   escapeMap.set('&amp;', '&');
 </script> -->
-
 
 
 </html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-15T15:06:00.665Z</updated>
+    <updated>2020-12-16T06:33:13.503Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -11,14 +11,180 @@
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
     <entry>
+        <title type="html"><![CDATA[Karatsuba大数乘法]]></title>
+        <id>https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/</id>
+        <link href="https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/">
+        </link>
+        <updated>2020-12-16T06:06:01.000Z</updated>
+        <summary type="html"><![CDATA[<p>Karatsuba算法是一种快速相乘算法，它由俄罗斯数学家Anatolii Alexeevitch Karatsuba于1960年提出并于1962年发表。普通乘法的复杂度是n2，而Karatsuba算法的复杂度仅为3n<sup>log3≈3n</sup>1.585.</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Karatsuba算法是一种快速相乘算法，它由俄罗斯数学家Anatolii Alexeevitch Karatsuba于1960年提出并于1962年发表。普通乘法的复杂度是n2，而Karatsuba算法的复杂度仅为3n<sup>log3≈3n</sup>1.585.</p>
+<!-- more -->
+<h2 id="步骤">步骤</h2>
+<p>现有两个大数，x，y。<br>
+首先将x，y分别拆开成为两部分，可得x1，x0，y1，y0。他们的关系如下：<br>
+x = x1 *  10^m+ x0；<br>
+y = y1 * 10^m + y0。其中m为正整数，m &lt; n，且x0，y0 小于 10^m。<br>
+那么 xy = (x1 * 10^m + x0)(y1 * 10^m + y0)<br>
+= <strong>z2 * 10^2m + z1 * 10^m + z0</strong> ，其中：<br>
+z2 = x1 * y1；<br>
+z1 = x1 * y0 + x0 * y1；<br>
+z0 = x0 * y0。<br>
+此步骤共需4次乘法，但是由Karatsuba改进以后仅需要3次乘法。因为：<br>
+z1 = x1 * y0+ x0 * y1<br>
+z1 = (x1 + x0) * (y1 + y0) - x1 * y1 - x0 * y0，<br>
+=(x1 + x0) * (y1 + y0)-z2-z0<br>
+故z1 便可以由一次乘法及加减法得到。</p>
+<h2 id="实例">实例</h2>
+<p>设x = 12345，y=6789，令m=3。那么有：<br>
+12345 = 12 * 1000 + 345；<br>
+6789 = 6 * 1000 + 789。<br>
+下面计算：<br>
+z2 = 12 * 6 = 72；<br>
+z0 = 345 * 789 = 272205；<br>
+z1 = (12 + 345) * (6 + 789) - z2 - z0 = 11538。<br>
+然后我们按照移位公式（xy = z2 * 10^(2m) + z1 * 10^(m) + z0）可得：<br>
+xy = 72 * 10002 + 11538 * 1000 + 272205 = 83810205。</p>
+<h2 id="源码">源码</h2>
+<p>这里加减法需要用到BigInteger,因为数字位数足够长的话，用long型最终还是会越界，（不过过瘾的是在jdk8中BigInteger类里面就包含了Karatsuba算法。。。。算了算了，重在了解算法━━(￣ー￣*|||━━）</p>
+<pre><code>import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Karatsuba {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String x = in.next();
+		String y = in.next();
+		in.close();
+		BigInteger num1 = new BigInteger(x);
+		BigInteger num2 = new BigInteger(y);
+		String answer = Karatsuba(num1, num2).toString();
+		System.out.println(answer);
+
+	}
+
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 * @return 返回a*b的结果
+	 */
+	public static BigInteger Karatsuba(BigInteger x, BigInteger y) {
+		BigInteger num1 = x;
+		BigInteger num2 = y;
+		if (x.toString().length() &lt; 9 || y.toString().length() &lt; 9) {
+
+			return num1.multiply(num2);
+		}
+
+		else {
+			int halfN = Math.max(x.toString().length(), x.toString().length()) / 2;
+			// 这里不能用字符串的分割，如123456789789456123*12, 12被分割肯定报错
+			BigInteger[] a_b = num1.divideAndRemainder(BigInteger.valueOf(10).pow(halfN));
+			BigInteger a = a_b[0]; // 商
+			BigInteger b = a_b[1]; // 余数
+			BigInteger[] c_d = num2.divideAndRemainder(BigInteger.valueOf(10).pow(halfN));
+			BigInteger c = c_d[0];
+			BigInteger d = c_d[1];
+			BigInteger z2 = Karatsuba(a, c);// a*c              ，运用了分治
+			BigInteger z1 = Karatsuba(b, d);// b*d
+			BigInteger step1 = Karatsuba(a.add(b), c.add(d));
+			BigInteger z3 = step1.subtract(z1.add(z2)); // (a + b) * (c + d) - z2 - z1
+			return z2.multiply(BigInteger.valueOf(10).pow(2 * halfN)).add(z1)
+					.add(z3.multiply(BigInteger.valueOf(10).pow(halfN)));
+		}
+	}
+}
+</code></pre>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="https://blog.csdn.net/u010983881/article/details/77503519">大数乘法问题及其高效算法</a></p>
+<p><a href="http://litexy.com/2018/08/23/%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8AJava%E5%AE%9E%E7%8E%B0/">大整数相乘问题总结以及Java实现</a></p>
+<p><a href="https://baike.baidu.com/item/karatsuba%E4%B9%98%E6%B3%95">百科：karatsuba乘法</a></p>
+<p><a href="https://oi-wiki.org/math/bignum/#_11">OI Wiki:高精度计算</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[大数加减法]]></title>
+        <id>https://lililib.github.io/post/da-shu-jia-jian-fa/</id>
+        <link href="https://lililib.github.io/post/da-shu-jia-jian-fa/">
+        </link>
+        <updated>2020-12-15T14:41:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>大数加减法<strong>模拟竖式计算</strong>的累加累减技巧，在数组中进行进位借位操作。时间复杂度都为O(1)</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>大数加减法<strong>模拟竖式计算</strong>的累加累减技巧，在数组中进行进位借位操作。时间复杂度都为O(1)</p>
+<!-- more -->
+<h2 id="加法">加法</h2>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608087219758.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608087226606.png" alt="" loading="lazy"></figure>
+<h2 id="减法">减法</h2>
+<figure data-type="image" tabindex="3"><img src="https://lililib.github.io//post-images/1608087242949.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://lililib.github.io//post-images/1608087247484.png" alt="" loading="lazy"></figure>
+<h2 id="源码">源码</h2>
+<pre><code>package 高精度;
+
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		String a=in.next();String b=in.next();
+		in.close();
+		int longest=Math.max(a.length(), b.length());//最长位数的数字
+		int total[]=new int[longest+2];		//结果，考虑进位答案的长度最长为最长的数的长度+1
+		int c[]=new int [longest+5];	//这里为什么默认加5，因为可以多余的设置为零，利于核心式的累加累减不会越c，d的界
+		int d[]=new int[longest+5];
+//a,b反转并存入数组，如123在数组中为0321，未填满的数字会默认为零，不会影响下面累加（如1234+34，数组中分别为04321 和04300）
+		for(int i=1;i&lt;=a.length();i++) {
+			c[i]=a.charAt(a.length()-i)-'0';
+		}
+		for(int i=1;i&lt;=b.length();i++) {
+			d[i]=b.charAt(b.length()-i)-'0';
+		}
+		//累加核心式
+		for(int i=1;i&lt;total.length-1;i++) {
+			total[i]+=c[i]+d[i];
+			total[i+1]+=total[i]/10;
+			total[i]%=10;
+		}
+		
+		//减法核心式
+        //这里减法需要a&gt;b，不然需要判断调换位置并在结果加以负号
+		/*
+		for(int i=1;i&lt;total.length-1;i++) {
+			if(c[i]&lt;d[i]) {
+				c[i+1]--;
+				c[i]+=10;
+			}
+			total[i]=c[i]-d[i];
+		}
+		*/
+        //去掉前面多余的零
+		int index=total.length-1;
+		while(total[index]==0 &amp;&amp; index&gt;1) 
+			index--;
+		for(int i=index;i&gt;=1;i--) {
+			System.out.print(total[i]);
+		}
+		
+			
+	}
+
+}
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[大数乘法]]></title>
         <id>https://lililib.github.io/post/da-shu-cheng-fa/</id>
         <link href="https://lililib.github.io/post/da-shu-cheng-fa/">
         </link>
         <updated>2020-12-15T12:56:44.000Z</updated>
-        <summary type="html"><![CDATA[<p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。这时候可以用小学学的<strong>乘法竖式累加模拟乘法</strong>，结果储存在数组中。</p>
+        <summary type="html"><![CDATA[<p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。这时候可以用小学学的<strong>乘法竖式累加模拟乘法</strong>，结果储存在数组中。时间复杂度为O(2)</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。这时候可以用小学学的<strong>乘法竖式累加模拟乘法</strong>，结果储存在数组中。</p>
+        <content type="html"><![CDATA[<p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。这时候可以用小学学的<strong>乘法竖式累加模拟乘法</strong>，结果储存在数组中。时间复杂度为O(2)</p>
 <!-- more -->
 <h2 id="算法分析">算法分析</h2>
 <figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608038121960.png" alt="" loading="lazy"></figure>
@@ -714,325 +880,6 @@ public class _1_3_14 {
 	}
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[uu加速器抓包领取ow]]></title>
-        <id>https://lililib.github.io/post/如何挤进uu加速器白嫖ow/</id>
-        <link href="https://lililib.github.io/post/如何挤进uu加速器白嫖ow/">
-        </link>
-        <updated>2019-07-18T07:29:25.000Z</updated>
-        <summary type="html"><![CDATA[<p>最近uu加速器可白嫖《守望先锋》，啥子1个月内，用uu加速累计24h就可以白嫖了，奈何太多白嫖怪，每日11：00放送资源时，服务器就爆炸了，好不容易进去后，又显示请你明天再来，…(⊙_⊙;)…这就很让人炸裂了....</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>最近uu加速器可白嫖《守望先锋》，啥子1个月内，用uu加速累计24h就可以白嫖了，奈何太多白嫖怪，每日11：00放送资源时，服务器就爆炸了，好不容易进去后，又显示请你明天再来，…(⊙_⊙;)…这就很让人炸裂了....</p>
-<!-- more -->
-<h2 id="起">起</h2>
-<p>最近uu加速器可白嫖《守望先锋》，啥子1个月内，用uu加速累计24h就可以白嫖了，奈何太多白嫖怪，每日11：00放送资源时，服务器就爆炸了，好不容易进去后，又显示请你明天再来，…(⊙_⊙;)…这就很让人炸裂了.</p>
-<figure data-type="image" tabindex="1"><img src="https://s1.ax1x.com/2020/06/04/t0Ygtf.jpg" alt="t0Ygtf.jpg" loading="lazy"></figure>
-<h2 id="承">承</h2>
-<p>作为一个写程序的怎么能挤不赢别人?因为领取步骤会跳很多网页验证登录啥子的,能不能直接跳到最后一步领取呢?显而易见,抓包试试.</p>
-<h2 id="转">转</h2>
-<p>Fiddler的使用不再赘述,网上很多帖子.左键点击这个不要放开,移动鼠标到uu加速器界面就可以只捕获uu加速器的数据了.然后按正常领取步骤全部在uu加速器上做一遍就行了,可以看到捕获了很多流量.</p>
-<figure data-type="image" tabindex="2"><img src="https://s1.ax1x.com/2020/06/04/t0Y4Xj.png" alt="t0Y4Xj.png" loading="lazy"></figure>
-<p>双击进去分析可以找出标号1,2是我们所需要的.这时候用python模拟这一个post就可以了.</p>
-<p><img src="https://s1.ax1x.com/2020/06/04/t0Y2h8.png" alt="t0Y2h8.png" loading="lazy"><br>
-<img src="https://s1.ax1x.com/2020/06/04/t0YhcQ.png" alt="t0YhcQ.png" loading="lazy"></p>
-<p>点进request中的header,右键选择 copy all Headers就可以全部复制了.然后粘贴进模块2,要去掉最后一个逗号,然后结果粘贴进模块1,运行就可以了.</p>
-<p>下面贴代码了:</p>
-<pre><code>#模块一
-import requests
-url='https://ie.uu.163.com/activity/ow/get'
-data={}
-header={
-'Accept':'application/json, text/javascript, */*; q=0.01',
-'Ntes-UU':'10.413896146',#替换内容（抓包标号2里面有）
-'Ntes-UU-Token':'DSQbPVKanQl3ohmNyWXnw5zwDxOQaOb3NhemaZBbkmL67f01yARCdpGLLjdOCmrZ',#替换内容（抓包标号2里面有）
-'X-Requested-With':'XMLHttpRequest',
-'Referer':'https://ie.uu.163.com/activity/ow/callback?code=CNVFSDJP2SQYFF1CDRIH4ODA9NXGL2SRV9&amp;state=ORgBJeo4bdPuzYdB',
-'Accept-Language':'zh-Hans-CN,zh-Hans;q=0.8,en-US;q=0.5,en;q=0.3',
-'Accept-Encoding':'gzip, deflate',
-'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko',
-'Host':'ie.uu.163.com',
-'Content-Length':'0',
-'Connection':'Keep-Alive',
-'Cache-Control':'no-cache',
-'Cookie':'_ntes_nnid=1c232db28ae8831c36792bc911ea0256,1590980900369; _ntes_nuid=1c232db28ae8831c36792bc911ea0256; session=IeZ47FhSu7kS7uYaJoiZLE696k46_5oD-JfDO2e_' #替换内容（抓包标号2里面有）
-}
-
-r1=requests.post(url,headers=header,data=data)
-print(r1.status_code)
-#r.encoding='utf-8'
-s=r1.text
-print(s.encode('utf-8').decode(&quot;unicode_escape&quot;))
-
-</code></pre>
-<p>这个模块是领取模块,因为是下午做的图文,忘了截图,领取成功后再运行就403了.没法了,不能截图了,应该平常运行时显示已经领取完了,时Unicode字符,需要自己解码,在11:00那一刻,会成功显示ok</p>
-<figure data-type="image" tabindex="3"><img src="https://s1.ax1x.com/2020/06/04/t0YcAP.png" alt="t0YcAP.png" loading="lazy"></figure>
-<p>一个把headers转换成键值对的模块,最末尾会多一个逗号,删掉即可.</p>
-<pre><code>#模块2（可以不需要用，直接在抓包里面复制模块一所需要的内容就行了）
-import re
-
-# #下方引号内添加请求头内容
-headers_str = &quot;&quot;&quot;
-
-Accept: application/json, text/javascript, */*; q=0.01
-Ntes-UU: 35.597966240
-Ntes-UU-Token: ow6gtBhB95p4v0elPOZDu7KMbVJHerBweZMORCL1lxIgTznTtHR74oSVmK3QvhVc
-X-Requested-With: XMLHttpRequest
-Referer: https://activity.uu.163.com/ow/html/ow.html
-Accept-Language: zh-Hans-CN,zh-Hans;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
-Host: activity.uu.163.com
-Connection: Keep-Alive
-Cookie: _ntes_nnid=1c232db27ae8831c36792bc911ea0256,1590980900369; _ntes_nuid=1c232db28ae8831c36792bc911ea0256; session=n7aLriYePRpuICQ7yInEfpJyA8BeL0tQEh986Fkn
-
-
-&quot;&quot;&quot;
-
-pattern = '^(.*?): (.*)$'
-
-
-for line in headers_str.splitlines():
-    print(re.sub(pattern,'\'\\1\':\'\\2\',',line))
-
-</code></pre>
-<p>10:59时疯狂运行,有一刻会显示成功<br>
-再用下面这个可以检查是否成功（也可以不用检查）</p>
-<pre><code>#这个模块类似第一个模块用法,header中的内容也要替换,内容为我一个图的序号二.
-import requests
-url='https://activity.uu.163.com/activity/ow/status?_=1591238667404'#最后一串数字要改，在raw里面有
-header={
-'Accept':'application/json, text/javascript, */*; q=0.01',
-'Ntes-UU':'35.599966240',#替换内容（抓包标号2里面有）
-'Ntes-UU-Token':'ow6gtBhB95p4v0elPOZDu7KMbVJHerBweZMORCL1lxIgTznTtHR74oSVmK3QvhVc',#替换内容
-'X-Requested-With':'XMLHttpRequest',
-'Referer':'https://activity.uu.163.com/ow/html/ow.html',
-'Accept-Language':'zh-Hans-CN,zh-Hans;q=0.8,en-US;q=0.5,en;q=0.3',
-'Accept-Encoding':'gzip, deflate',
-'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko',
-'Host':'activity.uu.163.com',
-'Connection':'Keep-Alive',
-'Cookie':'_ntes_nnid=1c232db28ae8831c36792bc911ea0256,1590980900369; _ntes_nuid=1c232db28ae8831c36792bc911ea0256; session=n7aLriYePRpuICQ7yInEfpJyA8BeL0tQEh986Fkn'#替换  
-
-}
-r1=requests.get(url,headers=header)
-print(r1.status_code)
-s=r1.text
-print(s.encode(&quot;utf-8&quot;).decode(&quot;unicode_escape&quot;))#  详细解码编码说明 https://www.cnblogs.com/evening/archive/2012/04/19/2457440.html
-</code></pre>
-<p>检查结果为:(最开始type=2,意思时审核中,忘了截图,等于3的时候是已经成功了)</p>
-<figure data-type="image" tabindex="4"><img src="https://s1.ax1x.com/2020/06/04/t0YIns.png" alt="t0YIns.png" loading="lazy"></figure>
-<h2 id="合">合</h2>
-<p>模块一一运行瞬间就出结果了,模块3运行时有结果时,结果uu加速器还在转圈圈,速度果然快了很多.再等待半个小时审核就成功了.</p>
-<figure data-type="image" tabindex="5"><img src="https://s1.ax1x.com/2020/06/04/t0Yf1g.png" alt="t0Yf1g.png" loading="lazy"></figure>
-<p>资源：<code>抓包软件:https://wws.lanzous.com/iCMJ3dblmhe</code></p>
-<p>思考:</p>
-<ol>
-<li>太浮躁了自己,码文字时只想快快结束,写的很粗糙,应该很多没写清楚过程,只是一个堪堪思路而已</li>
-<li>程序明明可以改进,这么多模块完全可以拼成一个程序,自己就是懒,总是能用就行,不想臻于完美.哎,烦(可能更怕的是自己不想面对困难,好烦(〃＞目＜))</li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[战恋雪网站的爬取实战]]></title>
-        <id>https://lililib.github.io/post/战恋雪/</id>
-        <link href="https://lililib.github.io/post/战恋雪/">
-        </link>
-        <updated>2019-06-07T01:31:25.000Z</updated>
-        <summary type="html"><![CDATA[<p>因为要释放掉那些干扰我理智思考的东西，所以一直在苦苦找寻刘备(皇叔)(づ￣ 3￣)づ网站，直到一次我搜索《战恋雪》时我发现了这个网站<a href="https://www.zhanlianxue.net/">战恋雪</a>。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>因为要释放掉那些干扰我理智思考的东西，所以一直在苦苦找寻刘备(皇叔)(づ￣ 3￣)づ网站，直到一次我搜索《战恋雪》时我发现了这个网站<a href="https://www.zhanlianxue.net/">战恋雪</a>。</p>
-<!-- more -->
-<h2 id="起">起</h2>
-<p>因为要释放掉那些干扰我理智思考的东西，所以一直在苦苦找寻刘备(皇叔)(づ￣ 3￣)づ网站，直到一次我搜索《战恋雪》时我发现了这个网站<a href="https://www.zhanlianxue.net/">战恋雪</a>。</p>
-<figure data-type="image" tabindex="1"><img src="https://s1.ax1x.com/2020/06/07/tgUv5D.jpg" alt="tgUv5D.jpg" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://s1.ax1x.com/2020/06/07/tgtcGj.png" alt="tgtcGj.png" loading="lazy"></figure>
-<p>它网罗了网络上很优秀的xhs，以我多年习书所养成的挑剔眼光来看，我也该大大赞叹此站主深得老夫脾胃。看小说我更喜欢用手机进行阅读，不仅屏幕小不易被人发现，而且可以躺在床上看，更是体位可以保证最大舒适度进行原地起飞。结果恰恰是这个移动端超多广告，adblock插件完全对付不了，换页时频繁的强制跳转广告让我性致乏乏，一而再再而三的这样，怎么办？忍？鸡儿他可首先不同意，这谁忍得了！办他！<br>
-那就把网站内容全部爬取下来吧</p>
-<h2 id="承">承</h2>
-<h3 id="抓取所有书籍链接">抓取所有书籍链接</h3>
-<p>先是用chrome控制台分析首页，很容易发现首页上就有网站所有书籍的链接地址，而且全部保存到了一个html页面上了，只要提取这个html页面的书籍信息既可以了。分析页面可以看到书籍地址保存在 menu标签的li标签的a标签中，用bs4可以提取</p>
-<figure data-type="image" tabindex="3"><img src="https://s1.ax1x.com/2020/06/07/tgtgRs.png" alt="tgtgRs.png" loading="lazy"></figure>
-<pre><code>def get_book():     #战恋雪网站所有书籍链接
-    try:
-        re=requests.get('https://www.zhanlianxue.net/')
-        html=re.text
-        soup=BeautifulSoup(html,'html.parser')
-        haha=soup('ul',attrs={'class':'menu'})
-
-        for book in haha[0]('a'):
-            title=book.text
-            url=book.attrs['href']
-            if title=='首页':    #有一个首页，不是一本书，需去掉
-                continue
-            yield{
-                'title':title,
-                'url':url
-            }
-    except:
-        print('获得所有书本信息错误')
-</code></pre>
-<h3 id="抓取书籍章节">抓取书籍章节</h3>
-<p>再我们打开一个书籍地址，可以看到有很多章节，控制台分析，章节地址保存在ul标签的li标签的a标签中，用bs4可以提取</p>
-<figure data-type="image" tabindex="4"><img src="https://s1.ax1x.com/2020/06/07/tgtrdS.png" alt="tgtrdS.png" loading="lazy"></figure>
-<pre><code>def get_bookcapital(url):    #获得一本书的所有章节名称与章节链接
-
-    try:
-        re=requests.get(url,timeout=60)
-        html=re.text
-        soup=BeautifulSoup(html,'html.parser')
-        haha=soup('ul')[1]
-        
-        for chapter in haha('li'):
-            
-            title=chapter('a')[0].text
-            
-            url=chapter('a')[0].attrs['href']
-            yield{
-                'ctitle':title,
-                'curl':url
-            }
-    except:
-        print('获取书的章节链接错误')
-</code></pre>
-<h3 id="抓取书籍内容">抓取书籍内容</h3>
-<p>然后我们打开一个章节定位到内容中，经过多个页面的比对可以发现所有内容都存储在最上面箭头的那个标签中，直接获取标签范围所有内容就可（要是范围太大，可能内容会提取到代码，可以用正则表达式清除）。最后就是把内容保存到文档中</p>
-<figure data-type="image" tabindex="5"><img src="https://s1.ax1x.com/2020/06/07/tgtsIg.png" alt="tgtsIg.png" loading="lazy"></figure>
-<pre><code>def savechapter(bookname,url):   #根据章节连接，保存章节里面的文本
-
-    try:
-        re1=requests.get(url,timeout=60)
-        html=re1.text
-        html=re.sub('&lt;br.*?&gt;','\n',html)
-        soup=BeautifulSoup(html,'html.parser')
-        content=soup('div',attrs={'class':'single-box clearfix entry-content'})[0]
-        a=content('script')   #清除文本中的干扰代码（美观）
-        for i in a:
-            i.clear()
-        makebook(bookname,content.text)
-    except:
-         print('存入文本错误')
-
-
-def makebook(bookname,text):    #保存文本
-    path='F:\战恋雪\{}.txt'.format(bookname)      #这里F盘需要先创建战恋雪这个文件夹
-    with open(path,'a',encoding='utf-8')as haha:
-        haha.write('\n'+text)
-</code></pre>
-<h3 id="多进程下载书籍">多进程下载书籍</h3>
-<p>因为书籍太多，再加上章节一章一章获取实在是太慢，开启多进程同时下载多本书会快很多</p>
-<pre><code>if __name__=='__main__':
-    pool=Pool(processes=20)   #20个进程调用获得所有书
-    group=a  #a列表是网站所有书的链接地址
-    print(group)
-    pool.map(main,group)
-</code></pre>
-<h2 id="所有代码">所有代码</h2>
-<pre><code>from bs4 import BeautifulSoup
-import re
-import requests
-from multiprocessing import Pool
-def get_book():     #战恋雪网站所有书籍链接
-    try:
-        re=requests.get('https://www.zhanlianxue.net/')
-        html=re.text
-        soup=BeautifulSoup(html,'html.parser')
-        haha=soup('ul',attrs={'class':'menu'})    #ul标签可能很多，直接搜索标签会返回列表，自己找到所需内容的ul标签下标，其他的都是同理
-
-        for book in haha[0]('a'):  
-            title=book.text
-            url=book.attrs['href']
-            if title=='首页':    #有一个首页，不是一本书，需去掉
-                continue
-            yield{
-                'title':title,
-                'url':url
-            }
-    except:
-        print('获得所有书本信息错误')
-
-
-
-def get_bookcapital(url):    #获得一本书的所有章节名称与章节链接
-
-    try:
-        re=requests.get(url,timeout=60)
-        html=re.text
-        soup=BeautifulSoup(html,'html.parser')
-        haha=soup('ul')[1]  
-        
-        for chapter in haha('li'):
-            
-            title=chapter('a')[0].text
-            
-            url=chapter('a')[0].attrs['href']
-            yield{
-                'ctitle':title,
-                'curl':url
-            }
-    except:
-        print('获取书的章节链接错误')
-
-
-
-def savechapter(bookname,url):   #根据章节连接，保存章节里面的文本
-
-    try:
-        re1=requests.get(url,timeout=60)
-        html=re1.text
-        html=re.sub('&lt;br.*?&gt;','\n',html)
-        soup=BeautifulSoup(html,'html.parser')
-        content=soup('div',attrs={'class':'single-box clearfix entry-content'})[0]
-        a=content('script')   #清除文本中的干扰代码（美观）
-        for i in a:
-            i.clear()
-        makebook(bookname,content.text)
-    except:
-         print('存入文本错误')
-
-
-def makebook(bookname,text):    #保存文本
-    path='F:\战恋雪\{}.txt'.format(bookname)     #这里F盘需要先创建战恋雪这个文件夹
-    with open(path,'a',encoding='utf-8')as haha:
-        haha.write('\n'+text)
-
-def makebook_chapter(bookname,cname):   #在文本中还要保存章节名称
-    path='F:\战恋雪\{}.txt'.format(bookname)     #这里F盘需要先创建战恋雪这个文件夹
-    with open(path,'a',encoding='utf-8')as haha:
-        haha.write(cname+'\n')
-
-def main(haha):   #获得一本书的所有步骤
-    book=haha
-    print(book)
-    print('正在获取  {}  {}'.format(book.get('title'),book.get('url')))
-    for chapter in get_bookcapital(book.get('url')):
-            print('当前《{}》--获取章节 {}  {}  '.format(book.get('title'),chapter.get('ctitle'),chapter.get('curl')))
-            makebook_chapter(book.get('title'),chapter.get('ctitle'))
-            savechapter(book.get('title'),chapter.get('curl'))
-
-#把所有书籍连接放入一个列表中，方便多进程取值
-a=[]
-for i in get_book():
-    a.append(i)
-print(a)
-
-if __name__=='__main__':
-    pool=Pool(processes=20)   #20个进程调用获得所有书
-    group=a  #a列表是网站所有书的链接地址
-    print(group)
-    pool.map(main,group)
-
-</code></pre>
-<h2 id="运行结果">运行结果</h2>
-<figure data-type="image" tabindex="6"><img src="https://s1.ax1x.com/2020/06/07/tgBqA0.png" alt="tgBqA0.png" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="https://s1.ax1x.com/2020/06/07/tgBLNV.png" alt="tgBLNV.png" loading="lazy"></figure>
-<h2 id="反思">反思</h2>
-<ol>
-<li>自己是不是太猥琐了，学这个鬼东西专门干这些事？</li>
-<li>下次要写写读书笔记了</li>
-<li>这些都还是皮毛，很纠结自己到底主Java呢，还是python呢？python是用来玩的，但是我投入的时间对他太多了。</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
