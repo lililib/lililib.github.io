@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-18T12:13:22.368Z</updated>
+    <updated>2020-12-18T12:16:08.302Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -21,81 +21,13 @@
    这个问题是图的m可着色判定问题。若一个图最少需要m种颜色才能使图中每条边连接的两个顶点着不同颜色，则称这个数m为该图的色数。求一个图的色数m的问题称为图的m可着色优化问题。<br>
    编程计算：给定图G=(V, E)和m种不同的颜色，找出所有不同的着色法和着色总数。<br>
 简而言之：给一个图，<strong>要求相连接的顶点颜色不能相同</strong>，有m种颜色可以进行着色，可以有多少方案。</p>
-<h2 id="思路">思路</h2>
-<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608291557905.webp" alt="" loading="lazy"></figure>
-<p>  可以想第一个顶点第一种颜色，第二个点再尝试每个颜色是否可以着色，以此类推，有递归的感觉。<br>
-  如同八皇后问题，<strong>放置顶点，循环尝试其中一个颜色（ 颜色方案存入其中名为 x 的数组中），然后检查颜色是否合法（不与任何相连的顶点颜色相同为合法），如果不合法，回溯重试颜色，如果合法，就放置下一个顶点，直到所有顶点放置完毕，则为一成功方案</strong>。</p>
-<h2 id="源码">源码</h2>
-<pre><code>public class mapColoring {
-	static int n = 5; // 有n个结点
-	static int[] x = new int[n + 1]; // answer pace 按顶点1，2，3，4，5，6对应的颜色
-	static int m = 4; // 可用颜色数
-	static int[][] map = new int[n + 1][n + 1];
-	static int sum = 0;
-
-	public static void main(String[] args) {
-		initial(map);
-		backtrack(1);
-		System.out.println(sum);
-	}
-
-	private static void backtrack(int t) {
-		if (t &gt; n) {
-			sum++;
-			for (int i = 1; i &lt;= n; i++) {
-				System.out.print(x[i] + &quot;  &quot;);
-			}
-			System.out.println();
-			return;// ?????
-		} else {
-			for (int i = 1; i &lt;= m; i++) {
-				x[t] = i; // 顶点t被予以第i中颜色
-				if (check(t))// 这里包含了剪枝
-					backtrack(t + 1);
-				x[t] = 0;// 如果颜色不行，回溯回去
-
-			}
-		}
-
-	}
-
-	private static boolean check(int t) {
-		for (int j = 1; j &lt;= n; j++) {
-			if (map[t][j] == 1 &amp;&amp; x[t] == x[j])
-				return false;
-		}
-		return true;
-	}
-
-	/**
-	 * 为1是相连，否之为0
-	 * 
-	 * @param map
-	 */
-	private static void initial(int[][] map) {
-		for (int i = 1; i &lt;= n; i++) {
-			for (int j = 1; j &lt;= n; j++) {
-				map[i][j] = 1;
-				if (i == j)
-					map[i][j] = 0;
-			}
-		}
-		map[1][5] = 0;
-		map[5][1] = 0;
-		map[3][5] = 0;
-		map[5][3] = 0;
-
-	}
-}
-</code></pre>
-<h2 id="运行截图">运行截图</h2>
-<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608292665159.png" alt="" loading="lazy"></figure>
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="问题描述">问题描述</h2>
 <p>   给定无向连通图G=(V, E)和m种不同的颜色，用这些颜色为图G的各顶点着色，每个顶点着一种颜色。是否有一种着色法使G中相邻的两个顶点有不同的颜色?<br>
    这个问题是图的m可着色判定问题。若一个图最少需要m种颜色才能使图中每条边连接的两个顶点着不同颜色，则称这个数m为该图的色数。求一个图的色数m的问题称为图的m可着色优化问题。<br>
    编程计算：给定图G=(V, E)和m种不同的颜色，找出所有不同的着色法和着色总数。<br>
 简而言之：给一个图，<strong>要求相连接的顶点颜色不能相同</strong>，有m种颜色可以进行着色，可以有多少方案。</p>
+<!-- more -->
 <h2 id="思路">思路</h2>
 <figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608291557905.webp" alt="" loading="lazy"></figure>
 <p>  可以想第一个顶点第一种颜色，第二个点再尝试每个颜色是否可以着色，以此类推，有递归的感觉。<br>
