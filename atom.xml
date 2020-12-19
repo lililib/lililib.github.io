@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-19T03:34:18.179Z</updated>
+    <updated>2020-12-19T07:19:42.957Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
     <entry>
-        <title type="html"><![CDATA[二分，合并排序]]></title>
+        <title type="html"><![CDATA[二分，合并，快速排序]]></title>
         <id>https://lililib.github.io/post/er-fen-he-bing-pai-xu/</id>
         <link href="https://lililib.github.io/post/er-fen-he-bing-pai-xu/">
         </link>
@@ -81,7 +81,8 @@ public class BinarySearch0 {
 </code></pre>
 <h2 id="合并排序">合并排序</h2>
 <p>采用分治的思想层层剖析再合并<br>
-思路：<strong>把一个数组分成两半，分别排好序，然后再合并一个完整的有序的数组</strong>，在分成两半后，它还可以进行再分两半，直到分的不能再分为止。一直分分分，就是分治法的精髓。<br>
+<img src="https://lililib.github.io//post-images/1608356651391.gif" alt="" loading="lazy"><br>
+思路：<strong>把一个数组分成两半，分别排好序，然后再合并一个完整的有序的数组</strong>（他的优点在于对于已排好序的两部分进行合并非常精妙且快速），在分成两半后，它还可以进行再分两半，直到分的不能再分为止。一直分分分，就是分治法的精髓。<br>
 merge方法也就是合并是难点所在：<br>
 <img src="https://lililib.github.io//post-images/1608347271363.png" alt="" loading="lazy"></p>
 <p><strong>本质是 L 与 K 的比较，谁大（或小）就把所指的数放入 temp 数组中，并把指针移动到下一位，一直重复下去，当有一方越过其自己的边界，意味着另一方还有剩余，则把剩余的全部放在 temp 数组中</strong></p>
@@ -138,7 +139,67 @@ merge方法也就是合并是难点所在：<br>
 }
 
 </code></pre>
-<p>参考视频:<a href="https://www.bilibili.com/video/BV1GT4y1G75V?from=search&amp;seid=15415047608501305073">b站</a></p>
+<p><a href="https://www.bilibili.com/video/BV1GT4y1G75V?from=search&amp;seid=15415047608501305073">参考视频</a></p>
+<h2 id="快速排序">快速排序</h2>
+<p><img src="https://lililib.github.io//post-images/1608356673379.gif" alt="" loading="lazy"><br>
+快速排序是冒泡排序的改进版，思路是，<strong>在其中找一个基准值，然后比较这个基准值，把整个数组分成都比基准值大的一部分，和都比他小的一部分，然后对剩下的两大部分，又可以进行类似操作</strong>。（对于基准值分成两大部分的函数最为妙，边界条件很不好理解，我要背下来！！太妙了）因为排序是就地进行的，不像合并排序一般还要再誊一遍值。</p>
+<pre><code>import java.util.Scanner;
+
+public class QuickSort {
+
+	public static void main(String[] args) {
+		int n = 8;
+		int num[] = new int[n];
+		Scanner in = new Scanner(System.in);
+		for (int i = 0; i &lt; n; i++) {
+			double d = Math.random();
+			num[i] = (int) (d * 100);
+			System.out.print(num[i] + &quot; &quot;);
+			// num[i]=in.nextInt();
+		}
+		// 以上为随机生成8个数
+		qSort(num, 0, n - 1);
+		System.out.println();
+		for (int i : num)
+			System.out.print(i + &quot; &quot;);
+
+	}
+
+	private static void qSort(int[] num, int i, int j) {
+		if (i &lt; j) {
+			int q = partion(num, i, j);
+			// 下面不要包含q了，q算一个中间值独立存在,只用再考虑两边就行了
+			qSort(num, i, q - 1); // 有分治的思想
+			qSort(num, q + 1, j);
+		}
+
+	}
+
+	private static int partion(int[] num, int i, int j) {
+		int bid = num[i];
+		int haha = i, k = j + 1;
+		while (true) {
+			while (num[++i] &lt; bid &amp;&amp; i &lt; j)
+				; // 寻找比bid大的那个数，找到并暂停
+			while (num[--k] &gt; bid &amp;&amp; k &gt;= i)
+				; // 寻找比bid小的那个数,找到并暂停，这里为什么可以不用写k&gt;=i?? 惊呆我了
+			if (i &gt;= k)		//如果没有遍历完，则进行上面两个值的交换
+				break;
+			// 交换
+			int temp = num[i];
+			num[i] = num[k];
+			num[k] = temp;
+		}
+		num[haha] = num[k];
+		num[k] = bid;
+		return k;
+
+	}
+
+}
+
+</code></pre>
+<p><a href="https://www.bilibili.com/video/BV1Tt411r75A?from=search&amp;seid=1917553773153484540">参考视频</a></p>
 ]]></content>
     </entry>
     <entry>
