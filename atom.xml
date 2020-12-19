@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-19T07:19:42.957Z</updated>
+    <updated>2020-12-19T10:49:17.147Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -11,11 +11,92 @@
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
     <entry>
+        <title type="html"><![CDATA[0-1背包问题]]></title>
+        <id>https://lililib.github.io/post/0-1-bei-bao-wen-ti/</id>
+        <link href="https://lililib.github.io/post/0-1-bei-bao-wen-ti/">
+        </link>
+        <updated>2020-12-19T10:06:41.000Z</updated>
+        <summary type="html"><![CDATA[<p>假设你是个小偷，背着一个可装<br>
+4磅东西的背包。<br>
+你可盗窃的商品有如下3件<br>
+<img src="https://lililib.github.io//post-images/1608372494998.png" alt="" loading="lazy"></p>
+<p>为了让盗窃的商品价值最高，你该选择哪些商品？</p>
+<p>每个动态规划算法都从一个网格开始，背包问题的网格如下：</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>假设你是个小偷，背着一个可装<br>
+4磅东西的背包。<br>
+你可盗窃的商品有如下3件<br>
+<img src="https://lililib.github.io//post-images/1608372494998.png" alt="" loading="lazy"></p>
+<p>为了让盗窃的商品价值最高，你该选择哪些商品？</p>
+<p>每个动态规划算法都从一个网格开始，背包问题的网格如下：</p>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608372559460.png" alt="" loading="lazy"></figure>
+<p>网格的各行为商品，各列为不同容量（1～4磅）的背包。所有这些列你都需要，因为它们将<br>
+帮助你计算子背包的价值。<br>
+网格最初是空的。你将填充其中的每个单元格，网格填满后，就找到了问题的答案<br>
+<strong>一行一行的填值，想象一个货架一个货架的取，还没有走到的货架不能取（可以回头），从左往右的每一列背包空间变大</strong></p>
+<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608372686983.png" alt="" loading="lazy"></figure>
+<p>计算每个单元格使用了如下公式：</p>
+<figure data-type="image" tabindex="3"><img src="https://lililib.github.io//post-images/1608372744721.png" alt="" loading="lazy"></figure>
+<p><strong>优化：</strong> 因为看表或通过公式可以发现，下一行的数据只与上一行的数据有关，所以可以弄一个一位数组，通过刷新模拟换行填数据，需要注意的是，从后往前填，因为正过来填的话,后面要填的值可能是与被修改的值有关</p>
+<p>练习<br>
+<img src="https://lililib.github.io//post-images/1608374442627.png" alt="" loading="lazy"></p>
+<pre><code>
+public class Knapsack0_1_Problem {
+
+	public static void main(String[] args) {
+		int weight = 6;
+		int wei[] = new int[] { 0, 3, 1, 2, 2, 1 };
+		int value[] = new int[] { 0, 10, 3, 9, 5, 6 };
+		int map[][] = new int[wei.length + 1][weight + 1];
+		int map1[] = new int[weight + 1];
+        //一维数组的做法，注意倒过来填值，因为如果正过来填的话,后面要填的值可能是与被修改的过的值有关，倒过来填值不会出现该情况
+		for (int i = 1; i &lt;= value.length - 1; i++) { // 竖坐标（商品的价值）
+			for (int j = map1.length - 1; j &gt;= 1; j--) {        //从后往前填
+				if (j &gt;= wei[i]) {
+					map1[j] = Math.max(map1[j], value[i] + map1[j - wei[i]]);
+				}
+			}
+
+		}
+		for (int i : map1) {
+			System.out.println(i);
+		}
+        //二维数组的做法
+//		for(int i=1;i&lt;=value.length-1;i++) {	//竖坐标（商品的价值）
+//			for(int j=1;j&lt;=weight;j++) {
+//				if(j&gt;=wei[i]) {		//可以装的进
+//					map[i][j]=Math.max(map[i-1][j],value[i]+ map[i-1][j-wei[i]]);
+//				}
+//				System.out.print(map[i][j]+&quot; &quot;);
+//			}
+//			
+//			System.out.println();
+//		}
+
+	}
+
+}
+
+</code></pre>
+<p><a href="https://book.douban.com/subject/26979890/">参考书籍</a></p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[二分，合并，快速排序]]></title>
         <id>https://lililib.github.io/post/er-fen-he-bing-pai-xu/</id>
         <link href="https://lililib.github.io/post/er-fen-he-bing-pai-xu/">
         </link>
         <updated>2020-12-19T02:36:36.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="二分排序法">二分排序法</h2>
+<p>二分查找法主要是解决在“一堆数中找出指定的数”这类问题。</p>
+<p>而想要应用二分查找法，这“一堆数”必须有以下特征：</p>
+<ol>
+<li>存储在数组中</li>
+<li>有序排列</li>
+</ol>
+<p>二分查找思路，<strong>在一个有序的数组中（从小到大排列），与中间的那个数作比较，若相等，则找到，若小于中间的数则继续在左边那一块重复操作，反之重复右边的那块操作。</strong></p>
+]]></summary>
         <content type="html"><![CDATA[<h2 id="二分排序法">二分排序法</h2>
 <p>二分查找法主要是解决在“一堆数中找出指定的数”这类问题。</p>
 <p>而想要应用二分查找法，这“一堆数”必须有以下特征：</p>
@@ -23,8 +104,9 @@
 <li>存储在数组中</li>
 <li>有序排列</li>
 </ol>
-<p>二分查找思路，<strong>在一个有序的数组中（从小到大排列），与中间的那个数作比较，若相等，则找到，若小于中间的数则继续在左边那一块重复操作，反之重复右边的那块操作。</strong><br>
-有递归方法与普通方法</p>
+<p>二分查找思路，<strong>在一个有序的数组中（从小到大排列），与中间的那个数作比较，若相等，则找到，若小于中间的数则继续在左边那一块重复操作，反之重复右边的那块操作。</strong></p>
+<!-- more -->
+<p>有递归方法与普通方法</p>
 <pre><code>import java.util.Arrays;
 import java.util.Scanner;
 
@@ -823,22 +905,6 @@ if __name__=='__main__':
 <p>这就是炼金术的等价交换原则.</p>
 <hr>
 <figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608289296795.webp" alt="休斯准将" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[疑邻盗斧]]></title>
-        <id>https://lililib.github.io/post/yi-lin-dao-fu/</id>
-        <link href="https://lililib.github.io/post/yi-lin-dao-fu/">
-        </link>
-        <updated>2020-12-02T15:02:29.000Z</updated>
-        <summary type="html"><![CDATA[<p>人有亡斧者，意其邻之子。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>人有亡斧者，意其邻之子。</p>
-<!-- more -->
-<p>视其行步，窃斧也；</p>
-<p>颜色，窃斧也；</p>
-<p>言语，窃斧也；</p>
-<p>动作态度，无为而不窃斧也。</p>
 ]]></content>
     </entry>
 </feed>
