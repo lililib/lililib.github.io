@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-19T10:49:17.147Z</updated>
+    <updated>2020-12-20T03:20:54.571Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -83,7 +83,7 @@ public class Knapsack0_1_Problem {
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[二分，合并，快速排序]]></title>
+        <title type="html"><![CDATA[冒泡，二分，合并，快速排序]]></title>
         <id>https://lililib.github.io/post/er-fen-he-bing-pai-xu/</id>
         <link href="https://lililib.github.io/post/er-fen-he-bing-pai-xu/">
         </link>
@@ -282,6 +282,28 @@ public class QuickSort {
 
 </code></pre>
 <p><a href="https://www.bilibili.com/video/BV1Tt411r75A?from=search&amp;seid=1917553773153484540">参考视频</a></p>
+<h2 id="冒泡排序">冒泡排序</h2>
+<p>最好情况时间复杂度为O(n),最差为O(n^2)</p>
+<p>如 7， 3， 9 ，2， 5</p>
+<ol>
+<li>3 7 2 5 9</li>
+<li>3 2 5 7 9</li>
+<li>2 3 5 7 9</li>
+<li>2 3 5 7 9</li>
+<li>2 3 5 7 9</li>
+</ol>
+<p>其实冒泡的本质是：<strong>有几个数就重复几趟，每一趟中都依次两两递进扫描，若不符合位置的则交换，每一趟下来都会找到一个最大值放在后面，所以后面扫描的时候可以跳过这个最大值少少扫描一点。</strong></p>
+<p>数组 a 中装着乱序的数</p>
+<pre><code>		for(int i=0;i&lt;a.length;i++) {          //进行n趟
+			for(int j=0;j&lt;a.length-1-i;j++) {       //两两递进扫描
+				if(a[j]&gt;a[j+1]) {
+					int temp=a[j];
+					a[j]=a[j+1];
+					a[j+1]=temp;
+				}
+			}
+		}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
