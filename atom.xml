@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-20T03:20:54.571Z</updated>
+    <updated>2020-12-22T10:00:28.500Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,165 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[哈夫曼编码]]></title>
+        <id>https://lililib.github.io/post/ha-fu-man-bian-ma-wen-ti-de-she-ji-yu-shi-xian/</id>
+        <link href="https://lililib.github.io/post/ha-fu-man-bian-ma-wen-ti-de-she-ji-yu-shi-xian/">
+        </link>
+        <updated>2020-12-20T12:19:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>构造哈夫曼树时使用双亲孩子的存储结构，需要数据有： 权重，父母坐标，是否加入了哈夫曼树，左孩子坐标，右孩子坐标。</p>
+<p>步骤：</p>
+<ol>
+<li>单节点的初始化入哈夫曼树中，初始化2*n-1个节点</li>
+<li>寻找两个权重最小且还没有加入树中的节点进行构造哈夫曼树（构造过程中存储结构中变动的信息都需要更新）其实这寻找两个权值最小的节点挺难的，困了好长时间/(ㄒoㄒ)/~~</li>
+<li>根据构造的树，解析析出哈夫曼编码</li>
+</ol>
+<h2 id="双亲孩子节点">双亲孩子节点</h2>
+<p><img src="https://lililib.github.io//post-images/1608476724594.png" alt="" loading="lazy"><br>
+<img src="https://lililib.github.io//post-images/1608476736519.png" alt="" loading="lazy"><br>
+把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>构造哈夫曼树时使用双亲孩子的存储结构，需要数据有： 权重，父母坐标，是否加入了哈夫曼树，左孩子坐标，右孩子坐标。</p>
+<p>步骤：</p>
+<ol>
+<li>单节点的初始化入哈夫曼树中，初始化2*n-1个节点</li>
+<li>寻找两个权重最小且还没有加入树中的节点进行构造哈夫曼树（构造过程中存储结构中变动的信息都需要更新）其实这寻找两个权值最小的节点挺难的，困了好长时间/(ㄒoㄒ)/~~</li>
+<li>根据构造的树，解析析出哈夫曼编码</li>
+</ol>
+<h2 id="双亲孩子节点">双亲孩子节点</h2>
+<p><img src="https://lililib.github.io//post-images/1608476724594.png" alt="" loading="lazy"><br>
+<img src="https://lililib.github.io//post-images/1608476736519.png" alt="" loading="lazy"><br>
+把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
+<!-- more -->
+<p>  get了一个<strong>新技巧</strong>，对于一个数组中胡乱的加入各个大小的数据，怎么<strong>循环一次</strong>就可以把其中最小的和次小的下标找到,分两个情况考虑：</p>
+<ol>
+<li>最小值在次小值右边，想象着最小值在最右边，一直遍历下去定会也遇到次小值</li>
+<li>最小值在次小值左边，</li>
+</ol>
+<pre><code>			    int big1=9999,
+				big2=9999,
+				index1 = 0,
+				index2 = 0;
+			//找出权值最小和次小的树
+			for(int j=0;j&lt;n+i;j++) {
+				if(big1&gt;tree[j].weight &amp;&amp; tree[j].flag==0) {//这个是最小值在次小值右边
+					big2=big1;
+					index2=index1;		
+					big1=tree[j].weight;
+					index1=j;		//smallest
+				}	
+				else if(big2&gt;tree[j].weight &amp;&amp; tree[j].flag==0 ) {//最小值在次小值左边
+					big2=tree[j].weight;
+					index2=j;		//second smallest
+					
+				}
+			}
+</code></pre>
+<h2 id="源码">源码：</h2>
+<pre><code>import java.util.ArrayList;
+
+public class HuffmanCoding {
+	static int weight[]=new int[] {1,3,5,7};
+	public static void main(String[] args) {
+		hufftree tree[]=new hufftree[weight.length*2-1];
+		for(int i=0;i&lt;tree.length;i++)
+			tree[i]=new hufftree();
+		haffman(weight,tree);
+		huffcode code[]=new huffcode[weight.length];
+		for(int i=0;i&lt;weight.length;i++)
+			code[i]=new huffcode();
+		generateHuffCode(tree,code);
+		//输出哈夫曼码
+		for(int i=0;i&lt;code.length;i++) {
+			ArrayList&lt;Integer&gt; a=code[i].code;
+			String s=&quot;&quot;;
+			for(int j=a.size()-1;j&gt;=0;j--) {
+				s+=a.get(j);
+			}
+			System.out.println(code[i].weight+&quot;  :&quot;+s);
+		}
+		System.out.println(123);
+	}
+	
+	
+	private static void generateHuffCode(hufftree[] tree, huffcode[] code) {
+		
+		for(int i=0;i&lt;code.length;i++) {
+			int parents=tree[i].parents;
+			int child=i;
+			int weight=tree[i].weight;
+			code[i].weight=weight;
+			while(parents!=-1) {		//这里是把结果倒过来保存
+				if(tree[parents].leftchild==child)
+					code[i].code.add(0);		
+				else
+					code[i].code.add(1);
+				child=parents;			//妙哉
+				parents=tree[child].parents;
+			}
+		}
+		
+	}
+
+
+	static void haffman(int weight[],hufftree tree[]) {
+		int n=weight.length;
+		//哈夫曼树的初始化，共有2*n-1个节点
+		for(int i=0;i&lt;tree.length;i++) {
+			if(i&lt;n) tree[i].weight=weight[i];
+			else 	tree[i].weight=0;
+			tree[i].flag=0;
+			tree[i].parents=-1;
+			tree[i].leftchild=-1;
+			tree[i].rightchild=-1;
+		}
+		//构造非叶子节点
+		for(int i=0;i&lt;n-1;i++) {
+			int big1=9999,
+				big2=9999,
+				index1 = 0,
+				index2 = 0;
+			//找出权值最小和次小的树
+			for(int j=0;j&lt;n+i;j++) {
+				if(big1&gt;tree[j].weight &amp;&amp; tree[j].flag==0) {//这个是最小值在次小值右边
+					big2=big1;
+					index2=index1;		
+					big1=tree[j].weight;
+					index1=j;		//smallest
+				}	
+				else if(big2&gt;tree[j].weight &amp;&amp; tree[j].flag==0 ) {//最小值在次小值左边
+					big2=tree[j].weight;
+					index2=j;		//second smallest
+					
+				}
+			}
+			tree[index1].parents=n+i;//这里是从i=0开始的
+			tree[index2].parents=n+i;
+			tree[index1].flag=1;
+			tree[index2].flag=1;
+			tree[n+i].weight=tree[index1].weight+tree[index2].weight;
+			tree[n+i].leftchild=index1;
+			tree[n+i].rightchild=index2;
+			}
+		}
+	}
+class huffcode{
+	ArrayList&lt;Integer&gt; code=new ArrayList&lt;Integer&gt;();
+	int weight;
+}
+
+
+class hufftree{
+	int weight,
+		flag,			//是否已经加入到哈夫曼树中，1为已加入
+		parents,
+		leftchild,
+		rightchild;
+}
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[0-1背包问题]]></title>
         <id>https://lililib.github.io/post/0-1-bei-bao-wen-ti/</id>
@@ -911,22 +1070,6 @@ if __name__=='__main__':
 <p>爬取巨慢，完成图像</p>
 <figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1607177847912.png" alt="" loading="lazy"></figure>
 <p>有待优化：当浏览器加载到某个元素后就可以结束得到源码，或者渲染出图片后就以二进制保存</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[《钢之炼金术师》]]></title>
-        <id>https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/</id>
-        <link href="https://lililib.github.io/post/lesslessgang-zhi-lian-jin-zhu-shi-greatergreater/">
-        </link>
-        <updated>2020-12-03T08:43:44.000Z</updated>
-        <summary type="html"><![CDATA[<p>人没有什么牺牲的话就什么都得不到，</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>人没有什么牺牲的话就什么都得不到，</p>
-<!-- more -->
-<p>为了得到什么东西，就需要付出同等的代价，</p>
-<p>这就是炼金术的等价交换原则.</p>
-<hr>
-<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608289296795.webp" alt="休斯准将" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
