@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-22T10:01:07.584Z</updated>
+    <updated>2020-12-23T06:43:31.978Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -16,7 +16,7 @@
         <link href="https://lililib.github.io/post/ha-fu-man-bian-ma-wen-ti-de-she-ji-yu-shi-xian/">
         </link>
         <updated>2020-12-20T12:19:49.000Z</updated>
-        <summary type="html"><![CDATA[<p>构造哈夫曼树时使用双亲孩子的存储结构，需要数据有： 权重，父母坐标，是否加入了哈夫曼树，左孩子坐标，右孩子坐标。</p>
+        <summary type="html"><![CDATA[<p>构造哈夫曼树时使用双亲孩子的存储结构，需要数据有： 权重，他们母亲是谁，是否加入了哈夫曼树，他们左孩子与右孩子又是谁？</p>
 <p>步骤：</p>
 <ol>
 <li>单节点的初始化入哈夫曼树中，初始化2*n-1个节点</li>
@@ -26,9 +26,9 @@
 <h2 id="双亲孩子节点">双亲孩子节点</h2>
 <p><img src="https://lililib.github.io//post-images/1608476724594.png" alt="" loading="lazy"><br>
 <img src="https://lililib.github.io//post-images/1608476736519.png" alt="" loading="lazy"><br>
-把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
+上图把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>构造哈夫曼树时使用双亲孩子的存储结构，需要数据有： 权重，父母坐标，是否加入了哈夫曼树，左孩子坐标，右孩子坐标。</p>
+        <content type="html"><![CDATA[<p>构造哈夫曼树时使用双亲孩子的存储结构，需要数据有： 权重，他们母亲是谁，是否加入了哈夫曼树，他们左孩子与右孩子又是谁？</p>
 <p>步骤：</p>
 <ol>
 <li>单节点的初始化入哈夫曼树中，初始化2*n-1个节点</li>
@@ -38,7 +38,7 @@
 <h2 id="双亲孩子节点">双亲孩子节点</h2>
 <p><img src="https://lililib.github.io//post-images/1608476724594.png" alt="" loading="lazy"><br>
 <img src="https://lililib.github.io//post-images/1608476736519.png" alt="" loading="lazy"><br>
-把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
+上图把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
 <!-- more -->
 <p>  get了一个<strong>新技巧</strong>，对于一个数组中胡乱的加入各个大小的数据，怎么<strong>循环一次</strong>就可以把其中最小的和次小的下标找到,分两个情况考虑：</p>
 <ol>
@@ -90,7 +90,7 @@ public class HuffmanCoding {
 		System.out.println(123);
 	}
 	
-	
+	//哈夫曼码的生成
 	private static void generateHuffCode(hufftree[] tree, huffcode[] code) {
 		
 		for(int i=0;i&lt;code.length;i++) {
@@ -110,7 +110,7 @@ public class HuffmanCoding {
 		
 	}
 
-
+//哈夫曼树的构建
 	static void haffman(int weight[],hufftree tree[]) {
 		int n=weight.length;
 		//哈夫曼树的初始化，共有2*n-1个节点
@@ -122,7 +122,7 @@ public class HuffmanCoding {
 			tree[i].leftchild=-1;
 			tree[i].rightchild=-1;
 		}
-		//构造非叶子节点
+		//构造非叶子节点，2*n-1-n个
 		for(int i=0;i&lt;n-1;i++) {
 			int big1=9999,
 				big2=9999,
