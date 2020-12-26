@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-26T02:00:55.957Z</updated>
+    <updated>2020-12-26T02:25:57.867Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[中缀表达式转后缀表达式（逆波兰式）]]></title>
+        <id>https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/</id>
+        <link href="https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/">
+        </link>
+        <updated>2020-12-26T02:25:40.000Z</updated>
+        <summary type="html"><![CDATA[<p>中缀表达式转后缀表达式转化后只是<strong>操作符的次序变了，操作数的次序并没有变</strong></p>
+<p>唯一知道一点** a+b转后缀表达式为ab+,乘法除法都雷同**就可了其他运算次序为从左到右依次运算，先运算的还是先运算（操作符优先程度高的，如乘法优先加法之类的）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>中缀表达式转后缀表达式转化后只是<strong>操作符的次序变了，操作数的次序并没有变</strong></p>
+<p>唯一知道一点** a+b转后缀表达式为ab+,乘法除法都雷同**就可了其他运算次序为从左到右依次运算，先运算的还是先运算（操作符优先程度高的，如乘法优先加法之类的）</p>
+<!-- more -->
+<p>中缀表达式：a + b*c + (d * e + f) * g转换成后缀表达式则为a b c * + d e * f  + g * +</p>
+<ol>
+<li>a + b*c + ( d * e + f ) * g</li>
+<li>a+( bc* )+( d * e + f ) * g</li>
+<li>( abc*+ )+( d * e + f ) * g    ----------x+y-&gt;xy+     这里把上面的x=a  ,y=bc*   所以转换后为abc*+</li>
+<li>( abc*+ )+( ( de* )+f ) *g</li>
+<li>( abc*+ )+( de*f+ )*g</li>
+<li>( abc*+ )+( de<em>f+g</em> )</li>
+<li>abc*+de<em>f+g</em>+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[n后问题]]></title>
         <id>https://lililib.github.io/post/n-hou-wen-ti/</id>
@@ -157,13 +181,6 @@ public class Dijkstra {
 <figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608719468162.png" alt="" loading="lazy"></figure>
 <p><a href="https://www.bilibili.com/video/BV1q4411M7r9?from=search&amp;seid=3777136229730714108">参考视频</a></p>
 ]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[后缀表达式（逆波兰式）]]></title>
-        <id>https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/</id>
-        <link href="https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/">
-        </link>
-        <updated>2020-12-23T06:43:48.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[哈夫曼编码]]></title>
