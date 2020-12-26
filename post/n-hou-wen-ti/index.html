@@ -8,7 +8,7 @@
 <meta name="keywords" content="java">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>关于 | 煨酒小童</title>
+<title>n后问题 | 煨酒小童</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1608947767631">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -29,7 +29,7 @@
 
 
 
-  <meta name="description" content="关于" />
+  <meta name="description" content="n后问题" />
   <meta name="keywords" content="" />
 </head>
 
@@ -244,10 +244,9 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF">思路</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
 </ul>
 </li>
 </ul>
@@ -515,8 +514,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://lililib.github.io/post/n-hou-wen-ti/">
+      n后问题
     </a>
   </h1>
   <div class="post-meta">
@@ -524,23 +523,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2019-01-25</span>
+      <span>2020-12-23</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>82<span class="pc-show">字数</span></span>
+      <span>385<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/post/about/" data-flag-title="关于" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/n-hou-wen-ti/" data-flag-title="n后问题" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -549,19 +548,54 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<pre><code>记录一些我的脚印吧，回头望望这些清晰脚印应该会感慨良多的，笔记，感慨，思考，灵光一现 等等等
+              <h2 id="问题描述">问题描述</h2>
+<p>在n乘以n格的棋盘上放置彼此不受攻击的n个皇后，按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。n后问题等价于在n*n格的棋盘上放置n个皇后，任何2个皇后不放在同一行或同一列或同一斜线上。</p>
+<h2 id="思路">思路</h2>
+<p>与图着色问题思考方式大致相同，需要一个一维数组记录皇后放置棋盘上的位置，以数组下标为棋盘上的行，数组的值为棋盘的列，进行<strong>每列</strong>试值，检查其放置是否合法，不合法回溯，合法进行下一行。递归过程为放置下一行。对于棋盘的不在同一斜线的判定，想象等腰直角三角形的判定，两直角边相等。</p>
+<!-- more -->
+<h2 id="代码">代码</h2>
+<pre><code>
+public class queenProblem {
+	static int n=8;
+	static int sum=0;
+	static int []dir=new int[n+1];	//下标代表棋盘行，值代表棋盘列
+	public static void main(String[] args) {
+		int map[][]=new int[n+1][n+1];
+		queue(1,map);
+		System.out.println(sum);
+	}
+
+	private static void queue(int j, int[][] map) {
+		
+		if(j&gt;n) {
+			sum++;
+			for(int i=1;i&lt;=n;i++)
+			System.out.print(dir[i]+&quot; &quot;);
+			System.out.println();	
+		}
+		else {
+			for(int i=1;i&lt;=n;i++) {
+				dir[j]=i;       //尝试放各个列
+				if(isok(j)) queue(j+1,map);
+				dir[j]=0;   //回溯
+			}
+		}
+		
+	}
+
+	private static boolean isok(int j) {
+		for(int i=1;i&lt;j;i++) {
+            //不在同一列，不在同一斜线
+			if(dir[i]==dir[j] || Math.abs(dir[i]-dir[j])==Math.abs(i-j)) {   
+				return false;
+			}
+		}
+		return true;
+	}
+
+}
+
 </code></pre>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<pre><code>有志男青年
-</code></pre>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<pre><code>看书，游戏，偷懒
-</code></pre>
-<h2 id="联系我呀">📬 联系我呀</h2>
 
             </div>
             <div class="post-footer">
@@ -572,7 +606,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://lililib.github.io/post/about/" title="关于">https://lililib.github.io/post/about/</a>
+      <a href="https://lililib.github.io/post/n-hou-wen-ti/" title="n后问题">https://lililib.github.io/post/n-hou-wen-ti/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -585,12 +619,12 @@
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="500px美图爬取" href="https://lililib.github.io/post/500px/">500px美图爬取</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="500px美图爬取" href="https://lililib.github.io/post/500px/">上一篇</a>
-      
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="单源最短路径（Dijkstra算法）" href="https://lililib.github.io/post/dan-yuan-zui-duan-lu-jing-dijkstra-suan-fa/">单源最短路径（Dijkstra算法）</a>
+        <a class="nav-mobile-next" title="单源最短路径（Dijkstra算法）" href="https://lililib.github.io/post/dan-yuan-zui-duan-lu-jing-dijkstra-suan-fa/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>

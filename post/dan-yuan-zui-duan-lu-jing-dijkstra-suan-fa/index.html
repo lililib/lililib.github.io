@@ -8,7 +8,7 @@
 <meta name="keywords" content="java">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>关于 | 煨酒小童</title>
+<title>单源最短路径（Dijkstra算法） | 煨酒小童</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1608947767631">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -29,7 +29,7 @@
 
 
 
-  <meta name="description" content="关于" />
+  <meta name="description" content="单源最短路径（Dijkstra算法）" />
   <meta name="keywords" content="" />
 </head>
 
@@ -244,10 +244,7 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E8%BF%AD%E4%BB%A3%E8%BF%87%E7%A8%8B">算法迭代过程</a></li>
 </ul>
 </li>
 </ul>
@@ -515,8 +512,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://lililib.github.io/post/dan-yuan-zui-duan-lu-jing-dijkstra-suan-fa/">
+      单源最短路径（Dijkstra算法）
     </a>
   </h1>
   <div class="post-meta">
@@ -524,23 +521,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2019-01-25</span>
+      <span>2020-12-23</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>82<span class="pc-show">字数</span></span>
+      <span>661<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/post/about/" data-flag-title="关于" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/dan-yuan-zui-duan-lu-jing-dijkstra-suan-fa/" data-flag-title="单源最短路径（Dijkstra算法）" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -549,19 +546,81 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<pre><code>记录一些我的脚印吧，回头望望这些清晰脚印应该会感慨良多的，笔记，感慨，思考，灵光一现 等等等
+              <p>迪杰斯特拉算法(Dijkstra)是由荷兰计算机科学家狄克斯特拉于1959 年提出的，因此又叫狄克斯特拉算法。是从一个顶点到其余各顶点的最短路径算法（单源最短路径），解决的是有权图中最短路径问题，采用贪心的策略。<br>
+如下图：求顶点1到顶点5的最短路径长度是多少.<br>
+<img src="https://lililib.github.io//post-images/1608718378166.png" alt="" loading="lazy"></p>
+<!-- more -->
+<p>核心思路：<strong>从源点到终点的最短路径所经过的节点也一定是从源点到此节点的最短路径！</strong><br>
+需要一个dist数组记录从源点到各个节点的最短路径长度<br>
+需要一个map二维数组记录了图的权值信息<br>
+需要一个visit数组记录节点当前到源的距离是否是最短的了，若最短了，则不再变动，对应着dist相应节点也不再变动</p>
+<pre><code>/**
+ * 单源最短路径问题（贪心）
+ * @author 煨酒小童
+ *
+ */
+public class Dijkstra {
+	static int max=9999;
+	public static void main(String[] args) {
+		int n=5;
+		int map[][]=new int[n+1][n+1];
+		for(int i=0;i&lt;=n;i++)
+			for(int j=0;j&lt;=n;j++)
+				map[i][j]=max;
+		map[1][2]=10;map[1][5]=100;map[1][4]=30;
+		map[2][3]=50;map[3][5]=10;map[4][3]=20;map[4][5]=60;
+		int v=1;
+		int dist[]=new int[n+1];
+		int prev[]=new int[n+1]; //记录的是源到顶点i上最短路径上的前一个顶点
+		Dijkstra1(v,map,dist,prev);
+		for(int i=1;i&lt;=n;i++)
+			System.out.println(dist[i]+&quot; &quot;);//dist[5]就是问题的解
+		
+	}
+    //源点，邻接矩阵，存储答案的数组，路径存储
+	private static void Dijkstra1(int v, int[][] map, int[] dist, int[] prev) {
+		int n=dist.length-1;
+		boolean visit[]=new boolean[n+1];
+		for(int i=1;i&lt;=n;i++) {
+			dist[i]=map[v][i];//源点到各个节点的距离
+			visit[i]=false;
+			if(map[v][i]&lt;max) prev[i]=0;  //不存在(都没有路径嘛)
+			else prev[i]=v;
+
+		}
+		visit[v]=true;dist[v]=0;
+		//每一次循环都可以创造一个最短路径
+		for(int i=1;i&lt;=n;i++) {
+			int temp=max;	//从源到index中的最小和的值
+			int index=0;	//dist中最小的那个节点
+			//这里找出dist中的最小值,并记录是哪个节点
+			for(int j=1;j&lt;=n;j++) {
+				if(!visit[j] &amp;&amp; temp&gt;dist[j]) {
+					temp=dist[j];
+					index=j;
+				}
+			}
+			visit[index]=true;
+			 //从最短路径那里再往外衍生更新dist中的最短路径
+			for(int j=1;j&lt;=n;j++) {
+				if(!visit[j] &amp;&amp; map[index][j]&lt;max) {
+					int newdist=temp+map[index][j];
+					if(newdist&lt;dist[j]) {
+						dist[j]=newdist;
+						prev[j]=index;  //与dist数组一样，这个是动态修改的，只会在最后一步确定结果
+					}
+				}
+			}
+		}
+		
+	}
+
+}
+
 </code></pre>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<pre><code>有志男青年
-</code></pre>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<pre><code>看书，游戏，偷懒
-</code></pre>
-<h2 id="联系我呀">📬 联系我呀</h2>
+<h2 id="算法迭代过程">算法迭代过程</h2>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608719468162.png" alt="" loading="lazy"></figure>
+<p><a href="https://www.bilibili.com/video/BV1q4411M7r9?from=search&amp;seid=3777136229730714108">参考视频</a></p>
 
             </div>
             <div class="post-footer">
@@ -572,7 +631,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://lililib.github.io/post/about/" title="关于">https://lililib.github.io/post/about/</a>
+      <a href="https://lililib.github.io/post/dan-yuan-zui-duan-lu-jing-dijkstra-suan-fa/" title="单源最短路径（Dijkstra算法）">https://lililib.github.io/post/dan-yuan-zui-duan-lu-jing-dijkstra-suan-fa/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -586,11 +645,15 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="500px美图爬取" href="https://lililib.github.io/post/500px/">500px美图爬取</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="500px美图爬取" href="https://lililib.github.io/post/500px/">上一篇</a>
+        <a class="nav-pc-next" title="n后问题" href="https://lililib.github.io/post/n-hou-wen-ti/">n后问题</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="n后问题" href="https://lililib.github.io/post/n-hou-wen-ti/">上一篇</a>
       
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="后缀表达式（逆波兰式）" href="https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/">后缀表达式（逆波兰式）</a>
+        <a class="nav-mobile-next" title="后缀表达式（逆波兰式）" href="https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>

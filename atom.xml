@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-23T06:43:31.978Z</updated>
+    <updated>2020-12-26T01:56:30.252Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,161 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[n后问题]]></title>
+        <id>https://lililib.github.io/post/n-hou-wen-ti/</id>
+        <link href="https://lililib.github.io/post/n-hou-wen-ti/">
+        </link>
+        <updated>2020-12-23T12:36:11.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="问题描述">问题描述</h2>
+<p>在n乘以n格的棋盘上放置彼此不受攻击的n个皇后，按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。n后问题等价于在n*n格的棋盘上放置n个皇后，任何2个皇后不放在同一行或同一列或同一斜线上。</p>
+<h2 id="思路">思路</h2>
+<p>与图着色问题思考方式大致相同，需要一个一维数组记录皇后放置棋盘上的位置，以数组下标为棋盘上的行，数组的值为棋盘的列，进行<strong>每列</strong>试值，检查其放置是否合法，不合法回溯，合法进行下一行。递归过程为放置下一行。对于棋盘的不在同一斜线的判定，想象等腰直角三角形的判定，两直角边相等。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="问题描述">问题描述</h2>
+<p>在n乘以n格的棋盘上放置彼此不受攻击的n个皇后，按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。n后问题等价于在n*n格的棋盘上放置n个皇后，任何2个皇后不放在同一行或同一列或同一斜线上。</p>
+<h2 id="思路">思路</h2>
+<p>与图着色问题思考方式大致相同，需要一个一维数组记录皇后放置棋盘上的位置，以数组下标为棋盘上的行，数组的值为棋盘的列，进行<strong>每列</strong>试值，检查其放置是否合法，不合法回溯，合法进行下一行。递归过程为放置下一行。对于棋盘的不在同一斜线的判定，想象等腰直角三角形的判定，两直角边相等。</p>
+<!-- more -->
+<h2 id="代码">代码</h2>
+<pre><code>
+public class queenProblem {
+	static int n=8;
+	static int sum=0;
+	static int []dir=new int[n+1];	//下标代表棋盘行，值代表棋盘列
+	public static void main(String[] args) {
+		int map[][]=new int[n+1][n+1];
+		queue(1,map);
+		System.out.println(sum);
+	}
+
+	private static void queue(int j, int[][] map) {
+		
+		if(j&gt;n) {
+			sum++;
+			for(int i=1;i&lt;=n;i++)
+			System.out.print(dir[i]+&quot; &quot;);
+			System.out.println();	
+		}
+		else {
+			for(int i=1;i&lt;=n;i++) {
+				dir[j]=i;       //尝试放各个列
+				if(isok(j)) queue(j+1,map);
+				dir[j]=0;   //回溯
+			}
+		}
+		
+	}
+
+	private static boolean isok(int j) {
+		for(int i=1;i&lt;j;i++) {
+            //不在同一列，不在同一斜线
+			if(dir[i]==dir[j] || Math.abs(dir[i]-dir[j])==Math.abs(i-j)) {   
+				return false;
+			}
+		}
+		return true;
+	}
+
+}
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[单源最短路径（Dijkstra算法）]]></title>
+        <id>https://lililib.github.io/post/dan-yuan-zui-duan-lu-jing-dijkstra-suan-fa/</id>
+        <link href="https://lililib.github.io/post/dan-yuan-zui-duan-lu-jing-dijkstra-suan-fa/">
+        </link>
+        <updated>2020-12-23T09:32:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>迪杰斯特拉算法(Dijkstra)是由荷兰计算机科学家狄克斯特拉于1959 年提出的，因此又叫狄克斯特拉算法。是从一个顶点到其余各顶点的最短路径算法（单源最短路径），解决的是有权图中最短路径问题，采用贪心的策略。<br>
+如下图：求顶点1到顶点5的最短路径长度是多少.<br>
+<img src="https://lililib.github.io//post-images/1608718378166.png" alt="" loading="lazy"></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>迪杰斯特拉算法(Dijkstra)是由荷兰计算机科学家狄克斯特拉于1959 年提出的，因此又叫狄克斯特拉算法。是从一个顶点到其余各顶点的最短路径算法（单源最短路径），解决的是有权图中最短路径问题，采用贪心的策略。<br>
+如下图：求顶点1到顶点5的最短路径长度是多少.<br>
+<img src="https://lililib.github.io//post-images/1608718378166.png" alt="" loading="lazy"></p>
+<!-- more -->
+<p>核心思路：<strong>从源点到终点的最短路径所经过的节点也一定是从源点到此节点的最短路径！</strong><br>
+需要一个dist数组记录从源点到各个节点的最短路径长度<br>
+需要一个map二维数组记录了图的权值信息<br>
+需要一个visit数组记录节点当前到源的距离是否是最短的了，若最短了，则不再变动，对应着dist相应节点也不再变动</p>
+<pre><code>/**
+ * 单源最短路径问题（贪心）
+ * @author 煨酒小童
+ *
+ */
+public class Dijkstra {
+	static int max=9999;
+	public static void main(String[] args) {
+		int n=5;
+		int map[][]=new int[n+1][n+1];
+		for(int i=0;i&lt;=n;i++)
+			for(int j=0;j&lt;=n;j++)
+				map[i][j]=max;
+		map[1][2]=10;map[1][5]=100;map[1][4]=30;
+		map[2][3]=50;map[3][5]=10;map[4][3]=20;map[4][5]=60;
+		int v=1;
+		int dist[]=new int[n+1];
+		int prev[]=new int[n+1]; //记录的是源到顶点i上最短路径上的前一个顶点
+		Dijkstra1(v,map,dist,prev);
+		for(int i=1;i&lt;=n;i++)
+			System.out.println(dist[i]+&quot; &quot;);//dist[5]就是问题的解
+		
+	}
+    //源点，邻接矩阵，存储答案的数组，路径存储
+	private static void Dijkstra1(int v, int[][] map, int[] dist, int[] prev) {
+		int n=dist.length-1;
+		boolean visit[]=new boolean[n+1];
+		for(int i=1;i&lt;=n;i++) {
+			dist[i]=map[v][i];//源点到各个节点的距离
+			visit[i]=false;
+			if(map[v][i]&lt;max) prev[i]=0;  //不存在(都没有路径嘛)
+			else prev[i]=v;
+
+		}
+		visit[v]=true;dist[v]=0;
+		//每一次循环都可以创造一个最短路径
+		for(int i=1;i&lt;=n;i++) {
+			int temp=max;	//从源到index中的最小和的值
+			int index=0;	//dist中最小的那个节点
+			//这里找出dist中的最小值,并记录是哪个节点
+			for(int j=1;j&lt;=n;j++) {
+				if(!visit[j] &amp;&amp; temp&gt;dist[j]) {
+					temp=dist[j];
+					index=j;
+				}
+			}
+			visit[index]=true;
+			 //从最短路径那里再往外衍生更新dist中的最短路径
+			for(int j=1;j&lt;=n;j++) {
+				if(!visit[j] &amp;&amp; map[index][j]&lt;max) {
+					int newdist=temp+map[index][j];
+					if(newdist&lt;dist[j]) {
+						dist[j]=newdist;
+						prev[j]=index;  //与dist数组一样，这个是动态修改的，只会在最后一步确定结果
+					}
+				}
+			}
+		}
+		
+	}
+
+}
+
+</code></pre>
+<h2 id="算法迭代过程">算法迭代过程</h2>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608719468162.png" alt="" loading="lazy"></figure>
+<p><a href="https://www.bilibili.com/video/BV1q4411M7r9?from=search&amp;seid=3777136229730714108">参考视频</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[后缀表达式（逆波兰式）]]></title>
+        <id>https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/</id>
+        <link href="https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/">
+        </link>
+        <updated>2020-12-23T06:43:48.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[哈夫曼编码]]></title>
         <id>https://lililib.github.io/post/ha-fu-man-bian-ma-wen-ti-de-she-ji-yu-shi-xian/</id>
@@ -24,9 +179,7 @@
 <li>根据构造的树，解析析出哈夫曼编码</li>
 </ol>
 <h2 id="双亲孩子节点">双亲孩子节点</h2>
-<p><img src="https://lililib.github.io//post-images/1608476724594.png" alt="" loading="lazy"><br>
-<img src="https://lililib.github.io//post-images/1608476736519.png" alt="" loading="lazy"><br>
-上图把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608476724594.png" alt="" loading="lazy"></figure>
 ]]></summary>
         <content type="html"><![CDATA[<p>构造哈夫曼树时使用双亲孩子的存储结构，需要数据有： 权重，他们母亲是谁，是否加入了哈夫曼树，他们左孩子与右孩子又是谁？</p>
 <p>步骤：</p>
@@ -36,10 +189,10 @@
 <li>根据构造的树，解析析出哈夫曼编码</li>
 </ol>
 <h2 id="双亲孩子节点">双亲孩子节点</h2>
-<p><img src="https://lililib.github.io//post-images/1608476724594.png" alt="" loading="lazy"><br>
-<img src="https://lililib.github.io//post-images/1608476736519.png" alt="" loading="lazy"><br>
-上图把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608476724594.png" alt="" loading="lazy"></figure>
 <!-- more -->
+<p><img src="https://lililib.github.io//post-images/1608476736519.png" alt="" loading="lazy"><br>
+上图把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
 <p>  get了一个<strong>新技巧</strong>，对于一个数组中胡乱的加入各个大小的数据，怎么<strong>循环一次</strong>就可以把其中最小的和次小的下标找到,分两个情况考虑：</p>
 <ol>
 <li>最小值在次小值右边，想象着最小值在最右边，一直遍历下去定会也遇到次小值</li>
@@ -175,16 +328,12 @@ class hufftree{
         <link href="https://lililib.github.io/post/0-1-bei-bao-wen-ti/">
         </link>
         <updated>2020-12-19T10:06:41.000Z</updated>
-        <summary type="html"><![CDATA[<p>假设你是个小偷，背着一个可装<br>
-4磅东西的背包。<br>
-你可盗窃的商品有如下3件<br>
+        <summary type="html"><![CDATA[<p>0-1背包问题：假设你是个小偷，背着一个可装4磅东西的背包。你可盗窃的商品有如下3件<br>
 <img src="https://lililib.github.io//post-images/1608372494998.png" alt="" loading="lazy"></p>
 <p>为了让盗窃的商品价值最高，你该选择哪些商品？</p>
 <p>每个动态规划算法都从一个网格开始，背包问题的网格如下：</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>假设你是个小偷，背着一个可装<br>
-4磅东西的背包。<br>
-你可盗窃的商品有如下3件<br>
+        <content type="html"><![CDATA[<p>0-1背包问题：假设你是个小偷，背着一个可装4磅东西的背包。你可盗窃的商品有如下3件<br>
 <img src="https://lililib.github.io//post-images/1608372494998.png" alt="" loading="lazy"></p>
 <p>为了让盗窃的商品价值最高，你该选择哪些商品？</p>
 <p>每个动态规划算法都从一个网格开始，背包问题的网格如下：</p>
@@ -197,7 +346,7 @@ class hufftree{
 <figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608372686983.png" alt="" loading="lazy"></figure>
 <p>计算每个单元格使用了如下公式：</p>
 <figure data-type="image" tabindex="3"><img src="https://lililib.github.io//post-images/1608372744721.png" alt="" loading="lazy"></figure>
-<p><strong>优化：</strong> 因为看表或通过公式可以发现，下一行的数据只与上一行的数据有关，所以可以弄一个一位数组，通过刷新模拟换行填数据，需要注意的是，从后往前填，因为正过来填的话,后面要填的值可能是与被修改的值有关</p>
+<p><strong>优化：</strong> 因为看表或通过公式可以发现，下一行的数据只与上一行的数据有关，所以可以弄一个一维数组，<strong>通过刷新模拟换行填数据</strong>，需要注意的是，从后往前填，因为正过来填的话,后面要填的值可能是与被修改的值有关</p>
 <p>练习<br>
 <img src="https://lililib.github.io//post-images/1608374442627.png" alt="" loading="lazy"></p>
 <pre><code>
@@ -796,280 +945,6 @@ public class test {
 }
 
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[大数乘法]]></title>
-        <id>https://lililib.github.io/post/da-shu-cheng-fa/</id>
-        <link href="https://lililib.github.io/post/da-shu-cheng-fa/">
-        </link>
-        <updated>2020-12-15T12:56:44.000Z</updated>
-        <summary type="html"><![CDATA[<p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。这时候可以用小学学的<strong>乘法竖式累加模拟乘法</strong>，结果储存在数组中。时间复杂度为O(2)</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。这时候可以用小学学的<strong>乘法竖式累加模拟乘法</strong>，结果储存在数组中。时间复杂度为O(2)</p>
-<!-- more -->
-<h2 id="算法分析">算法分析</h2>
-<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608038121960.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608038128316.png" alt="" loading="lazy"></figure>
-<h2 id="源码">源码</h2>
-<pre><code>package 高精度;
-
-/**
- * https://www.bilibili.com/video/BV1LA411v7mt?p=3
- */
-import java.util.Scanner;
-
-public class multiply {
-
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		String a = in.next();
-		String b = in.next();
-		in.close();
-		int total[] = new int[a.length() + b.length() + 1]; // 结果
-		// 把最后一个数字存储到下标为一里
-		int[] c = new int[a.length() + 1];
-		int[] d = new int[b.length() + 1];
-		// 字符串的反转
-		for (int i = 0; i &lt; a.length(); i++) {
-			c[a.length() - i] = a.charAt(i) - '0'; // 321会变成数组中的0123形式
-		}
-		for (int j = 0; j &lt; b.length(); j++) {
-			d[b.length() - j] = b.charAt(j) - '0';
-		}
-		// 核心代码
-		for (int i = 1; i &lt;= a.length(); i++) {
-			for (int j = 1; j &lt;= b.length(); j++) {
-				total[i + j - 1] += c[i] * d[j];
-				total[i + j] += total[i + j - 1] / 10; // 所进的位数（不可用c[i]*d[j]/10）
-				total[i + j - 1] %= 10; // 进位后还剩的
-
-			}
-		}
-		int index = total.length - 1;
-		while (total[index] == 0 &amp;&amp; index &gt; 1) // 这范围多调试，默认答案结尾为total[1]
-			index--; // 把前面多于的零去掉
-		for (int i = index; i &gt;= 1; i--) {
-			System.out.print(total[i]);
-		}
-
-	}
-
-}
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome中请求头转为字典类型]]></title>
-        <id>https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/</id>
-        <link href="https://lililib.github.io/post/chrome-zhong-qing-qiu-tou-zhuan-wei-zi-dian-lei-xing/">
-        </link>
-        <updated>2020-12-05T14:18:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>请求头一个一个加引号太麻烦了，python处理为字典型数据</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>请求头一个一个加引号太麻烦了，python处理为字典型数据</p>
-<!-- more -->
-<h2 id="源码">源码</h2>
-<pre><code>import json
-# 使用三引号将浏览器复制出来的requests headers参数赋值给一个变量
-headers = &quot;&quot;&quot;
-accept: image/avif,image/webp,image/apng,image/*,*/*;q=0.8
-accept-encoding: gzip, deflate, br
-accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
-dnt: 1
-referer: https://www.manhuagui.com/
-sec-fetch-dest: image
-sec-fetch-mode: no-cors
-sec-fetch-site: cross-site
-user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36
-
-&quot;&quot;&quot;
- 
-# 去除参数头尾的空格并按换行符分割
-headers = headers.strip().split('\n')
- 
-# 使用字典生成式将参数切片重组，并去掉空格，处理带协议头中的://
-headers = {x.split(':')[0].strip(): (&quot;&quot;.join(x.split(':')[1:])).strip().replace('//', &quot;://&quot;) for x in headers}
- 
-# 使用json模块将字典转化成json格式打印出来
-print(json.dumps(headers,indent=1))
-</code></pre>
-<h2 id="处理结果">处理结果</h2>
-<pre><code>{
- &quot;accept&quot;: &quot;image/avif,image/webp,image/apng,image/*,*/*;q=0.8&quot;,
- &quot;accept-encoding&quot;: &quot;gzip, deflate, br&quot;,
- &quot;accept-language&quot;: &quot;zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7&quot;,
- &quot;dnt&quot;: &quot;1&quot;,
- &quot;referer&quot;: &quot;https://www.manhuagui.com/&quot;,
- &quot;sec-fetch-dest&quot;: &quot;image&quot;,
- &quot;sec-fetch-mode&quot;: &quot;no-cors&quot;,
- &quot;sec-fetch-site&quot;: &quot;cross-site&quot;,
- &quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[漫画柜《鬼灭之刃》爬取]]></title>
-        <id>https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/</id>
-        <link href="https://lililib.github.io/post/man-hua-ju-lesslessgui-mie-zhi-ren-greatergreater-pa-chong/">
-        </link>
-        <updated>2020-12-05T13:12:45.000Z</updated>
-        <summary type="html"><![CDATA[<p>漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了</p>
-<ul>
-<li>设置chrome浏览器无界面模式，更节省内存资源</li>
-<li>os库判断路径是否存在，不存在则创建</li>
-<li>多线程下载</li>
-</ul>
-]]></summary>
-        <content type="html"><![CDATA[<p>漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了</p>
-<ul>
-<li>设置chrome浏览器无界面模式，更节省内存资源</li>
-<li>os库判断路径是否存在，不存在则创建</li>
-<li>多线程下载</li>
-</ul>
-<!-- more -->
-<h2 id="分析思路">分析思路</h2>
-<ol>
-<li>
-<p>判断是否全为静态内容<br>
-a. 根据network中那个最大的html文件是否包含所需网页内容（直接美丽汤解析）</p>
-</li>
-<li>
-<p>那就是动态内容（优先selenium爬取）<br>
-a. 所需内容文字，图片，视频地址是否在XHR 中（可能需要解密）<br>
-b. 以上都不是一定在触发某个js在加载内容在html中，（需要解密）</p>
-</li>
-</ol>
-<h2 id="网站结构">网站结构</h2>
-<p>每篇漫画详情页可以得到所有章节地址，根据章节地址进入浏览漫画界面，分析html中不能得到图片src，xhr也没有，所以为js加载，获取图片这一部分通过浏览器爬取真实地址（是否也可以直接得到二进制内容灌进文件？）</p>
-<h2 id="源码">源码</h2>
-<pre><code>
-from bs4 import BeautifulSoup           #美丽汤
-import requests
-import re as reg                #正则
-from selenium import webdriver          #无头浏览器
-import os                               #文件路径的操作
-from multiprocessing import Pool            #多线程
-
-from selenium.webdriver.chrome.options import Options     #隐藏浏览器界面
-
-#获取回的所有地址与题目
-def get_chapter():
-    try:
-        src='https://www.manhuagui.com/comic/19430/'
-        header={&quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;}
-        re=requests.get(url=src,headers=header)
-        html=re.text
-        #判断是否联通
-        print(re.status_code)                   
-        soup=BeautifulSoup(html,'lxml')
-        haha=soup.find_all(class_=&quot;chapter-list cf mt10&quot;)[0]
-        for i in haha.find_all(name='li'):
-            chapter=i.a['href']
-            chapterTitle=i.a['title']
-            #只能用在for中调用是作为迭代器
-            yield{                          
-                'chapter':chapter,
-                'title':chapterTitle
-            }
-    except:
-        print('获取章节地址出错')
-
-#获取某回中共有多少张图片，并得到每张的图片页面（不是真实地址）地址去获取他
-def get_detail(url,title):
-    src='https://www.manhuagui.com/'+url
-    header={&quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;}
-    try:
-        re=requests.get(url=src,headers=header)
-        html=re.text
-        soup=BeautifulSoup(html,'lxml')
-        headerTitle=soup.find_all(class_=&quot;w980 title&quot;)[0]
-        page=headerTitle.find_all(name='span')[1]
-        #正则的查找
-        dd=reg.findall(r&quot;\d+&quot;,page.text)[0]                     
-        num=int(dd)
-        for i in range(1,num+1):
-            print()
-            url=src+'#p='+str(i)    #图片页面地址
-            get_img(url,title)
-    except:
-        print(&quot;获取图片失败&quot;)
-    
-#通过无头浏览器加载动态元素取得真实地址
-def get_img(url,title):
-    try:
-        print(url)
-        #设置chrome浏览器无界面模式
-        chrome_options=Options()
-        chrome_options.add_argument('--headless')
-        bro = webdriver.Chrome(chrome_options=chrome_options)
-        bro.get(url)
-        html=bro.page_source    #页面所有元素加载完成后获取源码，这里写的美中不足，改进当图片地址得到后就自动获取源码，不用等全部加载完
-        bro.close()
-        soup=BeautifulSoup(html,'lxml')
-        #获得属性
-        src=soup.find(id=&quot;mangaFile&quot;)['src']        #获取到真实图片地址
-        save_img(src,title)
-    except:
-        print(&quot;获取真实地址失败&quot;)
-
-bigbig=0
-# 保存到文件
-def save_img(src,title):
-    try:
-        #这里需要使用global下面才能自加一
-        global bigbig
-        path='D:\download\鬼灭之刃\{}'.format(title)
-        #os库判断路径是否存在，不存在则创建
-        if not os.path.exists(path):
-            os.makedirs('D:\download\鬼灭之刃\{}'.format(title))  
-        path='{}\{}.jpeg'.format(path,bigbig) 
-        bigbig=bigbig+1
-        header={
-        &quot;accept&quot;: &quot;image/avif,image/webp,image/apng,image/*,*/*;q=0.8&quot;,
-        &quot;accept-encoding&quot;: &quot;gzip, deflate, br&quot;,
-        &quot;accept-language&quot;: &quot;zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7&quot;,
-        &quot;dnt&quot;: &quot;1&quot;,
-        &quot;referer&quot;: &quot;https://www.manhuagui.com/&quot;,
-        &quot;sec-fetch-dest&quot;: &quot;image&quot;,
-        &quot;sec-fetch-mode&quot;: &quot;no-cors&quot;,
-        &quot;sec-fetch-site&quot;: &quot;cross-site&quot;,
-        &quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot; 
-        }
-        print(src)
-        re=requests.get(url=src,headers=header)
-        content=re.content
-        #文件写入二进制
-        with open(path,'wb') as haha:
-            haha.write(content)
-        print('ok!!!!')
-    except:
-        print(&quot;保存到文件时出错&quot;)
-
-booksrc=[]
-for i in get_chapter():
-    booksrc.append(i)
-
-#丢入某回的地址
-def main(i):
-    src=i.get('chapter')
-    title=i.get('title')
-    print('正在获取{}     {}'.format(title,src))
-    get_detail(src,title)
-
-if __name__=='__main__':
-    #多线程
-    pool=Pool(processes=4)   #20个进程调用获得所有书
-    group=booksrc  #a列表是网站所有书的链接地址
-    print(group)
-    pool.map(main,group)
-    
-</code></pre>
-<p>爬取巨慢，完成图像</p>
-<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1607177847912.png" alt="" loading="lazy"></figure>
-<p>有待优化：当浏览器加载到某个元素后就可以结束得到源码，或者渲染出图片后就以二进制保存</p>
 ]]></content>
     </entry>
 </feed>
