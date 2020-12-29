@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-26T02:29:11.469Z</updated>
+    <updated>2020-12-29T14:01:39.205Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,158 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[回溯，动态规划-求n个数中和为k的最少解]]></title>
+        <id>https://lililib.github.io/post/hui-su-dong-tai-gui-hua-qiu-n-ge-shu-zhong-he-wei-k-de-zui-shao-jie/</id>
+        <link href="https://lililib.github.io/post/hui-su-dong-tai-gui-hua-qiu-n-ge-shu-zhong-he-wei-k-de-zui-shao-jie/">
+        </link>
+        <updated>2020-12-29T13:24:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>如题：给定若干正整数，从中选出若干数，使他们的和恰好为k，要求找选择元素最少的解</p>
+<p>##动态规划<br>
+可以看成0-1背包问题，物品价值与重量为数本身，背包容量为k，网格中的值更新时需要记录是由哪些值所引起的改变。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>如题：给定若干正整数，从中选出若干数，使他们的和恰好为k，要求找选择元素最少的解</p>
+<p>##动态规划<br>
+可以看成0-1背包问题，物品价值与重量为数本身，背包容量为k，网格中的值更新时需要记录是由哪些值所引起的改变。</p>
+<!-- more -->
+<p>0-1背包问题中，有三种可能情况，1：当前值等于正上面那个值 （背包容量小于该行重量）。2：当前值等于该行价值加上上面所需要的最优值，3：当前值等于正上面那个值（由max函数比较两个值相等，但是取的是正上面的值，记录路径需要当成第2种情况）</p>
+<pre><code>import java.util.ArrayList;
+import java.util.Scanner;
+
+/*
+ * 给定若干正整数，从中选出若干数，使他们的和恰好为k，要求找选择元素最少的解（抽取不放回的选择）
+ */
+public class 给定若干正数和为k最少相加的 {
+
+	public static void main(String[] args) {
+		// 输入n代表有n个正整数，接着输入n个正整数，接着输入k代表求和
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int a[] = new int[n + 1];
+		for (int i = 1; i &lt;= n; i++)
+			a[i] = in.nextInt();
+		int key = in.nextInt();
+		map[][] jj = new map[n + 1][key + 1];
+		in.close();
+		for (int i = 0; i &lt; n + 1; i++)
+			for (int j = 0; j &lt; key + 1; j++) {
+				map haha = new map();//这一步一定需要，切记
+				jj[i][j] = haha;
+				jj[i][j].i = 0;
+			}
+
+		for (int i = 1; i &lt;= n; i++) {
+			for (int j = 1; j &lt;= key; j++) {
+				if (j &gt;= a[i]) {
+					int temp = jj[i - 1][j - a[i]].i + a[i];
+					jj[i][j].i = Math.max(jj[i - 1][j].i, temp);
+					// 当前值等于等于上面那个值（由max函数比较两个值相等，但是取的是正上面的值，记录路径需要当成第2种情况）（第二个或的作用）
+					if (jj[i][j].i == temp || jj[i - 1][j].i == temp) {
+						ArrayList&lt;Integer&gt; tt = new ArrayList&lt;Integer&gt;();
+						tt = copy(jj[i - 1][j - a[i]].nums);
+						// tt=jj[i-1][j-a[i]].nums; //这里传的是地址给tt
+						tt.add(a[i]);
+						jj[i][j].nums = tt;
+					} else { // 直接上面的值
+						jj[i][j].nums = copy(jj[i - 1][j].nums);
+					}
+				} else {
+					jj[i][j].i = jj[i - 1][j].i;
+					jj[i][j].nums = copy(jj[i - 1][j].nums);
+				}
+			}
+		}
+
+		for (int i = 1; i &lt;= n; i++) {
+			for (int j = 1; j &lt;= key; j++) {
+				if (jj[i][j].i == key &amp;&amp; jj[i][j].nums.size() &gt; 1) {
+					for (int t : jj[i][j].nums)
+						System.out.print(t + &quot; &quot;);
+					System.out.println();
+				}
+
+			}
+		}
+
+	}
+
+	private static ArrayList&lt;Integer&gt; copy(ArrayList&lt;Integer&gt; nums) {
+		ArrayList&lt;Integer&gt; aa = new ArrayList&lt;Integer&gt;();
+		for (int i : nums)
+			aa.add(i);
+		return aa;
+	}
+
+	static class map {
+		int i;
+		ArrayList&lt;Integer&gt; nums = new ArrayList&lt;Integer&gt;(); //记录路径
+	}
+
+}
+</code></pre>
+<p>截图：<br>
+<img src="https://lililib.github.io//post-images/1609249684623.png" alt="" loading="lazy"></p>
+<p>##回溯<br>
+解空间为子集树，每个数字只有取与不取的区别。</p>
+<pre><code>
+public class 给定若干正数和为k最少相加的a {
+	static int[] a;     //n个数
+	static int n;
+	static int[] x;        //解向量
+	static int target;      //k
+	static int cSum;        
+
+	private static void backtrack(int i) {
+		if (i &gt; n - 1) {
+			if (target == cSum) {
+				for (int j = 0; j &lt; x.length; j++) {
+					if (x[j] == 1)
+						System.out.print(a[j] + &quot; &quot;);
+				}
+				System.out.println();
+			}
+		} else {
+            //没有进行剪枝
+			if (cSum + a[i] &lt;= target) { // 第i个数取   
+				x[i] = 1;
+				cSum += a[i];
+				backtrack(i + 1);
+				cSum -= a[i];       //他还要进行不取，所以还要把他减回去
+			}
+
+			x[i] = 0;
+			backtrack(i + 1);
+		}
+	}
+
+	public static void main(String[] args) {
+		int _a[] = { 1, 2, 3, 4, 5, 6 };
+		int _tar = 5;
+
+		a = _a;
+		n = _a.length;
+		x = new int[n];
+		target = _tar;
+		cSum = 0;
+		backtrack(0);   
+
+	}
+}
+
+</code></pre>
+<p>截图：<br>
+<img src="https://lililib.github.io//post-images/1609250224116.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[科幻的常见类型]]></title>
+        <id>https://lililib.github.io/post/ke-huan-de-chang-jian-lei-xing/</id>
+        <link href="https://lililib.github.io/post/ke-huan-de-chang-jian-lei-xing/">
+        </link>
+        <updated>2020-12-26T03:22:08.000Z</updated>
+        <content type="html"><![CDATA[<p>test</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[手撕中缀表达式转后缀表达式（逆波兰式）]]></title>
         <id>https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/</id>
@@ -796,172 +948,6 @@ public class LCS2 {
 </code></pre>
 <h2 id="参考书籍">参考书籍</h2>
 <p><a href="https://book.douban.com/subject/26979890/">《算法图解》</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Karatsuba大数乘法]]></title>
-        <id>https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/</id>
-        <link href="https://lililib.github.io/post/karatsuba-da-shu-cheng-fa/">
-        </link>
-        <updated>2020-12-16T06:06:01.000Z</updated>
-        <summary type="html"><![CDATA[<p>Karatsuba算法是一种快速相乘算法，它由俄罗斯数学家Anatolii Alexeevitch Karatsuba于1960年提出并于1962年发表。普通乘法的复杂度是n2，而Karatsuba算法的复杂度仅为3n<sup>log3≈3n</sup>1.585.</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Karatsuba算法是一种快速相乘算法，它由俄罗斯数学家Anatolii Alexeevitch Karatsuba于1960年提出并于1962年发表。普通乘法的复杂度是n2，而Karatsuba算法的复杂度仅为3n<sup>log3≈3n</sup>1.585.</p>
-<!-- more -->
-<h2 id="步骤">步骤</h2>
-<p>现有两个大数，x，y。<br>
-首先将x，y分别拆开成为两部分，可得x1，x0，y1，y0。他们的关系如下：<br>
-x = x1 *  10^m+ x0；<br>
-y = y1 * 10^m + y0。其中m为正整数，m &lt; n，且x0，y0 小于 10^m。<br>
-那么 xy = (x1 * 10^m + x0)(y1 * 10^m + y0)<br>
-= <strong>z2 * 10^2m + z1 * 10^m + z0</strong> ，其中：<br>
-z2 = x1 * y1；<br>
-z1 = x1 * y0 + x0 * y1；<br>
-z0 = x0 * y0。<br>
-此步骤共需4次乘法，但是由Karatsuba改进以后仅需要3次乘法。因为：<br>
-z1 = x1 * y0+ x0 * y1<br>
-z1 = (x1 + x0) * (y1 + y0) - x1 * y1 - x0 * y0，<br>
-=(x1 + x0) * (y1 + y0)-z2-z0<br>
-故z1 便可以由一次乘法及加减法得到。</p>
-<h2 id="实例">实例</h2>
-<p>设x = 12345，y=6789，令m=3。那么有：<br>
-12345 = 12 * 1000 + 345；<br>
-6789 = 6 * 1000 + 789。<br>
-下面计算：<br>
-z2 = 12 * 6 = 72；<br>
-z0 = 345 * 789 = 272205；<br>
-z1 = (12 + 345) * (6 + 789) - z2 - z0 = 11538。<br>
-然后我们按照移位公式（xy = z2 * 10^(2m) + z1 * 10^(m) + z0）可得：<br>
-xy = 72 * 10002 + 11538 * 1000 + 272205 = 83810205。</p>
-<h2 id="源码">源码</h2>
-<p>这里加减法需要用到BigInteger,因为数字位数足够长的话，用long型最终还是会越界，（不过过瘾的是在jdk8中BigInteger类里面就包含了Karatsuba算法。。。。算了算了，重在了解算法━━(￣ー￣*|||━━）</p>
-<pre><code>import java.math.BigInteger;
-import java.util.Scanner;
-
-public class Karatsuba {
-
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		String x = in.next();
-		String y = in.next();
-		in.close();
-		BigInteger num1 = new BigInteger(x);
-		BigInteger num2 = new BigInteger(y);
-		String answer = Karatsuba(num1, num2).toString();
-		System.out.println(answer);
-
-	}
-
-	/**
-	 * 
-	 * @param a
-	 * @param b
-	 * @return 返回a*b的结果
-	 */
-	public static BigInteger Karatsuba(BigInteger x, BigInteger y) {
-		BigInteger num1 = x;
-		BigInteger num2 = y;
-		if (x.toString().length() &lt; 9 || y.toString().length() &lt; 9) {
-
-			return num1.multiply(num2);
-		}
-
-		else {
-			int halfN = Math.max(x.toString().length(), x.toString().length()) / 2;
-			// 这里不能用字符串的分割，如123456789789456123*12, 12被分割肯定报错
-			BigInteger[] a_b = num1.divideAndRemainder(BigInteger.valueOf(10).pow(halfN));
-			BigInteger a = a_b[0]; // 商
-			BigInteger b = a_b[1]; // 余数
-			BigInteger[] c_d = num2.divideAndRemainder(BigInteger.valueOf(10).pow(halfN));
-			BigInteger c = c_d[0];
-			BigInteger d = c_d[1];
-			BigInteger z2 = Karatsuba(a, c);// a*c              ，运用了分治
-			BigInteger z1 = Karatsuba(b, d);// b*d
-			BigInteger step1 = Karatsuba(a.add(b), c.add(d));
-			BigInteger z3 = step1.subtract(z1.add(z2)); // (a + b) * (c + d) - z2 - z1
-			return z2.multiply(BigInteger.valueOf(10).pow(2 * halfN)).add(z1)
-					.add(z3.multiply(BigInteger.valueOf(10).pow(halfN)));
-		}
-	}
-}
-</code></pre>
-<h2 id="参考文章">参考文章</h2>
-<p><a href="https://blog.csdn.net/u010983881/article/details/77503519">大数乘法问题及其高效算法</a></p>
-<p><a href="http://litexy.com/2018/08/23/%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8AJava%E5%AE%9E%E7%8E%B0/">大整数相乘问题总结以及Java实现</a></p>
-<p><a href="https://baike.baidu.com/item/karatsuba%E4%B9%98%E6%B3%95">百科：karatsuba乘法</a></p>
-<p><a href="https://oi-wiki.org/math/bignum/#_11">OI Wiki:高精度计算</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[大数加减法]]></title>
-        <id>https://lililib.github.io/post/da-shu-jia-jian-fa/</id>
-        <link href="https://lililib.github.io/post/da-shu-jia-jian-fa/">
-        </link>
-        <updated>2020-12-15T14:41:13.000Z</updated>
-        <summary type="html"><![CDATA[<p>大数加减法<strong>模拟竖式计算</strong>的累加累减技巧，在数组中进行进位借位操作。时间复杂度都为O(1)</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>大数加减法<strong>模拟竖式计算</strong>的累加累减技巧，在数组中进行进位借位操作。时间复杂度都为O(1)</p>
-<!-- more -->
-<h2 id="加法">加法</h2>
-<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608087219758.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608087226606.png" alt="" loading="lazy"></figure>
-<h2 id="减法">减法</h2>
-<figure data-type="image" tabindex="3"><img src="https://lililib.github.io//post-images/1608087242949.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="https://lililib.github.io//post-images/1608087247484.png" alt="" loading="lazy"></figure>
-<h2 id="源码">源码</h2>
-<pre><code>package 高精度;
-
-import java.util.Scanner;
-
-public class test {
-
-	public static void main(String[] args) {
-		Scanner in=new Scanner(System.in);
-		String a=in.next();String b=in.next();
-		in.close();
-		int longest=Math.max(a.length(), b.length());//最长位数的数字
-		int total[]=new int[longest+2];		//结果，考虑进位答案的长度最长为最长的数的长度+1
-		int c[]=new int [longest+5];	//这里为什么默认加5，因为可以多余的设置为零，利于核心式的累加累减不会越c，d的界
-		int d[]=new int[longest+5];
-//a,b反转并存入数组，如123在数组中为0321，未填满的数字会默认为零，不会影响下面累加（如1234+34，数组中分别为04321 和04300）
-		for(int i=1;i&lt;=a.length();i++) {
-			c[i]=a.charAt(a.length()-i)-'0';
-		}
-		for(int i=1;i&lt;=b.length();i++) {
-			d[i]=b.charAt(b.length()-i)-'0';
-		}
-		//累加核心式
-		for(int i=1;i&lt;total.length-1;i++) {
-			total[i]+=c[i]+d[i];
-			total[i+1]+=total[i]/10;
-			total[i]%=10;
-		}
-		
-		//减法核心式
-        //这里减法需要a&gt;b，不然需要判断调换位置并在结果加以负号
-		/*
-		for(int i=1;i&lt;total.length-1;i++) {
-			if(c[i]&lt;d[i]) {
-				c[i+1]--;
-				c[i]+=10;
-			}
-			total[i]=c[i]-d[i];
-		}
-		*/
-        //去掉前面多余的零
-		int index=total.length-1;
-		while(total[index]==0 &amp;&amp; index&gt;1) 
-			index--;
-		for(int i=index;i&gt;=1;i--) {
-			System.out.print(total[i]);
-		}
-		
-			
-	}
-
-}
-
-</code></pre>
 ]]></content>
     </entry>
 </feed>
