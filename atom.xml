@@ -2,14 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2020-12-29T14:01:39.205Z</updated>
+    <updated>2021-02-28T08:05:11.379Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, 煨酒小童</rights>
+    <rights>All rights reserved 2021, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[小米刷机大概步骤]]></title>
+        <id>https://lililib.github.io/post/xiao-mi-shua-ji-da-gai-bu-zou/</id>
+        <link href="https://lililib.github.io/post/xiao-mi-shua-ji-da-gai-bu-zou/">
+        </link>
+        <updated>2021-02-28T07:17:22.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>
+<p>先打开fastboot 也就是解锁（直接谷歌）</p>
+</li>
+<li>
+<p>安装第三方rec，如果线刷不进去就先安装官方的开发版，获取root，安装twrp APP，在里面选择合适的rec进行直接安装（若是安装了不正确的版本rec会无限卡兔子且进入不了rec，此时只有线刷官方包再重复以上）</p>
+</li>
+<li>
+<p>清除数据，选择别人的rom升级就可以了，具体细节：<a href="https://www.bilibili.com/video/BV1cK411W7jS?p=7&amp;t=44">如何刷原生</a></p>
+</li>
+<li>
+<p>一些坑：连接fastboot时若是屏幕上显示</p>
+</li>
+</ol>
+<blockquote>
+<p>press any key to continue<br>
+一般是不支持win10 3.0的驱动啥的（谷歌一下即可）<br>
+若是设备管理器那儿找不到安卓设备，可以安装驱动精灵后，抽插手机会显示安装安卓驱动</p>
+</blockquote>
+<ol start="5">
+<li>8se 安卓10刷机的<a href="https://wws.lanzous.com/iv22hma8sad">twrp镜像</a>，<a href="https://wws.lanzous.com/iN6D5ma8sjc">搞机助手</a>，<a href="https://wws.lanzous.com/id8WZma95yf">usb驱动修复</a></li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[回溯，动态规划-求n个数中和为k的最少解]]></title>
         <id>https://lililib.github.io/post/hui-su-dong-tai-gui-hua-qiu-n-ge-shu-zhong-he-wei-k-de-zui-shao-jie/</id>
@@ -151,15 +181,6 @@ public class 给定若干正数和为k最少相加的a {
 </code></pre>
 <p>截图：<br>
 <img src="https://lililib.github.io//post-images/1609250224116.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[科幻的常见类型]]></title>
-        <id>https://lililib.github.io/post/ke-huan-de-chang-jian-lei-xing/</id>
-        <link href="https://lililib.github.io/post/ke-huan-de-chang-jian-lei-xing/">
-        </link>
-        <updated>2020-12-26T03:22:08.000Z</updated>
-        <content type="html"><![CDATA[<p>test</p>
 ]]></content>
     </entry>
     <entry>
