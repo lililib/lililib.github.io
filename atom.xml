@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2021-03-12T06:43:50.682Z</updated>
+    <updated>2021-03-12T06:48:07.159Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -16,7 +16,10 @@
         <link href="https://lililib.github.io/post/hu-bei-shi-fan-da-xue-ren-lian-pa-qu/">
         </link>
         <updated>2021-03-12T05:36:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>疫情期间宿舍安装了人脸识别门禁，要求登录一个网站上传人脸照片。对于有价值的信息我有很好的嗅觉（素颜女生嘿嘿(●ˇ∀ˇ●)），感觉可以查探查探.......</p>
+]]></summary>
         <content type="html"><![CDATA[<p>疫情期间宿舍安装了人脸识别门禁，要求登录一个网站上传人脸照片。对于有价值的信息我有很好的嗅觉（素颜女生嘿嘿(●ˇ∀ˇ●)），感觉可以查探查探.......</p>
+<!-- more -->
 <p>F12刷新审查网络请求，逐个点击查看发现了一个请求有学号构成的接口，这个接口有明显的个人信息imgstr应该就是个人上传的照片了</p>
 <p><img src="https://lililib.github.io//post-images/1615528372126.jpg" alt="" loading="lazy"><br>
 <img src="https://lililib.github.io//post-images/1615528065782.jpg" alt="" loading="lazy"></p>
@@ -133,7 +136,7 @@ wb.save('test.xls')
 <li>索然无味，食堂路上遇到的美女也没有那么高不可攀了</li>
 </ol>
 <h3 id="总结">总结</h3>
-<pre><code>啊，原来我的高中同学还是那么漂亮，个版子滴！
+<pre><code>啊，原来我的高中同学还是那么漂亮
 </code></pre>
 ]]></content>
     </entry>
@@ -147,7 +150,7 @@ wb.save('test.xls')
 <li>手机开数据与开wifi上网哪个费电？</li>
 </ol>
 <p>数据更费电，距信号源越远手机所需连接的功率就越大</p>
-]]></content>
+<!-- more -->]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[小米刷机大概步骤]]></title>
@@ -155,13 +158,17 @@ wb.save('test.xls')
         <link href="https://lililib.github.io/post/xiao-mi-shua-ji-da-gai-bu-zou/">
         </link>
         <updated>2021-02-28T07:17:22.000Z</updated>
+        <summary type="html"><![CDATA[<ol>
+<li>先打开fastboot 也就是解锁（直接谷歌）</li>
+<li>安装第三方rec，如果线刷不进去就先安装官方的开发版，获取root，安装twrp APP，在里面选择合适的rec进行直接安装（若是安装了不正确的版本rec会无限卡兔子且进入不了rec，此时只有线刷官方包再重复以上）</li>
+</ol>
+]]></summary>
         <content type="html"><![CDATA[<ol>
-<li>
-<p>先打开fastboot 也就是解锁（直接谷歌）</p>
-</li>
-<li>
-<p>安装第三方rec，如果线刷不进去就先安装官方的开发版，获取root，安装twrp APP，在里面选择合适的rec进行直接安装（若是安装了不正确的版本rec会无限卡兔子且进入不了rec，此时只有线刷官方包再重复以上）</p>
-</li>
+<li>先打开fastboot 也就是解锁（直接谷歌）</li>
+<li>安装第三方rec，如果线刷不进去就先安装官方的开发版，获取root，安装twrp APP，在里面选择合适的rec进行直接安装（若是安装了不正确的版本rec会无限卡兔子且进入不了rec，此时只有线刷官方包再重复以上）</li>
+</ol>
+<!-- more -->
+<ol start="3">
 <li>
 <p>清除数据，选择别人的rom升级就可以了，具体细节：<a href="https://www.bilibili.com/video/BV1cK411W7jS?p=7&amp;t=44">如何刷原生</a></p>
 </li>
