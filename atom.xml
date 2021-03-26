@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lililib.github.io/</id>
     <title>煨酒小童</title>
-    <updated>2021-03-12T06:50:20.751Z</updated>
+    <updated>2021-03-26T10:56:03.657Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lililib.github.io/"/>
     <link rel="self" href="https://lililib.github.io/atom.xml"/>
@@ -10,6 +10,19 @@
     <logo>https://lililib.github.io/images/avatar.png</logo>
     <icon>https://lililib.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 煨酒小童</rights>
+    <entry>
+        <title type="html"><![CDATA[一些不太成熟的想法]]></title>
+        <id>https://lililib.github.io/post/yi-xie-bu-tai-cheng-shou-de-xiang-fa/</id>
+        <link href="https://lililib.github.io/post/yi-xie-bu-tai-cheng-shou-de-xiang-fa/">
+        </link>
+        <updated>2021-03-26T10:36:07.000Z</updated>
+        <summary type="html"><![CDATA[<p>看到《毛泽东选集》里面一个案列，农民运动时除了斗地主之外还有一个很大的运动——破四旧。其中有一项勤俭节约，禁开酒席，禁买南货斋果送情。原因是工业产品价高，农产品极为价廉的原因，农民受商人剥削厉害，借以自卫的一个手段。由此想到，贫困，经济条件不好的地区常常有暴动，骚乱的一些原因。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>看到《毛泽东选集》里面一个案列，农民运动时除了斗地主之外还有一个很大的运动——破四旧。其中有一项勤俭节约，禁开酒席，禁买南货斋果送情。原因是工业产品价高，农产品极为价廉的原因，农民受商人剥削厉害，借以自卫的一个手段。由此想到，贫困，经济条件不好的地区常常有暴动，骚乱的一些原因。</p>
+<!-- more -->
+<p>一个大的国家，如果地区贫富差距太大，必定对赤贫地区极为的不公平。生产力低下，要获得同样的工业品，边远地区往往要用极多的农产品来相抵，其劳动量肯定天壤之别。在这个大的国家环境里，你不买这些工业品肯定不现实。即使说给你自治权吧，但是相对整个大体量来说，外来省份的货物还是会销售进来，当地产品价值还是太廉价。两相一对比，划不来，不公平，那就另立门户吧。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[湖北师范大学人脸爬取]]></title>
         <id>https://lililib.github.io/post/hu-bei-shi-fan-da-xue-ren-lian-pa-qu/</id>
@@ -724,230 +737,6 @@ public class Knapsack0_1_Problem {
 
 </code></pre>
 <p><a href="https://book.douban.com/subject/26979890/">参考书籍</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[冒泡，二分，合并，快速排序]]></title>
-        <id>https://lililib.github.io/post/er-fen-he-bing-pai-xu/</id>
-        <link href="https://lililib.github.io/post/er-fen-he-bing-pai-xu/">
-        </link>
-        <updated>2020-12-19T02:36:36.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="二分排序法">二分排序法</h2>
-<p>二分查找法主要是解决在“一堆数中找出指定的数”这类问题。</p>
-<p>而想要应用二分查找法，这“一堆数”必须有以下特征：</p>
-<ol>
-<li>存储在数组中</li>
-<li>有序排列</li>
-</ol>
-<p>二分查找思路，<strong>在一个有序的数组中（从小到大排列），与中间的那个数作比较，若相等，则找到，若小于中间的数则继续在左边那一块重复操作，反之重复右边的那块操作。</strong></p>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="二分排序法">二分排序法</h2>
-<p>二分查找法主要是解决在“一堆数中找出指定的数”这类问题。</p>
-<p>而想要应用二分查找法，这“一堆数”必须有以下特征：</p>
-<ol>
-<li>存储在数组中</li>
-<li>有序排列</li>
-</ol>
-<p>二分查找思路，<strong>在一个有序的数组中（从小到大排列），与中间的那个数作比较，若相等，则找到，若小于中间的数则继续在左边那一块重复操作，反之重复右边的那块操作。</strong></p>
-<!-- more -->
-<p>有递归方法与普通方法</p>
-<pre><code>import java.util.Arrays;
-import java.util.Scanner;
-
-/**
- * 输入一个int n表示有几个数 接着输入n个有序的数字即可
- * 
- * @author 煨酒小童
- *
- */
-public class BinarySearch0 {
-	static int haha = 7; // 查找7这个数的下标
-
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		int n = in.nextInt();
-		int num[] = new int[n];
-		for (int i = 0; i &lt; n; i++)
-			num[i] = in.nextInt();
-		Arrays.sort(num); // 排为有序
-		in.close();
-		System.out.println(find(num, 0, n - 1));
-	}
-
-	// i为左边界，j为右边界
-	// 非递归方式
-//	private static int  find(int[] num, int i, int j) {
-//		while(i&lt;=j) {
-//			int mid=(i+j)/2;
-//			if(num[mid]==haha)
-//				return mid;
-//			else if(num[mid]&gt;haha)
-//				j=mid-1;
-//			else
-//				i=mid+1;
-//		}	
-//		return -1;
-//		
-//	}
-	// 递归方式
-	private static int find(int[] num, int i, int j) {
-		int mid = (i + j) / 2;
-		if (i &gt; j)
-			return -1;
-		else if (num[mid] == haha)
-			return mid;
-		else if (num[mid] &gt; haha)
-			return find(num, i, mid - 1);
-		else
-			return find(num, mid + 1, j);
-
-	}
-}
-
-</code></pre>
-<h2 id="合并排序">合并排序</h2>
-<p>采用分治的思想层层剖析再合并<br>
-<img src="https://lililib.github.io//post-images/1608356651391.gif" alt="" loading="lazy"><br>
-思路：<strong>把一个数组分成两半，分别排好序，然后再合并一个完整的有序的数组</strong>（他的优点在于对于已排好序的两部分进行合并非常精妙且快速），在分成两半后，它还可以进行再分两半，直到分的不能再分为止。一直分分分，就是分治法的精髓。<br>
-merge方法也就是合并是难点所在：<br>
-<img src="https://lililib.github.io//post-images/1608347271363.png" alt="" loading="lazy"></p>
-<p><strong>本质是 L 与 K 的比较，谁大（或小）就把所指的数放入 temp 数组中，并把指针移动到下一位，一直重复下去，当有一方越过其自己的边界，意味着另一方还有剩余，则把剩余的全部放在 temp 数组中</strong></p>
-<pre><code>public class MergeSort {
-	static int num[];
-
-	public static void main(String[] args) {
-		int n = 20;
-		num = new int[n];
-		for (int i = 0; i &lt; n; i++) {
-			double d = Math.random();
-			num[i] = (int) (d * 100);
-			System.out.print(num[i] + &quot; &quot;);
-		}
-		// 上面生成20个0-100的随机数
-		mergesort(num, 0, n - 1); // 合并排序
-		System.out.println();
-		for (int i : num)
-			System.out.print(i + &quot; &quot;);
-	}
-
-	private static void mergesort(int[] num2, int left, int right) {
-		if (left &lt; right) {
-			int mid = (left + right) / 2;
-			mergesort(num2, left, mid);
-			mergesort(num2, mid + 1, right); // 这里利用了递归与分治
-			merge(num2, left, right);
-		}
-
-	}
-
-	private static void merge(int[] num2, int left, int right) {
-		int k = 0, mid = (left + right) / 2, left0 = left, // 这个暂时不思考，看到后面就理解了
-				j = mid + 1, // 另一半的左边的下标
-				temp[] = new int[(right - left) + 1]; // 装排好序的数
-		while (left &lt;= mid &amp;&amp; j &lt;= right) {
-			if (num2[left] &lt; num2[j])
-				temp[k++] = num2[left++];
-			else
-				temp[k++] = num2[j++];
-		}
-		if (left &gt; mid) // 第二个序列有剩余，则把剩余的数依次写在temp后面
-			for (int i = j; i &lt;= right; i++)
-				temp[k++] = num2[i];
-		if (j &gt; right)
-			for (int i = left; i &lt;= mid; i++)
-				temp[k++] = num2[i];
-		for (int i = 0; i &lt; temp.length; i++)
-			// 这里一定要是left0，深处想想复制进入原数组，其他位置不能改动，假如left=3，right=8，则复制进去的时候还是从3到8
-			num2[left0++] = temp[i];
-
-	}
-
-}
-
-</code></pre>
-<p><a href="https://www.bilibili.com/video/BV1GT4y1G75V?from=search&amp;seid=15415047608501305073">参考视频</a></p>
-<h2 id="快速排序">快速排序</h2>
-<p><img src="https://lililib.github.io//post-images/1608356673379.gif" alt="" loading="lazy"><br>
-快速排序是冒泡排序的改进版，思路是，<strong>在其中找一个基准值，然后比较这个基准值，把整个数组分成都比基准值大的一部分，和都比他小的一部分，然后对剩下的两大部分，又可以进行类似操作</strong>。（对于基准值分成两大部分的函数最为妙，边界条件很不好理解，我要背下来！！太妙了）因为排序是就地进行的，不像合并排序一般还要再誊一遍值。</p>
-<pre><code>import java.util.Scanner;
-
-public class QuickSort {
-
-	public static void main(String[] args) {
-		int n = 8;
-		int num[] = new int[n];
-		Scanner in = new Scanner(System.in);
-		for (int i = 0; i &lt; n; i++) {
-			double d = Math.random();
-			num[i] = (int) (d * 100);
-			System.out.print(num[i] + &quot; &quot;);
-			// num[i]=in.nextInt();
-		}
-		// 以上为随机生成8个数
-		qSort(num, 0, n - 1);
-		System.out.println();
-		for (int i : num)
-			System.out.print(i + &quot; &quot;);
-
-	}
-
-	private static void qSort(int[] num, int i, int j) {
-		if (i &lt; j) {
-			int q = partion(num, i, j);
-			// 下面不要包含q了，q算一个中间值独立存在,只用再考虑两边就行了
-			qSort(num, i, q - 1); // 有分治的思想
-			qSort(num, q + 1, j);
-		}
-
-	}
-
-	private static int partion(int[] num, int i, int j) {
-		int bid = num[i];
-		int haha = i, k = j + 1;
-		while (true) {
-			while (num[++i] &lt; bid &amp;&amp; i &lt; j)
-				; // 寻找比bid大的那个数，找到并暂停
-			while (num[--k] &gt; bid &amp;&amp; k &gt;= i)
-				; // 寻找比bid小的那个数,找到并暂停，这里为什么可以不用写k&gt;=i?? 惊呆我了
-			if (i &gt;= k)		//如果没有遍历完，则进行上面两个值的交换
-				break;
-			// 交换
-			int temp = num[i];
-			num[i] = num[k];
-			num[k] = temp;
-		}
-		num[haha] = num[k];
-		num[k] = bid;
-		return k;
-
-	}
-
-}
-
-</code></pre>
-<p><a href="https://www.bilibili.com/video/BV1Tt411r75A?from=search&amp;seid=1917553773153484540">参考视频</a></p>
-<h2 id="冒泡排序">冒泡排序</h2>
-<p>最好情况时间复杂度为O(n),最差为O(n^2)</p>
-<p>如 7， 3， 9 ，2， 5</p>
-<ol>
-<li>3 7 2 5 9</li>
-<li>3 2 5 7 9</li>
-<li>2 3 5 7 9</li>
-<li>2 3 5 7 9</li>
-<li>2 3 5 7 9</li>
-</ol>
-<p>其实冒泡的本质是：<strong>有几个数就重复几趟，每一趟中都依次两两递进扫描，若不符合位置的则交换，每一趟下来都会找到一个最大值放在后面，所以后面扫描的时候可以跳过这个最大值少少扫描一点。</strong></p>
-<p>数组 a 中装着乱序的数</p>
-<pre><code>		for(int i=0;i&lt;a.length;i++) {          //进行n趟
-			for(int j=0;j&lt;a.length-1-i;j++) {       //两两递进扫描
-				if(a[j]&gt;a[j+1]) {
-					int temp=a[j];
-					a[j]=a[j+1];
-					a[j+1]=temp;
-				}
-			}
-		}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
