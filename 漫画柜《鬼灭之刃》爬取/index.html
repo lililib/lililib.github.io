@@ -1,0 +1,749 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/cat.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="煨酒小童">
+  <meta name="keywords" content="简记">
+  
+    <meta name="description" content="漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了  设置chrome浏览器无界面模式，更节省内存资源 os库判断路径是否存在，不存在则创建 多线程下载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="漫画柜《鬼灭之刃》爬取">
+<meta property="og:url" content="https://lililib.github.io/%E6%BC%AB%E7%94%BB%E6%9F%9C%E3%80%8A%E9%AC%BC%E7%81%AD%E4%B9%8B%E5%88%83%E3%80%8B%E7%88%AC%E5%8F%96/index.html">
+<meta property="og:site_name" content="煨酒小童">
+<meta property="og:description" content="漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了  设置chrome浏览器无界面模式，更节省内存资源 os库判断路径是否存在，不存在则创建 多线程下载">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lililib.github.io/%E6%BC%AB%E7%94%BB%E6%9F%9C%E3%80%8A%E9%AC%BC%E7%81%AD%E4%B9%8B%E5%88%83%E3%80%8B%E7%88%AC%E5%8F%96/1607177847912.png">
+<meta property="article:published_time" content="2020-12-05T13:12:45.000Z">
+<meta property="article:modified_time" content="2023-12-28T09:14:24.000Z">
+<meta property="article:author" content="煨酒小童">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lililib.github.io/%E6%BC%AB%E7%94%BB%E6%9F%9C%E3%80%8A%E9%AC%BC%E7%81%AD%E4%B9%8B%E5%88%83%E3%80%8B%E7%88%AC%E5%8F%96/1607177847912.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>漫画柜《鬼灭之刃》爬取 - 煨酒小童</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":"UA-168705442-1","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>(￣m￣）</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/sunset.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="漫画柜《鬼灭之刃》爬取"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-12-05 21:12" pubdate>
+          2020年12月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">漫画柜《鬼灭之刃》爬取</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了</p>
+<ul>
+<li>设置chrome浏览器无界面模式，更节省内存资源</li>
+<li>os库判断路径是否存在，不存在则创建</li>
+<li>多线程下载<span id="more"></span></li>
+</ul>
+<h2 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h2><ol>
+<li><p>判断是否全为静态内容<br> a. 根据network中那个最大的html文件是否包含所需网页内容（直接美丽汤解析）</p>
+</li>
+<li><p>那就是动态内容（优先selenium爬取）<br> a. 所需内容文字，图片，视频地址是否在XHR 中（可能需要解密）<br> b. 以上都不是一定在触发某个js在加载内容在html中，（需要解密）</p>
+</li>
+</ol>
+<h2 id="网站结构"><a href="#网站结构" class="headerlink" title="网站结构"></a>网站结构</h2><p>每篇漫画详情页可以得到所有章节地址，根据章节地址进入浏览漫画界面，分析html中不能得到图片src，xhr也没有，所以为js加载，获取图片这一部分通过浏览器爬取真实地址（是否也可以直接得到二进制内容灌进文件？）</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup           <span class="hljs-comment">#美丽汤</span><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> re <span class="hljs-keyword">as</span> reg                <span class="hljs-comment">#正则</span><br><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver          <span class="hljs-comment">#无头浏览器</span><br><span class="hljs-keyword">import</span> os                               <span class="hljs-comment">#文件路径的操作</span><br><span class="hljs-keyword">from</span> multiprocessing <span class="hljs-keyword">import</span> Pool            <span class="hljs-comment">#多线程</span><br><br><span class="hljs-keyword">from</span> selenium.webdriver.chrome.options <span class="hljs-keyword">import</span> Options     <span class="hljs-comment">#隐藏浏览器界面</span><br><br><span class="hljs-comment">#获取回的所有地址与题目</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_chapter</span>():<br>    <span class="hljs-keyword">try</span>:<br>        src=<span class="hljs-string">&#x27;https://www.manhuagui.com/comic/19430/&#x27;</span><br>        header=&#123;<span class="hljs-string">&quot;user-agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;</span>&#125;<br>        re=requests.get(url=src,headers=header)<br>        html=re.text<br>        <span class="hljs-comment">#判断是否联通</span><br>        <span class="hljs-built_in">print</span>(re.status_code)                   <br>        soup=BeautifulSoup(html,<span class="hljs-string">&#x27;lxml&#x27;</span>)<br>        haha=soup.find_all(class_=<span class="hljs-string">&quot;chapter-list cf mt10&quot;</span>)[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> haha.find_all(name=<span class="hljs-string">&#x27;li&#x27;</span>):<br>            chapter=i.a[<span class="hljs-string">&#x27;href&#x27;</span>]<br>            chapterTitle=i.a[<span class="hljs-string">&#x27;title&#x27;</span>]<br>            <span class="hljs-comment">#只能用在for中调用是作为迭代器</span><br>            <span class="hljs-keyword">yield</span>&#123;                          <br>                <span class="hljs-string">&#x27;chapter&#x27;</span>:chapter,<br>                <span class="hljs-string">&#x27;title&#x27;</span>:chapterTitle<br>            &#125;<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;获取章节地址出错&#x27;</span>)<br><br><span class="hljs-comment">#获取某回中共有多少张图片，并得到每张的图片页面（不是真实地址）地址去获取他</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_detail</span>(<span class="hljs-params">url,title</span>):<br>    src=<span class="hljs-string">&#x27;https://www.manhuagui.com/&#x27;</span>+url<br>    header=&#123;<span class="hljs-string">&quot;user-agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;</span>&#125;<br>    <span class="hljs-keyword">try</span>:<br>        re=requests.get(url=src,headers=header)<br>        html=re.text<br>        soup=BeautifulSoup(html,<span class="hljs-string">&#x27;lxml&#x27;</span>)<br>        headerTitle=soup.find_all(class_=<span class="hljs-string">&quot;w980 title&quot;</span>)[<span class="hljs-number">0</span>]<br>        page=headerTitle.find_all(name=<span class="hljs-string">&#x27;span&#x27;</span>)[<span class="hljs-number">1</span>]<br>        <span class="hljs-comment">#正则的查找</span><br>        dd=reg.findall(<span class="hljs-string">r&quot;\d+&quot;</span>,page.text)[<span class="hljs-number">0</span>]                     <br>        num=<span class="hljs-built_in">int</span>(dd)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,num+<span class="hljs-number">1</span>):<br>            <span class="hljs-built_in">print</span>()<br>            url=src+<span class="hljs-string">&#x27;#p=&#x27;</span>+<span class="hljs-built_in">str</span>(i)    <span class="hljs-comment">#图片页面地址</span><br>            get_img(url,title)<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;获取图片失败&quot;</span>)<br>    <br><span class="hljs-comment">#通过无头浏览器加载动态元素取得真实地址</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_img</span>(<span class="hljs-params">url,title</span>):<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-built_in">print</span>(url)<br>        <span class="hljs-comment">#设置chrome浏览器无界面模式</span><br>        chrome_options=Options()<br>        chrome_options.add_argument(<span class="hljs-string">&#x27;--headless&#x27;</span>)<br>        bro = webdriver.Chrome(chrome_options=chrome_options)<br>        bro.get(url)<br>        html=bro.page_source    <span class="hljs-comment">#页面所有元素加载完成后获取源码，这里写的美中不足，改进当图片地址得到后就自动获取源码，不用等全部加载完</span><br>        bro.close()<br>        soup=BeautifulSoup(html,<span class="hljs-string">&#x27;lxml&#x27;</span>)<br>        <span class="hljs-comment">#获得属性</span><br>        src=soup.find(<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;mangaFile&quot;</span>)[<span class="hljs-string">&#x27;src&#x27;</span>]        <span class="hljs-comment">#获取到真实图片地址</span><br>        save_img(src,title)<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;获取真实地址失败&quot;</span>)<br><br>bigbig=<span class="hljs-number">0</span><br><span class="hljs-comment"># 保存到文件</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">save_img</span>(<span class="hljs-params">src,title</span>):<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-comment">#这里需要使用global下面才能自加一</span><br>        <span class="hljs-keyword">global</span> bigbig<br>        path=<span class="hljs-string">&#x27;D:\download\鬼灭之刃\&#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(title)<br>        <span class="hljs-comment">#os库判断路径是否存在，不存在则创建</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(path):<br>            os.makedirs(<span class="hljs-string">&#x27;D:\download\鬼灭之刃\&#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(title))  <br>        path=<span class="hljs-string">&#x27;&#123;&#125;\&#123;&#125;.jpeg&#x27;</span>.<span class="hljs-built_in">format</span>(path,bigbig) <br>        bigbig=bigbig+<span class="hljs-number">1</span><br>        header=&#123;<br>        <span class="hljs-string">&quot;accept&quot;</span>: <span class="hljs-string">&quot;image/avif,image/webp,image/apng,image/*,*/*;q=0.8&quot;</span>,<br>        <span class="hljs-string">&quot;accept-encoding&quot;</span>: <span class="hljs-string">&quot;gzip, deflate, br&quot;</span>,<br>        <span class="hljs-string">&quot;accept-language&quot;</span>: <span class="hljs-string">&quot;zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7&quot;</span>,<br>        <span class="hljs-string">&quot;dnt&quot;</span>: <span class="hljs-string">&quot;1&quot;</span>,<br>        <span class="hljs-string">&quot;referer&quot;</span>: <span class="hljs-string">&quot;https://www.manhuagui.com/&quot;</span>,<br>        <span class="hljs-string">&quot;sec-fetch-dest&quot;</span>: <span class="hljs-string">&quot;image&quot;</span>,<br>        <span class="hljs-string">&quot;sec-fetch-mode&quot;</span>: <span class="hljs-string">&quot;no-cors&quot;</span>,<br>        <span class="hljs-string">&quot;sec-fetch-site&quot;</span>: <span class="hljs-string">&quot;cross-site&quot;</span>,<br>        <span class="hljs-string">&quot;user-agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&quot;</span> <br>        &#125;<br>        <span class="hljs-built_in">print</span>(src)<br>        re=requests.get(url=src,headers=header)<br>        content=re.content<br>        <span class="hljs-comment">#文件写入二进制</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(path,<span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> haha:<br>            haha.write(content)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;ok!!!!&#x27;</span>)<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;保存到文件时出错&quot;</span>)<br><br>booksrc=[]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> get_chapter():<br>    booksrc.append(i)<br><br><span class="hljs-comment">#丢入某回的地址</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">i</span>):<br>    src=i.get(<span class="hljs-string">&#x27;chapter&#x27;</span>)<br>    title=i.get(<span class="hljs-string">&#x27;title&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取&#123;&#125;     &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(title,src))<br>    get_detail(src,title)<br><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-comment">#多线程</span><br>    pool=Pool(processes=<span class="hljs-number">4</span>)   <span class="hljs-comment">#20个进程调用获得所有书</span><br>    group=booksrc  <span class="hljs-comment">#a列表是网站所有书的链接地址</span><br>    <span class="hljs-built_in">print</span>(group)<br>    pool.<span class="hljs-built_in">map</span>(main,group)<br>    <br></code></pre></td></tr></table></figure>
+
+<p>爬取巨慢，完成图像</p>
+<p><img src="/%E6%BC%AB%E7%94%BB%E6%9F%9C%E3%80%8A%E9%AC%BC%E7%81%AD%E4%B9%8B%E5%88%83%E3%80%8B%E7%88%AC%E5%8F%96/1607177847912.png" srcset="/img/loading.gif" lazyload></p>
+<p>有待优化：当浏览器加载到某个元素后就可以结束得到源码，或者渲染出图片后就以二进制保存</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/%E7%88%AC%E8%99%AB/" class="print-no-link">#爬虫</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>漫画柜《鬼灭之刃》爬取</div>
+      <div>https://lililib.github.io/漫画柜《鬼灭之刃》爬取/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>煨酒小童</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年12月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Chrome%E4%B8%AD%E8%AF%B7%E6%B1%82%E5%A4%B4%E8%BD%AC%E4%B8%BA%E5%AD%97%E5%85%B8%E7%B1%BB%E5%9E%8B/" title="Chrome中请求头转为字典类型">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chrome中请求头转为字典类型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E3%80%8A%E9%92%A2%E4%B9%8B%E7%82%BC%E9%87%91%E6%9C%AF%E5%B8%88%E3%80%8B/" title="《钢之炼金术师》">
+                        <span class="hidden-mobile">《钢之炼金术师》</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'lililib/lililib.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
