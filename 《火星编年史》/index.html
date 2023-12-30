@@ -16,24 +16,27 @@
   <meta name="author" content="煨酒小童">
   <meta name="keywords" content="简记">
   
-    <meta name="description" content="255.255.255.255 直接以字符串存入数据库使用varchar(15),而ipv4本质是32位的二进制码，int也有32位，但是因为有一个符号位存不下所以只能用long型来存储ip了。8个字节还是比15个字节差不多省了一半空间了。 0xFF，这代表的是十六进制数FF即1111 1111，对应十进制即为255，当一个数n对这个 0xFF 作 &amp; 操作时，相当于求n除以256所得的余">
+    <meta name="description" content="火星是太空的遥远之滨，人们像浪潮一般朝它涌去。每一股浪潮都互不相同，一股强过一股。第一股浪潮载的是一些习惯于太空、寒冷和孤寂的人，具有虎狼精神的人，身体强悍，面容清癯，目光炯炯，手板粗实，什么都敢碰，火星无力抵抗这些生来习惯住在火星开阔的平地和荒原的人。他们来到火星，带来了生气，别的人也会有勇气效法。他们在空窗格上嵌上玻璃，在玻璃背后点上灯火.  2023.6.16 12:33">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IP转数字">
-<meta property="og:url" content="https://lililib.github.io/IP%E8%BD%AC%E6%95%B0%E5%AD%97/index.html">
+<meta property="og:title" content="《火星编年史》">
+<meta property="og:url" content="https://lililib.github.io/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B/index.html">
 <meta property="og:site_name" content="煨酒小童">
-<meta property="og:description" content="255.255.255.255 直接以字符串存入数据库使用varchar(15),而ipv4本质是32位的二进制码，int也有32位，但是因为有一个符号位存不下所以只能用long型来存储ip了。8个字节还是比15个字节差不多省了一半空间了。 0xFF，这代表的是十六进制数FF即1111 1111，对应十进制即为255，当一个数n对这个 0xFF 作 &amp; 操作时，相当于求n除以256所得的余">
+<meta property="og:description" content="火星是太空的遥远之滨，人们像浪潮一般朝它涌去。每一股浪潮都互不相同，一股强过一股。第一股浪潮载的是一些习惯于太空、寒冷和孤寂的人，具有虎狼精神的人，身体强悍，面容清癯，目光炯炯，手板粗实，什么都敢碰，火星无力抵抗这些生来习惯住在火星开阔的平地和荒原的人。他们来到火星，带来了生气，别的人也会有勇气效法。他们在空窗格上嵌上玻璃，在玻璃背后点上灯火.  2023.6.16 12:33">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-19T10:46:46.000Z">
-<meta property="article:modified_time" content="2023-12-29T13:22:15.107Z">
+<meta property="og:image" content="https://lililib.github.io/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B-1703946366813.png">
+<meta property="article:published_time" content="2023-07-30T14:17:21.000Z">
+<meta property="article:modified_time" content="2023-12-30T14:26:35.439Z">
 <meta property="article:author" content="煨酒小童">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="阅读">
+<meta property="article:tag" content="标注">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lililib.github.io/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B-1703946366813.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>IP转数字 - 煨酒小童</title>
+  <title>《火星编年史》 - 煨酒小童</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="IP转数字"></span>
+            <span id="subtitle" data-typed-text="《火星编年史》"></span>
           
         </div>
 
@@ -239,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-19 18:46" pubdate>
-          2023年2月19日 晚上
+        <time datetime="2023-07-30 22:17" pubdate>
+          2023年7月30日 晚上
         </time>
       </span>
     
@@ -251,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          525 字
+          358 字
         
       </span>
     
@@ -262,7 +265,7 @@
         
         
         
-          5 分钟
+          3 分钟
         
       </span>
     
@@ -307,18 +310,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">IP转数字</h1>
+            <h1 id="seo-header">《火星编年史》</h1>
             
             
               <div class="markdown-body">
                 
-                <p>255.255.255.255 直接以字符串存入数据库使用varchar(15),而ipv4本质是32位的二进制码，int也有32位，但是因为有一个符号位存不下所以只能用long型来存储ip了。8个字节还是比15个字节差不多省了一半空间了。</p>
-<p>0xFF，这代表的是十六进制数FF即1111 1111，对应十进制即为255，当一个数n对这个 0xFF 作 &amp; 操作时，相当于求n除以256所得的余数，也就是相当于n%256</p>
-<span id="more"></span>
-
-<p>代码实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IPUtil</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * ip地址转成long型数字</span><br><span class="hljs-comment">     * 将IP地址转化成整数的方法如下：</span><br><span class="hljs-comment">     * 1、通过String的split方法按.分隔得到4个长度的数组</span><br><span class="hljs-comment">     * 2、通过左移位操作（&lt;&lt;）给每一段的数字加权，第一段的权为2的24次方，第二段的权为2的16次方，第三段的权为2的8次方，最后一段的权为1</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> strIp</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">long</span> <span class="hljs-title function_">ipToLong</span><span class="hljs-params">(String strIp)</span> &#123;<br>        String[]ip = strIp.split(<span class="hljs-string">&quot;\\.&quot;</span>);<br>        <span class="hljs-keyword">return</span> (Long.parseLong(ip[<span class="hljs-number">0</span>]) &lt;&lt; <span class="hljs-number">24</span>) + (Long.parseLong(ip[<span class="hljs-number">1</span>]) &lt;&lt; <span class="hljs-number">16</span>) + (Long.parseLong(ip[<span class="hljs-number">2</span>]) &lt;&lt; <span class="hljs-number">8</span>) + Long.parseLong(ip[<span class="hljs-number">3</span>]);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 将十进制整数形式转换成127.0.0.1形式的ip地址</span><br><span class="hljs-comment">     * 将整数形式的IP地址转化成字符串的方法如下：</span><br><span class="hljs-comment">     * 1、将整数值进行右移位操作（&gt;&gt;&gt;），右移24位，右移时高位补0，得到的数字即为第一段IP。</span><br><span class="hljs-comment">     * 2、通过与操作符（&amp;）将整数值的高8位设为0，再右移16位，得到的数字即为第二段IP。</span><br><span class="hljs-comment">     * 3、通过与操作符吧整数值的高16位设为0，再右移8位，得到的数字即为第三段IP。</span><br><span class="hljs-comment">     * 4、通过与操作符吧整数值的高24位设为0，得到的数字即为第四段IP。</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> longIp</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">longToIP</span><span class="hljs-params">(<span class="hljs-type">long</span> longIp)</span> &#123;<br>        <span class="hljs-type">StringBuffer</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>(<span class="hljs-string">&quot;&quot;</span>);<br>        sb.append(String.valueOf((longIp &gt;&gt;&gt; <span class="hljs-number">24</span>)));<br>        sb.append(<span class="hljs-string">&quot;.&quot;</span>);<br>        sb.append(String.valueOf((longIp &gt;&gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span> ));<br>        sb.append(<span class="hljs-string">&quot;.&quot;</span>);<br>        sb.append(String.valueOf((longIp &gt;&gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>));<br>        sb.append(<span class="hljs-string">&quot;.&quot;</span>);<br>        sb.append(String.valueOf((longIp)));<br>        <span class="hljs-keyword">return</span> sb.toString();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(ipToLong(<span class="hljs-string">&quot;219.239.110.138&quot;</span>));<br>        System.out.println(longToIP(<span class="hljs-number">18537472</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+                <blockquote>
+<p>火星是太空的遥远之滨，人们像浪潮一般朝它涌去。每一股浪潮都互不相同，一股强过一股。第一股浪潮载的是一些习惯于太空、寒冷和孤寂的人，具有虎狼精神的人，身体强悍，面容清癯，目光炯炯，手板粗实，什么都敢碰，火星无力抵抗这些生来习惯住在火星开阔的平地和荒原的人。他们来到火星，带来了生气，别的人也会有勇气效法。他们在空窗格上嵌上玻璃，在玻璃背后点上灯火.</p>
+</blockquote>
+<h2 id="2023-6-16-12-33"><a href="#2023-6-16-12-33" class="headerlink" title="2023.6.16 12:33"></a><em>2023.6.16 12:33</em><br><span id="more"></span></h2><blockquote>
+<p>四个人互相看看，大笑起来：“这才是生活，伙计!” 四个人咧嘴大笑，兴奋地拍掌。<br>最后当他们被放下的时候，喧闹声逐渐平息下来。<br>船长感动得快流下眼泪了，他哽咽地说道：“谢谢，这太好了，这真是太棒了。” “告诉我们关于你自己的事吧。”尤先生请求道。<br>船长清了清嗓子。<br>在观众不时发出的“哦”、“啊”的惊叹声中，<br>船长依次介绍了他的队员，并让他们逐个说了几句。整个 过程中掌声不断。<br>尤先生拍了拍船长的肩：“见到你真高兴，<br>我也是地球人。” “什么?” “我们当中很多人来自地球。”</p>
+<p>(凄惨，一个自欺欺人的循环)</p>
+</blockquote>
+<p>*2023.6.14 18:19 *</p>
 
                 
               </div>
@@ -337,7 +341,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">读书笔记</a>
   
   
 
@@ -352,7 +356,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+        <a href="/tags/%E9%98%85%E8%AF%BB/" class="print-no-link">#阅读</a>
+      
+        <a href="/tags/%E6%A0%87%E6%B3%A8/" class="print-no-link">#标注</a>
       
     </div>
   
@@ -364,8 +370,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>IP转数字</div>
-      <div>https://lililib.github.io/IP转数字/</div>
+      <div>《火星编年史》</div>
+      <div>https://lililib.github.io/《火星编年史》/</div>
     </div>
     <div class="license-meta">
       
@@ -377,7 +383,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月19日</div>
+          <div>2023年7月30日</div>
         </div>
       
       
@@ -409,9 +415,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/" title="《间客》">
+                      <a href="/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E6%8F%90%E4%BA%A4%E5%88%B0github/" title="本地文件夹提交到github">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">《间客》</span>
+                        <span class="hidden-mobile">本地文件夹提交到github</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -419,8 +425,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/npm%20ERR!%20gyp%20ERR!/" title="npm ERR! gyp ERR!">
-                        <span class="hidden-mobile">npm ERR! gyp ERR!</span>
+                      <a href="/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/" title="《间客》">
+                        <span class="hidden-mobile">《间客》</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

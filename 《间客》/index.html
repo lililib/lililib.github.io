@@ -16,24 +16,27 @@
   <meta name="author" content="煨酒小童">
   <meta name="keywords" content="简记">
   
-    <meta name="description" content="255.255.255.255 直接以字符串存入数据库使用varchar(15),而ipv4本质是32位的二进制码，int也有32位，但是因为有一个符号位存不下所以只能用long型来存储ip了。8个字节还是比15个字节差不多省了一半空间了。 0xFF，这代表的是十六进制数FF即1111 1111，对应十进制即为255，当一个数n对这个 0xFF 作 &amp; 操作时，相当于求n除以256所得的余">
+    <meta name="description" content="&emsp;&emsp;最希望选举程序成本高昂的是权贵，这样穷人就得不到被选举权；最希望司法程序费用高昂的是权贵，这样穷人就打不赢官司；最希望媒体版面费高昂的也是权贵，这样穷人就得不到话语权">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IP转数字">
-<meta property="og:url" content="https://lililib.github.io/IP%E8%BD%AC%E6%95%B0%E5%AD%97/index.html">
+<meta property="og:title" content="《间客》">
+<meta property="og:url" content="https://lililib.github.io/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/index.html">
 <meta property="og:site_name" content="煨酒小童">
-<meta property="og:description" content="255.255.255.255 直接以字符串存入数据库使用varchar(15),而ipv4本质是32位的二进制码，int也有32位，但是因为有一个符号位存不下所以只能用long型来存储ip了。8个字节还是比15个字节差不多省了一半空间了。 0xFF，这代表的是十六进制数FF即1111 1111，对应十进制即为255，当一个数n对这个 0xFF 作 &amp; 操作时，相当于求n除以256所得的余">
+<meta property="og:description" content="&emsp;&emsp;最希望选举程序成本高昂的是权贵，这样穷人就得不到被选举权；最希望司法程序费用高昂的是权贵，这样穷人就打不赢官司；最希望媒体版面费高昂的也是权贵，这样穷人就得不到话语权">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-19T10:46:46.000Z">
-<meta property="article:modified_time" content="2023-12-29T13:22:15.107Z">
+<meta property="og:image" content="https://lililib.github.io/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/image-20231230221003944.png">
+<meta property="article:published_time" content="2023-06-30T13:16:21.000Z">
+<meta property="article:modified_time" content="2023-12-30T14:11:11.990Z">
 <meta property="article:author" content="煨酒小童">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="阅读">
+<meta property="article:tag" content="标注">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lililib.github.io/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/image-20231230221003944.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>IP转数字 - 煨酒小童</title>
+  <title>《间客》 - 煨酒小童</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="IP转数字"></span>
+            <span id="subtitle" data-typed-text="《间客》"></span>
           
         </div>
 
@@ -239,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-19 18:46" pubdate>
-          2023年2月19日 晚上
+        <time datetime="2023-06-30 21:16" pubdate>
+          2023年6月30日 晚上
         </time>
       </span>
     
@@ -251,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          525 字
+          2.2k 字
         
       </span>
     
@@ -262,7 +265,7 @@
         
         
         
-          5 分钟
+          19 分钟
         
       </span>
     
@@ -307,18 +310,150 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">IP转数字</h1>
+            <h1 id="seo-header">《间客》</h1>
             
             
               <div class="markdown-body">
                 
-                <p>255.255.255.255 直接以字符串存入数据库使用varchar(15),而ipv4本质是32位的二进制码，int也有32位，但是因为有一个符号位存不下所以只能用long型来存储ip了。8个字节还是比15个字节差不多省了一半空间了。</p>
-<p>0xFF，这代表的是十六进制数FF即1111 1111，对应十进制即为255，当一个数n对这个 0xFF 作 &amp; 操作时，相当于求n除以256所得的余数，也就是相当于n%256</p>
+                <p>&emsp;&emsp;最希望选举程序成本高昂的是权贵，这样穷人就得不到被选举权；最希望司法程序费用高昂的是权贵，这样穷人就打不赢官司；最希望媒体版面费高昂的也是权贵，这样穷人就得不到话语权</p>
 <span id="more"></span>
 
-<p>代码实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IPUtil</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * ip地址转成long型数字</span><br><span class="hljs-comment">     * 将IP地址转化成整数的方法如下：</span><br><span class="hljs-comment">     * 1、通过String的split方法按.分隔得到4个长度的数组</span><br><span class="hljs-comment">     * 2、通过左移位操作（&lt;&lt;）给每一段的数字加权，第一段的权为2的24次方，第二段的权为2的16次方，第三段的权为2的8次方，最后一段的权为1</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> strIp</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">long</span> <span class="hljs-title function_">ipToLong</span><span class="hljs-params">(String strIp)</span> &#123;<br>        String[]ip = strIp.split(<span class="hljs-string">&quot;\\.&quot;</span>);<br>        <span class="hljs-keyword">return</span> (Long.parseLong(ip[<span class="hljs-number">0</span>]) &lt;&lt; <span class="hljs-number">24</span>) + (Long.parseLong(ip[<span class="hljs-number">1</span>]) &lt;&lt; <span class="hljs-number">16</span>) + (Long.parseLong(ip[<span class="hljs-number">2</span>]) &lt;&lt; <span class="hljs-number">8</span>) + Long.parseLong(ip[<span class="hljs-number">3</span>]);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 将十进制整数形式转换成127.0.0.1形式的ip地址</span><br><span class="hljs-comment">     * 将整数形式的IP地址转化成字符串的方法如下：</span><br><span class="hljs-comment">     * 1、将整数值进行右移位操作（&gt;&gt;&gt;），右移24位，右移时高位补0，得到的数字即为第一段IP。</span><br><span class="hljs-comment">     * 2、通过与操作符（&amp;）将整数值的高8位设为0，再右移16位，得到的数字即为第二段IP。</span><br><span class="hljs-comment">     * 3、通过与操作符吧整数值的高16位设为0，再右移8位，得到的数字即为第三段IP。</span><br><span class="hljs-comment">     * 4、通过与操作符吧整数值的高24位设为0，得到的数字即为第四段IP。</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> longIp</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">longToIP</span><span class="hljs-params">(<span class="hljs-type">long</span> longIp)</span> &#123;<br>        <span class="hljs-type">StringBuffer</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>(<span class="hljs-string">&quot;&quot;</span>);<br>        sb.append(String.valueOf((longIp &gt;&gt;&gt; <span class="hljs-number">24</span>)));<br>        sb.append(<span class="hljs-string">&quot;.&quot;</span>);<br>        sb.append(String.valueOf((longIp &gt;&gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span> ));<br>        sb.append(<span class="hljs-string">&quot;.&quot;</span>);<br>        sb.append(String.valueOf((longIp &gt;&gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>));<br>        sb.append(<span class="hljs-string">&quot;.&quot;</span>);<br>        sb.append(String.valueOf((longIp)));<br>        <span class="hljs-keyword">return</span> sb.toString();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(ipToLong(<span class="hljs-string">&quot;219.239.110.138&quot;</span>));<br>        System.out.println(longToIP(<span class="hljs-number">18537472</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<h1 id="《间客》"><a href="#《间客》" class="headerlink" title="《间客》"></a>《间客》</h1><hr>
+<blockquote>
+<p>联邦的天空下，不可能有永远不被揭穿的黑幕，更不可能有完美到找不到任何线索、不留任何痕迹的计划。</p>
+</blockquote>
+<p><em>2023.06.04 21:11:16</em></p>
+<hr>
+<blockquote>
+<p>只要平静下来，便是大海中的那团黑色礁石，只要动起来，便是划过大气层的暴烈流星，随时可以将这湛蓝的青天烧出一片焦糊的伤疤</p>
+</blockquote>
+<p><em>2023.06.06 08:43:14</em></p>
+<hr>
+<blockquote>
+<p>网络是自由的，自由是无序的，无序是不可信任的，</p>
+</blockquote>
+<p><em>2023.06.06 18:39:59</em></p>
+<hr>
+<blockquote>
+<p>“局面有些失控。”邰夫人轻轻地揉了揉眉心，缓声说道：“利家那个花样废物还看不出其中的危险，环山四州已经罢工了，再这样搞下去，社会动荡起来，吃亏的终究是联邦本身。” (吃人怪物)<br><em>2023.06.7 00:11:45</em></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>大选失败又算什么？联邦换了多少任总统，可是七大家永远还是七大家。像我们这种家族，早已经深深地根植于联邦的土壤中。就拿我们利家举例，如果我们利家垮了，联邦的金融也就垮了。”<BR><BR>“但你不要忘记很重要的另外一点。”老人的语气忽然冰冷了起来，“如果联邦垮了，那么我们利家也就要跟着垮。所以无论你怎么做，都要记住，不能危害到联邦的根本利益</p>
+</blockquote>
+<p><em>2023.06.07 00:44:09</em></p>
+<hr>
+<blockquote>
+<p>因为我看着不公平的事情，便会愤怒，便会想做些什么，而这个宇宙里却充斥着不公平，无论我走到哪里都是一样，所以我大概会一直愤怒下去。</p>
+</blockquote>
+<p><em>2023.06.07 01:50:27</em></p>
+<hr>
+<blockquote>
+<p>流风坡会所的盛宴，是一场并不如何狂肆的狂欢。联邦归于稳定之后，食人者再次端起了餐盘，只不过他们依然要讲究风度与餐桌上的礼仪，自然不会唇角流着鲜血，再来赞叹庶民的血肉滋味，他们只会扮一副深沉忧国忧民样，捏捏自己口袋厚薄。所以今夜会所的分赃盛宴并不如何赤裸，唯一在目光焦点处被捧出来的，反而只有许乐一个人。</p>
+</blockquote>
+<p><em>2023.06.07 01:56:49</em></p>
+<hr>
+<blockquote>
+<p>长远利益，大局观，只不过是某些人用来谋取自身利益的遮羞布。他们想让联邦稳定，是因为他们需要从这个稳定的肌体中吸血。然而这不是稳定，是麻木。所谓长远利益，终究也不过是他们的利益，比如利家的利益。</p>
+</blockquote>
+<p><em>2023.06.07 02:02:15</em></p>
+<hr>
+<blockquote>
+<p>我有权利承担的唯一义务，是在任何时候做我认为正确的事情</p>
+</blockquote>
+<p><em>2023.06.07 02:10:33</em></p>
+<hr>
+<blockquote>
+<p>我从来不会居高临下去看待任何一个普通的民众，但我也从来不会高估他们对信仰的忠诚度。</p>
+</blockquote>
+<p><em>2023.06.07 12:50:43</em></p>
+<hr>
+<blockquote>
+<p>若不是许乐看着路上不平坦处，总有去踹两脚的强烈渴望，若不是他看见巷子里黑暗角落，便觉有些郁闷，想点一把火</p>
+</blockquote>
+<p><em>2023.06.07 22:38:45</em></p>
+<hr>
+<blockquote>
+<p>但终究她的眼界比一般联邦女子要开阔许多，就算比不上人类头顶的星河，却也多了几分磊落之气，一旦她头顶的枷锁被人打破之后，便很难再被某些世俗的东西所困住，哪怕那些传统的力量极为强大，比如婚姻，比如爱情，比如这些看似美好的词语。</p>
+</blockquote>
+<p><em>2023.06.08 18:17:26</em></p>
+<hr>
+<blockquote>
+<p>恋爱不见得能上床，但可能要结婚。找女人肯定不会结婚，但一定要上床。</p>
+</blockquote>
+<p><em>2023.06.09 18:32:19</em></p>
+<hr>
+<blockquote>
+<p>“咱家那位天才主管是必然要成为大人物的角色，军神大人、国防部这一年一直在为他铺路，我就是那洒水泥的苦力角色，问题是任何决断总要有个分寸。”  “作为材料垫底的家伙……如果太死心眼卖命，将来只能变成无数被生生压碎的石头，嵌进水泥，铺在他的金光大道上，当他穿着锃亮军靴踏过路面时，一路平直，哪里还会想起脚下的碎石头。”</p>
+</blockquote>
+<p><em>2023.06.09 23:44:05</em></p>
+<hr>
+<blockquote>
+<p>沈秘书目光不易察觉地自那块半焦黄的极品沉香木上掠过，又掠过别墅间充满了历史与权贵复合气意的陈设，不知为何品出了一丝陈腐的气息。他早已确认，只是今日格外清晰地感觉到，莫愁后山、议会山、那些千世家族、政客与巨商在首都星圈构织了一个漂浮于云端的陈腐圈子。就如面前这位身份尊贵却愿意时时做些家务活儿的夫人，她或他们的社会属性永远是站在一般民众之上，他们可以殚精竭虑为联邦永续长存而奋斗，但奋斗的目标则必然是让自己的家族通过联邦的存在而获得更多的利益。这是一种天然的属性，家族的本能，他们维持这个联邦的存在，本来就是为了保障自己家族的利益，而帕布尔总统和国防部将那些公子哥调往西林，则是触犯了这种根本利益，如果连自己子女的生命都无法保障，联邦上层社会的大人物们，又是在为了什么奋斗？</p>
+</blockquote>
+<p><em>2023.06.09 23:57:10</em></p>
+<hr>
+<blockquote>
+<p>联邦政府并不是民众集体意志的体现，也不是某位小机率产生的优秀政治家意志的体现，而是一大群政体既得利益者集体意志的体现，这些控制了媒体，控制了金融，擅长操弄选举，挑拨民意，像死人骨头插在原野中一般插在联邦里的官僚和商人们，才是联邦的主流。</p>
+</blockquote>
+<p><em>2023.06.10 12:01:43</em></p>
+<hr>
+<blockquote>
+<p>“最希望选举程序成本高昂的是权贵，这样穷人就得不到被选举权；最希望司法程序费用高昂的是权贵，这样穷人就打不赢官司；最希望媒体版面费高昂的也是权贵，这样穷人就得不到话语权。”</p>
+</blockquote>
+<p><em>2023.06.10 17:20:44</em></p>
+<hr>
+<blockquote>
+<p>任何反对改变现状，一味沉浸在陈腐的现实，甚至将自身智慧本应产生的远见都抛诸脑后的人，都是一群既得利益者。</p>
+</blockquote>
+<p><em>2023.06.10 17:24:41</em></p>
+<hr>
+<blockquote>
+<p>金钱有魔力，权力有魔力，美女有魔力，笔也有魔力，任何人类欲望的外延都能成为强大的工具，但所有这些工具，都没有枪的魔力更大。</p>
+</blockquote>
+<p><em>2023.06.11 10:25:38</em></p>
+<hr>
+<blockquote>
+<p>战争永远只是政治的附属品，而政治又是经济的衍生品，联邦整体的利益，在某种程度上，确实是要比前线士兵的生命更重要……</p>
+</blockquote>
+<p><em>2023.06.11 10:37:30</em></p>
+<hr>
+<blockquote>
+<p>一个星域辽阔、信息交流和武力传递速度有层级差异的太空政权，想要维系下去，如果没有全方位的电子监控网络，那么……就只有屠杀</p>
+</blockquote>
+<p><em>2023.06.11 11:10:47</em></p>
+<hr>
+<blockquote>
+<p>沉默……本身就是一种态度</p>
+</blockquote>
+<p><em>2023.06.11 11:55:39</em></p>
+<hr>
+<blockquote>
+<p>他说……每个人都有在乎的人或事，所以在某些特定时刻，总是需要做出一定的妥协和让步，而这种妥协与让步往往比大踏步前进更需要智慧和勇气。</p>
+</blockquote>
+<p><em>2023.06.11 13:05:28</em></p>
+<hr>
+<blockquote>
+<p>刚射完精的男人都是阉人却往往自认为是圣人</p>
+</blockquote>
+<p><em>2023.06.12 18:34:40</em></p>
+<hr>
+<blockquote>
+<p>奇迹其实从来都不是造物主的恩赐，而是来自于永不凋零的决心以及事先最充分的准备，暂时的失败并不可怕，真正的关键点在于你有没有做好失败的准备并且试图利用之。</p>
+</blockquote>
+<p><em>2023.06.12 22:47:20</em></p>
+<hr>
+<blockquote>
+<p>世界上或许真有能够隔绝所有狂风的墙，但绝对没有能够永远隐藏起来的秘密</p>
+</blockquote>
+<p><em>2023.06.12 23:24:40</em></p>
+<hr>
+<blockquote>
+<p>拥有无尽财富的商人随意施舍一碗剩饭，就能让快要饿死的乞丐活下去，对于某些人来说，既然这碗剩饭对商人而言无足轻重，那么他的感恩便只有一碗饭的重量，但在李维的理念中，乞丐没有那碗饭就要饿死，那么这碗饭就是一条命，你必须拿命去还。</p>
+</blockquote>
+<p><em>2023.06.13 00:11:45</em></p>
+<hr>
+<p>​    </p>
 
                 
               </div>
@@ -337,7 +472,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">读书笔记</a>
   
   
 
@@ -352,7 +487,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+        <a href="/tags/%E9%98%85%E8%AF%BB/" class="print-no-link">#阅读</a>
+      
+        <a href="/tags/%E6%A0%87%E6%B3%A8/" class="print-no-link">#标注</a>
       
     </div>
   
@@ -364,8 +501,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>IP转数字</div>
-      <div>https://lililib.github.io/IP转数字/</div>
+      <div>《间客》</div>
+      <div>https://lililib.github.io/《间客》/</div>
     </div>
     <div class="license-meta">
       
@@ -377,7 +514,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月19日</div>
+          <div>2023年6月30日</div>
         </div>
       
       
@@ -409,9 +546,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/" title="《间客》">
+                      <a href="/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B/" title="《火星编年史》">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">《间客》</span>
+                        <span class="hidden-mobile">《火星编年史》</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -419,8 +556,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/npm%20ERR!%20gyp%20ERR!/" title="npm ERR! gyp ERR!">
-                        <span class="hidden-mobile">npm ERR! gyp ERR!</span>
+                      <a href="/IP%E8%BD%AC%E6%95%B0%E5%AD%97/" title="IP转数字">
+                        <span class="hidden-mobile">IP转数字</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
