@@ -16,26 +16,27 @@
   <meta name="author" content="煨酒小童">
   <meta name="keywords" content="简记">
   
-    <meta name="description" content="记录下httpcanary的配置过程。接口调试中求人不如求己，自己抓包一目了然">
+    <meta name="description" content="自己有梯子还是git push失败Failed to connect to github.com port 443 after 21068 ms: Couldn’t connect to server先确认网页github能不能正常打开，如果可以正常打开。说明命令行在拉取&#x2F;推送代码时并没有使用梯子进行代理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="httpcanary抓包">
-<meta property="og:url" content="https://lililib.github.io/httpcanary%E6%8A%93%E5%8C%85/index.html">
+<meta property="og:title" content="github提交403错误">
+<meta property="og:url" content="https://lililib.github.io/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/index.html">
 <meta property="og:site_name" content="煨酒小童">
-<meta property="og:description" content="记录下httpcanary的配置过程。接口调试中求人不如求己，自己抓包一目了然">
+<meta property="og:description" content="自己有梯子还是git push失败Failed to connect to github.com port 443 after 21068 ms: Couldn’t connect to server先确认网页github能不能正常打开，如果可以正常打开。说明命令行在拉取&#x2F;推送代码时并没有使用梯子进行代理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lililib.github.io/httpcanary%E6%8A%93%E5%8C%85/image-20240129173638196.png">
-<meta property="article:published_time" content="2024-01-29T09:06:45.000Z">
-<meta property="article:modified_time" content="2024-01-29T09:45:08.933Z">
+<meta property="og:image" content="https://lililib.github.io/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/image-20240130111646402.png">
+<meta property="og:image" content="https://lililib.github.io/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/image-20240130111821738.png">
+<meta property="article:published_time" content="2024-01-29T09:55:01.000Z">
+<meta property="article:modified_time" content="2024-01-30T03:25:47.192Z">
 <meta property="article:author" content="煨酒小童">
-<meta property="article:tag" content="抓包">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lililib.github.io/httpcanary%E6%8A%93%E5%8C%85/image-20240129173638196.png">
+<meta name="twitter:image" content="https://lililib.github.io/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/image-20240130111646402.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>httpcanary抓包 - 煨酒小童</title>
+  <title>github提交403错误 - 煨酒小童</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="httpcanary抓包"></span>
+            <span id="subtitle" data-typed-text="github提交403错误"></span>
           
         </div>
 
@@ -241,7 +242,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-29 17:06" pubdate>
+        <time datetime="2024-01-29 17:55" pubdate>
           2024年1月29日 下午
         </time>
       </span>
@@ -253,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          636 字
+          164 字
         
       </span>
     
@@ -264,7 +265,7 @@
         
         
         
-          6 分钟
+          2 分钟
         
       </span>
     
@@ -309,28 +310,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">httpcanary抓包</h1>
+            <h1 id="seo-header">github提交403错误</h1>
             
             
               <div class="markdown-body">
                 
-                <p>记录下httpcanary的配置过程。接口调试中求人不如求己，自己抓包一目了然</p>
+                <dl><dt>自己有梯子还是git push失败</dt><dd>Failed to connect to github.com port 443 after 21068 ms: Couldn’t connect to server</dd></dl><p>先确认网页github能不能正常打开，如果可以正常打开。说明命令行在拉取&#x2F;推送代码时并没有使用梯子进行代理</p>
 <span id="more"></span>
-<p>复现环境安卓12，面具阿尔法26.3，我是进行到5，6，7步才成功</p>
-<p>删除之前配置的任何抓包插件或者模块。TrustMeAlready或，untrustme之类的</p>
-<a class="btn" href="httpcannay与证书移动模块.rar"  title="小黄鸟与模块" target="_blank">小黄鸟与模块</a>
 
-<ol>
-<li>安装好→打开它→同意协议→配置(点确定)</li>
-<li>接下来到安装证书，这一步很关键！先点安装，然后会弹出来一个窗口(在”设置”中安装CA证书)，🚫不要点关闭！🚫不要点关闭！🚫不要点关闭！我们给它扔到后台，这时打开MT管理器，路径&#x2F;data&#x2F;data&#x2F;com.guoshi.httpcanary&#x2F;cache&#x2F;下已经有了两个重要文件了(如果没有呢，那是不存在的)，一个是.p12，另一个是.pem(用户级证书)，我们把.pem证书复制一份当前目录中通过重命名为HttpCanary.jks</li>
-<li>回到小黄鸟应用里点弹窗的关闭，然后神奇的事就发生了，安装按钮变成了移动按钮。此时点一下移动按钮，就会正常拉起root授权了。(这里如果你是安卓12也许你会收到成功的提示，然后理论就可以正常使用了。如果你是安卓13呢，大部分会失败，也可能是成功。不管是安卓12还是安卓13以实际使用为准）</li>
-<li>然后我们手动生成系统级证书，点跳过或者是确定，打开应用的设置→HttpCanary根证书→导出HttpCanary根证书→System Trusted(.0)</li>
-<li>回到MT管理器，步骤2的路径或者是&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;HttpCanary&#x2F;certs里都会有一份 87bc3517.0 的文件，这就是系统级证书文件。(此文件不可共享，每台机器生成的序列号都不一样都是独一无二的)</li>
-<li>.接下来就是制作证书模块了，上面压缩包里提供一份模块模板。只需替换系统级证书文件刷入即可。打开.zip文件路径system&#x2F;etc&#x2F;security&#x2F;cacerts&#x2F;里有个87bc3517.0文件，删掉！！！把刚刚步骤5看到的 &#x2F;storage&#x2F;emulated&#x2F;0&#x2F;HttpCanary&#x2F;certs&#x2F;87bc3517.0 文件放进去保存.(这里我用mt管理器解压再打包zip文件面具刷入失败，最后是在电脑上用rar替换87bc3517.0文件成功刷入)</li>
-<li>用面具或者kernelsu把自己改好的模板刷进去重启就可以了</li>
-</ol>
-<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.coolapk.com/feed/53046534?shareKey=MDIwOTNhYjZiYzkzNjViNzY3NjU">https://www.coolapk.com/feed/53046534?shareKey=MDIwOTNhYjZiYzkzNjViNzY3NjU</a>~
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>为git配置代理</p>
+<p><strong>配置socks5代理</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy socks5 127.0.0.1:10808<br>git config --global https.proxy socks5 127.0.0.1:10808<br></code></pre></td></tr></table></figure>
+
+<p><strong>配置http代理</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy 127.0.0.1:10809<br>git config --global https.proxy 127.0.0.1:10809<br></code></pre></td></tr></table></figure>
+
+<p><strong>后面的ip地址与端口主要看win10的代理地址，与代理软件的端口</strong></p>
+<p>ip地址：</p>
+<p><img src="/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/image-20240130111646402.png" srcset="/img/loading.gif" lazyload alt="image-20240130111646402"></p>
+<p><strong>v2rayN</strong>的端口在左下角：</p>
+<p><img src="/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/image-20240130111821738.png" srcset="/img/loading.gif" lazyload alt="image-20240130111821738"></p>
+<p>​    </p>
+<p>备用命令</p>
+<p><strong>查看代理命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --get http.proxy<br>git config --global --get https.proxy<br></code></pre></td></tr></table></figure>
+
+
+<p><strong>取消代理命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy<br>git config --global --<span class="hljs-built_in">unset</span> https.proxy<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -363,7 +371,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8A%93%E5%8C%85/" class="print-no-link">#抓包</a>
+        <a href="/tags/git/" class="print-no-link">#git</a>
       
     </div>
   
@@ -375,8 +383,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>httpcanary抓包</div>
-      <div>https://lililib.github.io/httpcanary抓包/</div>
+      <div>github提交403错误</div>
+      <div>https://lililib.github.io/github提交403错误/</div>
     </div>
     <div class="license-meta">
       
@@ -420,18 +428,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/" title="github提交403错误">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">github提交403错误</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/IDEA%E8%BF%90%E8%A1%8Cflikcdc%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" title="IDEA运行flikcdc的相关问题">
-                        <span class="hidden-mobile">IDEA运行flikcdc的相关问题</span>
+                      <a href="/httpcanary%E6%8A%93%E5%8C%85/" title="httpcanary抓包">
+                        <span class="hidden-mobile">httpcanary抓包</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

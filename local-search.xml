@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>github提交403错误</title>
+    <link href="/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/"/>
+    <url>/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/</url>
+    
+    <content type="html"><![CDATA[<dl><dt>自己有梯子还是git push失败</dt><dd>Failed to connect to github.com port 443 after 21068 ms: Couldn’t connect to server</dd></dl><p>先确认网页github能不能正常打开，如果可以正常打开。说明命令行在拉取&#x2F;推送代码时并没有使用梯子进行代理</p><span id="more"></span><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>为git配置代理</p><p><strong>配置socks5代理</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy socks5 127.0.0.1:10808<br>git config --global https.proxy socks5 127.0.0.1:10808<br></code></pre></td></tr></table></figure><p><strong>配置http代理</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy 127.0.0.1:10809<br>git config --global https.proxy 127.0.0.1:10809<br></code></pre></td></tr></table></figure><p><strong>后面的ip地址与端口主要看win10的代理地址，与代理软件的端口</strong></p><p>ip地址：</p><p><img src="/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/image-20240130111646402.png" alt="image-20240130111646402"></p><p><strong>v2rayN</strong>的端口在左下角：</p><p><img src="/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/image-20240130111821738.png" alt="image-20240130111821738"></p><p>​    </p><p>备用命令</p><p><strong>查看代理命令</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --get http.proxy<br>git config --global --get https.proxy<br></code></pre></td></tr></table></figure><p><strong>取消代理命令</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy<br>git config --global --<span class="hljs-built_in">unset</span> https.proxy<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>httpcanary抓包</title>
     <link href="/httpcanary%E6%8A%93%E5%8C%85/"/>
     <url>/httpcanary%E6%8A%93%E5%8C%85/</url>
