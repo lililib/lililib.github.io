@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lililib.github.io/%E5%A6%82%E4%BD%95%E7%94%A8hexo%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2024-02-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://lililib.github.io/springboot%E9%A1%B9%E7%9B%AE%E6%8A%A5Command%20line%20is%20too%20long.%20Shorten%20the%20command%20line%20via..../</loc>
     
     <lastmod>2024-02-21</lastmod>
@@ -844,6 +853,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://lililib.github.io/tags/hexo/</loc>
+    <lastmod>2024-02-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -897,6 +913,13 @@
   
   <url>
     <loc>https://lililib.github.io/categories/IDEA%EF%BC%8CFlink/</loc>
+    <lastmod>2024-02-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lililib.github.io/categories/%E6%8A%98%E8%85%BE/</loc>
     <lastmod>2024-02-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
