@@ -16,24 +16,25 @@
   <meta name="author" content="煨酒小童">
   <meta name="keywords" content="简记">
   
-    <meta name="description" content="file 类![](java File类&#x2F;1648477074671.png)  静态方法  ![](java File类&#x2F;1648477093771.png)">
+    <meta name="description" content="xxl-job-admin启动的时候一直报Lock wait timeout exceeded; try restarting transaction 123456789com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transact">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java File类">
-<meta property="og:url" content="https://lililib.github.io/java%20File%E7%B1%BB/index.html">
+<meta property="og:title" content="xxl-job锁超时">
+<meta property="og:url" content="https://lililib.github.io/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/index.html">
 <meta property="og:site_name" content="煨酒小童">
-<meta property="og:description" content="file 类![](java File类&#x2F;1648477074671.png)  静态方法  ![](java File类&#x2F;1648477093771.png)">
+<meta property="og:description" content="xxl-job-admin启动的时候一直报Lock wait timeout exceeded; try restarting transaction 123456789com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transact">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-28T12:52:30.000Z">
-<meta property="article:modified_time" content="2025-06-07T11:02:22.366Z">
+<meta property="article:published_time" content="2025-06-16T02:59:41.000Z">
+<meta property="article:modified_time" content="2025-06-16T04:54:32.299Z">
 <meta property="article:author" content="煨酒小童">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="xxl-job">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>java File类 - 煨酒小童</title>
+  <title>xxl-job锁超时 - 煨酒小童</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="java File类"></span>
+            <span id="subtitle" data-typed-text="xxl-job锁超时"></span>
           
         </div>
 
@@ -239,8 +240,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-28 20:52" pubdate>
-          2022年3月28日 晚上
+        <time datetime="2025-06-16 10:59" pubdate>
+          2025年6月16日 上午
         </time>
       </span>
     
@@ -251,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          447 字
+          345 字
         
       </span>
     
@@ -262,7 +263,7 @@
         
         
         
-          4 分钟
+          3 分钟
         
       </span>
     
@@ -307,39 +308,32 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">java File类</h1>
+            <h1 id="seo-header">xxl-job锁超时</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="file-类"><a href="#file-类" class="headerlink" title="file 类"></a>file 类</h3><p>![](java File类&#x2F;1648477074671.png)</p>
-<ul>
-<li>静态方法</li>
-</ul>
-<p>![](java File类&#x2F;1648477093771.png)</p>
+                <p>xxl-job-admin启动的时候一直报Lock wait timeout exceeded; try restarting transaction</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-symbol">com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException:</span> Lock <span class="hljs-keyword">wait </span>timeout exceeded<span class="hljs-comment">; try restarting transaction</span><br>	<span class="hljs-built_in">at</span> com.mysql.cj.<span class="hljs-keyword">jdbc.exceptions.SQLError.createSQLException(SQLError.java:124)</span><br><span class="hljs-keyword"></span>	<span class="hljs-built_in">at</span> com.mysql.cj.<span class="hljs-keyword">jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)</span><br><span class="hljs-keyword"></span>	<span class="hljs-built_in">at</span> com.mysql.cj.<span class="hljs-keyword">jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)</span><br><span class="hljs-keyword"></span>	<span class="hljs-built_in">at</span> com.mysql.cj.<span class="hljs-keyword">jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)</span><br><span class="hljs-keyword"></span>	<span class="hljs-built_in">at</span> com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.<span class="hljs-keyword">java:44)</span><br><span class="hljs-keyword"></span>	<span class="hljs-built_in">at</span> com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.<span class="hljs-keyword">java)</span><br><span class="hljs-keyword"></span>	<span class="hljs-built_in">at</span> com.xxl.<span class="hljs-keyword">job.admin.core.thread.JobScheduleHelper$1.run(JobScheduleHelper.java:74)</span><br><span class="hljs-keyword"></span>	<span class="hljs-built_in">at</span> <span class="hljs-keyword">java.lang.Thread.run(Thread.java:748)</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>估计是我不小心admin实例起了太多的原因,解决办法就是关闭所有admin实例,删除xxl所有表,再重新搞一遍</p>
 <span id="more"></span>
 
-<ul>
-<li>构造方法</li>
-</ul>
-<p>![](java File类&#x2F;1648477110795.png)</p>
-<ul>
-<li>方法</li>
-</ul>
-<p>![](java File类&#x2F;1648477118325.png)</p>
-<h4 id="文件和文件夹的创建删除等"><a href="#文件和文件夹的创建删除等" class="headerlink" title="文件和文件夹的创建删除等"></a>文件和文件夹的创建删除等</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> FileMethodDemo2 &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(String[] args) <span class="hljs-keyword">throws</span> IOException &#123;<br>		<span class="hljs-comment">// 对文件或者文件加进行操作。</span><br>		<span class="hljs-keyword">File</span> <span class="hljs-keyword">file</span> = <span class="hljs-keyword">new</span> <span class="hljs-keyword">File</span>(<span class="hljs-string">&quot;e:\\file.txt&quot;</span>);<br>		<span class="hljs-comment">// 创建文件，如果文件不存在，创建 true 如果文件存在，则不创建 false。 如果路径错误，IOException。</span><br>		<span class="hljs-keyword">boolean</span> b1 = <span class="hljs-keyword">file</span>.createNewFile();<br>		System.out.<span class="hljs-keyword">println</span>(<span class="hljs-string">&quot;b1=&quot;</span> + b1);<br>		<span class="hljs-comment">//-----------删除文件操作-------注意：不去回收站。慎用------</span><br>		 <span class="hljs-keyword">boolean</span> b2 = <span class="hljs-keyword">file</span>.<span class="hljs-keyword">delete</span>();<br>		 System.out.<span class="hljs-keyword">println</span>(<span class="hljs-string">&quot;b2=&quot;</span>+b2);<br><br>		<span class="hljs-comment">//-----------需要判断文件是否存在------------</span><br>		 <span class="hljs-keyword">boolean</span> b3 = <span class="hljs-keyword">file</span>.exists();<br>		 System.out.<span class="hljs-keyword">println</span>(<span class="hljs-string">&quot;b3=&quot;</span>+b3);<br>	<br>		<span class="hljs-comment">//-----------对目录操作 创建，删除，判断------------</span><br>		<span class="hljs-keyword">File</span> dir = <span class="hljs-keyword">new</span> <span class="hljs-keyword">File</span>(<span class="hljs-string">&quot;e:\\abc&quot;</span>);<br>		<span class="hljs-comment">//mkdir()创建单个目录。//dir.mkdirs();创建多级目录</span><br>		<span class="hljs-keyword">boolean</span> b4 = dir.mkdir();<br>		System.out.<span class="hljs-keyword">println</span>(<span class="hljs-string">&quot;b4=&quot;</span>+b4);<br>		<span class="hljs-comment">//删除目录时，如果目录中有内容，无法直接删除。</span><br>		<span class="hljs-keyword">boolean</span> b5 = dir.<span class="hljs-keyword">delete</span>();<br>		<span class="hljs-comment">//只有将目录中的内容都删除后，保证该目录为空。这时这个目录才可以删除。</span><br>		System.out.<span class="hljs-keyword">println</span>(<span class="hljs-string">&quot;b5=&quot;</span> + b5);<br>	<br>		<span class="hljs-comment">//-----------判断文件，目录------------</span><br>		<span class="hljs-keyword">File</span> f = <span class="hljs-keyword">new</span> <span class="hljs-keyword">File</span>(<span class="hljs-string">&quot;e:\\javahaha&quot;</span>);<span class="hljs-comment">// 要判断是否是文件还是目录，必须先判断存在。</span><br>		<span class="hljs-comment">// f.mkdir();//f.createNewFile();</span><br>		System.out.<span class="hljs-keyword">println</span>(f.isFile());<br>		System.out.<span class="hljs-keyword">println</span>(f.isDirectory());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="文件过滤器"><a href="#文件过滤器" class="headerlink" title="文件过滤器"></a>文件过滤器</h4><ul>
-<li>测试类</li>
-</ul>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> FileDemo2 &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(String[] args) &#123;<br>		<span class="hljs-comment">//获取扩展名为.java所有文件</span><br>		<span class="hljs-comment">//创建File对象</span><br>		<span class="hljs-keyword">File</span> <span class="hljs-keyword">file</span> = <span class="hljs-keyword">new</span> <span class="hljs-keyword">File</span>(<span class="hljs-string">&quot;E:\\code\\day11_code&quot;</span>);<br>		<span class="hljs-comment">//获取指定扩展名的文件,由于要对所有文件进行扩展名筛选，因此调用方法需要传递过滤器</span><br>		<span class="hljs-keyword">File</span>[] files = <span class="hljs-keyword">file</span>.listFiles(<span class="hljs-keyword">new</span> MyFileFilter());<br>		<span class="hljs-comment">//遍历获取到的所有符合条件的文件</span><br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">File</span> f : files) &#123;<br>			System.out.<span class="hljs-keyword">println</span>(f);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>自定类继承FilenameFilter过滤器接口</li>
-</ul>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//定义类实现文件名称FilenameFilter过滤器</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyFileFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">FilenameFilter</span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-built_in">boolean</span> <span class="hljs-title function_">accept</span>(<span class="hljs-params">File dir, <span class="hljs-built_in">String</span> name</span>) &#123;<br>		<span class="hljs-keyword">return</span> name.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&quot;.java&quot;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
+<p>删除表的过程中发现有个表一直删除不掉,这也是之前报死锁的原因,所以解决掉这个死锁问题,不删除表也可以解决</p>
+<p><code>SHOW FULL PROCESSLIST</code>查看所有链接信息</p>
+<p><code> SELECT * FROM information_schema.PROCESSLIST ORDER BY  info DESC;</code></p>
+<p>使用这个可以看到上面的所有字段而且可以排序等操作</p>
+<p>上面的操作后观察可以看到state,与info字段显示xxl_job_lock 被锁住了,执行不下去,显示Waiting for table metadata lock.</p>
+<p><code>kill &lt;上面查出来的id&gt;</code></p>
+<p>把这个session终止了再次删除发现还是卡死状态</p>
+<p><code>select * from information_schema.innodb_trx;</code><br>查询事务,把看起来不正常或一直卡死的事务也关掉<br>对应的字段是’trx_mysql_thread_id’</p>
+<p><code>kill xxxx</code></p>
+<p>再删除就可以了.正常删除表了</p>
+<p>这也是mysql死锁排查的通用过程了.</p>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.cnblogs.com/digdeep/p/4892953.html">https://www.cnblogs.com/digdeep/p/4892953.html</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             
@@ -347,11 +341,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/work/" class="category-chain-item">work</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/java/" class="print-no-link">#java</a>
+        <a href="/tags/mysql/" class="print-no-link">#mysql</a>
+      
+        <a href="/tags/xxl-job/" class="print-no-link">#xxl-job</a>
       
     </div>
   
@@ -363,8 +380,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>java File类</div>
-      <div>https://lililib.github.io/java File类/</div>
+      <div>xxl-job锁超时</div>
+      <div>https://lililib.github.io/xxl-job锁超时/</div>
     </div>
     <div class="license-meta">
       
@@ -376,7 +393,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月28日</div>
+          <div>2025年6月16日</div>
         </div>
       
       
@@ -408,18 +425,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/mysql%E9%AB%98%E6%95%88%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/" title="mysql高效批量插入数据">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">mysql高效批量插入数据</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/linux%E6%A6%82%E8%A6%81%E5%91%BD%E4%BB%A4/" title="linux概要命令">
-                        <span class="hidden-mobile">linux概要命令</span>
+                      <a href="/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/" title="navicate的数据迁移">
+                        <span class="hidden-mobile">navicate的数据迁移</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

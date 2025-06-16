@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>xxl-job锁超时</title>
+    <link href="/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/"/>
+    <url>/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/</url>
+    
+    <content type="html"><![CDATA[<p>xxl-job-admin启动的时候一直报Lock wait timeout exceeded; try restarting transaction</p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-symbol">com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException:</span> Lock <span class="hljs-keyword">wait </span>timeout exceeded<span class="hljs-comment">; try restarting transaction</span><br><span class="hljs-built_in">at</span> com.mysql.cj.<span class="hljs-keyword">jdbc.exceptions.SQLError.createSQLException(SQLError.java:124)</span><br><span class="hljs-keyword"></span><span class="hljs-built_in">at</span> com.mysql.cj.<span class="hljs-keyword">jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)</span><br><span class="hljs-keyword"></span><span class="hljs-built_in">at</span> com.mysql.cj.<span class="hljs-keyword">jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)</span><br><span class="hljs-keyword"></span><span class="hljs-built_in">at</span> com.mysql.cj.<span class="hljs-keyword">jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)</span><br><span class="hljs-keyword"></span><span class="hljs-built_in">at</span> com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.<span class="hljs-keyword">java:44)</span><br><span class="hljs-keyword"></span><span class="hljs-built_in">at</span> com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.<span class="hljs-keyword">java)</span><br><span class="hljs-keyword"></span><span class="hljs-built_in">at</span> com.xxl.<span class="hljs-keyword">job.admin.core.thread.JobScheduleHelper$1.run(JobScheduleHelper.java:74)</span><br><span class="hljs-keyword"></span><span class="hljs-built_in">at</span> <span class="hljs-keyword">java.lang.Thread.run(Thread.java:748)</span><br></code></pre></td></tr></table></figure><p>估计是我不小心admin实例起了太多的原因,解决办法就是关闭所有admin实例,删除xxl所有表,再重新搞一遍</p><span id="more"></span><p>删除表的过程中发现有个表一直删除不掉,这也是之前报死锁的原因,所以解决掉这个死锁问题,不删除表也可以解决</p><p><code>SHOW FULL PROCESSLIST</code>查看所有链接信息</p><p><code> SELECT * FROM information_schema.PROCESSLIST ORDER BY  info DESC;</code></p><p>使用这个可以看到上面的所有字段而且可以排序等操作</p><p>上面的操作后观察可以看到state,与info字段显示xxl_job_lock 被锁住了,执行不下去,显示Waiting for table metadata lock.</p><p><code>kill &lt;上面查出来的id&gt;</code></p><p>把这个session终止了再次删除发现还是卡死状态</p><p><code>select * from information_schema.innodb_trx;</code><br>查询事务,把看起来不正常或一直卡死的事务也关掉<br>对应的字段是’trx_mysql_thread_id’</p><p><code>kill xxxx</code></p><p>再删除就可以了.正常删除表了</p><p>这也是mysql死锁排查的通用过程了.</p><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.cnblogs.com/digdeep/p/4892953.html">https://www.cnblogs.com/digdeep/p/4892953.html</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>work</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mysql</tag>
+      
+      <tag>xxl-job</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>navicate的数据迁移</title>
     <link href="/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/"/>
     <url>/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/</url>
