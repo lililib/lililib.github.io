@@ -1,3 +1,4 @@
+https://lililib.github.io/k8s%E9%83%A8%E7%BD%B2xxl-job/
 https://lililib.github.io/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/
 https://lililib.github.io/java%20File%E7%B1%BB/
 https://lililib.github.io/VR%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96%E9%80%94%E5%BE%84/
@@ -113,6 +114,7 @@ https://lililib.github.io/tags/%E7%94%9F%E6%B4%BB/
 https://lililib.github.io/tags/game/
 https://lililib.github.io/tags/%E6%9C%89%E6%84%8F%E6%80%9D/
 https://lililib.github.io/tags/xxl-job/
+https://lililib.github.io/tags/k8s/
 https://lililib.github.io/categories/Diary/
 https://lililib.github.io/categories/IDEA%EF%BC%8CFlink/
 https://lililib.github.io/categories/%E6%8A%80%E6%9C%AF/
