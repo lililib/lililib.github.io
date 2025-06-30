@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>idea启动 报java: 找不到符号</title>
+    <link href="/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java:%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/"/>
+    <url>/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java:%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/</url>
+    
+    <content type="html"><![CDATA[<p>maven install不报错,代码编辑框不爆红,唯独idea启动项目报lombok相关的找不到符号,可以试试升级lombok至最新版</p><span id="more"></span><p>前一步调试代码好好地,后面崩溃再重新启动就报 “java: 找不到符号”</p><p><img src="/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java:%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/image-20250630164419807.png" alt="image-20250630164419807"></p><p>我很确定我的代码百分百是正确的,点进去发现报错的全是是实体类get,set方法,理论上需要使用lombok生成.</p><p>令人疑惑的是,在maven那边点击clean,install,毫无错误.进一步去target目录查证class文件,也确实这个实体类已经生成了get,set方法.</p><p>代码编辑界面没有红线,唯独使用idea启动报错.</p><p>清除idea缓存,删除idea项目配置,重新导入pom文件,删除项目下的iml文件.全部搞了一遍.还是报错,真是头大,莫名其妙.</p><p>红温之际,看到了个文章,说可能是项目的lombok版本与idea自带的lombok版本冲突有啥不兼容的,遂直接在pom文件添加最新版lombok,启动成功.</p><p>我是<code>IntelliJ IDEA 2025.1.1.1 </code> 使用1.18.38版本的lombok解决</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.18.38<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure><p>​    </p><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.cnblogs.com/lmyupupblogs/p/17377265.html">https://www.cnblogs.com/lmyupupblogs/p/17377265.html</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://blog.csdn.net/sinat_38719275/article/details/106453328">https://blog.csdn.net/sinat_38719275/article/details/106453328</a><a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>work</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>idea</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>自定义基础镜像</title>
     <link href="/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/"/>
     <url>/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/</url>

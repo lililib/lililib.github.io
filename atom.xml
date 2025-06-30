@@ -6,7 +6,7 @@
   <link href="https://lililib.github.io/atom.xml" rel="self"/>
   
   <link href="https://lililib.github.io/"/>
-  <updated>2025-06-26T04:48:15.848Z</updated>
+  <updated>2025-06-30T09:03:12.152Z</updated>
   <id>https://lililib.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>idea启动 报java: 找不到符号</title>
+    <link href="https://lililib.github.io/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java:%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/"/>
+    <id>https://lililib.github.io/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java:%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/</id>
+    <published>2025-06-30T08:41:36.000Z</published>
+    <updated>2025-06-30T09:03:12.152Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;maven install不报错,代码编辑框不爆红,唯独idea启动项目报lombok相关的找不到符号,可以试试升级lombok至最新版&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="work" scheme="https://lililib.github.io/categories/work/"/>
+    
+    
+    <category term="idea" scheme="https://lililib.github.io/tags/idea/"/>
+    
+  </entry>
   
   <entry>
     <title>自定义基础镜像</title>
