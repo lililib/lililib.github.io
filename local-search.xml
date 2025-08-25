@@ -4,11 +4,61 @@
   
   
   <entry>
-    <title>idea启动 报java: 找不到符号</title>
-    <link href="/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java:%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/"/>
-    <url>/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java:%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/</url>
+    <title>网文为啥这么单调</title>
+    <link href="/%E7%BD%91%E6%96%87%E4%B8%BA%E5%95%A5%E6%80%8E%E4%B9%88%E5%8D%95%E8%B0%83/"/>
+    <url>/%E7%BD%91%E6%96%87%E4%B8%BA%E5%95%A5%E6%80%8E%E4%B9%88%E5%8D%95%E8%B0%83/</url>
     
-    <content type="html"><![CDATA[<p>maven install不报错,代码编辑框不爆红,唯独idea启动项目报lombok相关的找不到符号,可以试试升级lombok至最新版</p><span id="more"></span><p>前一步调试代码好好地,后面崩溃再重新启动就报 “java: 找不到符号”</p><p><img src="/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java:%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/image-20250630164419807.png" alt="image-20250630164419807"></p><p>我很确定我的代码百分百是正确的,点进去发现报错的全是是实体类get,set方法,理论上需要使用lombok生成.</p><p>令人疑惑的是,在maven那边点击clean,install,毫无错误.进一步去target目录查证class文件,也确实这个实体类已经生成了get,set方法.</p><p>代码编辑界面没有红线,唯独使用idea启动报错.</p><p>清除idea缓存,删除idea项目配置,重新导入pom文件,删除项目下的iml文件.全部搞了一遍.还是报错,真是头大,莫名其妙.</p><p>红温之际,看到了个文章,说可能是项目的lombok版本与idea自带的lombok版本冲突有啥不兼容的,遂直接在pom文件添加最新版lombok,启动成功.</p><p>我是<code>IntelliJ IDEA 2025.1.1.1 </code> 使用1.18.38版本的lombok解决</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.18.38<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure><p>​    </p><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.cnblogs.com/lmyupupblogs/p/17377265.html">https://www.cnblogs.com/lmyupupblogs/p/17377265.html</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://blog.csdn.net/sinat_38719275/article/details/106453328">https://blog.csdn.net/sinat_38719275/article/details/106453328</a><a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    <content type="html"><![CDATA[<p>最近又上头看了一本小说《宠魅》。常常都是感觉无聊的时候，在别人评论区推荐下心血来潮找的一本。</p><p>然而过程常常是这样：前大概150章的时候非常上头，剧情非常吸引人，然后后面剧情开始重复，套路开始明显，开始厌倦，只想快速看完，赶紧结束，再之后就是跳文、跳章，快进的结尾,直至弃文放弃。</p><p>虽然其中有我不休息连续看好几个小时的原因，但主要原因还是剧情重复枯燥。</p><span id="more"></span><p>想了下，原因大概就是：网文作者一本书收益与作者更新字数、连载更新时长有关，这就导致作者为了把一个故事流程讲完，会在其中塞入n多个分支，为了维持几百万的文字。</p><p>作者会疯狂水文，一个简单的事情，他可以弯弯绕绕几百章。为了维持主角的成长，他会把之前的套路复制n次。</p><p>虽然有些小说可以摆脱常规主角升级、换地图的套路，让人不那么有套路感，但是往往一个主题，不管怎么翻来覆去地绕、翻来覆去地讲，你要用几百万字来填充，注定还是会感到重复。</p><p>就说说远瞳的书吧。他会先设置一个文章结尾剧情，什么宇宙大密辛是什么样的，然后推动剧情的方式虽然少了那种升级换地图的水文，但是为了几百万字的更新，他会设计如何一步一步地解开这个大密辛。这个过程极其绕弯，往往一个转折套一个转折，一章又一章地绕，往往绕得你最终觉得小题大做、水文明显，你看这又是重复。<br>还有有些漫画也是这样的如《剑风传奇》,在中期的时候,无可避免的轮入俗套,重复,无聊.</p><p>这种一直阻拦完结的方式,注定最终品质不高.</p><p>属实不该浪费这个时间，看这些无聊水文。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>阅读</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>几张漫画遮脸图</title>
+    <link href="/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/"/>
+    <url>/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/</url>
+    
+    <content type="html"><![CDATA[<p>刷煎蛋的时候碰到的几个印象深刻的热图，前两张都是短短2小时00破百的图，不过不到一天就下架了。只存了两张这个遮脸系列总感觉少了点，今年又发现了后面两张图，感觉也不错，就一起记录记录。还是动漫娘化了可爱(●’◡’●)</p><span id="more"></span><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/7bbdd9e2b6bc3314149845dda340cace.jpg" alt="7bbdd9e2b6bc3314149845dda340cace"></div><div class="group-image-wrap"><img src="/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/6875038cea948dcbf7dad79037c08e27%20-%20%E5%89%AF%E6%9C%AC.jpg" alt="6875038cea948dcbf7dad79037c08e27 - 副本"></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/1751773138779-10.webp" alt="1751773138779-10"></div><div class="group-image-wrap"><img src="/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/1751773138798-10.webp" alt="1751773138798-10"></div></div></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>日常</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>日常</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>idea启动 报java: 找不到符号</title>
+    <link href="/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/"/>
+    <url>/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/</url>
+    
+    <content type="html"><![CDATA[<p>maven install不报错,代码编辑框不爆红,唯独idea启动项目报lombok相关的找不到符号,可以试试升级lombok至最新版</p><span id="more"></span><p>前一步调试代码好好地,后面崩溃再重新启动就报 “java: 找不到符号”</p><p><img src="/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/image-20250706112614189.png" alt="image-20250706112614189"></p><p>我很确定我的代码百分百是正确的,点进去发现报错的全是是实体类get,set方法,理论上需要使用lombok生成.</p><p>令人疑惑的是,在maven那边点击clean,install,毫无错误.进一步去target目录查证class文件,也确实这个实体类已经生成了get,set方法.</p><p>代码编辑界面没有红线,唯独使用idea启动报错.</p><p>清除idea缓存,删除idea项目配置,重新导入pom文件,删除项目下的iml文件.全部搞了一遍.还是报错,真是头大,莫名其妙.</p><p>红温之际,看到了个文章,说可能是项目的lombok版本与idea自带的lombok版本冲突有啥不兼容的,遂直接在pom文件添加最新版lombok,启动成功.</p><p>我是<code>IntelliJ IDEA 2025.1.1.1 </code> 使用1.18.38版本的lombok解决</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.18.38<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.cnblogs.com/lmyupupblogs/p/17377265.html">https://www.cnblogs.com/lmyupupblogs/p/17377265.html</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://blog.csdn.net/sinat_38719275/article/details/106453328">https://blog.csdn.net/sinat_38719275/article/details/106453328</a><a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
     
     
     <categories>
