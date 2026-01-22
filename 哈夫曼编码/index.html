@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/cat.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cat.ico">
+  <link rel="icon" href="/img/cat.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/pendulum.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -329,9 +329,9 @@
 <li>寻找两个权重最小且还没有加入树中的节点进行构造哈夫曼树，不断重复此过程（构造过程中存储结构中变动的信息都需要更新）其实这寻找两个权值最小的节点挺难的，困了好长时间&#x2F;(ㄒoㄒ)&#x2F;~~</li>
 <li>根据构造的树，解析析出哈夫曼编码</li>
 </ol>
-<h2 id="双亲孩子节点"><a href="#双亲孩子节点" class="headerlink" title="双亲孩子节点"></a>双亲孩子节点</h2><p><img src="/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/1608476724594.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="双亲孩子节点"><a href="#双亲孩子节点" class="headerlink" title="双亲孩子节点"></a>双亲孩子节点</h2><p><img src="/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/1608476724594.png" srcset="/img/pendulum.gif" lazyload></p>
 <span id="more"></span>
-<p><img src="/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/1608476736519.png" srcset="/img/loading.gif" lazyload><br>上图把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
+<p><img src="/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/1608476736519.png" srcset="/img/pendulum.gif" lazyload><br>上图把head换成leftchild 和 rightchild就可以代表<strong>仿真指针实现的双亲孩子的储存结构</strong></p>
 <p>&emsp;&emsp;get了一个<strong>新技巧</strong>，对于一个数组中胡乱的加入各个大小的数据，怎么<strong>循环一次</strong>就可以把其中最小的和次小的下标找到,分两个情况考虑：</p>
 <ol>
 <li>最小值在次小值右边，想象着最小值在最右边，一直遍历下去定会也遇到次小值</li>
@@ -568,7 +568,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> 
     </div>
   
   

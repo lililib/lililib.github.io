@@ -15,8 +15,149 @@
     <atom:link href="https://lililib.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>记录一些学习内容读书呀，编程呀，感想啥的</description>
-    <pubDate>Tue, 02 Sep 2025 01:06:22 GMT</pubDate>
+    <pubDate>Thu, 22 Jan 2026 09:49:36 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Kubernetes跨集群通信</title>
+      <link>https://lililib.github.io/Kubernetes%E8%B7%A8%E9%9B%86%E7%BE%A4%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/</link>
+      <guid>https://lililib.github.io/Kubernetes%E8%B7%A8%E9%9B%86%E7%BE%A4%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/</guid>
+      <pubDate>Thu, 22 Jan 2026 09:49:07 GMT</pubDate>
+      
+      <description>&lt;p&gt;最近遇到的一个问题：需要把老集群的部分服务迁移到新集群，要求新老集群里面的Pod可以互相通信调用。踩了几天的坑，磕磕绊绊总算是完成了。&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://lililib.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      
+      <category domain="https://lililib.github.io/tags/Kubernetes/">Kubernetes</category>
+      
+      <category domain="https://lililib.github.io/tags/%E7%BD%91%E7%BB%9C/">网络</category>
+      
+      
+      <comments>https://lililib.github.io/Kubernetes%E8%B7%A8%E9%9B%86%E7%BE%A4%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>2个月跑步计划2</title>
+      <link>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%922/</link>
+      <guid>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%922/</guid>
+      <pubDate>Thu, 09 Oct 2025 13:42:29 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+
+
+&lt;h2 id=&quot;9-21-第一天：迈出第一步&quot;&gt;&lt;a href=&quot;#9-21-第一天：迈出第一步&quot; class=&quot;headerlink&quot; title=&quot;9.21 第一天：迈出第一步&quot;&gt;&lt;/a&gt;9.21</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://lililib.github.io/categories/Diary/">Diary</category>
+      
+      
+      <category domain="https://lililib.github.io/tags/%E8%B7%91%E6%AD%A5/">跑步</category>
+      
+      <category domain="https://lililib.github.io/tags/%E5%81%A5%E8%BA%AB/">健身</category>
+      
+      <category domain="https://lililib.github.io/tags/%E6%97%A5%E8%AE%B0/">日记</category>
+      
+      
+      <comments>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%922/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>力工思维的一些幼稚的想法</title>
+      <link>https://lililib.github.io/%E5%8A%9B%E5%B7%A5%E6%80%9D%E7%BB%B4%E4%B8%80%E4%BA%9B%E5%B9%BC%E7%A8%9A%E7%9A%84%E6%83%B3%E6%B3%95/</link>
+      <guid>https://lililib.github.io/%E5%8A%9B%E5%B7%A5%E6%80%9D%E7%BB%B4%E4%B8%80%E4%BA%9B%E5%B9%BC%E7%A8%9A%E7%9A%84%E6%83%B3%E6%B3%95/</guid>
+      <pubDate>Sat, 27 Sep 2025 06:01:55 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;span</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://lililib.github.io/categories/Diary/">Diary</category>
+      
+      
+      <category domain="https://lililib.github.io/tags/%E7%94%9F%E6%B4%BB/">生活</category>
+      
+      
+      <comments>https://lililib.github.io/%E5%8A%9B%E5%B7%A5%E6%80%9D%E7%BB%B4%E4%B8%80%E4%BA%9B%E5%B9%BC%E7%A8%9A%E7%9A%84%E6%83%B3%E6%B3%95/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>净水器的攻略</title>
+      <link>https://lililib.github.io/%E5%87%80%E6%B0%B4%E5%99%A8%E7%9A%84%E6%94%BB%E7%95%A5/</link>
+      <guid>https://lililib.github.io/%E5%87%80%E6%B0%B4%E5%99%A8%E7%9A%84%E6%94%BB%E7%95%A5/</guid>
+      <pubDate>Fri, 26 Sep 2025 12:55:08 GMT</pubDate>
+      
+      <description>&lt;p&gt;在了解到超市售卖的矿泉水实际上也是通过RO膜反渗透过滤后，萌生了安装净水器的想法。&lt;/p&gt;
+&lt;p&gt;长期饮用烧开的自来水，口感喝起来瑟瑟的，而瓶装矿泉水如怡宝等品牌口感甘甜。&lt;/p&gt;
+&lt;p&gt;趁着国庆假期回家，计划安装一台净水器试试。&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://lililib.github.io/categories/Diary/">Diary</category>
+      
+      
+      <category domain="https://lililib.github.io/tags/%E7%94%9F%E6%B4%BB/">生活</category>
+      
+      
+      <comments>https://lililib.github.io/%E5%87%80%E6%B0%B4%E5%99%A8%E7%9A%84%E6%94%BB%E7%95%A5/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>2个月跑步计划</title>
+      <link>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%92/</link>
+      <guid>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%92/</guid>
+      <pubDate>Sat, 20 Sep 2025 11:18:15 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h1 id=&quot;2个月跑步计划&quot;&gt;&lt;a href=&quot;#2个月跑步计划&quot; class=&quot;headerlink&quot; title=&quot;2个月跑步计划&quot;&gt;&lt;/a&gt;2个月跑步计划&lt;/h1&gt;&lt;h2</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://lililib.github.io/categories/Diary/">Diary</category>
+      
+      
+      <category domain="https://lililib.github.io/tags/%E8%B7%91%E6%AD%A5/">跑步</category>
+      
+      <category domain="https://lililib.github.io/tags/%E5%81%A5%E8%BA%AB/">健身</category>
+      
+      <category domain="https://lililib.github.io/tags/%E6%97%A5%E8%AE%B0/">日记</category>
+      
+      
+      <comments>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%92/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>姑苏印象</title>

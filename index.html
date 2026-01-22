@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/cat.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cat.ico">
+  <link rel="icon" href="/img/cat.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -67,7 +67,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/pendulum.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -261,9 +261,324 @@
   <div class="row mx-auto index-card">
     
     
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/Kubernetes%E8%B7%A8%E9%9B%86%E7%BE%A4%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/" target="_self">
+          Kubernetes跨集群通信
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/Kubernetes%E8%B7%A8%E9%9B%86%E7%BE%A4%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          最近遇到的一个问题：需要把老集群的部分服务迁移到新集群，要求新老集群里面的Pod可以互相通信调用。踩了几天的坑，磕磕绊绊总算是完成了。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 17:49" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Kubernetes/">#Kubernetes</a>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C/">#网络</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%922/" target="_self">
+          2个月跑步计划2
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%922/" target="_self">
+        <div>
+          9.21 第一天：迈出第一步我现在就疯狂打退堂鼓。9.21 18:44 因为做饭晚了一点，疯狂想今天算了，最后先新建了个文档，才直接出门的。 差点就屈服了。 要国庆了，因为要回家今天看了下全屋增压方案，还有5级净水方案。 感觉越过越娇贵了😁，现在喝烧开的自来水，总感觉有股味道不好喝，没有矿泉水的甘甜。况且我看5级净水也才300多就可以实现。 国庆回家搞一套玩玩。    9.22 第二天：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-09 21:42" pubdate>
+              2025-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Diary/" class="category-chain-item">Diary</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B7%91%E6%AD%A5/">#跑步</a>
+            
+              <a href="/tags/%E5%81%A5%E8%BA%AB/">#健身</a>
+            
+              <a href="/tags/%E6%97%A5%E8%AE%B0/">#日记</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/%E5%8A%9B%E5%B7%A5%E6%80%9D%E7%BB%B4%E4%B8%80%E4%BA%9B%E5%B9%BC%E7%A8%9A%E7%9A%84%E6%83%B3%E6%B3%95/" target="_self">
+          力工思维的一些幼稚的想法
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/%E5%8A%9B%E5%B7%A5%E6%80%9D%E7%BB%B4%E4%B8%80%E4%BA%9B%E5%B9%BC%E7%A8%9A%E7%9A%84%E6%83%B3%E6%B3%95/" target="_self">
+        <div>
+          最近看到很多力工思维的帖子。 大概说的是持有力工思维的男人，他们对于对结婚生子买房有着极大渴望，习惯于克扣自己，不舍得花钱，骨子里把付出当成一种荣耀，并因此过度牺牲个人生活质量。他们对爱情没有执念，不喜欢浪漫这种很虚的东西，就喜欢结婚生子、传宗接代。 有这种思维的男人大多存在于从事体力劳动的工作中。所以也有字面的意思力工 。当然肯定不仅限于力工，在从事脑力劳动的人群中也有不少这种思维。他们
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-27 14:01" pubdate>
+              2025-09-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Diary/" class="category-chain-item">Diary</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%94%9F%E6%B4%BB/">#生活</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/%E5%87%80%E6%B0%B4%E5%99%A8%E7%9A%84%E6%94%BB%E7%95%A5/" target="_self">
+          净水器的攻略
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/%E5%87%80%E6%B0%B4%E5%99%A8%E7%9A%84%E6%94%BB%E7%95%A5/" target="_self">
+        <div>
+          在了解到超市售卖的矿泉水实际上也是通过RO膜反渗透过滤后，萌生了安装净水器的想法。 长期饮用烧开的自来水，口感喝起来瑟瑟的，而瓶装矿泉水如怡宝等品牌口感甘甜。 趁着国庆假期回家，计划安装一台净水器试试。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-26 20:55" pubdate>
+              2025-09-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Diary/" class="category-chain-item">Diary</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%94%9F%E6%B4%BB/">#生活</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%92/" target="_self">
+          2个月跑步计划
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%92/" target="_self">
+        <div>
+          2个月跑步计划第一天：2025年9月20日 19:19今日状态状态正常，现在感觉鞋子有点紧，准备出发。目标：两圈 4km 完成情况今天 4km 顺利完成。已经入秋了，非常凉爽，晚上有凉风吹拂，蒸发汗液的感觉非常舒服。 今天状态不错，还有余力，可能是下午睡了 2 小时的原因。今天总睡眠时间 8 小时 47 分钟，我感觉充满了力量 😁 计划目标目标定位： 连续两个月，不下雨就跑步，下雨就爬楼。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-20 19:18" pubdate>
+              2025-09-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Diary/" class="category-chain-item">Diary</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B7%91%E6%AD%A5/">#跑步</a>
+            
+              <a href="/tags/%E5%81%A5%E8%BA%AB/">#健身</a>
+            
+              <a href="/tags/%E6%97%A5%E8%AE%B0/">#日记</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/%E5%A7%91%E8%8B%8F%E5%8D%B0%E8%B1%A1/" target="_self">
-          <img src="/%E5%A7%91%E8%8B%8F%E5%8D%B0%E8%B1%A1/DSC_0439-6570351.jpg" srcset="/img/loading.gif" lazyload alt="姑苏印象">
+          <img src="/%E5%A7%91%E8%8B%8F%E5%8D%B0%E8%B1%A1/DSC_0439-6570351.jpg" srcset="/img/pendulum.gif" lazyload alt="姑苏印象">
         </a>
       </div>
     
@@ -391,7 +706,7 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/%E3%80%8A%E5%8F%98%E8%BA%AB%E3%80%8BEmergence%20/" target="_self">
-          <img src="/%E3%80%8A%E5%8F%98%E8%BA%AB%E3%80%8BEmergence%20/Screenshot_2025-07-28-23-03-53-441_com.github.pacalini.pica_comic.jpg" srcset="/img/loading.gif" lazyload alt="《变身》Emergence ">
+          <img src="/%E3%80%8A%E5%8F%98%E8%BA%AB%E3%80%8BEmergence%20/Screenshot_2025-07-28-23-03-53-441_com.github.pacalini.pica_comic.jpg" srcset="/img/pendulum.gif" lazyload alt="《变身》Emergence ">
         </a>
       </div>
     
@@ -458,7 +773,7 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/" target="_self">
-          <img src="/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/1751773138798-10.webp" srcset="/img/loading.gif" lazyload alt="几张漫画遮脸图">
+          <img src="/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/1751773138798-10.webp" srcset="/img/pendulum.gif" lazyload alt="几张漫画遮脸图">
         </a>
       </div>
     
@@ -581,331 +896,6 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/" target="_self">
-          自定义基础镜像
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/" target="_self">
-        <div>
-          下载精简版jdk8镜像,会有很多工具不存在,如curl,vim,ping啥的,下载完整版jdk8又有太多不必要的工具,太臃肿了,所有自定义镜像的需求就来了
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-06-26 12:28" pubdate>
-              2025-06-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/docker/" class="category-chain-item">docker</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/k8s%E9%83%A8%E7%BD%B2xxl-job/" target="_self">
-          <img src="/k8s%E9%83%A8%E7%BD%B2xxl-job/image-20250616151734154.png" srcset="/img/loading.gif" lazyload alt="k8s部署xxl-job">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/k8s%E9%83%A8%E7%BD%B2xxl-job/" target="_self">
-          k8s部署xxl-job
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/k8s%E9%83%A8%E7%BD%B2xxl-job/" target="_self">
-        <div>
-          xxl-job是个很好用的定时任务调度器,记录下部署过程 第一步看官方文档 https://www.xuxueli.com/xxl-job
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-06-16 14:43" pubdate>
-              2025-06-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/work/" class="category-chain-item">work</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/k8s/">#k8s</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/" target="_self">
-          xxl-job锁超时
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/" target="_self">
-        <div>
-          xxl-job-admin启动的时候一直报Lock wait timeout exceeded; try restarting transaction 123456789com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transact
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-06-16 10:59" pubdate>
-              2025-06-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/work/" class="category-chain-item">work</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mysql/">#mysql</a>
-            
-              <a href="/tags/xxl-job/">#xxl-job</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/" target="_self">
-          <img src="/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/image-20250607175433883.png" srcset="/img/loading.gif" lazyload alt="navicate的数据迁移">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/" target="_self">
-          navicate的数据迁移
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/" target="_self">
-        <div>
-          &emsp;新到的这家公司分库分表做的很多,一个库就有3000多张表.还有好几个库.调试bug定位数据的时候简直让人心肺骤停.总是怀疑刚刚滑过的表名是不是错过了.
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-06-07 10:51" pubdate>
-              2025-06-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6/" class="category-chain-item">软件</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/%E3%80%8A%E9%93%B3%E6%A2%A6%E3%80%8B/" target="_self">
-          <img src="/%E3%80%8A%E9%93%B3%E6%A2%A6%E3%80%8B/image-20240225190721226.png" srcset="/img/loading.gif" lazyload alt="《铳梦》">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/%E3%80%8A%E9%93%B3%E6%A2%A6%E3%80%8B/" target="_self">
-          《铳梦》
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/%E3%80%8A%E9%93%B3%E6%A2%A6%E3%80%8B/" target="_self">
-        <div>
-          机缘巧合之下知道了《铳梦》这个漫画，看到煎蛋热评魔幻的世界观给了小时po主十足的震撼后，心痒难耐于是周六看了这部漫画，总共九部，每部二百多页出头的样子。耗时接近9个小时看完，废寝忘食。很有当初看《剑豪生死斗》时的沉迷。以我看了太多诡异世界观的作品后猎奇眼光来看，世界观的构造，冲突的发展，社会面貌的描写。只能说打个10分打个7分的样子。但是毕竟作者1995年就画完了，相信之前看的很多作品有借鉴过这个
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-25 17:45" pubdate>
-              2024-02-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Diary/" class="category-chain-item">Diary</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BC%AB%E7%94%BB/">#漫画</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -960,7 +950,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> 
     </div>
   
   

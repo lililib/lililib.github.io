@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/cat.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cat.ico">
+  <link rel="icon" href="/img/cat.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/pendulum.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -353,7 +353,7 @@
 </ul>
 <h3 id="线程池的底层工作原理"><a href="#线程池的底层工作原理" class="headerlink" title="线程池的底层工作原理"></a><strong>线程池的底层工作原理</strong></h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-number">1</span> 在创建了线程池后，等待提交过来的任务请求。<br><span class="hljs-number">2</span> 当调用<span class="hljs-built_in">execute</span>（）方法添加一个请求任务时，线程池会做如下判断：<br>	<span class="hljs-number">2.1</span> 如果正在运行的线程数量小于 corePoolSize，那么马上创建马上创建线程运行这个任务。<br>	<span class="hljs-number">2.2</span> 如果正在运行的线程数量大于或等于corePoolSize，那么将这个任务放入队列。<br>	<span class="hljs-number">2.3</span> 如果这个时候队列满了且正在运行的线程数量还小于maximumPoolSize，那么还是要创建非核心线程立刻运		  行这个任务。（队列出列，刚来的去队列中）<br> 	<span class="hljs-number">2.4</span> 如果队列满了且正在运行的线程数量大于或等于maximumPoolSize，那么线程池<br>		会启动饱和拒绝策略来执行。<br><span class="hljs-number">3.</span>当一个线程完成任务时，它会从队列中取下一个任务来执行。<br><span class="hljs-number">4.</span>当一个线程无事可做超过一定的时间（keepAlilveTime）时，线程池会判断：如果当前运行的线程数大于corePoolSize，那么这个线程就被停掉。所以线程池的所有任务完成后它最终会收缩到corePoolSize的大小<br></code></pre></td></tr></table></figure>
 
-<h4 id="线程池的主要工作流程"><a href="#线程池的主要工作流程" class="headerlink" title="线程池的主要工作流程"></a>线程池的主要工作流程</h4><p><img src="/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/1668128251845.png" srcset="/img/loading.gif" lazyload><br><img src="/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/1668128261873.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="线程池的主要工作流程"><a href="#线程池的主要工作流程" class="headerlink" title="线程池的主要工作流程"></a>线程池的主要工作流程</h4><p><img src="/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/1668128251845.png" srcset="/img/pendulum.gif" lazyload><br><img src="/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/1668128261873.png" srcset="/img/pendulum.gif" lazyload></p>
 <h4 id="用银行的例子来说明："><a href="#用银行的例子来说明：" class="headerlink" title="用银行的例子来说明："></a><strong>用银行的例子来说明：</strong></h4><p><strong>用银行的例子来说明：</strong></p>
 <ul>
 <li>N个窗口 :corePoolSize</li>
@@ -632,7 +632,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> 
     </div>
   
   

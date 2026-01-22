@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/cat.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cat.ico">
+  <link rel="icon" href="/img/cat.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -82,7 +82,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/pendulum.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -332,27 +332,27 @@
 
 <p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;正文开始&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
 <p>　　先来看下表1，表名为test：</p>
-<p> <img src="/mysql%E7%9A%84groupby/162344381367279.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p> <img src="/mysql%E7%9A%84groupby/162344381367279.jpg" srcset="/img/pendulum.gif" lazyload alt="img"></p>
 <p><strong>表1</strong></p>
 <p>　　执行如下SQL语句：</p>
 <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">SELECT` `name` `FROM` `test``GROUP` `BY` `name<br></code></pre></td></tr></table></figure>
 
 <p>　　你应该很容易知道运行的结果，没错，就是下表2：</p>
-<p> <img src="/mysql%E7%9A%84groupby/162345461519459.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p> <img src="/mysql%E7%9A%84groupby/162345461519459.jpg" srcset="/img/pendulum.gif" lazyload alt="img"></p>
 <p><strong>表2</strong></p>
 <p>　　可是为了能够更好的理解<strong>“group by”多个列“</strong>和<strong>”聚合函数“</strong>的应用，我建议在思考的过程中，由表1到表2的过程中，增加一个虚构的中间表：<strong>虚拟表3</strong>。下面说说如何来思考上面SQL语句执行情况：</p>
 <p>1.FROM test：该句执行后，应该结果和表1一样，就是原来的表。</p>
 <p>2.FROM test Group BY name：该句执行后，我们想象生成了<strong>虚拟表3，</strong>如下所图所示，生成过程是这样的：group by name，那么找name那一列，具有相同name值的行，合并成一行，如对于name值为aa的，那么&lt;1 aa 2&gt;与&lt;2 aa 3&gt;两行合并成1行，所有的id值和number值写到一个单元格里面。</p>
-<p> <img src="/mysql%E7%9A%84groupby/162343319172617.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p> <img src="/mysql%E7%9A%84groupby/162343319172617.jpg" srcset="/img/pendulum.gif" lazyload alt="img"></p>
 <p>3.接下来就要针对<strong>虚拟表3</strong>执行Select语句了：</p>
 <p>（1）**如果执行select *的话，那么返回的结果应该是虚拟表3，可是id和number中有的单元格里面的内容是多个值的，而关系数据库就是基于关系的，单元格中是不允许有多个值的，所以你看，执行select * 语句就报错了**。</p>
 <p>（2）我们再看name列，每个单元格只有一个数据，所以我们select name的话，就没有问题了。为什么name列每个单元格只有一个值呢，因为我们就是用name列来group by的。</p>
 <p>（3）那么对于id和number里面的单元格有多个数据的情况怎么办呢？答案就是用<strong>聚合函数，聚合函数就用来输入多个数据，输出一个数据的。</strong>如cout(id)，sum(number)，而每个聚合函数的输入就是每一个多数据的单元格。</p>
 <p>（4）例如我们执行select name,sum(number) from test group by name，那么sum就对虚拟表3的number列的每个单元格进行sum操作，例如对name为aa的那一行的number列执行sum操作，即2+3，返回5，最后执行结果如下：</p>
-<p><img src="/mysql%E7%9A%84groupby/170013481981068.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p> （5）group by 多个字段该怎么理解呢：如group by name,number，我们可以把name和number 看成一个<strong>整体字段</strong>，以他们整体来进行分组的。如下图<img src="/mysql%E7%9A%84groupby/170005273394852.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/mysql%E7%9A%84groupby/170013481981068.jpg" srcset="/img/pendulum.gif" lazyload alt="img"></p>
+<p> （5）group by 多个字段该怎么理解呢：如group by name,number，我们可以把name和number 看成一个<strong>整体字段</strong>，以他们整体来进行分组的。如下图<img src="/mysql%E7%9A%84groupby/170005273394852.jpg" srcset="/img/pendulum.gif" lazyload alt="img"></p>
 <p>（6）接下来就可以配合select和聚合函数进行操作了。如执行select name,sum(id) from test group by name,number，结果如下图：</p>
-<p><img src="/mysql%E7%9A%84groupby/170016502617188.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/mysql%E7%9A%84groupby/170016502617188.jpg" srcset="/img/pendulum.gif" lazyload alt="img"></p>
 <p>（7）常用聚合函数</p>
 <ul>
 <li>count（）:计算表中的记录数（行数）</li>
@@ -609,7 +609,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> 
     </div>
   
   
