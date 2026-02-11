@@ -15,13 +15,13 @@
     <atom:link href="https://lililib.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>记录一些学习内容读书呀，编程呀，感想啥的</description>
-    <pubDate>Tue, 10 Feb 2026 06:55:48 GMT</pubDate>
+    <pubDate>Wed, 11 Feb 2026 08:51:19 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
       <title>从逆向ChatExcel到构建多Agent协作系统</title>
-      <link>https://lililib.github.io/%E4%BB%8E%E9%80%86%E5%90%91ChatExcel%E5%88%B0%E6%9E%84%E5%BB%BA%E5%A4%9AAgent%E5%8D%8F%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
-      <guid>https://lililib.github.io/%E4%BB%8E%E9%80%86%E5%90%91ChatExcel%E5%88%B0%E6%9E%84%E5%BB%BA%E5%A4%9AAgent%E5%8D%8F%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <link>https://lililib.github.io/posts/50827/</link>
+      <guid>https://lililib.github.io/posts/50827/</guid>
       <pubDate>Tue, 10 Feb 2026 06:54:32 GMT</pubDate>
       
       <description>&lt;p&gt;上个星期接了个需求,做一个类似ChatExcel的Demo.踩了很多坑,一星期内推翻重构了3次项目,现在才满打满算的算作满意.&lt;/p&gt;
@@ -36,14 +36,14 @@
       <category domain="https://lililib.github.io/tags/Agent/">Agent</category>
       
       
-      <comments>https://lililib.github.io/%E4%BB%8E%E9%80%86%E5%90%91ChatExcel%E5%88%B0%E6%9E%84%E5%BB%BA%E5%A4%9AAgent%E5%8D%8F%E4%BD%9C%E7%B3%BB%E7%BB%9F/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/50827/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Kubernetes跨集群通信</title>
-      <link>https://lililib.github.io/Kubernetes%E8%B7%A8%E9%9B%86%E7%BE%A4%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/</link>
-      <guid>https://lililib.github.io/Kubernetes%E8%B7%A8%E9%9B%86%E7%BE%A4%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/</guid>
+      <link>https://lililib.github.io/posts/31816/</link>
+      <guid>https://lililib.github.io/posts/31816/</guid>
       <pubDate>Thu, 22 Jan 2026 09:49:07 GMT</pubDate>
       
       <description>&lt;p&gt;最近遇到的一个问题：需要把老集群的部分服务迁移到新集群，要求新老集群里面的Pod可以互相通信调用。踩了几天的坑，磕磕绊绊总算是完成了。&lt;/p&gt;</description>
@@ -59,14 +59,14 @@
       <category domain="https://lililib.github.io/tags/%E7%BD%91%E7%BB%9C/">网络</category>
       
       
-      <comments>https://lililib.github.io/Kubernetes%E8%B7%A8%E9%9B%86%E7%BE%A4%E9%80%9A%E4%BF%A1%E6%96%B9%E6%A1%88/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/31816/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>2个月跑步计划2</title>
-      <link>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%922/</link>
-      <guid>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%922/</guid>
+      <link>https://lililib.github.io/posts/20328/</link>
+      <guid>https://lililib.github.io/posts/20328/</guid>
       <pubDate>Thu, 09 Oct 2025 13:42:29 GMT</pubDate>
       
         
@@ -94,14 +94,14 @@
       <category domain="https://lililib.github.io/tags/%E6%97%A5%E8%AE%B0/">日记</category>
       
       
-      <comments>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%922/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/20328/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>力工思维的一些幼稚的想法</title>
-      <link>https://lililib.github.io/%E5%8A%9B%E5%B7%A5%E6%80%9D%E7%BB%B4%E4%B8%80%E4%BA%9B%E5%B9%BC%E7%A8%9A%E7%9A%84%E6%83%B3%E6%B3%95/</link>
-      <guid>https://lililib.github.io/%E5%8A%9B%E5%B7%A5%E6%80%9D%E7%BB%B4%E4%B8%80%E4%BA%9B%E5%B9%BC%E7%A8%9A%E7%9A%84%E6%83%B3%E6%B3%95/</guid>
+      <link>https://lililib.github.io/posts/32927/</link>
+      <guid>https://lililib.github.io/posts/32927/</guid>
       <pubDate>Sat, 27 Sep 2025 06:01:55 GMT</pubDate>
       
         
@@ -121,14 +121,14 @@
       <category domain="https://lililib.github.io/tags/%E7%94%9F%E6%B4%BB/">生活</category>
       
       
-      <comments>https://lililib.github.io/%E5%8A%9B%E5%B7%A5%E6%80%9D%E7%BB%B4%E4%B8%80%E4%BA%9B%E5%B9%BC%E7%A8%9A%E7%9A%84%E6%83%B3%E6%B3%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/32927/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>净水器的攻略</title>
-      <link>https://lililib.github.io/%E5%87%80%E6%B0%B4%E5%99%A8%E7%9A%84%E6%94%BB%E7%95%A5/</link>
-      <guid>https://lililib.github.io/%E5%87%80%E6%B0%B4%E5%99%A8%E7%9A%84%E6%94%BB%E7%95%A5/</guid>
+      <link>https://lililib.github.io/posts/1430/</link>
+      <guid>https://lililib.github.io/posts/1430/</guid>
       <pubDate>Fri, 26 Sep 2025 12:55:08 GMT</pubDate>
       
       <description>&lt;p&gt;在了解到超市售卖的矿泉水实际上也是通过RO膜反渗透过滤后，萌生了安装净水器的想法。&lt;/p&gt;
@@ -144,14 +144,14 @@
       <category domain="https://lililib.github.io/tags/%E7%94%9F%E6%B4%BB/">生活</category>
       
       
-      <comments>https://lililib.github.io/%E5%87%80%E6%B0%B4%E5%99%A8%E7%9A%84%E6%94%BB%E7%95%A5/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/1430/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>2个月跑步计划</title>
-      <link>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%92/</link>
-      <guid>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%92/</guid>
+      <link>https://lililib.github.io/posts/10457/</link>
+      <guid>https://lililib.github.io/posts/10457/</guid>
       <pubDate>Sat, 20 Sep 2025 11:18:15 GMT</pubDate>
       
         
@@ -177,14 +177,14 @@
       <category domain="https://lililib.github.io/tags/%E6%97%A5%E8%AE%B0/">日记</category>
       
       
-      <comments>https://lililib.github.io/2%E4%B8%AA%E6%9C%88%E8%B7%91%E6%AD%A5%E8%AE%A1%E5%88%92/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/10457/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>姑苏印象</title>
-      <link>https://lililib.github.io/%E5%A7%91%E8%8B%8F%E5%8D%B0%E8%B1%A1/</link>
-      <guid>https://lililib.github.io/%E5%A7%91%E8%8B%8F%E5%8D%B0%E8%B1%A1/</guid>
+      <link>https://lililib.github.io/posts/5489/</link>
+      <guid>https://lililib.github.io/posts/5489/</guid>
       <pubDate>Tue, 02 Sep 2025 00:27:59 GMT</pubDate>
       
         
@@ -207,14 +207,14 @@
       <category domain="https://lililib.github.io/tags/%E6%91%84%E5%BD%B1/">摄影</category>
       
       
-      <comments>https://lililib.github.io/%E5%A7%91%E8%8B%8F%E5%8D%B0%E8%B1%A1/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/5489/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>网文为啥这么单调</title>
-      <link>https://lililib.github.io/%E7%BD%91%E6%96%87%E4%B8%BA%E5%95%A5%E6%80%8E%E4%B9%88%E5%8D%95%E8%B0%83/</link>
-      <guid>https://lililib.github.io/%E7%BD%91%E6%96%87%E4%B8%BA%E5%95%A5%E6%80%8E%E4%B9%88%E5%8D%95%E8%B0%83/</guid>
+      <link>https://lililib.github.io/posts/28142/</link>
+      <guid>https://lililib.github.io/posts/28142/</guid>
       <pubDate>Mon, 25 Aug 2025 02:04:17 GMT</pubDate>
       
       <description>&lt;p&gt;最近又上头看了一本小说《宠魅》。常常都是感觉无聊的时候，在别人评论区推荐下心血来潮找的一本。&lt;/p&gt;
@@ -230,14 +230,14 @@
       <category domain="https://lililib.github.io/tags/%E9%98%85%E8%AF%BB/">阅读</category>
       
       
-      <comments>https://lililib.github.io/%E7%BD%91%E6%96%87%E4%B8%BA%E5%95%A5%E6%80%8E%E4%B9%88%E5%8D%95%E8%B0%83/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/28142/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>《变身》Emergence </title>
-      <link>https://lililib.github.io/%E3%80%8A%E5%8F%98%E8%BA%AB%E3%80%8BEmergence%20/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E5%8F%98%E8%BA%AB%E3%80%8BEmergence%20/</guid>
+      <link>https://lililib.github.io/posts/45008/</link>
+      <guid>https://lililib.github.io/posts/45008/</guid>
       <pubDate>Mon, 28 Jul 2025 14:42:33 GMT</pubDate>
       
         
@@ -261,14 +261,14 @@
       <category domain="https://lililib.github.io/tags/%E6%BC%AB%E7%94%BB/">漫画</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E5%8F%98%E8%BA%AB%E3%80%8BEmergence%20/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/45008/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>几张漫画遮脸图</title>
-      <link>https://lililib.github.io/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/</link>
-      <guid>https://lililib.github.io/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/</guid>
+      <link>https://lililib.github.io/posts/55024/</link>
+      <guid>https://lililib.github.io/posts/55024/</guid>
       <pubDate>Sun, 06 Jul 2025 03:34:03 GMT</pubDate>
       
       <description>&lt;p&gt;刷煎蛋的时候碰到的几个印象深刻的热图，前两张都是短短2小时00破百的图，不过不到一天就下架了。只存了两张这个遮脸系列总感觉少了点，今年又发现了后面两张图，感觉也不错，就一起记录记录。还是动漫娘化了可爱(●’◡’●)&lt;/p&gt;</description>
@@ -282,14 +282,14 @@
       <category domain="https://lililib.github.io/tags/%E6%97%A5%E5%B8%B8/">日常</category>
       
       
-      <comments>https://lililib.github.io/%E5%87%A0%E5%BC%A0%E6%BC%AB%E7%94%BB%E9%81%AE%E8%84%B8%E5%9B%BE/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/55024/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>idea启动 报java: 找不到符号</title>
-      <link>https://lililib.github.io/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/</link>
-      <guid>https://lililib.github.io/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/</guid>
+      <link>https://lililib.github.io/posts/57168/</link>
+      <guid>https://lililib.github.io/posts/57168/</guid>
       <pubDate>Mon, 30 Jun 2025 08:41:36 GMT</pubDate>
       
       <description>&lt;p&gt;maven install不报错,代码编辑框不爆红,唯独idea启动项目报lombok相关的找不到符号,可以试试升级lombok至最新版&lt;/p&gt;</description>
@@ -303,14 +303,14 @@
       <category domain="https://lililib.github.io/tags/idea/">idea</category>
       
       
-      <comments>https://lililib.github.io/idea%E5%90%AF%E5%8A%A8%20%E6%8A%A5java%20%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/57168/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>自定义基础镜像</title>
-      <link>https://lililib.github.io/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/</link>
-      <guid>https://lililib.github.io/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/</guid>
+      <link>https://lililib.github.io/posts/34887/</link>
+      <guid>https://lililib.github.io/posts/34887/</guid>
       <pubDate>Thu, 26 Jun 2025 04:28:07 GMT</pubDate>
       
       <description>&lt;p&gt;下载精简版jdk8镜像,会有很多工具不存在,如curl,vim,ping啥的,下载完整版jdk8又有太多不必要的工具,太臃肿了,所有自定义镜像的需求就来了&lt;/p&gt;</description>
@@ -324,14 +324,14 @@
       <category domain="https://lililib.github.io/tags/%E6%8A%80%E6%9C%AF/">技术</category>
       
       
-      <comments>https://lililib.github.io/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/34887/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>k8s部署xxl-job</title>
-      <link>https://lililib.github.io/k8s%E9%83%A8%E7%BD%B2xxl-job/</link>
-      <guid>https://lililib.github.io/k8s%E9%83%A8%E7%BD%B2xxl-job/</guid>
+      <link>https://lililib.github.io/posts/26589/</link>
+      <guid>https://lililib.github.io/posts/26589/</guid>
       <pubDate>Mon, 16 Jun 2025 06:43:32 GMT</pubDate>
       
       <description>&lt;p&gt;xxl-job是个很好用的定时任务调度器,记录下部署过程&lt;/p&gt;
@@ -347,14 +347,14 @@
       <category domain="https://lililib.github.io/tags/k8s/">k8s</category>
       
       
-      <comments>https://lililib.github.io/k8s%E9%83%A8%E7%BD%B2xxl-job/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/26589/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>xxl-job锁超时</title>
-      <link>https://lililib.github.io/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/</link>
-      <guid>https://lililib.github.io/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/</guid>
+      <link>https://lililib.github.io/posts/13421/</link>
+      <guid>https://lililib.github.io/posts/13421/</guid>
       <pubDate>Mon, 16 Jun 2025 02:59:41 GMT</pubDate>
       
       <description>&lt;p&gt;xxl-job-admin启动的时候一直报Lock wait timeout exceeded; try restarting transaction&lt;/p&gt;
@@ -375,14 +375,14 @@
       <category domain="https://lililib.github.io/tags/xxl-job/">xxl-job</category>
       
       
-      <comments>https://lililib.github.io/xxl-job%E9%94%81%E8%B6%85%E6%97%B6/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/13421/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>navicate的数据迁移</title>
-      <link>https://lililib.github.io/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/</link>
-      <guid>https://lililib.github.io/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/</guid>
+      <link>https://lililib.github.io/posts/7404/</link>
+      <guid>https://lililib.github.io/posts/7404/</guid>
       <pubDate>Sat, 07 Jun 2025 02:51:56 GMT</pubDate>
       
       <description>&lt;p&gt;&amp;emsp;新到的这家公司分库分表做的很多,一个库就有3000多张表.还有好几个库.调试bug定位数据的时候简直让人心肺骤停.总是怀疑刚刚滑过的表名是不是错过了.&lt;/p&gt;
@@ -397,14 +397,14 @@
       <category domain="https://lililib.github.io/tags/%E6%8A%80%E6%9C%AF/">技术</category>
       
       
-      <comments>https://lililib.github.io/navicate%E7%9A%84%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/7404/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>《铳梦》</title>
-      <link>https://lililib.github.io/%E3%80%8A%E9%93%B3%E6%A2%A6%E3%80%8B/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E9%93%B3%E6%A2%A6%E3%80%8B/</guid>
+      <link>https://lililib.github.io/posts/53373/</link>
+      <guid>https://lililib.github.io/posts/53373/</guid>
       <pubDate>Sun, 25 Feb 2024 09:45:01 GMT</pubDate>
       
       <description>&lt;p&gt;机缘巧合之下知道了&lt;a href=&quot;https://www.manhuagui.com/comic/6779/&quot;&gt;《铳梦》&lt;/a&gt;这个漫画，看到煎蛋热评魔幻的世界观给了小时po主十足的震撼后，心痒难耐于是周六看了这部漫画，总共九部，每部二百多页出头的样子。耗时接近9个小时看完，废寝忘食。很有当初看《剑豪生死斗》时的沉迷。以我看了太多诡异世界观的作品后猎奇眼光来看，世界观的构造，冲突的发展，社会面貌的描写。只能说打个10分打个7分的样子。但是毕竟作者1995年就画完了，相信之前看的很多作品有借鉴过这个作品。要是更早遇到这个漫画一定更加能够打动我。&lt;/p&gt;
@@ -420,14 +420,14 @@
       <category domain="https://lililib.github.io/tags/%E6%BC%AB%E7%94%BB/">漫画</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E9%93%B3%E6%A2%A6%E3%80%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/53373/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>springboot项目报Command line is too long. Shorten the command line via</title>
-      <link>https://lililib.github.io/springboot%E9%A1%B9%E7%9B%AE%E6%8A%A5Command%20line%20is%20too%20long/</link>
-      <guid>https://lililib.github.io/springboot%E9%A1%B9%E7%9B%AE%E6%8A%A5Command%20line%20is%20too%20long/</guid>
+      <link>https://lililib.github.io/posts/9163/</link>
+      <guid>https://lililib.github.io/posts/9163/</guid>
       <pubDate>Wed, 21 Feb 2024 03:23:46 GMT</pubDate>
       
         
@@ -449,14 +449,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/springboot%E9%A1%B9%E7%9B%AE%E6%8A%A5Command%20line%20is%20too%20long/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/9163/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>ruoyi-common-encrypt包的使用.md</title>
-      <link>https://lililib.github.io/ruoyi-common-encrypt%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
-      <guid>https://lililib.github.io/ruoyi-common-encrypt%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <link>https://lililib.github.io/posts/21698/</link>
+      <guid>https://lililib.github.io/posts/21698/</guid>
       <pubDate>Thu, 01 Feb 2024 01:40:49 GMT</pubDate>
       
       <description>&lt;p&gt;公司有个业务用户看一条广告，就往自己钱包里面添加相应的金额。自己通过抓包，可以重放请求或直接构造金额给后端。因为参数没有加密，活在惶恐之中。虽然用的用户不多，但总怕有人抓包搞事情。遂看有没有现成的加密轮子。&lt;a href=&quot;https://gitee.com/dromara/RuoYi-Cloud-Plus/tree/2.X/ruoyi-common/ruoyi-common-encrypt&quot;&gt;ruoyi-common-encrypt&lt;/a&gt;就是一个现成的。&lt;/p&gt;</description>
@@ -470,14 +470,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/ruoyi-common-encrypt%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/21698/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>如何用hexo优雅的写博客</title>
-      <link>https://lililib.github.io/%E5%A6%82%E4%BD%95%E7%94%A8hexo%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2/</link>
-      <guid>https://lililib.github.io/%E5%A6%82%E4%BD%95%E7%94%A8hexo%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2/</guid>
+      <link>https://lililib.github.io/posts/62899/</link>
+      <guid>https://lililib.github.io/posts/62899/</guid>
       <pubDate>Tue, 30 Jan 2024 05:41:19 GMT</pubDate>
       
       <description>&lt;p&gt;hexo静态博客优点就是完全白嫖github。不需要一分钱就可以有一个自己的博客。&lt;/p&gt;
@@ -492,14 +492,14 @@
       <category domain="https://lililib.github.io/tags/hexo/">hexo</category>
       
       
-      <comments>https://lililib.github.io/%E5%A6%82%E4%BD%95%E7%94%A8hexo%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/62899/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>github提交403错误</title>
-      <link>https://lililib.github.io/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/</link>
-      <guid>https://lililib.github.io/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/</guid>
+      <link>https://lililib.github.io/posts/39770/</link>
+      <guid>https://lililib.github.io/posts/39770/</guid>
       <pubDate>Mon, 29 Jan 2024 09:55:01 GMT</pubDate>
       
       <description>&lt;dl&gt;&lt;dt&gt;自己有梯子还是git push失败&lt;/dt&gt;&lt;dd&gt;Failed to connect to github.com port 443 after 21068 ms: Couldn’t connect to server&lt;/dd&gt;&lt;/dl&gt;&lt;p&gt;先确认网页github能不能正常打开，如果可以正常打开。说明命令行在拉取&amp;#x2F;推送代码时并没有使用梯子进行代理&lt;/p&gt;</description>
@@ -513,14 +513,14 @@
       <category domain="https://lililib.github.io/tags/git/">git</category>
       
       
-      <comments>https://lililib.github.io/github%E6%8F%90%E4%BA%A4403%E9%94%99%E8%AF%AF/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/39770/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>httpcanary抓包</title>
-      <link>https://lililib.github.io/httpcanary%E6%8A%93%E5%8C%85/</link>
-      <guid>https://lililib.github.io/httpcanary%E6%8A%93%E5%8C%85/</guid>
+      <link>https://lililib.github.io/posts/7761/</link>
+      <guid>https://lililib.github.io/posts/7761/</guid>
       <pubDate>Mon, 29 Jan 2024 09:06:45 GMT</pubDate>
       
       <description>&lt;p&gt;记录下httpcanary的配置过程。接口调试中求人不如求己，自己抓包一目了然&lt;/p&gt;</description>
@@ -534,14 +534,14 @@
       <category domain="https://lililib.github.io/tags/%E6%8A%93%E5%8C%85/">抓包</category>
       
       
-      <comments>https://lililib.github.io/httpcanary%E6%8A%93%E5%8C%85/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/7761/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>IDEA运行flikcdc的相关问题</title>
-      <link>https://lililib.github.io/IDEA%E8%BF%90%E8%A1%8Cflikcdc%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</link>
-      <guid>https://lililib.github.io/IDEA%E8%BF%90%E8%A1%8Cflikcdc%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</guid>
+      <link>https://lililib.github.io/posts/2029/</link>
+      <guid>https://lililib.github.io/posts/2029/</guid>
       <pubDate>Fri, 05 Jan 2024 06:55:48 GMT</pubDate>
       
       <description>&lt;p&gt;按照官方文档跑&lt;a href=&quot;https://ververica.github.io/flink-cdc-connectors/master/content/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/datastream-api-package-guidance-zh.html&quot;&gt;Demo&lt;/a&gt;一直报错，记录一些错误&lt;/p&gt;
@@ -558,14 +558,14 @@
       <category domain="https://lililib.github.io/tags/%E6%8A%80%E6%9C%AF/">技术</category>
       
       
-      <comments>https://lililib.github.io/IDEA%E8%BF%90%E8%A1%8Cflikcdc%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/2029/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>window常用命令</title>
-      <link>https://lililib.github.io/window%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
-      <guid>https://lililib.github.io/window%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <link>https://lililib.github.io/posts/26880/</link>
+      <guid>https://lililib.github.io/posts/26880/</guid>
       <pubDate>Tue, 02 Jan 2024 12:21:49 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;记录使用电脑过程中经常查的一些记录&quot;&gt;&lt;a href=&quot;#记录使用电脑过程中经常查的一些记录&quot; class=&quot;headerlink&quot; title=&quot;记录使用电脑过程中经常查的一些记录&quot;&gt;&lt;/a&gt;记录使用电脑过程中经常查的一些记录&lt;/h2&gt;</description>
@@ -579,14 +579,14 @@
       <category domain="https://lililib.github.io/tags/windows/">windows</category>
       
       
-      <comments>https://lililib.github.io/window%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/26880/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>游戏记录</title>
-      <link>https://lililib.github.io/%E6%B8%B8%E6%88%8F%E8%AE%B0%E5%BD%95/</link>
-      <guid>https://lililib.github.io/%E6%B8%B8%E6%88%8F%E8%AE%B0%E5%BD%95/</guid>
+      <link>https://lililib.github.io/posts/15261/</link>
+      <guid>https://lililib.github.io/posts/15261/</guid>
       <pubDate>Tue, 02 Jan 2024 03:28:26 GMT</pubDate>
       
       <description>&lt;p&gt;记录好玩的游戏，有时候忘记名称了，又是花费很多时间来重新找&lt;/p&gt;</description>
@@ -602,14 +602,14 @@
       <category domain="https://lililib.github.io/tags/game/">game</category>
       
       
-      <comments>https://lililib.github.io/%E6%B8%B8%E6%88%8F%E8%AE%B0%E5%BD%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/15261/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>《瓦尔登湖》-自知之明</title>
-      <link>https://lililib.github.io/%E3%80%8A%E7%93%A6%E5%B0%94%E7%99%BB%E6%B9%96%E3%80%8B-%E8%87%AA%E7%9F%A5%E4%B9%8B%E6%98%8E/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E7%93%A6%E5%B0%94%E7%99%BB%E6%B9%96%E3%80%8B-%E8%87%AA%E7%9F%A5%E4%B9%8B%E6%98%8E/</guid>
+      <link>https://lililib.github.io/posts/35894/</link>
+      <guid>https://lililib.github.io/posts/35894/</guid>
       <pubDate>Sun, 31 Dec 2023 05:50:41 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -629,14 +629,14 @@
       <category domain="https://lililib.github.io/tags/%E6%A0%87%E6%B3%A8/">标注</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E7%93%A6%E5%B0%94%E7%99%BB%E6%B9%96%E3%80%8B-%E8%87%AA%E7%9F%A5%E4%B9%8B%E6%98%8E/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/35894/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>第二个老板</title>
-      <link>https://lililib.github.io/%E7%AC%AC%E4%BA%8C%E4%B8%AA%E8%80%81%E6%9D%BF/</link>
-      <guid>https://lililib.github.io/%E7%AC%AC%E4%BA%8C%E4%B8%AA%E8%80%81%E6%9D%BF/</guid>
+      <link>https://lililib.github.io/posts/46676/</link>
+      <guid>https://lililib.github.io/posts/46676/</guid>
       <pubDate>Sat, 30 Dec 2023 07:59:13 GMT</pubDate>
       
       <description>&lt;p&gt;&amp;emsp;&amp;emsp;翻了一下我过去随手记得日记，很惊讶，点点滴滴的文字中我竟然写下了那么多事情。站在在我现在的角度来看，我这一年的经历似乎很是平淡。但从日记的字里行间我看到很多情绪，不满，紧张，懊悔，愤怒，生气，冷漠都充斥着我大脑，促使我在事后记下这些东西。其中来到苏州的第一个公司还是让我感觉值得回顾回顾&lt;/p&gt;</description>
@@ -650,14 +650,14 @@
       <category domain="https://lililib.github.io/tags/%E7%94%9F%E6%B4%BB/">生活</category>
       
       
-      <comments>https://lililib.github.io/%E7%AC%AC%E4%BA%8C%E4%B8%AA%E8%80%81%E6%9D%BF/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/46676/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>排骨做法</title>
-      <link>https://lililib.github.io/%E6%8E%92%E9%AA%A8%E5%81%9A%E6%B3%95/</link>
-      <guid>https://lililib.github.io/%E6%8E%92%E9%AA%A8%E5%81%9A%E6%B3%95/</guid>
+      <link>https://lililib.github.io/posts/27104/</link>
+      <guid>https://lililib.github.io/posts/27104/</guid>
       <pubDate>Sat, 30 Dec 2023 07:26:31 GMT</pubDate>
       
         
@@ -680,14 +680,14 @@
       <category domain="https://lililib.github.io/tags/%E8%8F%9C%E8%B0%B1/">菜谱</category>
       
       
-      <comments>https://lililib.github.io/%E6%8E%92%E9%AA%A8%E5%81%9A%E6%B3%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/27104/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>aaaaaa</title>
-      <link>https://lililib.github.io/aaaa%20%E6%B5%8B%E8%AF%95hexo/</link>
-      <guid>https://lililib.github.io/aaaa%20%E6%B5%8B%E8%AF%95hexo/</guid>
+      <link>https://lililib.github.io/posts/58131/</link>
+      <guid>https://lililib.github.io/posts/58131/</guid>
       <pubDate>Fri, 29 Dec 2023 12:38:25 GMT</pubDate>
       
         
@@ -707,14 +707,14 @@
       <category domain="https://lililib.github.io/tags/%E6%B8%B8%E6%88%8F/">游戏</category>
       
       
-      <comments>https://lililib.github.io/aaaa%20%E6%B5%8B%E8%AF%95hexo/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/58131/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>cemu模拟器马里奥3d世界摸屏幕</title>
-      <link>https://lililib.github.io/cemu%E6%A8%A1%E6%8B%9F%E5%99%A8%E9%A9%AC%E9%87%8C%E5%A5%A53d%E4%B8%96%E7%95%8C%E6%91%B8%E5%B1%8F%E5%B9%95/</link>
-      <guid>https://lililib.github.io/cemu%E6%A8%A1%E6%8B%9F%E5%99%A8%E9%A9%AC%E9%87%8C%E5%A5%A53d%E4%B8%96%E7%95%8C%E6%91%B8%E5%B1%8F%E5%B9%95/</guid>
+      <link>https://lililib.github.io/posts/62343/</link>
+      <guid>https://lililib.github.io/posts/62343/</guid>
       <pubDate>Fri, 29 Dec 2023 12:38:25 GMT</pubDate>
       
         
@@ -734,14 +734,14 @@
       <category domain="https://lililib.github.io/tags/%E6%B8%B8%E6%88%8F/">游戏</category>
       
       
-      <comments>https://lililib.github.io/cemu%E6%A8%A1%E6%8B%9F%E5%99%A8%E9%A9%AC%E9%87%8C%E5%A5%A53d%E4%B8%96%E7%95%8C%E6%91%B8%E5%B1%8F%E5%B9%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/62343/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>windows查找端口占用</title>
-      <link>https://lililib.github.io/windows%E6%9F%A5%E6%89%BE%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8/</link>
-      <guid>https://lililib.github.io/windows%E6%9F%A5%E6%89%BE%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8/</guid>
+      <link>https://lililib.github.io/posts/19674/</link>
+      <guid>https://lililib.github.io/posts/19674/</guid>
       <pubDate>Fri, 29 Dec 2023 12:38:25 GMT</pubDate>
       
         
@@ -762,14 +762,14 @@
       <category domain="https://lililib.github.io/tags/windows/">windows</category>
       
       
-      <comments>https://lililib.github.io/windows%E6%9F%A5%E6%89%BE%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/19674/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>windows远程桌面与安卓远程控制</title>
-      <link>https://lililib.github.io/windows%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E4%B8%8E%E5%AE%89%E5%8D%93%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
-      <guid>https://lililib.github.io/windows%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E4%B8%8E%E5%AE%89%E5%8D%93%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</guid>
+      <link>https://lililib.github.io/posts/27342/</link>
+      <guid>https://lililib.github.io/posts/27342/</guid>
       <pubDate>Thu, 28 Dec 2023 05:28:46 GMT</pubDate>
       
       <description>&lt;p&gt;发现一个内网穿透软件，多个设备组建成局域网。清晰度要比向日葵好很多，还可以用qtScrapy远程操控安卓手机。&lt;/p&gt;
@@ -783,14 +783,14 @@
       <category domain="https://lililib.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</category>
       
       
-      <comments>https://lililib.github.io/windows%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E4%B8%8E%E5%AE%89%E5%8D%93%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/27342/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>es ik分词器词库热更新</title>
-      <link>https://lililib.github.io/es%E7%9A%84ik%E5%88%86%E8%AF%8D%E5%99%A8%E8%AF%8D%E5%BA%93%E7%83%AD%E6%9B%B4%E6%96%B0/</link>
-      <guid>https://lililib.github.io/es%E7%9A%84ik%E5%88%86%E8%AF%8D%E5%99%A8%E8%AF%8D%E5%BA%93%E7%83%AD%E6%9B%B4%E6%96%B0/</guid>
+      <link>https://lililib.github.io/posts/25442/</link>
+      <guid>https://lililib.github.io/posts/25442/</guid>
       <pubDate>Tue, 05 Dec 2023 14:18:35 GMT</pubDate>
       
       <description>&lt;p&gt;近来遇到一个es查询商品使用ik分词器，召回结果不准确的问题，比如搜索 洗衣液，返回出洁厕液。选择的分词方式是 ik_max_word.出现的原因是分词会把“液”这个单字分开进行索引所以查询错误。如果不想要这个“液”单独分出来需要设置停止词库&lt;/p&gt;
@@ -805,14 +805,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/es%E7%9A%84ik%E5%88%86%E8%AF%8D%E5%99%A8%E8%AF%8D%E5%BA%93%E7%83%AD%E6%9B%B4%E6%96%B0/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/25442/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>本地文件夹提交到github</title>
-      <link>https://lililib.github.io/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E6%8F%90%E4%BA%A4%E5%88%B0github/</link>
-      <guid>https://lililib.github.io/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E6%8F%90%E4%BA%A4%E5%88%B0github/</guid>
+      <link>https://lililib.github.io/posts/49114/</link>
+      <guid>https://lililib.github.io/posts/49114/</guid>
       <pubDate>Wed, 06 Sep 2023 15:29:01 GMT</pubDate>
       
         
@@ -832,14 +832,14 @@
       <category domain="https://lililib.github.io/tags/git/">git</category>
       
       
-      <comments>https://lililib.github.io/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E6%8F%90%E4%BA%A4%E5%88%B0github/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/49114/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>《火星编年史》</title>
-      <link>https://lililib.github.io/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B/</guid>
+      <link>https://lililib.github.io/posts/64334/</link>
+      <guid>https://lililib.github.io/posts/64334/</guid>
       <pubDate>Sun, 30 Jul 2023 14:17:21 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -858,14 +858,14 @@
       <category domain="https://lililib.github.io/tags/%E6%A0%87%E6%B3%A8/">标注</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E7%81%AB%E6%98%9F%E7%BC%96%E5%B9%B4%E5%8F%B2%E3%80%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/64334/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>《间客》</title>
-      <link>https://lililib.github.io/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/</guid>
+      <link>https://lililib.github.io/posts/57627/</link>
+      <guid>https://lililib.github.io/posts/57627/</guid>
       <pubDate>Fri, 30 Jun 2023 13:16:21 GMT</pubDate>
       
       <description>&lt;p&gt;&amp;emsp;&amp;emsp;最希望选举程序成本高昂的是权贵，这样穷人就得不到被选举权；最希望司法程序费用高昂的是权贵，这样穷人就打不赢官司；最希望媒体版面费高昂的也是权贵，这样穷人就得不到话语权&lt;/p&gt;</description>
@@ -881,14 +881,14 @@
       <category domain="https://lililib.github.io/tags/%E6%A0%87%E6%B3%A8/">标注</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E9%97%B4%E5%AE%A2%E3%80%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/57627/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>IP转数字</title>
-      <link>https://lililib.github.io/IP%E8%BD%AC%E6%95%B0%E5%AD%97/</link>
-      <guid>https://lililib.github.io/IP%E8%BD%AC%E6%95%B0%E5%AD%97/</guid>
+      <link>https://lililib.github.io/posts/60768/</link>
+      <guid>https://lililib.github.io/posts/60768/</guid>
       <pubDate>Sun, 19 Feb 2023 10:46:46 GMT</pubDate>
       
       <description>&lt;p&gt;255.255.255.255 直接以字符串存入数据库使用varchar(15),而ipv4本质是32位的二进制码，int也有32位，但是因为有一个符号位存不下所以只能用long型来存储ip了。8个字节还是比15个字节差不多省了一半空间了。&lt;/p&gt;
@@ -903,14 +903,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/IP%E8%BD%AC%E6%95%B0%E5%AD%97/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/60768/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>npm ERR! gyp ERR!</title>
-      <link>https://lililib.github.io/npm%20ERR!%20gyp%20ERR!/</link>
-      <guid>https://lililib.github.io/npm%20ERR!%20gyp%20ERR!/</guid>
+      <link>https://lililib.github.io/posts/6785/</link>
+      <guid>https://lililib.github.io/posts/6785/</guid>
       <pubDate>Sun, 19 Feb 2023 10:46:46 GMT</pubDate>
       
         
@@ -932,14 +932,14 @@
       <category domain="https://lililib.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
       
       
-      <comments>https://lililib.github.io/npm%20ERR!%20gyp%20ERR!/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/6785/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>自旋锁与阻塞锁</title>
-      <link>https://lililib.github.io/%E8%87%AA%E6%97%8B%E9%94%81%E4%B8%8E%E9%98%BB%E5%A1%9E%E9%94%81/</link>
-      <guid>https://lililib.github.io/%E8%87%AA%E6%97%8B%E9%94%81%E4%B8%8E%E9%98%BB%E5%A1%9E%E9%94%81/</guid>
+      <link>https://lililib.github.io/posts/43696/</link>
+      <guid>https://lililib.github.io/posts/43696/</guid>
       <pubDate>Sun, 12 Feb 2023 12:31:46 GMT</pubDate>
       
       <description>&lt;p&gt;最近在学锁相关的内容，有些内容比较纠结收集了很多资料才建立起锁相关这个体系的轮廓。&lt;/p&gt;
@@ -955,14 +955,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/%E8%87%AA%E6%97%8B%E9%94%81%E4%B8%8E%E9%98%BB%E5%A1%9E%E9%94%81/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/43696/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>sql运行的很慢排查</title>
-      <link>https://lililib.github.io/%E4%B8%80%E6%9D%A1sql%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E5%BE%88%E6%85%A2%E6%8E%92%E6%9F%A5/</link>
-      <guid>https://lililib.github.io/%E4%B8%80%E6%9D%A1sql%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E5%BE%88%E6%85%A2%E6%8E%92%E6%9F%A5/</guid>
+      <link>https://lililib.github.io/posts/6391/</link>
+      <guid>https://lililib.github.io/posts/6391/</guid>
       <pubDate>Fri, 06 Jan 2023 10:46:46 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;第一类：锁的原因&quot;&gt;&lt;a href=&quot;#第一类：锁的原因&quot; class=&quot;headerlink&quot; title=&quot;第一类：锁的原因&quot;&gt;&lt;/a&gt;第一类：锁的原因&lt;/h2&gt;&lt;p&gt;mysql中有表锁，行锁，一些线程加了锁了之后占有着资源，其他线程再进入进行相关操作就可能一直在等待锁的释放导致感觉sql运行很慢&lt;/p&gt;
@@ -978,14 +978,14 @@
       <category domain="https://lililib.github.io/tags/mysql/">mysql</category>
       
       
-      <comments>https://lililib.github.io/%E4%B8%80%E6%9D%A1sql%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E5%BE%88%E6%85%A2%E6%8E%92%E6%9F%A5/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/6391/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>《You are Not Late! You are Not Early ！》</title>
-      <link>https://lililib.github.io/%E3%80%8A%20You&#39;re%20Not%20Late!%20You&#39;re%20Not%20Early%20!%E3%80%8B/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%20You&#39;re%20Not%20Late!%20You&#39;re%20Not%20Early%20!%E3%80%8B/</guid>
+      <link>https://lililib.github.io/posts/64635/</link>
+      <guid>https://lililib.github.io/posts/64635/</guid>
       <pubDate>Tue, 03 Jan 2023 03:43:01 GMT</pubDate>
       
       <description>&lt;p&gt;很多时候无意义的焦虑很折磨人，这首诗挺能安慰人的。&lt;/p&gt;
@@ -1003,14 +1003,14 @@
       <category domain="https://lililib.github.io/tags/%E9%98%85%E8%AF%BB/">阅读</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%20You&#39;re%20Not%20Late!%20You&#39;re%20Not%20Early%20!%E3%80%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/64635/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>《未选择的路》</title>
-      <link>https://lililib.github.io/%E3%80%8A%E6%9C%AA%E9%80%89%E6%8B%A9%E7%9A%84%E8%B7%AF%E3%80%8B/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E6%9C%AA%E9%80%89%E6%8B%A9%E7%9A%84%E8%B7%AF%E3%80%8B/</guid>
+      <link>https://lililib.github.io/posts/10690/</link>
+      <guid>https://lililib.github.io/posts/10690/</guid>
       <pubDate>Tue, 03 Jan 2023 03:33:01 GMT</pubDate>
       
       <description>&lt;p&gt;记得这首诗应该是小学或初中课本上的一首诗。然后几年后又在《球形闪电》上看的了他的引用，那一刻颇受感动，理解了这首诗要表达的感觉。现在很多时候，在我将要面对一些选择的时候我都会情不自禁想起这首诗。&lt;/p&gt;
@@ -1029,14 +1029,14 @@
       <category domain="https://lililib.github.io/tags/%E9%98%85%E8%AF%BB/">阅读</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E6%9C%AA%E9%80%89%E6%8B%A9%E7%9A%84%E8%B7%AF%E3%80%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/10690/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>mybatis list实体类存入varchar字段</title>
-      <link>https://lililib.github.io/mybatis%20List%E5%AE%9E%E4%BD%93%E7%B1%BB%E5%AD%98%E5%85%A5varchar%E5%AD%97%E6%AE%B5/</link>
-      <guid>https://lililib.github.io/mybatis%20List%E5%AE%9E%E4%BD%93%E7%B1%BB%E5%AD%98%E5%85%A5varchar%E5%AD%97%E6%AE%B5/</guid>
+      <link>https://lililib.github.io/posts/62865/</link>
+      <guid>https://lililib.github.io/posts/62865/</guid>
       <pubDate>Tue, 27 Dec 2022 09:43:01 GMT</pubDate>
       
       <description>&lt;p&gt;对与采集别人接口数据时，返回格式Json中常常会出现数组类型，如&lt;/p&gt;
@@ -1055,14 +1055,14 @@
       <category domain="https://lililib.github.io/tags/mysql/">mysql</category>
       
       
-      <comments>https://lililib.github.io/mybatis%20List%E5%AE%9E%E4%BD%93%E7%B1%BB%E5%AD%98%E5%85%A5varchar%E5%AD%97%E6%AE%B5/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/62865/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>一张白纸</title>
-      <link>https://lililib.github.io/%E4%B8%80%E5%BC%A0%E7%99%BD%E7%BA%B8/</link>
-      <guid>https://lililib.github.io/%E4%B8%80%E5%BC%A0%E7%99%BD%E7%BA%B8/</guid>
+      <link>https://lililib.github.io/posts/18105/</link>
+      <guid>https://lililib.github.io/posts/18105/</guid>
       <pubDate>Mon, 28 Nov 2022 10:46:46 GMT</pubDate>
       
       <description>&lt;p&gt;零星的只言片语并没有让我对乌鲁木齐的火灾案感同身受。但我看到熊熊的大火从窗户冒出来，一个声嘶力竭的女声阵阵喊着：“开门，快开门呀！”。我很能理解这次多地集会纪念的心情了。&lt;/p&gt;
@@ -1077,14 +1077,14 @@
       <category domain="https://lililib.github.io/tags/%E5%B0%8F%E8%AE%B0/">小记</category>
       
       
-      <comments>https://lililib.github.io/%E4%B8%80%E5%BC%A0%E7%99%BD%E7%BA%B8/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/18105/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>springboot单元测试</title>
-      <link>https://lililib.github.io/springBoot%E6%B5%8B%E8%AF%95/</link>
-      <guid>https://lililib.github.io/springBoot%E6%B5%8B%E8%AF%95/</guid>
+      <link>https://lililib.github.io/posts/18617/</link>
+      <guid>https://lililib.github.io/posts/18617/</guid>
       <pubDate>Fri, 18 Nov 2022 07:07:46 GMT</pubDate>
       
       <description>&lt;ol&gt;
@@ -1102,14 +1102,14 @@
       <category domain="https://lililib.github.io/tags/springboot/">springboot</category>
       
       
-      <comments>https://lililib.github.io/springBoot%E6%B5%8B%E8%AF%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/18617/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>MySQL的groupby</title>
-      <link>https://lililib.github.io/mysql%E7%9A%84groupby/</link>
-      <guid>https://lililib.github.io/mysql%E7%9A%84groupby/</guid>
+      <link>https://lililib.github.io/posts/31794/</link>
+      <guid>https://lililib.github.io/posts/31794/</guid>
       <pubDate>Fri, 18 Nov 2022 03:43:01 GMT</pubDate>
       
       <description>&lt;p&gt;最近要写一个根据地区聚合公司数量的需求，一时好久没写，有点忘了，看到一个很不错的博文。记录记录 &lt;/p&gt;</description>
@@ -1123,14 +1123,14 @@
       <category domain="https://lililib.github.io/tags/mysql/">mysql</category>
       
       
-      <comments>https://lililib.github.io/mysql%E7%9A%84groupby/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/31794/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>恐怖片与食物链</title>
-      <link>https://lililib.github.io/%E9%A3%9F%E7%89%A9%E9%93%BE/</link>
-      <guid>https://lililib.github.io/%E9%A3%9F%E7%89%A9%E9%93%BE/</guid>
+      <link>https://lililib.github.io/posts/22756/</link>
+      <guid>https://lililib.github.io/posts/22756/</guid>
       <pubDate>Sun, 13 Nov 2022 08:31:46 GMT</pubDate>
       
       <description>&lt;p&gt;作为地球上食物链最顶端的人类，我想到食物链只是….嗯嗯没错！大鱼吃小鱼，小鱼吃虾米。这些名词如果往深处设身处地的想想是非常恐怖的事情。看了一系列自然记录片后才知道我们人类是多么的幸运。&lt;/p&gt;</description>
@@ -1144,14 +1144,14 @@
       <category domain="https://lililib.github.io/tags/%E5%B0%8F%E8%AE%B0/">小记</category>
       
       
-      <comments>https://lililib.github.io/%E9%A3%9F%E7%89%A9%E9%93%BE/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/22756/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>VR资源获取</title>
-      <link>https://lililib.github.io/VR%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96%E9%80%94%E5%BE%84/</link>
-      <guid>https://lililib.github.io/VR%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96%E9%80%94%E5%BE%84/</guid>
+      <link>https://lililib.github.io/posts/6823/</link>
+      <guid>https://lililib.github.io/posts/6823/</guid>
       <pubDate>Wed, 09 Nov 2022 04:31:46 GMT</pubDate>
       
       <description>&lt;h4 id=&quot;写在前面：&quot;&gt;&lt;a href=&quot;#写在前面：&quot; class=&quot;headerlink&quot; title=&quot;写在前面：&quot;&gt;&lt;/a&gt;写在前面：&lt;/h4&gt;&lt;p&gt;现在互联网孤岛效应越来越严重了。早期时一切信息都是开放的，可链接的，可触及的。而搜索引擎，就是这个数据库的目录。&lt;/p&gt;
@@ -1166,14 +1166,14 @@
       <category domain="https://lililib.github.io/tags/%E5%B0%8F%E8%AE%B0/">小记</category>
       
       
-      <comments>https://lililib.github.io/VR%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96%E9%80%94%E5%BE%84/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/6823/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>java线程池</title>
-      <link>https://lililib.github.io/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/</link>
-      <guid>https://lililib.github.io/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/</guid>
+      <link>https://lililib.github.io/posts/56288/</link>
+      <guid>https://lililib.github.io/posts/56288/</guid>
       <pubDate>Thu, 27 Oct 2022 00:43:17 GMT</pubDate>
       
       <description>&lt;h3 id=&quot;为什么要使用线程池？&quot;&gt;&lt;a href=&quot;#为什么要使用线程池？&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用线程池？&quot;&gt;&lt;/a&gt;&lt;strong&gt;为什么要使用线程池？&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;线程池做的工作主要是控制运行的线程的数量，处理过程中将任务放入队列，然后在线程创建后启动这些任务，如果线程数量超过了最大数量超出数量的线程排队等候，等其它线程执行完毕，再从队列中取出任务来执行。&lt;/p&gt;
@@ -1188,14 +1188,14 @@
       <category domain="https://lililib.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</category>
       
       
-      <comments>https://lililib.github.io/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/56288/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>java导出word文档</title>
-      <link>https://lililib.github.io/java%E5%AF%BC%E5%87%BAword%E6%96%87%E6%A1%A3/</link>
-      <guid>https://lililib.github.io/java%E5%AF%BC%E5%87%BAword%E6%96%87%E6%A1%A3/</guid>
+      <link>https://lililib.github.io/posts/45644/</link>
+      <guid>https://lililib.github.io/posts/45644/</guid>
       <pubDate>Tue, 25 Oct 2022 08:38:34 GMT</pubDate>
       
       <description>&lt;h3 id=&quot;准备模板：&quot;&gt;&lt;a href=&quot;#准备模板：&quot; class=&quot;headerlink&quot; title=&quot;准备模板：&quot;&gt;&lt;/a&gt;准备模板：&lt;/h3&gt;&lt;ol&gt;
@@ -1210,14 +1210,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/java%E5%AF%BC%E5%87%BAword%E6%96%87%E6%A1%A3/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/45644/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>写时复制</title>
-      <link>https://lililib.github.io/%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6/</link>
-      <guid>https://lililib.github.io/%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6/</guid>
+      <link>https://lililib.github.io/posts/3624/</link>
+      <guid>https://lililib.github.io/posts/3624/</guid>
       <pubDate>Thu, 20 Oct 2022 01:30:42 GMT</pubDate>
       
       <description>&lt;h5 id=&quot;1，什么是写时复制-Copy-On-Write-容器？&quot;&gt;&lt;a href=&quot;#1，什么是写时复制-Copy-On-Write-容器？&quot; class=&quot;headerlink&quot; title=&quot;1，什么是写时复制(Copy-On-Write)容器？&quot;&gt;&lt;/a&gt;1，什么是写时复制(Copy-On-Write)容器？&lt;/h5&gt;&lt;p&gt;写时复制是指：在并发访问的情景下，当需要修改JAVA中Containers的元素时，不直接修改该容器，而是先复制一份副本，在副本上进行修改。修改完成之后，将指向原来容器的引用指向新的容器(副本容器)。&lt;/p&gt;</description>
@@ -1231,14 +1231,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/3624/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>unix IO模型</title>
-      <link>https://lililib.github.io/unix%20Io%E6%A8%A1%E5%9E%8B/</link>
-      <guid>https://lililib.github.io/unix%20Io%E6%A8%A1%E5%9E%8B/</guid>
+      <link>https://lililib.github.io/posts/45831/</link>
+      <guid>https://lililib.github.io/posts/45831/</guid>
       <pubDate>Sat, 08 Oct 2022 12:31:46 GMT</pubDate>
       
       <description>&lt;p&gt;首先I&amp;#x2F;O模型分为&lt;strong&gt;操作系统与设备之间的IO，&lt;/strong&gt;还有&lt;strong&gt;各进程与操作系统之间的I&amp;#x2F;O模型。&lt;/strong&gt;&lt;/p&gt;
@@ -1256,14 +1256,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/unix%20Io%E6%A8%A1%E5%9E%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/45831/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>指令重排</title>
-      <link>https://lililib.github.io/%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92/</link>
-      <guid>https://lililib.github.io/%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92/</guid>
+      <link>https://lililib.github.io/posts/11890/</link>
+      <guid>https://lililib.github.io/posts/11890/</guid>
       <pubDate>Wed, 07 Sep 2022 12:33:23 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;&lt;strong&gt;引言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;二狗&lt;/strong&gt;：二胖你昨天请假了是不是又去面试了啊？&lt;/p&gt;
@@ -1280,14 +1280,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/11890/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>雪花算法</title>
-      <link>https://lililib.github.io/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/</link>
-      <guid>https://lililib.github.io/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/</guid>
+      <link>https://lililib.github.io/posts/42337/</link>
+      <guid>https://lililib.github.io/posts/42337/</guid>
       <pubDate>Tue, 07 Jun 2022 11:45:03 GMT</pubDate>
       
       <description>&lt;p&gt;snowflake 算法是 twitter 开源的分布式 id 生成算法，采用 Scala 语言实现，是把一个 64 位的 long 型的 id，1 个 bit 是不用的，用其中的 41 bit 作为毫秒数，用 10 bit 作为工作机器 id，12 bit 作为序列号。&lt;/p&gt;</description>
@@ -1299,14 +1299,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/42337/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Aop 数据库事务控制注解版</title>
-      <link>https://lililib.github.io/Aop%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E6%B3%A8%E8%A7%A3%E7%89%88/</link>
-      <guid>https://lililib.github.io/Aop%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E6%B3%A8%E8%A7%A3%E7%89%88/</guid>
+      <link>https://lililib.github.io/posts/63811/</link>
+      <guid>https://lililib.github.io/posts/63811/</guid>
       <pubDate>Mon, 18 Apr 2022 13:50:00 GMT</pubDate>
       
       <description>&lt;p&gt;直接注解通知顺序不一样，？好像是前置，最终，返回，不是很明白。使用环绕通知自己定义通知顺序，不想探究了。&lt;/p&gt;</description>
@@ -1318,14 +1318,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/Aop%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E6%B3%A8%E8%A7%A3%E7%89%88/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/63811/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>java动态代理</title>
-      <link>https://lililib.github.io/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</link>
-      <guid>https://lililib.github.io/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</guid>
+      <link>https://lililib.github.io/posts/37517/</link>
+      <guid>https://lililib.github.io/posts/37517/</guid>
       <pubDate>Mon, 18 Apr 2022 02:12:06 GMT</pubDate>
       
       <description>&lt;p&gt;  小A：“代理模式都有些什么角色？”&lt;/p&gt;
@@ -1339,14 +1339,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/37517/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>长笛女孩节选</title>
-      <link>https://lililib.github.io/%E9%95%BF%E7%AC%9B%E5%A5%B3%E5%AD%A9%E8%8A%82%E9%80%89/</link>
-      <guid>https://lililib.github.io/%E9%95%BF%E7%AC%9B%E5%A5%B3%E5%AD%A9%E8%8A%82%E9%80%89/</guid>
+      <link>https://lililib.github.io/posts/11970/</link>
+      <guid>https://lililib.github.io/posts/11970/</guid>
       <pubDate>Fri, 08 Apr 2022 01:41:51 GMT</pubDate>
       
       <description>&lt;p&gt;长笛女孩在舞台中心就位时，没有人注意她们。在众人看来，她们不过是一对奇异的小人儿，一对互相缠绕的苍白天使。利迪娅把嘴贴在姐姐的喉咙上，感受着在她白得透明的皮肤下快速跳动的动脉。当她用舌头找到姐姐脖子上的小钻孔时，动脉在舌尖抽动了一下。她也感觉到了尼娅的舌头在她喉间湿润的触感，那舌头像小老鼠寻求慰藉一样紧贴着她的皮肤。&lt;/p&gt;</description>
@@ -1360,14 +1360,14 @@
       <category domain="https://lililib.github.io/tags/%E8%AF%BB%E4%B9%A6/">读书</category>
       
       
-      <comments>https://lililib.github.io/%E9%95%BF%E7%AC%9B%E5%A5%B3%E5%AD%A9%E8%8A%82%E9%80%89/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/11970/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>mysql高效批量插入数据</title>
-      <link>https://lililib.github.io/mysql%E9%AB%98%E6%95%88%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</link>
-      <guid>https://lililib.github.io/mysql%E9%AB%98%E6%95%88%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</guid>
+      <link>https://lililib.github.io/posts/4808/</link>
+      <guid>https://lililib.github.io/posts/4808/</guid>
       <pubDate>Thu, 31 Mar 2022 02:49:22 GMT</pubDate>
       
       <description>&lt;p&gt;举例：向数据表中插入20000条数据&lt;/p&gt;
@@ -1383,14 +1383,14 @@
       <category domain="https://lililib.github.io/tags/mysql/">mysql</category>
       
       
-      <comments>https://lililib.github.io/mysql%E9%AB%98%E6%95%88%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/4808/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>java File类</title>
-      <link>https://lililib.github.io/java%20File%E7%B1%BB/</link>
-      <guid>https://lililib.github.io/java%20File%E7%B1%BB/</guid>
+      <link>https://lililib.github.io/posts/63235/</link>
+      <guid>https://lililib.github.io/posts/63235/</guid>
       <pubDate>Mon, 28 Mar 2022 12:52:30 GMT</pubDate>
       
       <description>&lt;h3 id=&quot;file-类&quot;&gt;&lt;a href=&quot;#file-类&quot; class=&quot;headerlink&quot; title=&quot;file 类&quot;&gt;&lt;/a&gt;file 类&lt;/h3&gt;&lt;p&gt;![](java File类&amp;#x2F;1648477074671.png)&lt;/p&gt;
@@ -1406,14 +1406,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/java%20File%E7%B1%BB/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/63235/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>linux概要命令</title>
-      <link>https://lililib.github.io/linux%E6%A6%82%E8%A6%81%E5%91%BD%E4%BB%A4/</link>
-      <guid>https://lililib.github.io/linux%E6%A6%82%E8%A6%81%E5%91%BD%E4%BB%A4/</guid>
+      <link>https://lililib.github.io/posts/31296/</link>
+      <guid>https://lililib.github.io/posts/31296/</guid>
       <pubDate>Sun, 27 Mar 2022 04:19:57 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;基本介绍&quot;&gt;&lt;a href=&quot;#基本介绍&quot; class=&quot;headerlink&quot; title=&quot;基本介绍&quot;&gt;&lt;/a&gt;基本介绍&lt;/h2&gt;&lt;ol&gt;
@@ -1432,14 +1432,14 @@
       <category domain="https://lililib.github.io/tags/linux/">linux</category>
       
       
-      <comments>https://lililib.github.io/linux%E6%A6%82%E8%A6%81%E5%91%BD%E4%BB%A4/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/31296/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>vi 和 vim 快捷键</title>
-      <link>https://lililib.github.io/vi%20%E5%92%8C%20vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
-      <guid>https://lililib.github.io/vi%20%E5%92%8C%20vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <link>https://lililib.github.io/posts/53241/</link>
+      <guid>https://lililib.github.io/posts/53241/</guid>
       <pubDate>Sun, 27 Mar 2022 04:07:21 GMT</pubDate>
       
       <description>&lt;p&gt;Linux 系统会内置 vi 文本编辑器&lt;br&gt;Vim 具有程序编辑的能力，可以看做是 Vi 的增强版本，可以主动的以字体颜色辨别语法的正确性，方便程序设计。&lt;br&gt;  代码补完、编译及错误跳转等方便编程的功能特别丰富&lt;/p&gt;</description>
@@ -1451,14 +1451,14 @@
       <category domain="https://lililib.github.io/tags/linux/">linux</category>
       
       
-      <comments>https://lililib.github.io/vi%20%E5%92%8C%20vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/53241/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>linux目录结构</title>
-      <link>https://lililib.github.io/linux-mu-lu-jie-gou/</link>
-      <guid>https://lililib.github.io/linux-mu-lu-jie-gou/</guid>
+      <link>https://lililib.github.io/posts/59999/</link>
+      <guid>https://lililib.github.io/posts/59999/</guid>
       <pubDate>Sun, 27 Mar 2022 03:36:30 GMT</pubDate>
       
       <description>&lt;h4 id=&quot;linux目录结构&quot;&gt;&lt;a href=&quot;#linux目录结构&quot; class=&quot;headerlink&quot; title=&quot;linux目录结构&quot;&gt;&lt;/a&gt;linux目录结构&lt;/h4&gt;&lt;ol&gt;
@@ -1474,14 +1474,14 @@
       <category domain="https://lililib.github.io/tags/linux/">linux</category>
       
       
-      <comments>https://lililib.github.io/linux-mu-lu-jie-gou/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/59999/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>MySQL的Bundle_RPM包安装</title>
-      <link>https://lililib.github.io/MySQL%E7%9A%84Bundle_RPM%E5%8C%85%E5%AE%89%E8%A3%85/</link>
-      <guid>https://lililib.github.io/MySQL%E7%9A%84Bundle_RPM%E5%8C%85%E5%AE%89%E8%A3%85/</guid>
+      <link>https://lililib.github.io/posts/23366/</link>
+      <guid>https://lililib.github.io/posts/23366/</guid>
       <pubDate>Sat, 26 Mar 2022 13:43:01 GMT</pubDate>
       
         
@@ -1501,14 +1501,14 @@
       <category domain="https://lililib.github.io/tags/mysql/">mysql</category>
       
       
-      <comments>https://lililib.github.io/MySQL%E7%9A%84Bundle_RPM%E5%8C%85%E5%AE%89%E8%A3%85/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/23366/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>民族自豪感</title>
-      <link>https://lililib.github.io/%E6%B0%91%E6%97%8F%E8%87%AA%E8%B1%AA%E6%84%9F/</link>
-      <guid>https://lililib.github.io/%E6%B0%91%E6%97%8F%E8%87%AA%E8%B1%AA%E6%84%9F/</guid>
+      <link>https://lililib.github.io/posts/20267/</link>
+      <guid>https://lililib.github.io/posts/20267/</guid>
       <pubDate>Thu, 24 Mar 2022 14:04:12 GMT</pubDate>
       
       <description>&lt;p&gt;最廉价的骄傲就是民族的自豪感。沾染上民族自豪感的人暴露出这一事实：这个人缺乏个人的、他能够引以为豪的素质。如果情况不是这样，他也就不至于抓住那些他和无数百万人所共有的东西为荣了。拥有突出个人素质的人会更加清晰地看到自己民族的缺点，因为这些缺点时刻就在自己的眼前，&lt;/p&gt;</description>
@@ -1522,14 +1522,14 @@
       <category domain="https://lililib.github.io/tags/%E8%AF%BB%E4%B9%A6/">读书</category>
       
       
-      <comments>https://lililib.github.io/%E6%B0%91%E6%97%8F%E8%87%AA%E8%B1%AA%E6%84%9F/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/20267/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>QPST刷基带</title>
-      <link>https://lililib.github.io/QPST%E5%88%B7%E5%9F%BA%E5%B8%A6/</link>
-      <guid>https://lililib.github.io/QPST%E5%88%B7%E5%9F%BA%E5%B8%A6/</guid>
+      <link>https://lililib.github.io/posts/9522/</link>
+      <guid>https://lililib.github.io/posts/9522/</guid>
       <pubDate>Mon, 14 Mar 2022 11:49:24 GMT</pubDate>
       
         
@@ -1550,14 +1550,14 @@
       <category domain="https://lililib.github.io/tags/%E6%90%9E%E6%9C%BA/">搞机</category>
       
       
-      <comments>https://lililib.github.io/QPST%E5%88%B7%E5%9F%BA%E5%B8%A6/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/9522/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>OneShort</title>
-      <link>https://lililib.github.io/OneShort/</link>
-      <guid>https://lililib.github.io/OneShort/</guid>
+      <link>https://lililib.github.io/posts/46414/</link>
+      <guid>https://lililib.github.io/posts/46414/</guid>
       <pubDate>Mon, 07 Mar 2022 13:27:34 GMT</pubDate>
       
       <description>&lt;p&gt;你的任务是指导一个小孩穿过神秘的世界，去完成复活死去已久的太阳的使命。&lt;br&gt;……当然，事情永远不会那么简单。&lt;/p&gt;
@@ -1573,14 +1573,14 @@
       <category domain="https://lililib.github.io/tags/%E6%B8%B8%E6%88%8F/">游戏</category>
       
       
-      <comments>https://lililib.github.io/OneShort/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/46414/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>v2rayNG wifi正常翻墙用流量报context deadline exceeded错误</title>
-      <link>https://lililib.github.io/v2rayNG%20wifi%E6%AD%A3%E5%B8%B8%E7%BF%BB%E5%A2%99%E7%94%A8%E6%B5%81%E9%87%8F%E6%8A%A5context%20deadline%20exceeded%E9%94%99%E8%AF%AF/</link>
-      <guid>https://lililib.github.io/v2rayNG%20wifi%E6%AD%A3%E5%B8%B8%E7%BF%BB%E5%A2%99%E7%94%A8%E6%B5%81%E9%87%8F%E6%8A%A5context%20deadline%20exceeded%E9%94%99%E8%AF%AF/</guid>
+      <link>https://lililib.github.io/posts/30070/</link>
+      <guid>https://lililib.github.io/posts/30070/</guid>
       <pubDate>Mon, 14 Feb 2022 06:17:02 GMT</pubDate>
       
       <description>&lt;p&gt;&amp;emsp;&amp;emsp;刷了原生系统第一天，这个问题困扰了很久，测试了很多节点都如此。摸摸索索原来是手机APN设置有问题，随便试了一个APN就成功了.&lt;/p&gt;
@@ -1593,14 +1593,14 @@
       <category domain="https://lililib.github.io/tags/%E6%90%9E%E6%9C%BA/">搞机</category>
       
       
-      <comments>https://lililib.github.io/v2rayNG%20wifi%E6%AD%A3%E5%B8%B8%E7%BF%BB%E5%A2%99%E7%94%A8%E6%B5%81%E9%87%8F%E6%8A%A5context%20deadline%20exceeded%E9%94%99%E8%AF%AF/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/30070/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>request的post</title>
-      <link>https://lililib.github.io/request%E7%9A%84post/</link>
-      <guid>https://lililib.github.io/request%E7%9A%84post/</guid>
+      <link>https://lililib.github.io/posts/3561/</link>
+      <guid>https://lililib.github.io/posts/3561/</guid>
       <pubDate>Wed, 15 Dec 2021 05:02:06 GMT</pubDate>
       
       <description>&lt;p&gt;requests.post()  方法的使用：&lt;/p&gt;
@@ -1619,14 +1619,14 @@
       <category domain="https://lililib.github.io/tags/Python/">Python</category>
       
       
-      <comments>https://lililib.github.io/request%E7%9A%84post/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/3561/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>建党伟业 读后感</title>
-      <link>https://lililib.github.io/%E3%80%8A%E5%BB%BA%E5%85%9A%E4%BC%9F%E4%B8%9A%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E5%BB%BA%E5%85%9A%E4%BC%9F%E4%B8%9A%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</guid>
+      <link>https://lililib.github.io/posts/45335/</link>
+      <guid>https://lililib.github.io/posts/45335/</guid>
       <pubDate>Sat, 27 Mar 2021 14:09:02 GMT</pubDate>
       
       <description>&lt;p&gt;《建党伟业》终于上映了。&lt;/p&gt;
@@ -1639,14 +1639,14 @@
       <category domain="https://lililib.github.io/tags/%E6%9C%89%E6%84%8F%E6%80%9D/">有意思</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E5%BB%BA%E5%85%9A%E4%BC%9F%E4%B8%9A%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/45335/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>一些想法</title>
-      <link>https://lililib.github.io/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/</link>
-      <guid>https://lililib.github.io/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/</guid>
+      <link>https://lililib.github.io/posts/18803/</link>
+      <guid>https://lililib.github.io/posts/18803/</guid>
       <pubDate>Fri, 26 Mar 2021 10:36:07 GMT</pubDate>
       
       <description>&lt;p&gt;看到《毛泽东选集》里面一个案列，农民运动时除了斗地主之外还有一个很大的运动——破四旧。其中有一项勤俭节约，禁开酒席，禁买南货斋果送情。原因是工业产品价高，农产品极为价廉的原因，农民受商人剥削厉害，借以自卫的一个手段。由此想到，贫困，经济条件不好的地区常常有暴动，骚乱的一些原因。&lt;/p&gt;</description>
@@ -1658,14 +1658,14 @@
       <category domain="https://lililib.github.io/tags/%E5%B0%8F%E8%AE%B0/">小记</category>
       
       
-      <comments>https://lililib.github.io/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/18803/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>湖北师范大学人脸爬取</title>
-      <link>https://lililib.github.io/%E6%B9%96%E5%8C%97%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E4%BA%BA%E8%84%B8%E7%88%AC%E5%8F%96/</link>
-      <guid>https://lililib.github.io/%E6%B9%96%E5%8C%97%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E4%BA%BA%E8%84%B8%E7%88%AC%E5%8F%96/</guid>
+      <link>https://lililib.github.io/posts/54533/</link>
+      <guid>https://lililib.github.io/posts/54533/</guid>
       <pubDate>Fri, 12 Mar 2021 05:36:30 GMT</pubDate>
       
       <description>&lt;p&gt;疫情期间宿舍安装了人脸识别门禁，要求登录一个网站上传人脸照片。对于有价值的信息我有很好的嗅觉（素颜女生嘿嘿(●ˇ∀ˇ●)），感觉可以查探查探…….&lt;/p&gt;</description>
@@ -1674,19 +1674,19 @@
       
       
       
-      <category domain="https://lililib.github.io/tags/Python/">Python</category>
-      
       <category domain="https://lililib.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</category>
       
+      <category domain="https://lililib.github.io/tags/Python/">Python</category>
       
-      <comments>https://lililib.github.io/%E6%B9%96%E5%8C%97%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E4%BA%BA%E8%84%B8%E7%88%AC%E5%8F%96/#disqus_thread</comments>
+      
+      <comments>https://lililib.github.io/posts/54533/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>小米刷机大概步骤</title>
-      <link>https://lililib.github.io/%E5%B0%8F%E7%B1%B3%E5%88%B7%E6%9C%BA%E5%A4%A7%E6%A6%82%E6%AD%A5%E9%AA%A4/</link>
-      <guid>https://lililib.github.io/%E5%B0%8F%E7%B1%B3%E5%88%B7%E6%9C%BA%E5%A4%A7%E6%A6%82%E6%AD%A5%E9%AA%A4/</guid>
+      <link>https://lililib.github.io/posts/54359/</link>
+      <guid>https://lililib.github.io/posts/54359/</guid>
       <pubDate>Sun, 28 Feb 2021 07:17:22 GMT</pubDate>
       
       <description>&lt;ol&gt;
@@ -1701,14 +1701,14 @@
       <category domain="https://lililib.github.io/tags/%E6%90%9E%E6%9C%BA/">搞机</category>
       
       
-      <comments>https://lililib.github.io/%E5%B0%8F%E7%B1%B3%E5%88%B7%E6%9C%BA%E5%A4%A7%E6%A6%82%E6%AD%A5%E9%AA%A4/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/54359/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>回溯，动态规划-求n个数中和为k的最少解</title>
-      <link>https://lililib.github.io/%E5%9B%9E%E6%BA%AF%EF%BC%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%B1%82n%E4%B8%AA%E6%95%B0%E4%B8%AD%E5%92%8C%E4%B8%BAk%E7%9A%84%E6%9C%80%E5%B0%91%E8%A7%A3/</link>
-      <guid>https://lililib.github.io/%E5%9B%9E%E6%BA%AF%EF%BC%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%B1%82n%E4%B8%AA%E6%95%B0%E4%B8%AD%E5%92%8C%E4%B8%BAk%E7%9A%84%E6%9C%80%E5%B0%91%E8%A7%A3/</guid>
+      <link>https://lililib.github.io/posts/62604/</link>
+      <guid>https://lililib.github.io/posts/62604/</guid>
       <pubDate>Tue, 29 Dec 2020 13:24:08 GMT</pubDate>
       
       <description>&lt;p&gt;如题：给定若干正整数，从中选出若干数，使他们的和恰好为k，要求找选择元素最少的解&lt;/p&gt;
@@ -1723,14 +1723,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E5%9B%9E%E6%BA%AF%EF%BC%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%B1%82n%E4%B8%AA%E6%95%B0%E4%B8%AD%E5%92%8C%E4%B8%BAk%E7%9A%84%E6%9C%80%E5%B0%91%E8%A7%A3/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/62604/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>科幻的常见类型</title>
-      <link>https://lililib.github.io/%E7%A7%91%E5%B9%BB%E7%9A%84%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B/</link>
-      <guid>https://lililib.github.io/%E7%A7%91%E5%B9%BB%E7%9A%84%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B/</guid>
+      <link>https://lililib.github.io/posts/18545/</link>
+      <guid>https://lililib.github.io/posts/18545/</guid>
       <pubDate>Sat, 26 Dec 2020 03:22:08 GMT</pubDate>
       
         
@@ -1749,14 +1749,14 @@
       <category domain="https://lililib.github.io/tags/%E8%AF%BB%E4%B9%A6/">读书</category>
       
       
-      <comments>https://lililib.github.io/%E7%A7%91%E5%B9%BB%E7%9A%84%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/18545/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>手撕中缀表达式转后缀表达式（逆波兰式）</title>
-      <link>https://lililib.github.io/%E6%89%8B%E6%92%95%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88%E9%80%86%E6%B3%A2%E5%85%B0%E5%BC%8F%EF%BC%89/</link>
-      <guid>https://lililib.github.io/%E6%89%8B%E6%92%95%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88%E9%80%86%E6%B3%A2%E5%85%B0%E5%BC%8F%EF%BC%89/</guid>
+      <link>https://lililib.github.io/posts/33572/</link>
+      <guid>https://lililib.github.io/posts/33572/</guid>
       <pubDate>Sat, 26 Dec 2020 02:25:40 GMT</pubDate>
       
       <description>&lt;p&gt;中缀表达式转后缀表达式转化后只是&lt;strong&gt;操作符的次序变了，操作数的次序并没有变&lt;/strong&gt;&lt;/p&gt;
@@ -1771,14 +1771,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E6%89%8B%E6%92%95%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88%E9%80%86%E6%B3%A2%E5%85%B0%E5%BC%8F%EF%BC%89/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/33572/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>n后问题</title>
-      <link>https://lililib.github.io/N%E5%90%8E%E9%97%AE%E9%A2%98/</link>
-      <guid>https://lililib.github.io/N%E5%90%8E%E9%97%AE%E9%A2%98/</guid>
+      <link>https://lililib.github.io/posts/18713/</link>
+      <guid>https://lililib.github.io/posts/18713/</guid>
       <pubDate>Wed, 23 Dec 2020 12:36:11 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;在n乘以n格的棋盘上放置彼此不受攻击的n个皇后，按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。n后问题等价于在n*n格的棋盘上放置n个皇后，任何2个皇后不放在同一行或同一列或同一斜线上。&lt;/p&gt;
@@ -1793,14 +1793,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/N%E5%90%8E%E9%97%AE%E9%A2%98/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/18713/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>单源最短路径（Dijkstra算法）</title>
-      <link>https://lililib.github.io/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%88Dijkstra%E7%AE%97%E6%B3%95%EF%BC%89/</link>
-      <guid>https://lililib.github.io/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%88Dijkstra%E7%AE%97%E6%B3%95%EF%BC%89/</guid>
+      <link>https://lililib.github.io/posts/58152/</link>
+      <guid>https://lililib.github.io/posts/58152/</guid>
       <pubDate>Wed, 23 Dec 2020 09:32:59 GMT</pubDate>
       
       <description>&lt;p&gt;迪杰斯特拉算法(Dijkstra)是由荷兰计算机科学家狄克斯特拉于1959 年提出的，因此又叫狄克斯特拉算法。是从一个顶点到其余各顶点的最短路径算法（单源最短路径），解决的是有权图中最短路径问题，采用贪心的策略。&lt;br&gt;如下图：求顶点1到顶点5的最短路径长度是多少.&lt;br&gt;&lt;img src=&quot;/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%88Dijkstra%E7%AE%97%E6%B3%95%EF%BC%89/1608718378166.png&quot;&gt;&lt;/p&gt;</description>
@@ -1814,14 +1814,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%88Dijkstra%E7%AE%97%E6%B3%95%EF%BC%89/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/58152/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>哈夫曼编码</title>
-      <link>https://lililib.github.io/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</link>
-      <guid>https://lililib.github.io/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</guid>
+      <link>https://lililib.github.io/posts/21772/</link>
+      <guid>https://lililib.github.io/posts/21772/</guid>
       <pubDate>Sun, 20 Dec 2020 12:19:49 GMT</pubDate>
       
       <description>&lt;p&gt;构造哈夫曼树时使用双亲孩子的存储结构，需要数据有： 权重，他们母亲是谁，是否加入了哈夫曼树，他们左孩子与右孩子又是谁？&lt;/p&gt;
@@ -1842,14 +1842,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/21772/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>0-1背包问题</title>
-      <link>https://lililib.github.io/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</link>
-      <guid>https://lililib.github.io/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</guid>
+      <link>https://lililib.github.io/posts/41884/</link>
+      <guid>https://lililib.github.io/posts/41884/</guid>
       <pubDate>Sat, 19 Dec 2020 10:06:41 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/./0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98-1703917426600.png&quot;&gt;&lt;/p&gt;
@@ -1868,14 +1868,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/41884/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>冒泡，二分，合并，快速排序</title>
-      <link>https://lililib.github.io/%E5%86%92%E6%B3%A1%EF%BC%8C%E4%BA%8C%E5%88%86%EF%BC%8C%E5%90%88%E5%B9%B6%EF%BC%8C%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</link>
-      <guid>https://lililib.github.io/%E5%86%92%E6%B3%A1%EF%BC%8C%E4%BA%8C%E5%88%86%EF%BC%8C%E5%90%88%E5%B9%B6%EF%BC%8C%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</guid>
+      <link>https://lililib.github.io/posts/9359/</link>
+      <guid>https://lililib.github.io/posts/9359/</guid>
       <pubDate>Sat, 19 Dec 2020 02:36:36 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;二分排序法&quot;&gt;&lt;a href=&quot;#二分排序法&quot; class=&quot;headerlink&quot; title=&quot;二分排序法&quot;&gt;&lt;/a&gt;二分排序法&lt;/h2&gt;&lt;p&gt;二分查找法主要是解决在“一堆数中找出指定的数”这类问题。&lt;/p&gt;
@@ -1895,14 +1895,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E5%86%92%E6%B3%A1%EF%BC%8C%E4%BA%8C%E5%88%86%EF%BC%8C%E5%90%88%E5%B9%B6%EF%BC%8C%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/9359/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>图的着色问题（地图着色问题）</title>
-      <link>https://lililib.github.io/%E5%9B%BE%E7%9A%84%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98/</link>
-      <guid>https://lililib.github.io/%E5%9B%BE%E7%9A%84%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98/</guid>
+      <link>https://lililib.github.io/posts/17676/</link>
+      <guid>https://lililib.github.io/posts/17676/</guid>
       <pubDate>Fri, 18 Dec 2020 11:33:33 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp; 给定无向连通图G&amp;#x3D;(V, E)和m种不同的颜色，用这些颜色为图G的各顶点着色，每个顶点着一种颜色。是否有一种着色法使G中相邻的两个顶点有不同的颜色?&lt;br&gt;&amp;emsp;&amp;emsp; 这个问题是图的m可着色判定问题。若一个图最少需要m种颜色才能使图中每条边连接的两个顶点着不同颜色，则称这个数m为该图的色数。求一个图的色数m的问题称为图的m可着色优化问题。&lt;br&gt;&amp;emsp;&amp;emsp; 编程计算：给定图G&amp;#x3D;(V, E)和m种不同的颜色，找出所有不同的着色法和着色总数。&lt;br&gt;简而言之：给一个图，&lt;strong&gt;要求相连接的顶点颜色不能相同&lt;/strong&gt;，有m种颜色可以进行着色，可以有多少方案。&lt;/p&gt;</description>
@@ -1916,14 +1916,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E5%9B%BE%E7%9A%84%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/17676/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>小记</title>
-      <link>https://lililib.github.io/%E5%B0%8F%E8%AE%B0/</link>
-      <guid>https://lililib.github.io/%E5%B0%8F%E8%AE%B0/</guid>
+      <link>https://lililib.github.io/posts/56192/</link>
+      <guid>https://lililib.github.io/posts/56192/</guid>
       <pubDate>Fri, 18 Dec 2020 10:13:15 GMT</pubDate>
       
         
@@ -1941,14 +1941,14 @@
       <category domain="https://lililib.github.io/tags/%E5%B0%8F%E8%AE%B0/">小记</category>
       
       
-      <comments>https://lililib.github.io/%E5%B0%8F%E8%AE%B0/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/56192/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>最长公共子序列</title>
-      <link>https://lililib.github.io/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</link>
-      <guid>https://lililib.github.io/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</guid>
+      <link>https://lililib.github.io/posts/20721/</link>
+      <guid>https://lililib.github.io/posts/20721/</guid>
       <pubDate>Thu, 17 Dec 2020 14:23:12 GMT</pubDate>
       
       <description>&lt;p&gt;给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。&lt;/p&gt;
@@ -1963,14 +1963,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/20721/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Karatsuba大数乘法</title>
-      <link>https://lililib.github.io/Karatsuba%E5%A4%A7%E6%95%B0%E4%B9%98%E6%B3%95/</link>
-      <guid>https://lililib.github.io/Karatsuba%E5%A4%A7%E6%95%B0%E4%B9%98%E6%B3%95/</guid>
+      <link>https://lililib.github.io/posts/28478/</link>
+      <guid>https://lililib.github.io/posts/28478/</guid>
       <pubDate>Wed, 16 Dec 2020 06:06:01 GMT</pubDate>
       
       <description>&lt;p&gt;Karatsuba算法是一种快速相乘算法，它由俄罗斯数学家Anatolii Alexeevitch Karatsuba于1960年提出并于1962年发表。普通乘法的复杂度是n2，而Karatsuba算法的复杂度仅为3n^log3≈3n^1.585.&lt;/p&gt;</description>
@@ -1984,14 +1984,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/Karatsuba%E5%A4%A7%E6%95%B0%E4%B9%98%E6%B3%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/28478/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>大数加减法</title>
-      <link>https://lililib.github.io/%E5%A4%A7%E6%95%B0%E5%8A%A0%E5%87%8F%E6%B3%95/</link>
-      <guid>https://lililib.github.io/%E5%A4%A7%E6%95%B0%E5%8A%A0%E5%87%8F%E6%B3%95/</guid>
+      <link>https://lililib.github.io/posts/12392/</link>
+      <guid>https://lililib.github.io/posts/12392/</guid>
       <pubDate>Tue, 15 Dec 2020 14:41:13 GMT</pubDate>
       
       <description>&lt;p&gt;大数加减法&lt;strong&gt;模拟竖式计算&lt;/strong&gt;的累加累减技巧，在数组中进行进位借位操作。时间复杂度都为O(1)&lt;/p&gt;</description>
@@ -2005,14 +2005,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E5%A4%A7%E6%95%B0%E5%8A%A0%E5%87%8F%E6%B3%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/12392/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>markdown语法</title>
-      <link>https://lililib.github.io/markdown%E8%AF%AD%E6%B3%95/</link>
-      <guid>https://lililib.github.io/markdown%E8%AF%AD%E6%B3%95/</guid>
+      <link>https://lililib.github.io/posts/47193/</link>
+      <guid>https://lililib.github.io/posts/47193/</guid>
       <pubDate>Tue, 15 Dec 2020 13:07:53 GMT</pubDate>
       
         
@@ -2028,14 +2028,14 @@
       
       
       
-      <comments>https://lililib.github.io/markdown%E8%AF%AD%E6%B3%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/47193/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>大数乘法</title>
-      <link>https://lililib.github.io/%E5%A4%A7%E6%95%B0%E4%B9%98%E6%B3%95/</link>
-      <guid>https://lililib.github.io/%E5%A4%A7%E6%95%B0%E4%B9%98%E6%B3%95/</guid>
+      <link>https://lililib.github.io/posts/37701/</link>
+      <guid>https://lililib.github.io/posts/37701/</guid>
       <pubDate>Tue, 15 Dec 2020 12:56:44 GMT</pubDate>
       
       <description>&lt;p&gt;所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。这时候可以用小学学的&lt;strong&gt;乘法竖式累加模拟乘法&lt;/strong&gt;，结果储存在数组中。时间复杂度为O(2)&lt;/p&gt;</description>
@@ -2049,14 +2049,14 @@
       <category domain="https://lililib.github.io/tags/%E7%AE%97%E6%B3%95/">算法</category>
       
       
-      <comments>https://lililib.github.io/%E5%A4%A7%E6%95%B0%E4%B9%98%E6%B3%95/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/37701/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Chrome中请求头转为字典类型</title>
-      <link>https://lililib.github.io/Chrome%E4%B8%AD%E8%AF%B7%E6%B1%82%E5%A4%B4%E8%BD%AC%E4%B8%BA%E5%AD%97%E5%85%B8%E7%B1%BB%E5%9E%8B/</link>
-      <guid>https://lililib.github.io/Chrome%E4%B8%AD%E8%AF%B7%E6%B1%82%E5%A4%B4%E8%BD%AC%E4%B8%BA%E5%AD%97%E5%85%B8%E7%B1%BB%E5%9E%8B/</guid>
+      <link>https://lililib.github.io/posts/31802/</link>
+      <guid>https://lililib.github.io/posts/31802/</guid>
       <pubDate>Sat, 05 Dec 2020 14:18:35 GMT</pubDate>
       
       <description>&lt;p&gt;请求头一个一个加引号太麻烦了，python处理为字典型数据&lt;/p&gt;</description>
@@ -2070,14 +2070,14 @@
       <category domain="https://lililib.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</category>
       
       
-      <comments>https://lililib.github.io/Chrome%E4%B8%AD%E8%AF%B7%E6%B1%82%E5%A4%B4%E8%BD%AC%E4%B8%BA%E5%AD%97%E5%85%B8%E7%B1%BB%E5%9E%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/31802/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>漫画柜《鬼灭之刃》爬取</title>
-      <link>https://lililib.github.io/%E6%BC%AB%E7%94%BB%E6%9F%9C%E3%80%8A%E9%AC%BC%E7%81%AD%E4%B9%8B%E5%88%83%E3%80%8B%E7%88%AC%E5%8F%96/</link>
-      <guid>https://lililib.github.io/%E6%BC%AB%E7%94%BB%E6%9F%9C%E3%80%8A%E9%AC%BC%E7%81%AD%E4%B9%8B%E5%88%83%E3%80%8B%E7%88%AC%E5%8F%96/</guid>
+      <link>https://lililib.github.io/posts/34345/</link>
+      <guid>https://lililib.github.io/posts/34345/</guid>
       <pubDate>Sat, 05 Dec 2020 13:12:45 GMT</pubDate>
       
       <description>&lt;p&gt;漫画柜没有下载功能，想下载里面的漫画只有一张张自己下载了&lt;/p&gt;
@@ -2090,19 +2090,19 @@
       
       
       
-      <category domain="https://lililib.github.io/tags/Python/">Python</category>
-      
       <category domain="https://lililib.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</category>
       
+      <category domain="https://lililib.github.io/tags/Python/">Python</category>
       
-      <comments>https://lililib.github.io/%E6%BC%AB%E7%94%BB%E6%9F%9C%E3%80%8A%E9%AC%BC%E7%81%AD%E4%B9%8B%E5%88%83%E3%80%8B%E7%88%AC%E5%8F%96/#disqus_thread</comments>
+      
+      <comments>https://lililib.github.io/posts/34345/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>《钢之炼金术师》</title>
-      <link>https://lililib.github.io/%E3%80%8A%E9%92%A2%E4%B9%8B%E7%82%BC%E9%87%91%E6%9C%AF%E5%B8%88%E3%80%8B/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E9%92%A2%E4%B9%8B%E7%82%BC%E9%87%91%E6%9C%AF%E5%B8%88%E3%80%8B/</guid>
+      <link>https://lililib.github.io/posts/37128/</link>
+      <guid>https://lililib.github.io/posts/37128/</guid>
       <pubDate>Thu, 03 Dec 2020 08:43:44 GMT</pubDate>
       
       <description>&lt;p&gt;人没有什么牺牲的话就什么都得不到，&lt;/p&gt;</description>
@@ -2114,14 +2114,14 @@
       <category domain="https://lililib.github.io/tags/%E5%B0%8F%E8%AE%B0/">小记</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E9%92%A2%E4%B9%8B%E7%82%BC%E9%87%91%E6%9C%AF%E5%B8%88%E3%80%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/37128/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>疑邻盗斧</title>
-      <link>https://lililib.github.io/%E7%96%91%E9%82%BB%E7%9B%97%E6%96%A7/</link>
-      <guid>https://lililib.github.io/%E7%96%91%E9%82%BB%E7%9B%97%E6%96%A7/</guid>
+      <link>https://lililib.github.io/posts/45939/</link>
+      <guid>https://lililib.github.io/posts/45939/</guid>
       <pubDate>Wed, 02 Dec 2020 15:02:29 GMT</pubDate>
       
       <description>&lt;p&gt;人有亡斧者，意其邻之子。&lt;/p&gt;</description>
@@ -2135,14 +2135,14 @@
       <category domain="https://lililib.github.io/tags/%E8%AF%BB%E4%B9%A6/">读书</category>
       
       
-      <comments>https://lililib.github.io/%E7%96%91%E9%82%BB%E7%9B%97%E6%96%A7/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/45939/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>什么是值传递，什么是引用传递。为什么说Java中只有值传递。</title>
-      <link>https://lililib.github.io/%E5%80%BC%E4%BC%A0%E9%80%92/</link>
-      <guid>https://lililib.github.io/%E5%80%BC%E4%BC%A0%E9%80%92/</guid>
+      <link>https://lililib.github.io/posts/16853/</link>
+      <guid>https://lililib.github.io/posts/16853/</guid>
       <pubDate>Tue, 01 Dec 2020 00:49:34 GMT</pubDate>
       
       <description>&lt;p&gt;关于这个问题，在StackOverflow上也引发过广泛的讨论，看来很多程序员对于这个问题的理解都不尽相同，甚至很多人理解的是错误的。还有的人可能知道Java中的参数传递是值传递，但是说不出来为什么。&lt;/p&gt;
@@ -2160,14 +2160,14 @@
       <category domain="https://lililib.github.io/tags/java/">java</category>
       
       
-      <comments>https://lililib.github.io/%E5%80%BC%E4%BC%A0%E9%80%92/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/16853/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>习惯的力量</title>
-      <link>https://lililib.github.io/%E4%B9%A0%E6%83%AF%E7%9A%84%E5%8A%9B%E9%87%8F/</link>
-      <guid>https://lililib.github.io/%E4%B9%A0%E6%83%AF%E7%9A%84%E5%8A%9B%E9%87%8F/</guid>
+      <link>https://lililib.github.io/posts/53303/</link>
+      <guid>https://lililib.github.io/posts/53303/</guid>
       <pubDate>Tue, 24 Nov 2020 07:17:01 GMT</pubDate>
       
       <description>&lt;p&gt;两条小鱼在游泳，恰好看到一条大鱼在往另一个方向游，这条大鱼对这群小鱼点头致意说，‘早上好，孩子们，今天的水怎样？’两条小鱼继续往前游了一点儿，最后其中一条看着另一条说，‘水是什么东西啊？’”&lt;/p&gt;
@@ -2180,14 +2180,14 @@
       <category domain="https://lililib.github.io/tags/%E8%AF%BB%E4%B9%A6/">读书</category>
       
       
-      <comments>https://lililib.github.io/%E4%B9%A0%E6%83%AF%E7%9A%84%E5%8A%9B%E9%87%8F/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/53303/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>算法(第四版)-1.3.14答案</title>
-      <link>https://lililib.github.io/%E3%80%8A%E7%AE%97%E6%B3%95%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B/</link>
-      <guid>https://lililib.github.io/%E3%80%8A%E7%AE%97%E6%B3%95%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B/</guid>
+      <link>https://lililib.github.io/posts/11205/</link>
+      <guid>https://lililib.github.io/posts/11205/</guid>
       <pubDate>Sun, 22 Nov 2020 06:10:26 GMT</pubDate>
       
       <description>&lt;p&gt;算法(第四版)-1.3.14 编写一个类ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象，然后扩展实现，使用调整数组的方法突破大小的限制。&lt;/p&gt;</description>
@@ -2199,14 +2199,14 @@
       <category domain="https://lililib.github.io/tags/%E3%80%8A%E7%AE%97%E6%B3%95-%E7%AC%AC%E5%9B%9B%E7%89%88-%E3%80%8B/">《算法(第四版)》</category>
       
       
-      <comments>https://lililib.github.io/%E3%80%8A%E7%AE%97%E6%B3%95%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/11205/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>uu加速器抓包领取ow</title>
-      <link>https://lililib.github.io/%E5%A6%82%E4%BD%95%E6%8C%A4%E8%BF%9Buu%E5%8A%A0%E9%80%9F%E5%99%A8%E7%99%BD%E5%AB%96ow/</link>
-      <guid>https://lililib.github.io/%E5%A6%82%E4%BD%95%E6%8C%A4%E8%BF%9Buu%E5%8A%A0%E9%80%9F%E5%99%A8%E7%99%BD%E5%AB%96ow/</guid>
+      <link>https://lililib.github.io/posts/30791/</link>
+      <guid>https://lililib.github.io/posts/30791/</guid>
       <pubDate>Thu, 18 Jul 2019 07:29:25 GMT</pubDate>
       
       <description>&lt;p&gt;最近uu加速器可白嫖《守望先锋》，啥子1个月内，用uu加速累计24h就可以白嫖了，奈何太多白嫖怪，每日11：00放送资源时，服务器就爆炸了，好不容易进去后，又显示请你明天再来，…(⊙_⊙;)…这就很让人炸裂了….&lt;/p&gt;</description>
@@ -2218,14 +2218,14 @@
       <category domain="https://lililib.github.io/tags/Python/">Python</category>
       
       
-      <comments>https://lililib.github.io/%E5%A6%82%E4%BD%95%E6%8C%A4%E8%BF%9Buu%E5%8A%A0%E9%80%9F%E5%99%A8%E7%99%BD%E5%AB%96ow/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/30791/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>战恋雪网站的爬取实战</title>
-      <link>https://lililib.github.io/%E6%88%98%E6%81%8B%E9%9B%AA/</link>
-      <guid>https://lililib.github.io/%E6%88%98%E6%81%8B%E9%9B%AA/</guid>
+      <link>https://lililib.github.io/posts/49723/</link>
+      <guid>https://lililib.github.io/posts/49723/</guid>
       <pubDate>Fri, 07 Jun 2019 01:31:25 GMT</pubDate>
       
       <description>&lt;p&gt;因为要释放掉那些干扰我理智思考的东西，所以一直在苦苦找寻刘备(皇叔)(づ￣ 3￣)づ网站，直到一次我搜索《战恋雪》时我发现了这个网站&lt;a href=&quot;https://www.zhanlianxue.net/&quot;&gt;战恋雪&lt;/a&gt;。&lt;/p&gt;</description>
@@ -2237,14 +2237,14 @@
       <category domain="https://lililib.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</category>
       
       
-      <comments>https://lililib.github.io/%E6%88%98%E6%81%8B%E9%9B%AA/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/49723/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>500px美图爬取</title>
-      <link>https://lililib.github.io/500px%E7%BE%8E%E5%9B%BE%E7%88%AC%E5%8F%96/</link>
-      <guid>https://lililib.github.io/500px%E7%BE%8E%E5%9B%BE%E7%88%AC%E5%8F%96/</guid>
+      <link>https://lililib.github.io/posts/58690/</link>
+      <guid>https://lililib.github.io/posts/58690/</guid>
       <pubDate>Fri, 12 Apr 2019 10:11:25 GMT</pubDate>
       
       <description>&lt;p&gt;前天在逛9gag时看到了一个血脉膨胀的图，在评论区溯源于是找到了&lt;a href=&quot;https://500px.com/david-foto&quot;&gt;500px&lt;/a&gt;这个网站，根据链接进去一看，乖乖~！发现一个宝藏了，这个作者拍摄的完全是我喜欢的类型，文文艺艺，热情奔放，含而不漏，张弛有度(๐॔˃̶ᗜ˂̶๐॓)。&lt;br&gt;就是下图这样子！&lt;/p&gt;</description>
@@ -2256,33 +2256,7 @@
       <category domain="https://lililib.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</category>
       
       
-      <comments>https://lililib.github.io/500px%E7%BE%8E%E5%9B%BE%E7%88%AC%E5%8F%96/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>关于</title>
-      <link>https://lililib.github.io/about/</link>
-      <guid>https://lililib.github.io/about/</guid>
-      <pubDate>Fri, 25 Jan 2019 11:09:48 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;blockquote&gt;
-&lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;🏠-关于本站&quot;&gt;&lt;a href=&quot;#🏠-关于本站&quot; class=&quot;headerlink&quot; title=&quot;🏠 关于本站&quot;&gt;&lt;/a&gt;🏠</description>
-          
-        
-      
-      
-      
-      
-      
-      
-      <comments>https://lililib.github.io/about/#disqus_thread</comments>
+      <comments>https://lililib.github.io/posts/58690/#disqus_thread</comments>
       
     </item>
     
