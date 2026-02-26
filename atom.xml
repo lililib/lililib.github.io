@@ -6,7 +6,7 @@
   <link href="https://lililib.github.io/atom.xml" rel="self"/>
   
   <link href="https://lililib.github.io/"/>
-  <updated>2026-02-11T08:51:19.435Z</updated>
+  <updated>2026-02-26T09:16:04.698Z</updated>
   <id>https://lililib.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开年上班的恍惚</title>
+    <link href="https://lililib.github.io/posts/28498/"/>
+    <id>https://lililib.github.io/posts/28498/</id>
+    <published>2026-02-26T07:55:22.000Z</published>
+    <updated>2026-02-26T09:16:04.698Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;现在感觉状态不太对，今早猛然醒来，恍惚之间还以为自己依然在老家，同样的时间，同样的早晨起床。不同的是，不再像在老家那样，起床后是放松闲适的一天，可以随便挥霍时间，坐在火炉旁待上一整天，随便撸狗，还有妈妈准备的现成的饭菜。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Diary" scheme="https://lililib.github.io/categories/Diary/"/>
+    
+    
+    <category term="随笔" scheme="https://lililib.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>从逆向ChatExcel到构建多Agent协作系统</title>
