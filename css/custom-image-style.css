@@ -1,0 +1,54 @@
+/* 自定义文章图片倒角样式 */
+/* 实现两个对角线倒角：右上角和左下角倒角，左上角和右下角不倒角 */
+
+.post-content img {
+    /* 对角线倒角：左上角0，右上角15px，右下角0，左下角15px */
+    border-radius: 0 15px 0 15px !important;
+    /* 添加轻微阴影效果，增强视觉层次 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* 平滑过渡效果 */
+    transition: all 0.3s ease;
+    /* 确保图片不会超出边界 */
+    overflow: hidden;
+}
+
+/* 鼠标悬浮时的效果 */
+.post-content img:hover {
+    /* 悬浮时增强阴影效果 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    /* 轻微放大效果 */
+    transform: scale(1.02);
+}
+
+/* 适配移动设备，减小倒角半径 */
+@media (max-width: 768px) {
+    .post-content img {
+        border-radius: 0 10px 0 10px !important;
+    }
+}
+
+/* 如果Fluid主题使用不同的类名，也添加兼容 */
+.markdown-body img,
+.post-body img,
+article img {
+    border-radius: 0 15px 0 15px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.markdown-body img:hover,
+.post-body img:hover,
+article img:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+}
+
+/* 移动设备适配 */
+@media (max-width: 768px) {
+    .markdown-body img,
+    .post-body img,
+    article img {
+        border-radius: 0 10px 0 10px !important;
+    }
+}

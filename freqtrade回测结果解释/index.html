@@ -1,0 +1,1253 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cat.ico">
+  <link rel="icon" href="/img/cat.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="煨酒小童">
+  <meta name="keywords" content="freqtrade,量化,回测">
+  
+    <meta name="description" content="记录 Freqtrade 回测报告中各项指标的含义，方便日后查阅。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Freqtrade 回测结果解释">
+<meta property="og:url" content="https://lililib.github.io/freqtrade%E5%9B%9E%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%A7%A3%E9%87%8A/index.html">
+<meta property="og:site_name" content="煨酒小童">
+<meta property="og:description" content="记录 Freqtrade 回测报告中各项指标的含义，方便日后查阅。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-10T14:43:36.000Z">
+<meta property="article:modified_time" content="2026-06-05T09:50:28.252Z">
+<meta property="article:author" content="煨酒小童">
+<meta property="article:tag" content="freqtrade">
+<meta property="article:tag" content="量化">
+<meta property="article:tag" content="回测">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Freqtrade 回测结果解释 - 煨酒小童</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom-image-style.css">
+<link rel="stylesheet" href="/css/hbe-fluid.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lililib.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"text"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/pendulum.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":"G-EBGVN4YTH7"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XQLjYAtlel38u9sNetwJq3Ow-9Nh9j0Va","app_key":"pABl0aOxp8XJWMRafJWp3eX4","server_url":"https://xqljyatl.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-EBGVN4YTH7", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-EBGVN4YTH7');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="煨酒小童" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="煨酒小童" type="application/rss+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>(￣m￣）</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                <span>豆瓣</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/books/index.html" target="_self">
+                    
+                    <span>读书</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies/index.html" target="_self">
+                    
+                    <span>电影</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/index.html" target="_self">
+                    
+                    <span>游戏</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/songs/index.html" target="_self">
+                    
+                    <span>音乐</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/sunset.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Freqtrade 回测结果解释"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-10 22:43" pubdate>
+          2026年3月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Freqtrade 回测结果解释</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>记录 Freqtrade 回测报告中各项指标的含义，方便日后查阅。</p>
+<span id="more"></span>
+
+<h2 id="策略设置参数-Settings"><a href="#策略设置参数-Settings" class="headerlink" title="策略设置参数 &#x2F; Settings"></a>策略设置参数 &#x2F; Settings</h2><table>
+<thead>
+<tr>
+<th align="left">设置项 &#x2F; Setting</th>
+<th align="left">值 &#x2F; Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">回测开始时间 &#x2F; Backtesting from</td>
+<td align="left">2026-01-01 08:00:00</td>
+</tr>
+<tr>
+<td align="left">回测结束时间 &#x2F; Backtesting to</td>
+<td align="left">2026-02-10 21:15:00</td>
+</tr>
+<tr>
+<td align="left">交易模式 &#x2F; Trading Mode</td>
+<td align="left">逐仓合约 &#x2F; Isolated Futures</td>
+</tr>
+<tr>
+<td align="left">回测执行时间 &#x2F; BT execution time</td>
+<td align="left">17秒 &#x2F; 17 seconds</td>
+</tr>
+<tr>
+<td align="left">最大同时开仓数 &#x2F; Max open trades</td>
+<td align="left">8</td>
+</tr>
+<tr>
+<td align="left">时间周期 &#x2F; Timeframe</td>
+<td align="left">15分钟 &#x2F; 15m</td>
+</tr>
+<tr>
+<td align="left">时间周期详情 &#x2F; Timeframe Detail</td>
+<td align="left">无 &#x2F; N&#x2F;A</td>
+</tr>
+<tr>
+<td align="left">回测时间范围 &#x2F; Timerange</td>
+<td align="left">20260101-20260211</td>
+</tr>
+<tr>
+<td align="left">止损 &#x2F; Stoploss</td>
+<td align="left">-50.00%</td>
+</tr>
+<tr>
+<td align="left">追踪止损 &#x2F; Trailing Stoploss</td>
+<td align="left">否 &#x2F; false</td>
+</tr>
+<tr>
+<td align="left">仅达到偏移量时追踪 &#x2F; Trail only when offset is reached</td>
+<td align="left">否 &#x2F; false</td>
+</tr>
+<tr>
+<td align="left">追踪止损正值 &#x2F; Trailing Stop positive</td>
+<td align="left">无 &#x2F; N&#x2F;A</td>
+</tr>
+<tr>
+<td align="left">追踪止损正值偏移量 &#x2F; Trailing stop positive offset</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">自定义止损 &#x2F; Custom Stoploss</td>
+<td align="left">是 &#x2F; true</td>
+</tr>
+<tr>
+<td align="left">止盈比例 &#x2F; ROI (Return on Investment)</td>
+<td align="left">{“0”: 100}</td>
+</tr>
+<tr>
+<td align="left">使用退出信号 &#x2F; Use Exit Signal</td>
+<td align="left">是 &#x2F; true</td>
+</tr>
+<tr>
+<td align="left">仅盈利时退出 &#x2F; Exit profit only</td>
+<td align="left">否 &#x2F; false</td>
+</tr>
+<tr>
+<td align="left">退出盈利偏移量 &#x2F; Exit profit offset</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">启用保护机制 &#x2F; Enable protections</td>
+<td align="left">否 &#x2F; false</td>
+</tr>
+<tr>
+<td align="left">初始余额 &#x2F; Starting balance</td>
+<td align="left">1000 USDT</td>
+</tr>
+<tr>
+<td align="left">最终余额 &#x2F; Final balance</td>
+<td align="left">960.079 USDT</td>
+</tr>
+<tr>
+<td align="left">平均下注金额 &#x2F; Avg. stake amount</td>
+<td align="left">90.86 USDT</td>
+</tr>
+<tr>
+<td align="left">总交易量 &#x2F; Total trade volume</td>
+<td align="left">251031.206 USDT</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="核心指标-Metrics"><a href="#核心指标-Metrics" class="headerlink" title="核心指标 &#x2F; Metrics"></a>核心指标 &#x2F; Metrics</h2><table>
+<thead>
+<tr>
+<th align="left">指标 &#x2F; Metric</th>
+<th align="left">值 &#x2F; Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">总盈亏 &#x2F; Total Profit</td>
+<td align="left">-3.992% &#x2F; -39.921 USDT</td>
+</tr>
+<tr>
+<td align="left">复合年均增长率 &#x2F; CAGR （Compound Annual Growth Rate）</td>
+<td align="left">-31.048%</td>
+</tr>
+<tr>
+<td align="left">索提诺比率 &#x2F; Sortino</td>
+<td align="left">-4.95</td>
+</tr>
+<tr>
+<td align="left">夏普比率 &#x2F; Sharpe</td>
+<td align="left">-2.66</td>
+</tr>
+<tr>
+<td align="left">卡尔马比率 &#x2F; Calmar</td>
+<td align="left">-6.66</td>
+</tr>
+<tr>
+<td align="left">系统质量数 &#x2F; System Quality Number (SQN)</td>
+<td align="left">-0.22</td>
+</tr>
+<tr>
+<td align="left">期望值（比率）&#x2F; Expectancy (ratio)</td>
+<td align="left">-0.06 (-0.02)</td>
+</tr>
+<tr>
+<td align="left">盈利因子 &#x2F; Profit factor</td>
+<td align="left">0.975</td>
+</tr>
+<tr>
+<td align="left">总交易次数 &#x2F; 日均 &#x2F; Total trades &#x2F; Daily Avg</td>
+<td align="left">632 &#x2F; 15.8</td>
+</tr>
+<tr>
+<td align="left">最佳单日收益 &#x2F; Best day</td>
+<td align="left">80.51% &#x2F; 80.528 USDT</td>
+</tr>
+<tr>
+<td align="left">最差单日亏损 &#x2F; Worst day</td>
+<td align="left">-74.53% &#x2F; -74.255 USDT</td>
+</tr>
+<tr>
+<td align="left">盈&#x2F;平&#x2F;亏 &#x2F; Win&#x2F;Draw&#x2F;Loss</td>
+<td align="left">226 &#x2F; 0 &#x2F; 406（胜率 WR: 35.76%）</td>
+</tr>
+<tr>
+<td align="left">盈&#x2F;平&#x2F;亏天数 &#x2F; Days win&#x2F;draw&#x2F;loss</td>
+<td align="left">19 &#x2F; 0 &#x2F; 22</td>
+</tr>
+<tr>
+<td align="left">盈利单最短持仓 &#x2F; Min. Duration winners</td>
+<td align="left">45分钟 &#x2F; 45 minutes</td>
+</tr>
+<tr>
+<td align="left">盈利单平均持仓 &#x2F; Avg. Duration winners</td>
+<td align="left">9小时8分 &#x2F; 9 hours, 8 minutes</td>
+</tr>
+<tr>
+<td align="left">盈利单最长持仓 &#x2F; Max. Duration winners</td>
+<td align="left">17小时15分 &#x2F; 17 hours, 15 minutes</td>
+</tr>
+<tr>
+<td align="left">亏损单最短持仓 &#x2F; Min. Duration Losers</td>
+<td align="left">无 &#x2F; N&#x2F;A</td>
+</tr>
+<tr>
+<td align="left">亏损单平均持仓 &#x2F; Avg. Duration Losers</td>
+<td align="left">4小时34分 &#x2F; 4 hours, 34 minutes</td>
+</tr>
+<tr>
+<td align="left">亏损单最长持仓 &#x2F; Max. Duration Losers</td>
+<td align="left">14小时 &#x2F; 14 hours</td>
+</tr>
+<tr>
+<td align="left">最大连续盈&#x2F;亏 &#x2F; Max Consecutive Wins&#x2F;Loss</td>
+<td align="left">12 &#x2F; 26</td>
+</tr>
+<tr>
+<td align="left">被拒绝的入场信号 &#x2F; Rejected entry signals</td>
+<td align="left">515</td>
+</tr>
+<tr>
+<td align="left">入场&#x2F;出场超时 &#x2F; Entry&#x2F;Exit timeouts</td>
+<td align="left">0 &#x2F; 0</td>
+</tr>
+<tr>
+<td align="left">已取消的交易入场 &#x2F; Canceled Trade Entries</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">已取消的入场订单 &#x2F; Canceled Entry Orders</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">已替换的入场订单 &#x2F; Replaced Entry Orders</td>
+<td align="left">0</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="账户数据-Account-Data"><a href="#账户数据-Account-Data" class="headerlink" title="账户数据 &#x2F; Account Data"></a>账户数据 &#x2F; Account Data</h2><table>
+<thead>
+<tr>
+<th align="left">指标 &#x2F; Metric</th>
+<th align="left">值 &#x2F; Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">最低余额 &#x2F; Min balance</td>
+<td align="left">941.67 USDT</td>
+</tr>
+<tr>
+<td align="left">最高余额 &#x2F; Max balance</td>
+<td align="left">1319.513 USDT</td>
+</tr>
+<tr>
+<td align="left">市场涨跌幅 &#x2F; Market change</td>
+<td align="left">-12.935%</td>
+</tr>
+<tr>
+<td align="left">最大账户回撤 &#x2F; Max Drawdown (Account)</td>
+<td align="left">28.635%</td>
+</tr>
+<tr>
+<td align="left">最大回撤绝对值 &#x2F; Max Drawdown ABS</td>
+<td align="left">377.843 USDT</td>
+</tr>
+<tr>
+<td align="left">回撤持续时间 &#x2F; Drawdown duration</td>
+<td align="left">12天19小时30分 &#x2F; 12 days 19:30:00</td>
+</tr>
+<tr>
+<td align="left">回撤开始时盈亏 &#x2F; Profit at Drawdown start</td>
+<td align="left">+319.513 USDT</td>
+</tr>
+<tr>
+<td align="left">回撤结束时盈亏 &#x2F; Profit at Drawdown end</td>
+<td align="left">-58.33 USDT</td>
+</tr>
+<tr>
+<td align="left">回撤开始时间 &#x2F; Drawdown start</td>
+<td align="left">2026-01-28 17:00:00</td>
+</tr>
+<tr>
+<td align="left">回撤结束时间 &#x2F; Drawdown end</td>
+<td align="left">2026-02-10 12:30:00</td>
+</tr>
+<tr>
+<td align="left">最佳交易对 &#x2F; Best Pair</td>
+<td align="left">FHE&#x2F;USDT:USDT +16.446%</td>
+</tr>
+<tr>
+<td align="left">最差交易对 &#x2F; Worst Pair</td>
+<td align="left">ZEC&#x2F;USDT:USDT -8.315%</td>
+</tr>
+<tr>
+<td align="left">单笔最佳交易 &#x2F; Best single Trade</td>
+<td align="left">FHE&#x2F;USDT:USDT +38.42%</td>
+</tr>
+<tr>
+<td align="left">单笔最差交易 &#x2F; Worst single Trade</td>
+<td align="left">FHE&#x2F;USDT:USDT -47.74%</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="夏普比率详解-Sharpe-Ratio"><a href="#夏普比率详解-Sharpe-Ratio" class="headerlink" title="夏普比率详解 &#x2F; Sharpe Ratio"></a>夏普比率详解 &#x2F; Sharpe Ratio</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1trrnBgExq/">参考视频</a></p>
+<p><strong>波动率</strong>（标准差）衡量收益的波动幅度，定义为实际收益偏离均值的离差平方均值（即方差）的平方根。</p>
+<p><strong>夏普比率</strong>的完整定义为：</p>
+<blockquote>
+<p>夏普比率 &#x3D; （策略平均收益率 - 无风险收益率） &#x2F; 波动率（标准差）</p>
+</blockquote>
+<p>其中无风险收益率通常取国债利率，量化回测中常简化为 0，即：</p>
+<blockquote>
+<p>夏普比率 ≈ 平均收益率 &#x2F; 波动率</p>
+</blockquote>
+<p><strong>直观理解：</strong> 夏普比率表示每承担一单位风险所能获得的超额收益。波动越大、运气成分越大，夏普比率越低；平均收益越高，夏普比率越高。</p>
+<p><strong>参考基准：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">对象</th>
+<th align="left">夏普比率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">标普500（过去20年）</td>
+<td align="left">≈ 0.5</td>
+</tr>
+<tr>
+<td align="left">巴菲特（伯克希尔）</td>
+<td align="left">≈ 0.75</td>
+</tr>
+<tr>
+<td align="left">优秀对冲基金</td>
+<td align="left">≥ 2.00</td>
+</tr>
+</tbody></table>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>分散投资与对冲可以降低波动率，从而显著提高夏普比率</li>
+<li>加杠杆会<strong>同比例放大</strong>收益率与波动率，夏普比率<strong>保持不变</strong>；因此加杠杆无法提升策略质量，只能在相同夏普比率下博取更高绝对收益（同时承担更大风险）</li>
+<li>追求高收益、厌恶波动，夏普比率是最直接的综合评价指标</li>
+</ul>
+<hr>
+<h2 id="索提诺比率详解-Sortino-Ratio"><a href="#索提诺比率详解-Sortino-Ratio" class="headerlink" title="索提诺比率详解 &#x2F; Sortino Ratio"></a>索提诺比率详解 &#x2F; Sortino Ratio</h2><p>夏普比率的改进版本。夏普用<strong>总波动率</strong>（上涨与下跌都算风险），但投资者真正厌恶的只有<strong>下行风险</strong>——上涨的波动不应该被惩罚。索提诺比率因此只用<strong>下行标准差</strong>作为分母。</p>
+<p><strong>下行标准差</strong>：仅统计收益低于目标收益（通常为 0）的那些周期的离差，计算其标准差。</p>
+<p><strong>索提诺比率</strong>的定义为：</p>
+<blockquote>
+<p>索提诺比率 &#x3D; （策略平均收益率 - 无风险收益率） &#x2F; 下行标准差</p>
+</blockquote>
+<p><strong>与夏普比率的对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">对比项</th>
+<th align="left">夏普比率</th>
+<th align="left">索提诺比率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">风险定义</td>
+<td align="left">总波动率（涨跌均算）</td>
+<td align="left">下行波动率（只算亏损）</td>
+</tr>
+<tr>
+<td align="left">适用场景</td>
+<td align="left">收益分布对称的策略</td>
+<td align="left">收益分布不对称、有明显下行风险的策略</td>
+</tr>
+<tr>
+<td align="left">哪个更严格</td>
+<td align="left">对上涨也惩罚，偏保守</td>
+<td align="left">更贴近实际风险感受</td>
+</tr>
+</tbody></table>
+<p><strong>直观理解：</strong> 同一策略，索提诺比率通常高于夏普比率。如果索提诺远高于夏普，说明策略亏损时波动小、盈利时波动大，是理想的不对称收益结构。</p>
+<p><strong>参考基准：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">对象</th>
+<th align="left">索提诺比率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">一般可接受</td>
+<td align="left">≥ 1.00</td>
+</tr>
+<tr>
+<td align="left">较优策略</td>
+<td align="left">≥ 2.00</td>
+</tr>
+<tr>
+<td align="left">优秀对冲基金</td>
+<td align="left">≥ 3.00</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="卡尔马比率详解-Calmar-Ratio"><a href="#卡尔马比率详解-Calmar-Ratio" class="headerlink" title="卡尔马比率详解 &#x2F; Calmar Ratio"></a>卡尔马比率详解 &#x2F; Calmar Ratio</h2><p>卡尔马比率关注的核心问题是：<strong>你用多大的最大回撤，换来了多少年化收益？</strong> 它专门为评估策略在极端亏损下的抗风险能力而设计，是 CTA（商品交易顾问）行业最常用的绩效指标之一。</p>
+<p><strong>最大回撤（Max Drawdown）</strong>：从某一峰值到随后谷底的最大跌幅，衡量策略历史上最惨烈的亏损幅度。</p>
+<p><strong>卡尔马比率</strong>的定义为：</p>
+<blockquote>
+<p>卡尔马比率 &#x3D; 年化收益率 &#x2F; 最大回撤（取绝对值）</p>
+</blockquote>
+<p><strong>直观理解：</strong> 卡尔马比率越高，说明单位回撤换来的年化收益越多，策略越”划算”。</p>
+<p><strong>与夏普&#x2F;索提诺的区别：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">对比项</th>
+<th align="left">夏普 &#x2F; 索提诺</th>
+<th align="left">卡尔马</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">风险衡量维度</td>
+<td align="left">日常波动（标准差）</td>
+<td align="left">历史极端最大亏损</td>
+</tr>
+<tr>
+<td align="left">关注周期</td>
+<td align="left">短期、日频</td>
+<td align="left">中长期、关注最坏情形</td>
+</tr>
+<tr>
+<td align="left">适用人群</td>
+<td align="left">量化策略日常评估</td>
+<td align="left">基金经理、长期资金配置</td>
+</tr>
+</tbody></table>
+<p><strong>参考基准：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">评级</th>
+<th align="left">卡尔马比率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">较差</td>
+<td align="left">&lt; 0.5</td>
+</tr>
+<tr>
+<td align="left">一般</td>
+<td align="left">0.5 ~ 1.0</td>
+</tr>
+<tr>
+<td align="left">良好</td>
+<td align="left">1.0 ~ 3.0</td>
+</tr>
+<tr>
+<td align="left">优秀</td>
+<td align="left">≥ 3.0</td>
+</tr>
+</tbody></table>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>回测周期越短，最大回撤往往越小，卡尔马比率会虚高；需保证足够长的回测时间窗口</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%87%8F%E5%8C%96/" class="category-chain-item">量化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/freqtrade/" class="print-no-link">#freqtrade</a>
+      
+        <a href="/tags/%E9%87%8F%E5%8C%96/" class="print-no-link">#量化</a>
+      
+        <a href="/tags/%E5%9B%9E%E6%B5%8B/" class="print-no-link">#回测</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Freqtrade 回测结果解释</div>
+      <div>https://lililib.github.io/freqtrade回测结果解释/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>煨酒小童</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E6%9C%80%E5%A4%A7%E7%9A%84%E9%A3%8E%E9%99%A9%E6%98%AF%E6%AD%BB%E4%BA%A1,%E6%89%80%E4%BB%A5%E4%BA%BA%E7%94%9F%E6%B2%A1%E6%9C%89%E9%A3%8E%E9%99%A9/" title="最大的风险是死亡,所以人生没有风险">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">最大的风险是死亡,所以人生没有风险</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%BC%80%E5%B9%B4%E4%B8%8A%E7%8F%AD%E7%9A%84%E6%81%8D%E6%83%9A/" title="开年上班的恍惚">
+                        <span class="hidden-mobile">开年上班的恍惚</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"lililib/lililib.github.io","repo-id":"MDEwOlJlcG9zaXRvcnkzMTQ3MTgxNzc=","category":"Announcements","category-id":"DIC_kwDOEsI34c4CusH7","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/hbe-placeholder.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
