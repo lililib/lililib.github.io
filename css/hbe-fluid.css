@@ -1,0 +1,144 @@
+/* ============================================================
+ * hexo-blog-encrypt 密码框 —— 适配 Fluid 主题
+ * 颜色取自 _config.fluid.yml，亮/暗随 [data-user-color-scheme] 自动切换。
+ * 默认即清爽的浅色输入框，聚焦时主题色描边高亮；
+ * 不再使用 default 主题"聚焦滑入深色块"的机制（避免自动聚焦时一打开就是黑框）。
+ * ============================================================ */
+
+:root {
+  --hbe-card-bg:   #FFFFF3;  /* board_color    卡片背景 */
+  --hbe-field-bg:  #ffffff;  /*                输入框背景 */
+  --hbe-line:      #eaecef;  /* line_color     边框 */
+  --hbe-text:      #2c3e50;  /* post_text      输入文字 */
+  --hbe-sec-text:  #718096;  /* sec_text       提示文字 */
+  --hbe-accent:    #30a9de;  /* link_hover     聚焦描边 */
+  --hbe-btn:       #2f4154;  /* navbar         按钮底色=主题色 */
+  --hbe-btn-hover: #30a9de;  /* link_hover     按钮悬浮 */
+  --hbe-error:     #e74c3c;
+}
+
+[data-user-color-scheme="dark"] {
+  --hbe-card-bg:   #252d38;  /* board_color_dark */
+  --hbe-field-bg:  #1f2530;
+  --hbe-line:      #435266;  /* line_color_dark */
+  --hbe-text:      #c4c6c9;  /* post_text_color_dark */
+  --hbe-sec-text:  #a7a9ad;  /* sec_text_color_dark */
+  --hbe-accent:    #30a9de;
+  --hbe-btn:       #1f3144;  /* navbar_bg_color_dark */
+  --hbe-btn-hover: #30a9de;
+  --hbe-error:     #ff6b6b;
+}
+
+/* 容器：Fluid 风格卡片 */
+#hexo-blog-encrypt .hbe-content {
+  max-width: 440px;
+  margin: 2em auto;
+  padding: 1.6em;
+  background: var(--hbe-card-bg);
+  border: 1px solid var(--hbe-line);
+  border-radius: 12px;
+  box-shadow: 0 4px 22px rgba(0, 0, 0, .06);
+  font-size: 105%;
+  text-align: left;
+}
+
+/* 把"浮动 label + 透明输入框 + 滑入深块"拍平成常规竖排表单 */
+#hexo-blog-encrypt .hbe-input,
+#hexo-blog-encrypt .hbe-input-default {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 0 .4em !important;
+  float: none !important;
+  overflow: visible !important;
+}
+
+/* 提示文字 → 输入框上方的静态说明 */
+#hexo-blog-encrypt .hbe-input-label-default {
+  order: 1;
+  position: static !important;
+  width: 100% !important;
+  float: none !important;
+  padding: 0 0 .5em !important;
+  text-align: left !important;
+}
+#hexo-blog-encrypt .hbe-input-label-content-default {
+  display: block !important;
+  padding: 0 !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  color: var(--hbe-sec-text) !important;
+  font-size: .82em !important;
+  font-weight: 600;
+}
+/* 关键：彻底关掉聚焦滑入的深色块和灰下划线 —— 不会再有"黑乎乎的框" */
+#hexo-blog-encrypt .hbe-input-label-default::before,
+#hexo-blog-encrypt .hbe-input-label-default::after {
+  display: none !important;
+}
+
+/* 输入框：默认就可见的浅色框 */
+#hexo-blog-encrypt .hbe-input-field-default {
+  order: 2;
+  opacity: 1 !important;          /* 覆盖 default 主题的默认透明 */
+  width: 100% !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: .7em .9em !important;
+  background: var(--hbe-field-bg) !important;
+  color: var(--hbe-text) !important;
+  border: 1px solid var(--hbe-line) !important;
+  border-radius: 8px !important;
+  font-size: .95em !important;
+  transition: border-color .2s, box-shadow .2s !important;
+}
+#hexo-blog-encrypt .hbe-input-field-default:focus {
+  border-color: var(--hbe-accent) !important;
+  box-shadow: 0 0 0 3px rgba(48, 169, 222, .18) !important;
+}
+/* 框内占位文字（提示语）颜色 */
+#hexo-blog-encrypt .hbe-input-field-default::placeholder {
+  color: var(--hbe-sec-text) !important;
+  opacity: 1;
+}
+#hexo-blog-encrypt .hbe-input-field-default::-webkit-input-placeholder {
+  color: var(--hbe-sec-text) !important;
+}
+
+/* 按钮：去掉渐变/三角/阴影，改 Fluid 扁平实底 */
+#hexo-blog-encrypt .hbe-button {
+  background: var(--hbe-btn) !important;
+  border: none !important;
+  border-bottom: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  color: #fff !important;
+  font-family: inherit !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  text-indent: 0 !important;
+  width: auto !important;
+  min-width: 140px !important;
+  height: 42px !important;
+  padding: 0 1.6em !important;
+  margin: 1.2em auto .4em !important;
+  cursor: pointer;
+  transition: background .2s, top .1s !important;
+}
+#hexo-blog-encrypt .hbe-button:hover {
+  background: var(--hbe-btn-hover) !important;
+}
+#hexo-blog-encrypt .hbe-button::after {
+  display: none !important;  /* 去掉右侧三角装饰 */
+}
+
+/* 错误提示 */
+#hexo-blog-encrypt .hbe-error {
+  color: var(--hbe-error) !important;
+  font-size: .8em;
+  margin: .4em 0 .2em;
+  min-height: 1.2em;
+  text-align: center;
+}
